@@ -1,1 +1,1 @@
-# Smart-planner
+# Smart-advisor
