@@ -16,7 +16,7 @@ class GUI
 		//Note: Items are ordered here as they appear in the menu
 		//If you want to change the menu items order, just change the order here
 		ITM_ADD,		//Add a new course
-
+		ITM_ADD_NOTES,
 						//TODO: Add more items names here
 
 
