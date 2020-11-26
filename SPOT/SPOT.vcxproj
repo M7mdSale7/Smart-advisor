@@ -119,6 +119,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ActionAddNotes.cpp" />
     <ClCompile Include="Actions\ActionAddCourse.cpp" />
     <ClCompile Include="Courses\Course.cpp" />
     <ClCompile Include="GUI\CMUgraphicsLib\CMUgraphics.cpp" />
@@ -164,6 +165,7 @@
     <ClCompile Include="StudyPlan\StudyPlan.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ActionAddNotes.h" />
     <ClInclude Include="Actions\Action.h" />
     <ClInclude Include="Actions\ActionAddCourse.h" />
     <ClInclude Include="Courses\Course.h" />
