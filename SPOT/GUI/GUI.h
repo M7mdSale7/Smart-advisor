@@ -16,10 +16,9 @@ class GUI
 		//Note: Items are ordered here as they appear in the menu
 		//If you want to change the menu items order, just change the order here
 		ITM_ADD,		//Add a new course
-
 						//TODO: Add more items names here
 
-
+		ITM_ADD_NOTES,       //Add Note
 		ITM_EXIT,		//Exit item
 
 		ITM_CNT			//no. of menu items ==> This should be the last line in this enum

@@ -2,6 +2,8 @@
 
 #include "Actions/ActionAddCourse.h"
 
+#include "ActionAddNotes.h"
+
 Registrar::Registrar()
 {
 	pGUI = new GUI;	//create interface object
@@ -31,11 +33,15 @@ Action* Registrar::CreateRequiredAction()
 		RequiredAction = new ActionAddCourse(this);
 		break;
 
-	//TODO: Add case for each action
-	
-	/*case EXIT:
+	case ADD_NOTES:	//Add Notes Action
+		RequiredAction = new ActionAddNotes(this);
 		break;
-		*/
+
+			//TODO: Add case for each action
+
+			/*case EXIT:
+				break;
+				*/
 	}
 	return RequiredAction;
 }

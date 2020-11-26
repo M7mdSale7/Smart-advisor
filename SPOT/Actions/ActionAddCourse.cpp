@@ -7,6 +7,8 @@ ActionAddCourse::ActionAddCourse(Registrar* p):Action(p)
 {
 }
 
+
+
 bool ActionAddCourse::Execute()
 {
 	GUI* pGUI = pReg->getGUI();	

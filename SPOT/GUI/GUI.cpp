@@ -40,8 +40,9 @@ void GUI::CreateMenu() const
 	//First prepare List of images paths for menu item
 	string MenuItemImages[ITM_CNT];
 	MenuItemImages[ITM_ADD] = "GUI\\Images\\Menu\\Menu_add_course.jpg";
+	MenuItemImages[ADD_NOTES] = "GUI\\Images\\Menu\\Add_Note.jpg";
 	MenuItemImages[ITM_EXIT] = "GUI\\Images\\Menu\\Menu_Exit.jpg";
-
+	
 	//TODO: Prepare image for each menu item and add it to the list
 
 	//Draw menu items one image at a time
@@ -157,8 +158,8 @@ ActionData GUI::GetUserAction(string msg) const
 				switch (ClickedItemOrder)
 				{
 				case ITM_ADD: return ActionData{ ADD_CRS };	//Add course
+				case ADD_NOTES: return ActionData{ ADD_NOTES };
 				case ITM_EXIT: return ActionData{ EXIT };		//Exit
-
 				default: return ActionData{ MENU_BAR };	//A click on empty place in menu bar
 				}
 			}
