@@ -160,6 +160,7 @@
     <ClCompile Include="GUI\Drawable.cpp" />
     <ClCompile Include="GUI\GUI.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Notes.cpp" />
     <ClCompile Include="Registrar.cpp" />
     <ClCompile Include="StudyPlan\AcademicYear.cpp" />
     <ClCompile Include="StudyPlan\StudyPlan.cpp" />
@@ -191,6 +192,7 @@
     <ClInclude Include="GUI\Drawable.h" />
     <ClInclude Include="GUI\GUI.h" />
     <ClInclude Include="DEFs.h" />
+    <ClInclude Include="Notes.h" />
     <ClInclude Include="Registrar.h" />
     <ClInclude Include="Rules.h" />
     <ClInclude Include="StudyPlan\AcademicYear.h" />

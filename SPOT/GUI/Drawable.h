@@ -15,6 +15,12 @@ enum
 	//PLAN_YEAR_HEIGHT	//Height of play year rectangle to be drawn on screen
 };
 
+enum
+{
+	NOTES_HEIGHT = 40,
+	NOTES_WIDTH = 150,
+};
+
 //Base class for all drawable classes
 class Drawable
 {
