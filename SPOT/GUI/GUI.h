@@ -3,7 +3,7 @@
 using namespace std;
 #include "..\DEFs.h"
 #include "CMUgraphicsLib\CMUgraphics.h"
-#include "\CIE\Project ))))))))\Smart-advisor\SPOT\Notes.h"
+#include "../Notes.h"
 class Course;
 class AcademicYear;
 //user interface class
