@@ -1,10 +1,9 @@
 #pragma once
 #include <string>
 using namespace std;
-
 #include "..\DEFs.h"
 #include "CMUgraphicsLib\CMUgraphics.h"
-
+#include "\CIE\Project ))))))))\Smart-advisor\SPOT\Notes.h"
 class Course;
 class AcademicYear;
 //user interface class
@@ -58,6 +57,7 @@ public:
 	void DrawCourse(const Course* );
 	void DrawAcademicYear(const AcademicYear*);
 	void UpdateInterface() const;
+	void DrawNotes(const Notes* pNotes); //Member function to Draw Notes on Screen
 	
 	//input functions
 	ActionData GUI::GetUserAction(string msg = "") const;

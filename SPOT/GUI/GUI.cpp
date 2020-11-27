@@ -2,6 +2,7 @@
 #include "../Courses/Course.h"
 #include "../StudyPlan/AcademicYear.h"
 #include <sstream>
+#include "../Notes.h"
 
 GUI::GUI()
 { 
@@ -81,6 +82,7 @@ void GUI::UpdateInterface() const
 
 }
 
+
 ////////////////////////    Drawing functions    ///////////////////
 void GUI::DrawCourse(const Course* pCrs)
 {
@@ -103,6 +105,23 @@ void GUI::DrawCourse(const Course* pCrs)
 	crd<< "crd:" << pCrs->getCredits();
 	pWind->DrawString(Code_x, Code_y, pCrs->getCode());
 	pWind->DrawString(Code_x, Code_y + CRS_HEIGHT/2, crd.str());
+}
+
+void GUI::DrawNotes(const Notes* pNotes)
+{
+	if (pNotes->isSelected())
+		pWind->SetPen(HiColor, 2);
+	else
+	{
+		pWind->SetPen(DrawColor, 2);
+		pWind->SetBrush(FillColor);
+		graphicsInfo gInfo = pNotes->getGfxInfo();
+		pWind->DrawRectangle(gInfo.x, gInfo.y, gInfo.x + NOTES_WIDTH, gInfo.y + NOTES_HEIGHT);
+		int Notes_x = gInfo.x + NOTES_WIDTH * 0.15;
+		int Notes_y = gInfo.y + NOTES_HEIGHT * 0.05;
+		pWind->SetFont(CRS_HEIGHT * 0.4, BOLD, BY_NAME, "Gramound");
+		pWind->DrawString(Notes_x, Notes_y, pNotes->getNotes());
+	}
 }
 
 void GUI::DrawAcademicYear(const AcademicYear* pY) 
