@@ -11,6 +11,7 @@ class Registrar
 	GUI *pGUI;	//pointer to GUI 
 	Rules RegRules;	//Registration rules
 	StudyPlan *pSPlan;
+	
 
 public:
 	Registrar();
@@ -19,7 +20,7 @@ public:
 	bool ExecuteAction(Action*);
 	void UpdateInterface();
 	StudyPlan* getStudyPlay() const;
-
+	//add in import to call for it at the start of the application
 	void Run();
 
 	~Registrar();

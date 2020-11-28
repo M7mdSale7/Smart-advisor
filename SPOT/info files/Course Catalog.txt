@@ -1,0 +1,1 @@
+PHYS 102,intro to elec,3,Coreq:PHYS 112,Prereq:PHYS 101 And MATH 101 

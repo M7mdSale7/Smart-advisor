@@ -162,6 +162,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Notes.cpp" />
     <ClCompile Include="Registrar.cpp" />
+    <ClCompile Include="ImportCatalog.cpp" />
     <ClCompile Include="StudyPlan\AcademicYear.cpp" />
     <ClCompile Include="StudyPlan\StudyPlan.cpp" />
   </ItemGroup>
@@ -192,6 +193,7 @@
     <ClInclude Include="GUI\Drawable.h" />
     <ClInclude Include="GUI\GUI.h" />
     <ClInclude Include="DEFs.h" />
+    <ClInclude Include="ImportCatalog.h" />
     <ClInclude Include="Notes.h" />
     <ClInclude Include="Registrar.h" />
     <ClInclude Include="Rules.h" />

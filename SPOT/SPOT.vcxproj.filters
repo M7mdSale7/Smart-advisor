@@ -19,6 +19,9 @@
     <Filter Include="GraphicsLib\jpg">
       <UniqueIdentifier>{fe4f369d-177d-497d-84be-d1a6b8436eb7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Import">
+      <UniqueIdentifier>{0484829e-284a-4265-98d5-0c7fd939e91b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
@@ -150,6 +153,9 @@
       <Filter>Actions</Filter>
     </ClCompile>
     <ClCompile Include="Notes.cpp" />
+    <ClCompile Include="ImportCatalog.cpp">
+      <Filter>Import</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GUI\GUI.h">
@@ -237,6 +243,9 @@
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="Notes.h" />
+    <ClInclude Include="ImportCatalog.h">
+      <Filter>Import</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="GUI\CMUgraphicsLib\Manual.txt">

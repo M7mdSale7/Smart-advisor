@@ -61,6 +61,9 @@ void Registrar::Run()
 		//when window is minimized then restored
 		UpdateInterface();
 
+		/*Rules rules;
+		rules.CourseCatalog = ImportCatalog().readCatalog()*/
+
 		Action* pAct = CreateRequiredAction();
 		if (pAct)	//if user doesn't cancel
 		{

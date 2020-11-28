@@ -17,10 +17,12 @@ class Course : public Drawable
 	list<Course_Code> PreReq;	//list of prerequisites
 	list<Course_Code> CoReq;	//list of prerequisites
 public:
+	Course();
 	Course(Course_Code r_code,string r_title, int crd);
 	string getTitle() const;
 	string getCode() const;
 	int getCredits() const;
+
 
 	void DrawMe(GUI*) const;
 	virtual ~Course();
