@@ -16,6 +16,7 @@ class GUI
 		//If you want to change the menu items order, just change the order here
 		ITM_ADD,		//Add a new course
 		ITM_ADD_NOTES,
+		ITM_DELETE,     //DELETE A COURSE 
 						//TODO: Add more items names here
 
 

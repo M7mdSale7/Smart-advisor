@@ -156,6 +156,9 @@
     <ClCompile Include="ImportCatalog.cpp">
       <Filter>Import</Filter>
     </ClCompile>
+    <ClCompile Include="ActionDeleteCourse.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GUI\GUI.h">
@@ -245,6 +248,9 @@
     <ClInclude Include="Notes.h" />
     <ClInclude Include="ImportCatalog.h">
       <Filter>Import</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionDeleteCourse.h">
+      <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -41,6 +41,7 @@ void GUI::CreateMenu() const
 	string MenuItemImages[ITM_CNT];
 	MenuItemImages[ITM_ADD] = "GUI\\Images\\Menu\\Menu_add_course.jpg";
 	MenuItemImages[ITM_ADD_NOTES] = "GUI\\Images\\Menu\\Add_Note.jpg";
+	MenuItemImages[ITM_DELETE] = "GUI\\Images\\Menu\\Menu_delete_course.jpg";
 	MenuItemImages[ITM_EXIT] = "GUI\\Images\\Menu\\Menu_Exit.jpg";
 
 
@@ -178,6 +179,7 @@ ActionData GUI::GetUserAction(string msg) const
 				{
 				case ITM_ADD: return ActionData{ ADD_CRS };	//Add course
 				case ITM_ADD_NOTES: return ActionData{ ADD_NOTES };
+				case ITM_DELETE: return ActionData{ DEL_CRS };
 				case ITM_EXIT: return ActionData{ EXIT };		//Exit
 
 				default: return ActionData{ MENU_BAR };	//A click on empty place in menu bar

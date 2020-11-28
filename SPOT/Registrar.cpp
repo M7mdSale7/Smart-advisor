@@ -3,6 +3,7 @@
 #include "Actions/ActionAddCourse.h"
 
 #include "ActionAddNotes.h"
+#include "ActionDeleteCourse.h"
 
 Registrar::Registrar()
 {
@@ -35,6 +36,11 @@ Action* Registrar::CreateRequiredAction()
 	case ADD_NOTES:
 		RequiredAction = new ActionAddNotes(this);
 		break;
+	case DEL_CRS:
+		RequiredAction = new ActionDeleteCourse(this);
+		break;
+
+
 
 	//TODO: Add case for each action
 	
