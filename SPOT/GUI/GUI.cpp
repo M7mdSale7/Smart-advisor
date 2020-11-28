@@ -2,7 +2,6 @@
 #include "../Courses/Course.h"
 #include "../StudyPlan/AcademicYear.h"
 #include <sstream>
-#include "../Notes.h"
 
 GUI::GUI()
 { 
