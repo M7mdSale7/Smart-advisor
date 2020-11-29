@@ -119,10 +119,22 @@ void GUI::DrawNotes(const Notes* pNotes)
 		pWind->DrawRectangle(gInfo.x, gInfo.y, gInfo.x + NOTES_WIDTH, gInfo.y + NOTES_HEIGHT);
 		int Notes_x = gInfo.x + NOTES_WIDTH * 0.15;
 		int Notes_y = gInfo.y + NOTES_HEIGHT * 0.05;
-		pWind->SetFont(CRS_HEIGHT * 0.4, BOLD, BY_NAME, "Gramound");
+		pWind->SetFont(NOTES_HEIGHT * 0.4, BOLD, BY_NAME, "Gramound");
 		pWind->DrawString(Notes_x, Notes_y, pNotes->getNotes());
+		
 	}
 }
+
+void GUI::DeleteCourse(double x, double y)
+{
+		pWind->SetPen(DrawColor, 2);
+		pWind->SetBrush(WHITE);
+		pWind->DrawRectangle();
+
+
+}
+
+
 
 void GUI::DrawAcademicYear(const AcademicYear* pY) 
 {
@@ -234,6 +246,7 @@ string GUI::GetSrting() const
 
 		PrintMsg(userInput);
 	}
+	
 
 }
 
