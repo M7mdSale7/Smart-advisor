@@ -11,14 +11,14 @@ enum
 {
 	CRS_WIDTH = 80,		//width of course rectangle to be drawn on screen
 	CRS_HEIGHT = 40,	//Height of course rectangle to be drawn on screen
-	//PLAN_YEAR_WIDTH = CRS_WIDTH * 4,	//width of plan year rectangle to be drawn on screen
-	//PLAN_YEAR_HEIGHT	//Height of play year rectangle to be drawn on screen
+	PLAN_YEAR_WIDTH = CRS_WIDTH * 14,	//width of plan year rectangle to be drawn on screen
+	PLAN_YEAR_HEIGHT = CRS_HEIGHT * 3 ,	//Height of play year rectangle to be drawn on screen
 };
 
 enum
 {
 	NOTES_HEIGHT = 40,
-	NOTES_WIDTH = 150,
+	NOTES_WIDTH = 80,
 };
 
 //Base class for all drawable classes

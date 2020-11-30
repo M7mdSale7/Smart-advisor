@@ -2,6 +2,7 @@
 #include <vector>
 #include "AcademicYear.h"
 #include "../GUI/Drawable.h"
+#include "../Notes.h"
 
 //A full study plan for as student
 class StudyPlan:public Drawable
@@ -14,9 +15,11 @@ class StudyPlan:public Drawable
 	vector<AcademicYear*> plan;	//plan is a list of academic years
 
 	string PlanNotes;
+	vector<Notes*> PlanNotees;
 public:
 	StudyPlan();
 	bool AddCourse(Course*, int year, SEMESTER);
+	bool AddNote(Notes*);
 	void virtual DrawMe(GUI*) const;
 	virtual ~StudyPlan();
 };

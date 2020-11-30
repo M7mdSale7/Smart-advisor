@@ -1,13 +1,28 @@
 #include "StudyPlan.h"
-
+#include "../Notes.h"
 
 
 StudyPlan::StudyPlan()
 {
 	//By default, the study plan starts with 5 years
 	//More year can be added
+	int x = 70;
+	int y = 80;
+	graphicsInfo* gInfoYears = new graphicsInfo[5];
 	for (int i = 0; i < 5; i++)
+	{
+		gInfoYears[i].x = x;
+		gInfoYears[i].y = y;
+		y += 110;
+	}
+	for (int i = 0; i < 5; i++)
+	{
 		plan.push_back(new AcademicYear);
+		
+		plan[i]->setGfxInfo(gInfoYears[i]);
+
+
+	}
 }
 
 //adds a course to the study plan in certain year, semester
@@ -21,11 +36,21 @@ bool StudyPlan::AddCourse(Course* pC, int year, SEMESTER sem)
 	return true;
 }
 
+bool StudyPlan::AddNote(Notes* Note)
+{
+	PlanNotees.push_back(Note);
+	return true;
+}
+
+
 void StudyPlan::DrawMe(GUI* pGUI) const
 {
 	//Plan draws all year inside it.
 	for (int i = 0; i < plan.size(); i++)
 		plan[i]->DrawMe(pGUI);
+
+	for (int i = 0; i < PlanNotees.size(); i++)
+		PlanNotees[i]->DrawMe(pGUI);
 }
 
 StudyPlan::~StudyPlan()

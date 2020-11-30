@@ -6,6 +6,7 @@ using namespace std;
 #include "../Notes.h"
 class Course;
 class AcademicYear;
+class Notes;
 //user interface class
 class GUI
 {
