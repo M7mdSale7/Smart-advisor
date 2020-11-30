@@ -20,11 +20,12 @@ bool ActionDeleteCourse::Execute()
 
 		graphicsInfo gInfo{ x, y };
 		//pGUI->DeleteCourse();
-		
-		
-	return true;
 
+
+		return true;
+
+	}
 }
-	ActionDeleteCourse::~ActionDeleteCourse();
+ActionDeleteCourse::~ActionDeleteCourse()
 {
 }

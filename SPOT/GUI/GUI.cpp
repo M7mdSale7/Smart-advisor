@@ -120,18 +120,18 @@ void GUI::DrawNotes(const Notes* pNotes)
 		int Notes_y = gInfo.y + NOTES_HEIGHT * 0.05;
 		pWind->SetFont(NOTES_HEIGHT * 0.4, BOLD, BY_NAME, "Gramound");
 		pWind->DrawString(Notes_x, Notes_y, pNotes->getNotes());
-<<<<<<< HEAD
+//<<<<<<< HEAD
 		
 	}
-=======
->>>>>>> 2278f95af6adeeedc1768a15b7206a5296233556
-}
+//=======
+//>>>>>>> 2278f95af6adeeedc1768a15b7206a5296233556
+
 
 void GUI::DeleteCourse(double x, double y)
 {
 		pWind->SetPen(DrawColor, 2);
 		pWind->SetBrush(WHITE);
-		pWind->DrawRectangle();
+		/*pWind->DrawRectangle();*/
 
 
 }

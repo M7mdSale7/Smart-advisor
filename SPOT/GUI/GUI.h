@@ -63,6 +63,7 @@ public:
 	//input functions
 	ActionData GUI::GetUserAction(string msg = "") const;
 	string GetSrting() const;
+	void DeleteCourse(double x, double y);
 
 
 	

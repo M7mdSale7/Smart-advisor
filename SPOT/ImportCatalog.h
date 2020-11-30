@@ -8,4 +8,5 @@
 class ImportCatalog {
 public:
 	vector<CourseInfo> readCatalog();
+	CourseInfo clearCourseInfo(CourseInfo &course);
 };
