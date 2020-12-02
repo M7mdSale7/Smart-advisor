@@ -59,6 +59,7 @@ public:
 	void DrawAcademicYear(const AcademicYear*);
 	void UpdateInterface() const;
 	void DrawNotes(const Notes* pNotes); //Member function to Draw Notes on Screen
+	void DeleteCourse(double x, double y);
 	
 	//input functions
 	ActionData GUI::GetUserAction(string msg = "") const;

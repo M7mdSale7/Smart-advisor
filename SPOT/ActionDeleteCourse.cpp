@@ -10,7 +10,7 @@ bool ActionDeleteCourse::Execute()
 {
 	GUI* pGUI = pReg->getGUI();
 	pGUI->PrintMsg("Delete course from the plan: ");
-	ActionData actData = pGUI->GetUserAction("press a left click on the left top of the course you want to delete .");
+	ActionData actData = pGUI->GetUserAction("click on the course you want to delete.");
 	int x, y;
 	if (actData.actType == DRAW_AREA)	//user clicked inside drawing area
 	{
@@ -19,12 +19,13 @@ bool ActionDeleteCourse::Execute()
 		y = actData.y;
 
 		graphicsInfo gInfo{ x, y };
-		//pGUI->DeleteCourse();
-		
-		
-	return true;
+		pGUI->DeleteCourse(x, y);
 
+
+		return true;
+
+	}
 }
-	ActionDeleteCourse::~ActionDeleteCourse();
+ActionDeleteCourse::~ActionDeleteCourse()
 {
 }

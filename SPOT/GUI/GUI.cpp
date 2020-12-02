@@ -5,7 +5,7 @@
 
 GUI::GUI()
 { 
-	pWind = new window(WindWidth , WindHeight , wx , wy);
+	pWind = new window(WindWidth, WindHeight,wx,wy);
 	pWind->ChangeTitle(WindTitle);
 	ClearDrawingArea();
 	ClearStatusBar();
@@ -93,7 +93,7 @@ void GUI::DrawCourse(const Course* pCrs)
 	pWind->SetBrush(FillColor);
 	graphicsInfo gInfo = pCrs->getGfxInfo();
 	pWind->DrawRectangle(gInfo.x, gInfo.y, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT);
-	pWind->DrawLine(gInfo.x, gInfo.y + CRS_HEIGHT / 2, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT / 2); //Line in the middle of the rectangle
+	pWind->DrawLine(gInfo.x, gInfo.y + CRS_HEIGHT / 2, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT / 2);
 	
 	//Write the course code and credit hours.
 	int Code_x = gInfo.x + CRS_WIDTH * 0.15;
@@ -112,6 +112,7 @@ void GUI::DrawNotes(const Notes* pNotes)
 	if (pNotes->isSelected())
 		pWind->SetPen(HiColor, 2);
 	else
+	{
 		pWind->SetPen(DrawColor, 2);
 		pWind->SetBrush(FillColor);
 		graphicsInfo gInfo = pNotes->getGfxInfo();
@@ -120,20 +121,15 @@ void GUI::DrawNotes(const Notes* pNotes)
 		int Notes_y = gInfo.y + NOTES_HEIGHT * 0.05;
 		pWind->SetFont(NOTES_HEIGHT * 0.4, BOLD, BY_NAME, "Gramound");
 		pWind->DrawString(Notes_x, Notes_y, pNotes->getNotes());
-<<<<<<< HEAD
 		
 	}
-=======
->>>>>>> 2278f95af6adeeedc1768a15b7206a5296233556
 }
 
 void GUI::DeleteCourse(double x, double y)
 {
 		pWind->SetPen(DrawColor, 2);
-		pWind->SetBrush(WHITE);
-		pWind->DrawRectangle();
-
-
+		pWind->SetBrush(RED);
+		pWind->DrawRectangle(x, y, x+CRS_WIDTH, y+CRS_HEIGHT);
 }
 
 
