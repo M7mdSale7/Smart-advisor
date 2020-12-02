@@ -160,6 +160,7 @@
     <ClCompile Include="GUI\CMUgraphicsLib\windowinput.cpp" />
     <ClCompile Include="GUI\Drawable.cpp" />
     <ClCompile Include="GUI\GUI.cpp" />
+    <ClCompile Include="ImportOffering.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Notes.cpp" />
     <ClCompile Include="Registrar.cpp" />
@@ -196,6 +197,7 @@
     <ClInclude Include="GUI\GUI.h" />
     <ClInclude Include="DEFs.h" />
     <ClInclude Include="ImportCatalog.h" />
+    <ClInclude Include="ImportOffering.h" />
     <ClInclude Include="Notes.h" />
     <ClInclude Include="Registrar.h" />
     <ClInclude Include="Rules.h" />

@@ -6,6 +6,7 @@ using namespace std;
 #include "../Notes.h"
 class Course;
 class AcademicYear;
+class Notes;
 //user interface class
 class GUI
 {
@@ -64,6 +65,7 @@ public:
 	//input functions
 	ActionData GUI::GetUserAction(string msg = "") const;
 	string GetSrting() const;
+	void DeleteCourse(double x, double y);
 
 
 	

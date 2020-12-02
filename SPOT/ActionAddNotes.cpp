@@ -12,7 +12,7 @@ bool ActionAddNotes::Execute()
 
 	pGUI->PrintMsg("Please Type The Note You Want To Add To The Current Study Plan");
 
-	string Note = pGUI->GetSrting();
+	string content = pGUI->GetSrting();
 
 	//making the note on the screen where the user press
 	ActionData Place = pGUI->GetUserAction("please press on the place you want to add the note in");
@@ -24,12 +24,16 @@ bool ActionAddNotes::Execute()
 		x = Place.x;
 		y = Place.y;
 		graphicsInfo gInfo{ x, y };
-		Notes* pNotes = new Notes(Note);
-		pNotes->setGfxInfo(gInfo);
-		pGUI->DrawNotes(pNotes);
+		Notes* Notees = new Notes(content);
+		Notees->setGfxInfo(gInfo);
+
+		/*pGUI->DrawNotes(pNotes);*/
+
+		StudyPlan* pS = pReg->getStudyPlay();
+		pS->AddNote(Notees);
+		return true;
 	}
 
-		return true;
 	
 }
 

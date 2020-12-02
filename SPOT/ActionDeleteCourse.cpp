@@ -19,7 +19,11 @@ bool ActionDeleteCourse::Execute()
 		y = actData.y;
 
 		graphicsInfo gInfo{ x, y };
+<<<<<<< HEAD
 		pGUI->DeleteCourse(x, y);
+=======
+		//pGUI->DeleteCourse();
+>>>>>>> 168c832663804dcd8f3721f5b2cdd46ed4a9029e
 
 
 		return true;

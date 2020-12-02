@@ -33,8 +33,9 @@ void AcademicYear::DrawMe(GUI* pGUI) const
 	//to get courses and draw each course
 	
 	for (int sem = FALL; sem < SEM_CNT; sem++)
-		for (auto it = YearCourses[sem].begin(); it != YearCourses[sem].end(); ++it)
+		for (auto it = YearCourses[sem].begin(); it != YearCourses[sem].end(); ++it) //keywork auto asks the compilor to deduce the type of the variable from initilization
 		{
 			(*it)->DrawMe(pGUI);	//call DrawMe for each course in this semester
 		}
+
 }
