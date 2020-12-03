@@ -19,8 +19,10 @@ class StudyPlan:public Drawable
 public:
 	StudyPlan();
 	bool AddCourse(Course*, int year, SEMESTER);
+	bool DeleteCourse(Course*);
 	bool AddNote(Notes*);
 	void virtual DrawMe(GUI*) const;
 	virtual ~StudyPlan();
+	vector<AcademicYear*>* getSPvector();
 };
 

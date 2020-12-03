@@ -12,6 +12,8 @@ class Course : public Drawable
 	const Course_Code code;	//course code: e.g. "CIE202". This is the course ID
 	const string Title;		//course title: e.g. "Fundamentals of Computer Programming"
 	int credits;	//no. of course credits
+	int year;
+	SEMESTER semester;
 	string type;	//Univ, track, or major.....etc.
 	bool Done;		//Done or not yet?
 	list<Course_Code> PreReq;	//list of prerequisites
@@ -22,6 +24,8 @@ public:
 	string getTitle() const;
 	string getCode() const;
 	int getCredits() const;
+	int getyear() const;
+	SEMESTER getsemester() const;
 
 
 	void DrawMe(GUI*) const;

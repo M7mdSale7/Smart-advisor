@@ -36,6 +36,12 @@ bool StudyPlan::AddCourse(Course* pC, int year, SEMESTER sem)
 	return true;
 }
 
+bool StudyPlan::DeleteCourse(Course* pC)
+{
+	plan[pC->getyear()-1]->DeleteCourse(pC, pC->getsemester());
+	return true;
+}
+
 bool StudyPlan::AddNote(Notes* Note)
 {
 	PlanNotees.push_back(Note);
@@ -55,4 +61,9 @@ void StudyPlan::DrawMe(GUI* pGUI) const
 
 StudyPlan::~StudyPlan()
 {
+}
+
+vector<AcademicYear*>* StudyPlan::getSPvector()
+{
+	return &plan;
 }

@@ -162,6 +162,9 @@
     <ClCompile Include="ImportOffering.cpp">
       <Filter>Import</Filter>
     </ClCompile>
+    <ClCompile Include="coursesloop.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GUI\GUI.h">
