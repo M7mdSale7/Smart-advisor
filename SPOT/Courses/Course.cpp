@@ -11,6 +11,8 @@ Course::~Course()
 {
 }
 
+
+
 Course_Code Course::getCode() const
 {
 	return code;
@@ -35,6 +37,11 @@ int Course::getyear() const
 SEMESTER Course::getsemester() const
 {
 	return semester;
+}
+
+Course* Course::getptr()
+{
+	return this;
 }
 
 void Course::DrawMe(GUI* pG) const

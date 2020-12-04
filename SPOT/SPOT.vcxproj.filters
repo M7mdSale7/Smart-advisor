@@ -162,7 +162,7 @@
     <ClCompile Include="ImportOffering.cpp">
       <Filter>Import</Filter>
     </ClCompile>
-    <ClCompile Include="coursesloop.cpp">
+    <ClCompile Include="functions.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
   </ItemGroup>
@@ -260,6 +260,9 @@
     </ClInclude>
     <ClInclude Include="ImportOffering.h">
       <Filter>Import</Filter>
+    </ClInclude>
+    <ClInclude Include="functions.h">
+      <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

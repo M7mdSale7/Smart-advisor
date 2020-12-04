@@ -40,10 +40,10 @@ void GUI::CreateMenu() const
 
 	//First prepare List of images paths for menu item
 	string MenuItemImages[ITM_CNT];
-	MenuItemImages[ITM_ADD] = "GUI\\Images\\Menu\\Menu_add_course.jpg";
-	MenuItemImages[ITM_ADD_NOTES] = "GUI\\Images\\Menu\\Add_Note.jpg";
-	MenuItemImages[ITM_DELETE] = "GUI\\Images\\Menu\\Menu_delete_course.jpg";
-	MenuItemImages[ITM_EXIT] = "GUI\\Images\\Menu\\Menu_Exit.jpg";
+	MenuItemImages[ITM_ADD] = "GUI\\Images\\Menu\\Menu_AddCourse.jpg";
+	MenuItemImages[ITM_DELETE] = "GUI\\Images\\Menu\\Menu_DeleteCourse.jpg";
+	MenuItemImages[ITM_ADD_NOTES] = "GUI\\Images\\Menu\\Menu_AddNotes.jpg";
+	MenuItemImages[ITM_EXIT] = "GUI\\Images\\Menu\\Menu_exitt.jpg";
 
 
 	//TODO: Prepare image for each menu item and add it to the list
@@ -129,19 +129,19 @@ void GUI::DrawNotes(const Notes* pNotes)
 //>>>>>>> 168c832663804dcd8f3721f5b2cdd46ed4a9029e
 }
 
-void GUI::DeleteCourse(double x, double y)
-{
-		pWind->SetPen(DrawColor, 2);
-//<<<<<<< HEAD
-		pWind->SetBrush(RED);
-		pWind->DrawRectangle(x, y, x+CRS_WIDTH, y+CRS_HEIGHT);
-//=======
-		pWind->SetBrush(WHITE);
-		/*pWind->DrawRectangle();*/
-
-
-//>>>>>>> 168c832663804dcd8f3721f5b2cdd46ed4a9029e
-}
+//void GUI::DeleteCourse(double x, double y)
+//{
+//		pWind->SetPen(DrawColor, 2);
+////<<<<<<< HEAD
+//		pWind->SetBrush(RED);
+//		pWind->DrawRectangle(x, y, x+CRS_WIDTH, y+CRS_HEIGHT);
+////=======
+//		pWind->SetBrush(WHITE);
+//		/*pWind->DrawRectangle();*/
+//
+//
+////>>>>>>> 168c832663804dcd8f3721f5b2cdd46ed4a9029e
+//}
 
 
 
@@ -158,7 +158,7 @@ void GUI::DrawAcademicYear(const AcademicYear* pY)
 
 	//Writing the number of years
 	graphicsInfo gInfo2 = pY->getGfxInfo();
-	pWind->SetPen(LIGHTSEAGREEN, 2);
+	pWind->SetPen(BLACK, 2);
 	pWind->SetFont(CRS_HEIGHT * 0.4, BOLD, BY_NAME, "Gramound");
 	pWind->DrawString(gInfo2.x - 45, gInfo2.y + PLAN_YEAR_HEIGHT / 2.2, "YEAR");
 	pWind->SetPen(DrawColor, 2);
