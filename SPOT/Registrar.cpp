@@ -4,6 +4,7 @@
 
 #include "ActionAddNotes.h"
 #include "ActionDeleteCourse.h"
+#include "ActionSavePlan.h"
 
 Registrar::Registrar()
 {
@@ -23,6 +24,7 @@ StudyPlan* Registrar::getStudyPlay() const
 	return pSPlan;
 }
 
+
 Action* Registrar::CreateRequiredAction() 
 {	
 	ActionData actData = pGUI->GetUserAction("Pick and action...");
@@ -38,6 +40,9 @@ Action* Registrar::CreateRequiredAction()
 		break;
 	case DEL_CRS:
 		RequiredAction = new ActionDeleteCourse(this);
+		break;
+	case SAVE:
+		RequiredAction = new ActionSavePlan(this);
 		break;
 
 

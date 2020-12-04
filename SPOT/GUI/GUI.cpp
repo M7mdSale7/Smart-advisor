@@ -43,6 +43,7 @@ void GUI::CreateMenu() const
 	MenuItemImages[ITM_ADD] = "GUI\\Images\\Menu\\Menu_add_course.jpg";
 	MenuItemImages[ITM_ADD_NOTES] = "GUI\\Images\\Menu\\Add_Note.jpg";
 	MenuItemImages[ITM_DELETE] = "GUI\\Images\\Menu\\Menu_delete_course.jpg";
+	MenuItemImages[ITM_SAVE_PLAN] = "GUI\\Images\\Menu\\Menu_Save_Plan.jpg";
 	MenuItemImages[ITM_EXIT] = "GUI\\Images\\Menu\\Menu_Exit.jpg";
 
 

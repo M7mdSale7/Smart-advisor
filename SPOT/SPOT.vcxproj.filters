@@ -162,6 +162,9 @@
     <ClCompile Include="ImportOffering.cpp">
       <Filter>Import</Filter>
     </ClCompile>
+    <ClCompile Include="ActionSavePlan.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GUI\GUI.h">
@@ -257,6 +260,9 @@
     </ClInclude>
     <ClInclude Include="ImportOffering.h">
       <Filter>Import</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionSavePlan.h">
+      <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

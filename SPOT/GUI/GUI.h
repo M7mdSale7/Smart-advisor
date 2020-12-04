@@ -18,6 +18,7 @@ class GUI
 		ITM_ADD,		//Add a new course
 		ITM_ADD_NOTES,
 		ITM_DELETE,     //DELETE A COURSE 
+		ITM_SAVE_PLAN,
 						//TODO: Add more items names here
 
 
