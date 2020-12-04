@@ -27,6 +27,16 @@ int Course::getCredits() const
 	return credits;
 }
 
+int Course::getyear() const
+{
+	return year;
+}
+
+SEMESTER Course::getsemester() const
+{
+	return semester;
+}
+
 void Course::DrawMe(GUI* pG) const
 {
 	pG->DrawCourse(this);

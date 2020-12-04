@@ -28,7 +28,6 @@ bool ActionAddCourse::Execute()
 		y = actData.y;
 		
 		
-		
 		graphicsInfo gInfo{ x, y };
 
 		//TODO: given course code, get course title, crd hours from registrar

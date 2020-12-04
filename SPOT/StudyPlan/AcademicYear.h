@@ -23,6 +23,8 @@ public:
 	virtual ~AcademicYear();
 
 	bool AddCourse(Course*, SEMESTER );
+	bool DeleteCourse(Course*, SEMESTER);
+	list<Course*>* getyearslist();
 	
 
 	void virtual DrawMe(GUI*) const;

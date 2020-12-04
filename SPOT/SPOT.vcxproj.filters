@@ -163,6 +163,7 @@
       <Filter>Import</Filter>
     </ClCompile>
     <ClCompile Include="ActionSavePlan.cpp">
+    <ClCompile Include="coursesloop.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
   </ItemGroup>
