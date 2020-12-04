@@ -43,7 +43,9 @@ void GUI::CreateMenu() const
 	MenuItemImages[ITM_ADD] = "GUI\\Images\\Menu\\Menu_AddCourse.jpg";
 	MenuItemImages[ITM_DELETE] = "GUI\\Images\\Menu\\Menu_DeleteCourse.jpg";
 	MenuItemImages[ITM_ADD_NOTES] = "GUI\\Images\\Menu\\Menu_AddNotes.jpg";
+	MenuItemImages[ITM_SAVE_PLAN] = "GUI\\Images\\Menu\\Menu_Save_Plan.jpg";
 	MenuItemImages[ITM_EXIT] = "GUI\\Images\\Menu\\Menu_exitt.jpg";
+
 
 
 	//TODO: Prepare image for each menu item and add it to the list

@@ -162,7 +162,12 @@
     <ClCompile Include="ImportOffering.cpp">
       <Filter>Import</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="functions.cpp">
+=======
+    <ClCompile Include="ActionSavePlan.cpp">
+    <ClCompile Include="coursesloop.cpp">
+>>>>>>> 2b18021b391db7c43f3494bc599c8748f6d350c5
       <Filter>Actions</Filter>
     </ClCompile>
   </ItemGroup>
@@ -261,7 +266,11 @@
     <ClInclude Include="ImportOffering.h">
       <Filter>Import</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="functions.h">
+=======
+    <ClInclude Include="ActionSavePlan.h">
+>>>>>>> 2b18021b391db7c43f3494bc599c8748f6d350c5
       <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>

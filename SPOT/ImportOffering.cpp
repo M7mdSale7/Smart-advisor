@@ -9,7 +9,7 @@ vector<AcademicYearOfferings> ImportOffering::ImportOfferingData()
 	ifstream finput("info files/Academic offerings.txt");
 	AcademicYearOfferings yearOff;
 	istringstream stream;
-	string token, semester;
+	string token, semester; //change this string
 	const int size = 500; //depends on the number of courses offered per semester
 							//so check for changes
 	char line[300];
