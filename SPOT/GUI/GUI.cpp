@@ -137,28 +137,49 @@ void GUI::DeleteCourse(double x, double y)
 void GUI::DrawAcademicYear(const AcademicYear* pY) 
 {
 	//Drawing Big Rectenagle for each Academic Year
+	//int i;
+
+	//string filename = "year" + tostring(i) + ".jpg";
 	graphicsInfo gInfo = pY->getGfxInfo();
-	pWind->SetPen(DrawColor, 2);
+	pWind->SetPen(BLUE, 2);
 	pWind->SetBrush(BkGrndColor);
-	pWind->DrawRectangle(gInfo.x, gInfo.y, gInfo.x + PLAN_YEAR_WIDTH, gInfo.y + PLAN_YEAR_HEIGHT, FRAME);
+	pWind->DrawRectangle(gInfo.x /*x1*/, gInfo.y /*y1*/, gInfo.x  + PLAN_YEAR_WIDTH /*x2*/, gInfo.y +(SEM_CNT*35) /*Y2*/ );
 	//Drawing sub rectengles for each semester
-	pWind->DrawLine(gInfo.x, gInfo.y + PLAN_YEAR_HEIGHT / 2, gInfo.x + PLAN_YEAR_WIDTH / 1.3, gInfo.y + PLAN_YEAR_HEIGHT / 2);
-	pWind->DrawLine(gInfo.x + PLAN_YEAR_WIDTH / 1.3, gInfo.y, gInfo.x + PLAN_YEAR_WIDTH / 1.3, gInfo.y + PLAN_YEAR_HEIGHT);
+	for (int i = 0; i < SEM_CNT; i++)
+	{
+
+		//Sub Rectengle
+		pWind->SetBrush(BkGrndColor);
+		pWind->SetPen(BLUE, 2);
+		pWind->DrawRectangle(gInfo.x, gInfo.y + (((SEM_CNT * 35) / SEM_CNT) * i), gInfo.x + PLAN_YEAR_WIDTH, gInfo.y + ((SEM_CNT * 35) / SEM_CNT) * (i + 1));
+		//Writing Semesters
+		string Semester;
+		pWind->SetBrush(GREEN);
+		pWind->SetPen(BLACK, 2);
+		pWind->DrawRectangle(gInfo.x - 40, gInfo.y +(((SEM_CNT * 35) / SEM_CNT) * i), gInfo.x + 34, gInfo.y + ((SEM_CNT * 35) / SEM_CNT) * (i + 1));
+		if (i == 0)
+			Semester = "FALL";
+		else if (i == 1)
+			Semester = "SPRING";
+		else if (i == 2)
+			Semester = "SUMMER";
+		pWind->SetFont(35 * 0.5, BOLD, BY_NAME, "Gramound");
+		pWind->SetPen(DARKRED);
+		pWind->DrawString(gInfo.x - 35, gInfo.y + 10 +(35*SEM_CNT) / SEM_CNT * i, Semester);
+	}
 
 	//Writing the number of years
-	graphicsInfo gInfo2 = pY->getGfxInfo();
+	pWind->SetBrush(WHITE);
+	pWind->DrawRectangle(gInfo.x - (35 + 35), gInfo.y, gInfo.x - 40, gInfo.y + 105);
+
+	/*graphicsInfo gInfo2 = pY->getGfxInfo();
 	pWind->SetPen(LIGHTSEAGREEN, 2);
 	pWind->SetFont(CRS_HEIGHT * 0.4, BOLD, BY_NAME, "Gramound");
 	pWind->DrawString(gInfo2.x - 45, gInfo2.y + PLAN_YEAR_HEIGHT / 2.2, "YEAR");
 	pWind->SetPen(DrawColor, 2);
 	*Pyear--;
-	pWind->DrawInteger(gInfo2.x - 9, gInfo2.y + PLAN_YEAR_HEIGHT / 2.2, year);
+	pWind->DrawInteger(gInfo2.x - 9, gInfo2.y + PLAN_YEAR_HEIGHT / 2.2, year);*/
 
-	//Writing Fall & Spring & Summer in each sub rectenagle
-	pWind->SetPen(DARKRED, 2);
-	pWind->DrawString(gInfo2.x - 35, gInfo2.y + PLAN_YEAR_HEIGHT / 4.5, "FALL");
-	pWind->DrawString(gInfo2.x - 52, gInfo2.y + PLAN_YEAR_HEIGHT / 1.5, "SPRING");
-	pWind->DrawString(gInfo.x + PLAN_YEAR_WIDTH / 1.3, gInfo2.y + 10, "SUMMER");
 }
 
 
