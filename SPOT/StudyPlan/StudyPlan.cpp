@@ -7,21 +7,14 @@ StudyPlan::StudyPlan()
 	//By default, the study plan starts with 5 years
 	//More year can be added
 	int x = 70;
-	int y = 80;
-	graphicsInfo* gInfoYears = new graphicsInfo[5];
+	int y = 0;
 	for (int i = 0; i < 5; i++)
 	{
-		gInfoYears[i].x = x;
-		gInfoYears[i].y = y;
-		y += 110;
-	}
-	for (int i = 0; i < 5; i++)
-	{
-		plan.push_back(new AcademicYear);
-		
-		plan[i]->setGfxInfo(gInfoYears[i]);
-
-
+		AcademicYear* year = new AcademicYear;
+		int y = 85 + (108 * i);
+		graphicsInfo gInfo{ x,y };
+		year->setGfxInfo(gInfo);
+		plan.push_back(year);
 	}
 }
 
