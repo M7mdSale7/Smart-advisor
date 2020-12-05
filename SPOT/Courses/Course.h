@@ -26,6 +26,7 @@ public:
 	int getCredits() const;
 	int getyear() const;
 	SEMESTER getsemester() const;
+	void saveCourse(ofstream& ) const;
 
 
 	void DrawMe(GUI*) const;

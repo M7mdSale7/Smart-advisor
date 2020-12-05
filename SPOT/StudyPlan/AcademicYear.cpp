@@ -1,5 +1,6 @@
 #include "AcademicYear.h"
 #include "../GUI/GUI.h"
+#include <fstream>
 
 AcademicYear::AcademicYear()
 {
@@ -37,6 +38,16 @@ bool AcademicYear::DeleteCourse(Course* pC, SEMESTER sem)
 list<Course*>* AcademicYear::getyearslist()
 {
 	return YearCourses;
+}
+
+void AcademicYear::saveAcademicYear(ofstream& fout) const
+{
+	for (int i = 0; i < 3; i++) {
+		for (auto& elm : YearCourses[i]) {
+
+		}
+	}
+	 
 }
 
 
