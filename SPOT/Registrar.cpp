@@ -1,7 +1,7 @@
 #include "Registrar.h"
 
 #include "Actions/ActionAddCourse.h"
-
+#include "ActionChangeCode.h"
 #include "ActionAddNotes.h"
 #include "ActionDeleteCourse.h"
 #include "ActionSavePlan.h"
@@ -41,6 +41,10 @@ Action* Registrar::CreateRequiredAction()
 	case DEL_CRS:
 		RequiredAction = new ActionDeleteCourse(this);
 		break;
+	case EDIT_CRS:
+		RequiredAction = new ActionChangeCode(this);
+		break;
+
 	case SAVE:
 		RequiredAction = new ActionSavePlan(this);
 		break;

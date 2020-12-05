@@ -19,6 +19,7 @@ class GUI
 		ITM_DELETE,     //DELETE A COURSE 
 //<<<<<<< HEAD
 		ITM_ADD_NOTES,
+		ITM_EDITCOURSECODE,
 //=======
 		ITM_SAVE_PLAN,
 //>>>>>>> 2b18021b391db7c43f3494bc599c8748f6d350c5

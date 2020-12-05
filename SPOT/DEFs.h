@@ -23,6 +23,7 @@ enum ActionType
 	ADD_CRS,	//Add a course to study plan
 	ADD_NOTES,
 	DEL_CRS,	//Delete a course from study plan
+	EDIT_CRS,   //CHANGE COURSE CODE
 
 
 	SAVE,		//Save a study plan to file

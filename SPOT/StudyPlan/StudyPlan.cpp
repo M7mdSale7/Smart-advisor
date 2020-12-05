@@ -43,6 +43,12 @@ bool StudyPlan::DeleteCourse(Course* pC)
 	return true;
 }
 
+//string StudyPlan::changecode(Course*, string newcode)
+//{
+//	Course_Code code=newcode;
+//	return ;
+//}
+
 bool StudyPlan::AddNote(Notes* Note)
 {
 	PlanNotees.push_back(Note);
