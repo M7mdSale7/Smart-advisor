@@ -24,6 +24,21 @@ bool AcademicYear::AddCourse(Course* pC, SEMESTER sem)
 
 	return true;
 }
+bool AcademicYear::DeleteCourse(Course* pC, SEMESTER sem)
+{
+	YearCourses[sem].remove(pC);
+	TotalCredits = pC->getCredits();
+
+
+
+	return true;
+}
+
+list<Course*>* AcademicYear::getyearslist()
+{
+	return YearCourses;
+}
+
 
 
 void AcademicYear::DrawMe(GUI* pGUI) const

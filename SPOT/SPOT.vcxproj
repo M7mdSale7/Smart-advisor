@@ -121,7 +121,9 @@
   <ItemGroup>
     <ClCompile Include="ActionAddNotes.cpp" />
     <ClCompile Include="ActionDeleteCourse.cpp" />
+    <ClCompile Include="ActionSavePlan.cpp" />
     <ClCompile Include="Actions\ActionAddCourse.cpp" />
+    <ClCompile Include="coursesloop.cpp" />
     <ClCompile Include="Courses\Course.cpp" />
     <ClCompile Include="GUI\CMUgraphicsLib\CMUgraphics.cpp" />
     <ClCompile Include="GUI\CMUgraphicsLib\colors.cpp" />
@@ -171,6 +173,7 @@
   <ItemGroup>
     <ClInclude Include="ActionAddNotes.h" />
     <ClInclude Include="ActionDeleteCourse.h" />
+    <ClInclude Include="ActionSavePlan.h" />
     <ClInclude Include="Actions\Action.h" />
     <ClInclude Include="Actions\ActionAddCourse.h" />
     <ClInclude Include="Courses\Course.h" />

@@ -18,6 +18,7 @@ class GUI
 		ITM_ADD,		//Add a new course
 		ITM_ADD_NOTES,
 		ITM_DELETE,     //DELETE A COURSE 
+		ITM_SAVE_PLAN,
 						//TODO: Add more items names here
 
 
@@ -60,11 +61,11 @@ public:
 	void DrawAcademicYear(const AcademicYear*);
 	void UpdateInterface() const;
 	void DrawNotes(const Notes* pNotes); //Member function to Draw Notes on Screen
+	void DeleteCourse(double x, double y);
 	
 	//input functions
 	ActionData GUI::GetUserAction(string msg = "") const;
 	string GetSrting() const;
-	void DeleteCourse(double x, double y);
 
 
 	

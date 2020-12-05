@@ -6,7 +6,7 @@ int year = 5;
 int* Pyear = &year;
 GUI::GUI()
 { 
-	pWind = new window(WindWidth , WindHeight , wx , wy);
+	pWind = new window(WindWidth, WindHeight,wx,wy);
 	pWind->ChangeTitle(WindTitle);
 	ClearDrawingArea();
 	ClearStatusBar();
@@ -43,6 +43,7 @@ void GUI::CreateMenu() const
 	MenuItemImages[ITM_ADD] = "GUI\\Images\\Menu\\Menu_add_course.jpg";
 	MenuItemImages[ITM_ADD_NOTES] = "GUI\\Images\\Menu\\Add_Note.jpg";
 	MenuItemImages[ITM_DELETE] = "GUI\\Images\\Menu\\Menu_delete_course.jpg";
+	MenuItemImages[ITM_SAVE_PLAN] = "GUI\\Images\\Menu\\Menu_Save_Plan.jpg";
 	MenuItemImages[ITM_EXIT] = "GUI\\Images\\Menu\\Menu_Exit.jpg";
 
 
@@ -90,17 +91,17 @@ void GUI::DrawCourse(const Course* pCrs)
 	if (pCrs->isSelected())
 		pWind->SetPen(HiColor, 2);
 	else
-	pWind->SetPen(DrawColor, 2);
-	pWind->SetBrush(FillColor);
+	pWind->SetPen(DARKRED, 2);
+	pWind->SetBrush(BLACK);
 	graphicsInfo gInfo = pCrs->getGfxInfo();
 	pWind->DrawRectangle(gInfo.x, gInfo.y, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT);
-	pWind->DrawLine(gInfo.x, gInfo.y + CRS_HEIGHT / 2, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT / 2); //Line in the middle of the rectangle
+	pWind->DrawLine(gInfo.x, gInfo.y + CRS_HEIGHT / 2, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT / 2);
 	
 	//Write the course code and credit hours.
 	int Code_x = gInfo.x + CRS_WIDTH * 0.15;
 	int Code_y = gInfo.y + CRS_HEIGHT * 0.05;
 	pWind->SetFont(CRS_HEIGHT * 0.4, BOLD , BY_NAME, "Gramound");
-	pWind->SetPen(MsgColor);
+	pWind->SetPen(DARKRED);
 
 	ostringstream crd;
 	crd<< "crd:" << pCrs->getCredits();
@@ -113,6 +114,7 @@ void GUI::DrawNotes(const Notes* pNotes)
 	if (pNotes->isSelected())
 		pWind->SetPen(HiColor, 2);
 	else
+	{
 		pWind->SetPen(DrawColor, 2);
 		pWind->SetBrush(FillColor);
 		graphicsInfo gInfo = pNotes->getGfxInfo();
@@ -121,15 +123,25 @@ void GUI::DrawNotes(const Notes* pNotes)
 		int Notes_y = gInfo.y + NOTES_HEIGHT * 0.05;
 		pWind->SetFont(NOTES_HEIGHT * 0.4, BOLD, BY_NAME, "Gramound");
 		pWind->DrawString(Notes_x, Notes_y, pNotes->getNotes());
+//<<<<<<< HEAD
+		
+	}
+//=======
+//>>>>>>> 168c832663804dcd8f3721f5b2cdd46ed4a9029e
 }
 
 void GUI::DeleteCourse(double x, double y)
 {
 		pWind->SetPen(DrawColor, 2);
+//<<<<<<< HEAD
+		pWind->SetBrush(RED);
+		pWind->DrawRectangle(x, y, x+CRS_WIDTH, y+CRS_HEIGHT);
+//=======
 		pWind->SetBrush(WHITE);
 		/*pWind->DrawRectangle();*/
 
 
+//>>>>>>> 168c832663804dcd8f3721f5b2cdd46ed4a9029e
 }
 
 

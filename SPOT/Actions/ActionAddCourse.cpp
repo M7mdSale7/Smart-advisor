@@ -1,8 +1,8 @@
 #include "ActionAddCourse.h"
 #include "..\Registrar.h"
 #include "../Courses/UnivCourse.h"
-
 #include <iostream>
+
 ActionAddCourse::ActionAddCourse(Registrar* p):Action(p)
 {
 }
@@ -26,7 +26,6 @@ bool ActionAddCourse::Execute()
 		//get coord where user clicked
 		x = actData.x;
 		y = actData.y;
-		
 		
 		
 		graphicsInfo gInfo{ x, y };
