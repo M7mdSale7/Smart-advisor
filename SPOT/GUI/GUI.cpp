@@ -155,15 +155,14 @@ void GUI::DrawAcademicYear(const AcademicYear* pY)
 	graphicsInfo gInfo = pY->getGfxInfo();
 	pWind->SetPen(BLUE, 2);
 	pWind->SetBrush(BkGrndColor);
-	pWind->DrawRectangle(gInfo.x /*x1*/, gInfo.y /*y1*/, gInfo.x  + PLAN_YEAR_WIDTH /*x2*/, gInfo.y +(SEM_CNT*35) /*Y2*/ );
+	pWind->DrawRectangle(gInfo.x /*x1*/, gInfo.y /*y1*/, gInfo.x  + PLAN_YEAR_WIDTH /*x2*/, gInfo.y +(SEM_CNT*35) /*Y2*/ , FRAME );
 	//Drawing sub rectengles for each semester
 	for (int i = 0; i < SEM_CNT; i++)
 	{
-
 		//Sub Rectengle
 		pWind->SetBrush(BkGrndColor);
 		pWind->SetPen(BLUE, 2);
-		pWind->DrawRectangle(gInfo.x, gInfo.y + (((SEM_CNT * 35) / SEM_CNT) * i), gInfo.x + PLAN_YEAR_WIDTH, gInfo.y + ((SEM_CNT * 35) / SEM_CNT) * (i + 1));
+		pWind->DrawRectangle(gInfo.x, gInfo.y + (((SEM_CNT * 35) / SEM_CNT) * i), gInfo.x + PLAN_YEAR_WIDTH, gInfo.y + ((SEM_CNT * 35) / SEM_CNT) * (i + 1) , FRAME);
 		//Writing Semesters
 		string Semester;
 		pWind->SetBrush(GREEN);
