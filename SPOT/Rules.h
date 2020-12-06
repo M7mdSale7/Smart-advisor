@@ -31,6 +31,8 @@ struct AcademicYearOfferings
 	vector<Course_Code> Offerings[SEM_CNT];
 };
 
+//Rules here combines universal data fields with majors data fiels.
+//It needs to be resolved somehow
 struct Rules	//contains all objects for registrations rules
 {
 	//TODO: add more fields if needed
