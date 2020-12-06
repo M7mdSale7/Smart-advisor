@@ -1,0 +1,86 @@
+﻿  ActionAddNotes.cpp
+  ActionDeleteCourse.cpp
+  ActionAddCourse.cpp
+  coursesloop.cpp
+  Course.cpp
+  CMUgraphics.cpp
+C:\Users\Amro\Desktop\project\Smart-advisor\SPOT\GUI\CMUgraphicsLib\CMUgraphics.cpp(257,9): warning C4101: 'iX': unreferenced local variable
+C:\Users\Amro\Desktop\project\Smart-advisor\SPOT\GUI\CMUgraphicsLib\CMUgraphics.cpp(257,13): warning C4101: 'iY': unreferenced local variable
+C:\Users\Amro\Desktop\project\Smart-advisor\SPOT\GUI\CMUgraphicsLib\CMUgraphics.cpp(1357,23): warning C4018: '>': signed/unsigned mismatch
+  colors.cpp
+  image.cpp
+C:\Users\Amro\Desktop\project\Smart-advisor\SPOT\GUI\CMUgraphicsLib\image.cpp(115,29): warning C4018: '<': signed/unsigned mismatch
+  keyqueue.cpp
+  mousequeue.cpp
+  windowinput.cpp
+  Drawable.cpp
+  GUI.cpp
+C:\Users\Amro\Desktop\project\Smart-advisor\SPOT\GUI\GUI.cpp(100,13): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Amro\Desktop\project\Smart-advisor\SPOT\GUI\GUI.cpp(101,13): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Amro\Desktop\project\Smart-advisor\SPOT\GUI\GUI.cpp(102,28): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Amro\Desktop\project\Smart-advisor\SPOT\GUI\GUI.cpp(121,15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Amro\Desktop\project\Smart-advisor\SPOT\GUI\GUI.cpp(122,15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Amro\Desktop\project\Smart-advisor\SPOT\GUI\GUI.cpp(123,31): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Amro\Desktop\project\Smart-advisor\SPOT\GUI\GUI.cpp(137,44): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Amro\Desktop\project\Smart-advisor\SPOT\GUI\GUI.cpp(137,31): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Amro\Desktop\project\Smart-advisor\SPOT\GUI\GUI.cpp(137,27): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Amro\Desktop\project\Smart-advisor\SPOT\GUI\GUI.cpp(137,24): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Amro\Desktop\project\Smart-advisor\SPOT\GUI\GUI.cpp(156,67): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Amro\Desktop\project\Smart-advisor\SPOT\GUI\GUI.cpp(157,68): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Amro\Desktop\project\Smart-advisor\SPOT\GUI\GUI.cpp(157,26): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Amro\Desktop\project\Smart-advisor\SPOT\GUI\GUI.cpp(162,28): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Amro\Desktop\project\Smart-advisor\SPOT\GUI\GUI.cpp(163,44): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Amro\Desktop\project\Smart-advisor\SPOT\GUI\GUI.cpp(166,44): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Amro\Desktop\project\Smart-advisor\SPOT\GUI\GUI.cpp(170,44): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Amro\Desktop\project\Smart-advisor\SPOT\GUI\GUI.cpp(171,44): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Amro\Desktop\project\Smart-advisor\SPOT\GUI\GUI.cpp(172,28): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+  ImportOffering.cpp
+  Main.cpp
+  Notes.cpp
+  Registrar.cpp
+  ImportCatalog.cpp
+  AcademicYear.cpp
+  StudyPlan.cpp
+C:\Users\Amro\Desktop\project\Smart-advisor\SPOT\StudyPlan\StudyPlan.cpp(55,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Amro\Desktop\project\Smart-advisor\SPOT\StudyPlan\StudyPlan.cpp(58,20): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+C:\Users\Amro\Desktop\project\Smart-advisor\SPOT\ActionAddNotes.cpp(38): warning C4715: 'ActionAddNotes::Execute': not all control paths return a value
+  jpegload.c
+  jcomapi.c
+  jcparam.c
+  jdapimin.c
+  jdapistd.c
+  jdatasrc.c
+  jdcoefct.c
+  jdcolor.c
+  jddctmgr.c
+  jdhuff.c
+  jdinput.c
+  jdmainct.c
+  jdmarker.c
+  jdmaster.c
+  jdmerge.c
+  jdphuff.c
+  jdpostct.c
+  jdsample.c
+  jdtrans.c
+  jerror.c
+C:\Users\Amro\Desktop\project\Smart-advisor\SPOT\GUI\CMUgraphicsLib\jpeg\jerror.c(169,30): warning C4047: 'function': 'const size_t' differs in levels of indirection from 'const char *'
+C:\Users\Amro\Desktop\project\Smart-advisor\SPOT\GUI\CMUgraphicsLib\jpeg\jerror.c(169,23): warning C4024: 'sprintf_s': different types for formal and actual parameter 2
+C:\Users\Amro\Desktop\project\Smart-advisor\SPOT\GUI\CMUgraphicsLib\jpeg\jerror.c(171,30): warning C4047: 'function': 'const size_t' differs in levels of indirection from 'const char *'
+C:\Users\Amro\Desktop\project\Smart-advisor\SPOT\GUI\CMUgraphicsLib\jpeg\jerror.c(171,23): warning C4024: 'sprintf_s': different types for formal and actual parameter 2
+C:\Users\Amro\Desktop\project\Smart-advisor\SPOT\GUI\CMUgraphicsLib\jpeg\jerror.c(172,24): warning C4047: 'function': 'const char *const ' differs in levels of indirection from 'int'
+C:\Users\Amro\Desktop\project\Smart-advisor\SPOT\GUI\CMUgraphicsLib\jpeg\jerror.c(172,21): warning C4024: 'sprintf_s': different types for formal and actual parameter 3
+  Generating Code...
+  Compiling...
+  jidctflt.c
+  jidctfst.c
+  jidctint.c
+  jidctred.c
+  jmemmgr.c
+  jmemnobs.c
+  jquant1.c
+  jquant2.c
+  jutils.c
+  Generating Code...
+  SPOT.vcxproj -> C:\Users\Amro\Desktop\project\Smart-advisor\Debug\SPOT.exe

@@ -12,6 +12,8 @@ Course::~Course()
 {
 }
 
+
+
 Course_Code Course::getCode() const
 {
 	return code;
@@ -38,9 +40,16 @@ SEMESTER Course::getsemester() const
 	return semester;
 }
 
+
 void Course::saveCourse(ofstream& fout) const
 {
 	fout << getCode();
+}
+
+Course* Course::getptr()
+{
+	return this;
+
 }
 
 void Course::DrawMe(GUI* pG) const

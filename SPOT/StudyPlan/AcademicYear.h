@@ -25,7 +25,7 @@ public:
 	bool AddCourse(Course*, SEMESTER );
 	bool DeleteCourse(Course*, SEMESTER);
 	list<Course*>* getyearslist();
-	void saveAcademicYear(ofstream&) const;
+	void saveAcademicYear(int year,ofstream&) const;
 	
 
 	void virtual DrawMe(GUI*) const;

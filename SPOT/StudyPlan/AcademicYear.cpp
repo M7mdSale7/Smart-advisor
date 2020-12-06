@@ -40,11 +40,30 @@ list<Course*>* AcademicYear::getyearslist()
 	return YearCourses;
 }
 
-void AcademicYear::saveAcademicYear(ofstream& fout) const
+void AcademicYear::saveAcademicYear(int year, ofstream& fout) const
 {
 	for (int i = 0; i < 3; i++) {
-		for (auto& elm : YearCourses[i]) {
+		if (!(YearCourses[i].empty())) {
+			fout << "Year " << year << ",";
+			switch (i)
+			{
+			case 0:
+				fout << "Fall";
+				break;
+			case 1:
+				fout << "Spring";
+				break;
+			case 2:
+				fout << "Summer";
+				break;
+			}
 
+			for (auto& elm : YearCourses[i]) {
+				fout << ",";
+				elm->saveCourse(fout);
+
+			}
+			fout << endl;
 		}
 	}
 	 

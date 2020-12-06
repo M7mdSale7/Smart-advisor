@@ -32,7 +32,7 @@ vector<AcademicYearOfferings> ImportOffering::ImportOfferingData()
 			/*yearOff.Offerings[semester].pushback(token);*/
 		}
 		stream.clear();
-		
+		//counter++;
 	}
 
 	return offered;
