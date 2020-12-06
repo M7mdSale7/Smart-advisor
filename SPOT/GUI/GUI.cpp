@@ -183,10 +183,10 @@ void GUI::DrawAcademicYear(const AcademicYear* pY)
 	}
 
 	//Writing the number of years
-<<<<<<< HEAD
-	graphicsInfo gInfo2 = pY->getGfxInfo();
-	pWind->SetPen(BLACK, 2);
-=======
+//<<<<<<< HEAD
+	/*graphicsInfo gInfo2 = pY->getGfxInfo();
+	pWind->SetPen(BLACK, 2);*/
+//=======
 	pWind->SetBrush(WHITE);
 	pWind->DrawRectangle(gInfo.x - (35 + 35), gInfo.y, gInfo.x - 40, gInfo.y + 105);
 
