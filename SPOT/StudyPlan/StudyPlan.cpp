@@ -31,9 +31,16 @@ bool StudyPlan::AddCourse(Course* pC, int year, SEMESTER sem)
 
 bool StudyPlan::DeleteCourse(Course* pC)
 {
-	plan[pC->getyear()-1]->DeleteCourse(pC, pC->getsemester());
+	//plan[pC->getyear()-1]->DeleteCourse(pC, pC->getsemester());
+	plan[0]->DeleteCourse(pC, FALL);
 	return true;
 }
+
+//string StudyPlan::changecode(Course*, string newcode)
+//{
+//	Course_Code code=newcode;
+//	return ;
+//}
 
 bool StudyPlan::AddNote(Notes* Note)
 {

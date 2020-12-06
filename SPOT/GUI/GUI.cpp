@@ -40,11 +40,13 @@ void GUI::CreateMenu() const
 
 	//First prepare List of images paths for menu item
 	string MenuItemImages[ITM_CNT];
-	MenuItemImages[ITM_ADD] = "GUI\\Images\\Menu\\Menu_add_course.jpg";
-	MenuItemImages[ITM_ADD_NOTES] = "GUI\\Images\\Menu\\Add_Note.jpg";
-	MenuItemImages[ITM_DELETE] = "GUI\\Images\\Menu\\Menu_delete_course.jpg";
+	MenuItemImages[ITM_ADD] = "GUI\\Images\\Menu\\Menu_AddCourse.jpg";
+	MenuItemImages[ITM_DELETE] = "GUI\\Images\\Menu\\Menu_DeleteCourse.jpg";
+	MenuItemImages[ITM_ADD_NOTES] = "GUI\\Images\\Menu\\Menu_AddNotes.jpg";
+	MenuItemImages[ITM_EDITCOURSECODE]= "GUI\\Images\\Menu\\Menu_EditCourseCode.jpg";
 	MenuItemImages[ITM_SAVE_PLAN] = "GUI\\Images\\Menu\\Menu_Save_Plan.jpg";
-	MenuItemImages[ITM_EXIT] = "GUI\\Images\\Menu\\Menu_Exit.jpg";
+	MenuItemImages[ITM_EXIT] = "GUI\\Images\\Menu\\Menu_exitt.jpg";
+
 
 
 	//TODO: Prepare image for each menu item and add it to the list
@@ -76,7 +78,7 @@ void GUI::UpdateInterface() const
 	
 	pWind->SetBuffering(true);
 	//Redraw everything
-	CreateMenu();
+	CreateMenu(); 
 	ClearStatusBar();
 	ClearDrawingArea();
 	pWind->UpdateBuffer();
@@ -123,26 +125,25 @@ void GUI::DrawNotes(const Notes* pNotes)
 		int Notes_y = gInfo.y + NOTES_HEIGHT * 0.05;
 		pWind->SetFont(NOTES_HEIGHT * 0.4, BOLD, BY_NAME, "Gramound");
 		pWind->DrawString(Notes_x, Notes_y, pNotes->getNotes());
-//<<<<<<< HEAD
+
 		
 	}
-//=======
-//>>>>>>> 168c832663804dcd8f3721f5b2cdd46ed4a9029e
+
 }
 
-void GUI::DeleteCourse(double x, double y)
-{
-		pWind->SetPen(DrawColor, 2);
-//<<<<<<< HEAD
-		pWind->SetBrush(RED);
-		pWind->DrawRectangle(x, y, x+CRS_WIDTH, y+CRS_HEIGHT);
-//=======
-		pWind->SetBrush(WHITE);
-		/*pWind->DrawRectangle();*/
-
-
-//>>>>>>> 168c832663804dcd8f3721f5b2cdd46ed4a9029e
-}
+//void GUI::DeleteCourse(double x, double y)
+//{
+//		pWind->SetPen(DrawColor, 2);
+////<<<<<<< HEAD
+//		pWind->SetBrush(RED);
+//		pWind->DrawRectangle(x, y, x+CRS_WIDTH, y+CRS_HEIGHT);
+////=======
+//		pWind->SetBrush(WHITE);
+//		/*pWind->DrawRectangle();*/
+//
+//
+////>>>>>>> 168c832663804dcd8f3721f5b2cdd46ed4a9029e
+//}
 
 
 
@@ -180,11 +181,14 @@ void GUI::DrawAcademicYear(const AcademicYear* pY)
 	}
 
 	//Writing the number of years
+	graphicsInfo gInfo2 = pY->getGfxInfo();
+	pWind->SetPen(BLACK, 2);
 	pWind->SetBrush(WHITE);
 	pWind->DrawRectangle(gInfo.x - (35 + 35), gInfo.y, gInfo.x - 40, gInfo.y + 105);
 
 	/*graphicsInfo gInfo2 = pY->getGfxInfo();
 	pWind->SetPen(LIGHTSEAGREEN, 2);
+>>>>>>> f84ac742e620903a1dd3681bf6bce0b441526022
 	pWind->SetFont(CRS_HEIGHT * 0.4, BOLD, BY_NAME, "Gramound");
 	pWind->DrawString(gInfo2.x - 45, gInfo2.y + PLAN_YEAR_HEIGHT / 2.2, "YEAR");
 	pWind->SetPen(DrawColor, 2);
@@ -238,6 +242,8 @@ ActionData GUI::GetUserAction(string msg) const
 				case ITM_ADD: return ActionData{ ADD_CRS };	//Add course
 				case ITM_ADD_NOTES: return ActionData{ ADD_NOTES };
 				case ITM_DELETE: return ActionData{ DEL_CRS };
+				case ITM_SAVE_PLAN: return ActionData{ SAVE };
+				case ITM_EDITCOURSECODE: return ActionData{ EDIT_CRS };
 				case ITM_EXIT: return ActionData{ EXIT };		//Exit
 
 				default: return ActionData{ MENU_BAR };	//A click on empty place in menu bar

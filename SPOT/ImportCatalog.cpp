@@ -18,7 +18,7 @@ vector<CourseInfo> ImportCatalog::readCatalog() {
 		c.Credits = stoi(token);
 		getline(sstream, token, ',');
 
-		if (token[0] == 'C') { //check the input file if the P is capital or not
+		if (token[0] == 'C') { //remember to check the input file if the C in Coreq is capital or small
 			sstream2.str(token);
 			getline(sstream, token, ',');
 			getline(sstream2, Req, ':');
@@ -34,7 +34,7 @@ vector<CourseInfo> ImportCatalog::readCatalog() {
 			temp.clear();
 			sstream2.clear();
 		}
-		if (token[0] == 'P') { //check the input file if the P is capital or not
+		if (token[0] == 'P') { //remember to check the input file if the P in Prereq is capital or small
 			sstream2.str(token);
 			getline(sstream2, Req, ':');
 			while (sstream2.good()) {

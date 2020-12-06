@@ -15,10 +15,14 @@ class GUI
 	{
 		//Note: Items are ordered here as they appear in the menu
 		//If you want to change the menu items order, just change the order here
-		ITM_ADD,		//Add a new course
-		ITM_ADD_NOTES,
+		ITM_ADD,	//Add a new course
 		ITM_DELETE,     //DELETE A COURSE 
+//<<<<<<< HEAD
+		ITM_ADD_NOTES,
+		ITM_EDITCOURSECODE,
+//=======
 		ITM_SAVE_PLAN,
+//>>>>>>> 2b18021b391db7c43f3494bc599c8748f6d350c5
 						//TODO: Add more items names here
 
 
@@ -42,8 +46,8 @@ class GUI
 	color HiColor = RED;			//Highlighting color
 	color ConnColor = GREEN;		//Connector color
 	color MsgColor = BLUE;			//Messages color
-	color BkGrndColor = LIGHTGRAY;	//Background color
-	color StatusBarColor = DARKGRAY;//statusbar color
+	color BkGrndColor = WHITE;	//Background color
+	color StatusBarColor = WHITE;//statusbar color
 	string WindTitle = "Study-Plan Organizational Tool (SPOT)";
 
 	window* pWind;
