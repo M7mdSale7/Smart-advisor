@@ -1,5 +1,6 @@
 #include "Course.h"
 #include "../GUI/GUI.h"
+#include <fstream>
 
 Course::Course(){}
 Course::Course(Course_Code r_code, string r_title, int crd):code(r_code),Title(r_title)
@@ -39,9 +40,16 @@ SEMESTER Course::getsemester() const
 	return semester;
 }
 
+
+void Course::saveCourse(ofstream& fout) const
+{
+	fout << getCode();
+}
+
 Course* Course::getptr()
 {
 	return this;
+
 }
 
 void Course::DrawMe(GUI* pG) const

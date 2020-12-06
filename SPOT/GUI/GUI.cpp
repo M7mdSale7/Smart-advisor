@@ -78,7 +78,7 @@ void GUI::UpdateInterface() const
 	
 	pWind->SetBuffering(true);
 	//Redraw everything
-	CreateMenu();
+	CreateMenu(); 
 	ClearStatusBar();
 	ClearDrawingArea();
 	pWind->UpdateBuffer();
@@ -125,11 +125,10 @@ void GUI::DrawNotes(const Notes* pNotes)
 		int Notes_y = gInfo.y + NOTES_HEIGHT * 0.05;
 		pWind->SetFont(NOTES_HEIGHT * 0.4, BOLD, BY_NAME, "Gramound");
 		pWind->DrawString(Notes_x, Notes_y, pNotes->getNotes());
-//<<<<<<< HEAD
+
 		
 	}
-//=======
-//>>>>>>> 168c832663804dcd8f3721f5b2cdd46ed4a9029e
+
 }
 
 //void GUI::DeleteCourse(double x, double y)
@@ -157,15 +156,14 @@ void GUI::DrawAcademicYear(const AcademicYear* pY)
 	graphicsInfo gInfo = pY->getGfxInfo();
 	pWind->SetPen(BLUE, 2);
 	pWind->SetBrush(BkGrndColor);
-	pWind->DrawRectangle(gInfo.x /*x1*/, gInfo.y /*y1*/, gInfo.x  + PLAN_YEAR_WIDTH /*x2*/, gInfo.y +(SEM_CNT*35) /*Y2*/ );
+	pWind->DrawRectangle(gInfo.x /*x1*/, gInfo.y /*y1*/, gInfo.x  + PLAN_YEAR_WIDTH /*x2*/, gInfo.y +(SEM_CNT*35) /*Y2*/ , FRAME );
 	//Drawing sub rectengles for each semester
 	for (int i = 0; i < SEM_CNT; i++)
 	{
-
 		//Sub Rectengle
 		pWind->SetBrush(BkGrndColor);
 		pWind->SetPen(BLUE, 2);
-		pWind->DrawRectangle(gInfo.x, gInfo.y + (((SEM_CNT * 35) / SEM_CNT) * i), gInfo.x + PLAN_YEAR_WIDTH, gInfo.y + ((SEM_CNT * 35) / SEM_CNT) * (i + 1));
+		pWind->DrawRectangle(gInfo.x, gInfo.y + (((SEM_CNT * 35) / SEM_CNT) * i), gInfo.x + PLAN_YEAR_WIDTH, gInfo.y + ((SEM_CNT * 35) / SEM_CNT) * (i + 1) , FRAME);
 		//Writing Semesters
 		string Semester;
 		pWind->SetBrush(GREEN);
@@ -184,9 +182,14 @@ void GUI::DrawAcademicYear(const AcademicYear* pY)
 
 	//Writing the number of years
 //<<<<<<< HEAD
+//<<<<<<< HEAD
 	/*graphicsInfo gInfo2 = pY->getGfxInfo();
 	pWind->SetPen(BLACK, 2);*/
 //=======
+//=======
+	graphicsInfo gInfo2 = pY->getGfxInfo();
+	pWind->SetPen(BLACK, 2);
+//>>>>>>> 11532e52c9debeeaa8dfb99faff9ed04e9003c17
 	pWind->SetBrush(WHITE);
 	pWind->DrawRectangle(gInfo.x - (35 + 35), gInfo.y, gInfo.x - 40, gInfo.y + 105);
 
@@ -246,6 +249,7 @@ ActionData GUI::GetUserAction(string msg) const
 				case ITM_ADD: return ActionData{ ADD_CRS };	//Add course
 				case ITM_ADD_NOTES: return ActionData{ ADD_NOTES };
 				case ITM_DELETE: return ActionData{ DEL_CRS };
+				case ITM_SAVE_PLAN: return ActionData{ SAVE };
 				case ITM_EDITCOURSECODE: return ActionData{ EDIT_CRS };
 				case ITM_EXIT: return ActionData{ EXIT };		//Exit
 
