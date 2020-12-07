@@ -19,7 +19,8 @@ class GUI
 		ITM_ADD_NOTES,
 		ITM_DELETE,     //DELETE A COURSE 
 		ITM_SAVE_PLAN,
-						//TODO: Add more items names here
+		//ITM_LOAD_PLAN,
+							//TODO: Add more items names here
 
 
 		ITM_EXIT,		//Exit item

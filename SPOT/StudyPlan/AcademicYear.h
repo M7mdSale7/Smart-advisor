@@ -1,6 +1,9 @@
 #pragma once
 #include <list>
-
+#include <vector>
+#include <string>
+#include "../DEFs.h"
+#include "..//Rules.h"
 #include "..\Courses\Course.h"
 #include "../GUI/Drawable.h"
 
@@ -25,7 +28,7 @@ public:
 	bool AddCourse(Course*, SEMESTER );
 	bool DeleteCourse(Course*, SEMESTER);
 	list<Course*>* getyearslist();
-	
+	AcademicYear* ImportAcademicYear(ifstream& fin, vector <CourseInfo> Info, string y, stringstream& s_stream);
 
 	void virtual DrawMe(GUI*) const;
 };

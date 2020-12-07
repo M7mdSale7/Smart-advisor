@@ -120,6 +120,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ActionAddNotes.cpp" />
+    <ClCompile Include="ActionAddStudyPlan.cpp" />
     <ClCompile Include="ActionDeleteCourse.cpp" />
     <ClCompile Include="ActionSavePlan.cpp" />
     <ClCompile Include="Actions\ActionAddCourse.cpp" />
@@ -163,6 +164,7 @@
     <ClCompile Include="GUI\Drawable.cpp" />
     <ClCompile Include="GUI\GUI.cpp" />
     <ClCompile Include="ImportOffering.cpp" />
+    <ClCompile Include="ImportStudyPlan.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Notes.cpp" />
     <ClCompile Include="Registrar.cpp" />
@@ -172,6 +174,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActionAddNotes.h" />
+    <ClInclude Include="ActionAddStudyPlan.h" />
     <ClInclude Include="ActionDeleteCourse.h" />
     <ClInclude Include="ActionSavePlan.h" />
     <ClInclude Include="Actions\Action.h" />
@@ -201,6 +204,7 @@
     <ClInclude Include="DEFs.h" />
     <ClInclude Include="ImportCatalog.h" />
     <ClInclude Include="ImportOffering.h" />
+    <ClInclude Include="ImportStudyPlan.h" />
     <ClInclude Include="Notes.h" />
     <ClInclude Include="Registrar.h" />
     <ClInclude Include="Rules.h" />
