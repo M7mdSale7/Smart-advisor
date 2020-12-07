@@ -11,11 +11,11 @@ class Registrar
 	GUI *pGUI;	//pointer to GUI 
 	Rules RegRules;	//Registration rules
 	StudyPlan *pSPlan;
-	
 
 public:
 	Registrar();
 	GUI* getGUI() const;
+	Rules* getRules();
 	Action* CreateRequiredAction();
 	bool ExecuteAction(Action*);
 	void UpdateInterface();

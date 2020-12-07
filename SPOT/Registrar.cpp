@@ -19,6 +19,12 @@ GUI* Registrar::getGUI() const
 	return pGUI;
 }
 
+Rules* Registrar::getRules()
+{
+	Rules* R = &RegRules;
+	return R;
+}
+
 //returns the study plan
 StudyPlan* Registrar::getStudyPlay() const
 {
