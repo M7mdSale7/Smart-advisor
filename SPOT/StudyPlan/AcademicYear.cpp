@@ -84,13 +84,22 @@ void AcademicYear::DrawMe(GUI* pGUI) const
 	//to get courses and draw each course
 	
 	for (int sem = FALL; sem < SEM_CNT; sem++)
+	{
+		int CRS_NUM = 0;
 		for (auto it = YearCourses[sem].begin(); it != YearCourses[sem].end(); ++it) //keywork auto asks the compilor to deduce the type of the variable from initilization
 		{
+			graphicsInfo gInfo = this->getGfxInfo();
+			int x = gInfo.x + 50 + (CRS_WIDTH + 2.0) * CRS_NUM;
+			int y = gInfo.y + 69 - (((SEM_CNT * 105) / SEM_CNT) * sem);
+			graphicsInfo gInfo1{ x, y };
+			(*it)->setGfxInfo(gInfo1);
 			(*it)->DrawMe(pGUI);	//call DrawMe for each course in this semester
+			CRS_NUM++;
 		}
-
+	}
 }
 
+ifstream fin("SPC.txt");
 AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, vector <CourseInfo>* Info, string *subline, stringstream& s_stream) {
 	AcademicYear* year = new AcademicYear;
 	string line;

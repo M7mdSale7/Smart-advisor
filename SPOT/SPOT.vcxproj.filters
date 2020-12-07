@@ -55,6 +55,7 @@
     <ClCompile Include="ImportStudyPlan.cpp" />
     <ClCompile Include="ActionChangeCode.cpp" />
     <ClCompile Include="ActionShowCourseInfo.cpp" />
+    <ClCompile Include="ActionImportStudyPlan.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActionAddNotes.h" />
@@ -97,6 +98,7 @@
     <ClInclude Include="ImportStudyPlan.h" />
     <ClInclude Include="ActionChangeCode.h" />
     <ClInclude Include="ActionShowCourseInfo.h" />
+    <ClInclude Include="ActionImportStudyPlan.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
