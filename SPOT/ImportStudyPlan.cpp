@@ -13,8 +13,11 @@ using namespace std;
 void ImportStudyPlan::StudyPlanImport(ifstream& fin, Registrar* P) {
 	StudyPlan* plan = P->getStudyPlay();
 	vector <AcademicYear*>* years = plan->getSPvector();
-	ImportCatalog catalog;
-	vector <CourseInfo> Info = catalog.readCatalog();
+	//ImportCatalog catalog;
+	//vector <CourseInfo> Info = catalog.readCatalog();
+	Rules* R = P->getRules();
+	vector <CourseInfo>* Info = &R->CourseCatalog;
+
 	cout << "Blaa" << endl;/////
 	/*string line;
 	getline(fin, line);
@@ -22,18 +25,25 @@ void ImportStudyPlan::StudyPlanImport(ifstream& fin, Registrar* P) {
 	string subline;
 	getline(s_stream, subline, ',');
 	string y = subline;*/
-	for (size_t i = 0; i < 5; i++) {
+	string line;
+	string subline;
+	string* ptr = &subline;
+	getline(fin, line);
+	stringstream s_stream(line);
+	getline(s_stream, subline, ',');
+	while (!fin.eof()) {
 		AcademicYear* year = new AcademicYear;
 
-		string line;
-		getline(fin, line);
-		stringstream s_stream(line);
-		string subline;
-		getline(s_stream, subline, ',');
+		//string line;
+		//getline(fin, line);
+		//stringstream s_stream(line);
+		//string subline;
+		//getline(s_stream, subline, ',');
 		//string y = subline;
-
-		year->ImportAcademicYear(fin, Info, subline, s_stream);
+		//string* ptr = &subline;
+		year->ImportAcademicYear(fin, Info, ptr, s_stream);
 		years->push_back(year);
+		delete year;
 	}
 }
 

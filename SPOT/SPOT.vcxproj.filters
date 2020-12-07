@@ -5,7 +5,6 @@
     <ClCompile Include="ActionDeleteCourse.cpp" />
     <ClCompile Include="ActionSavePlan.cpp" />
     <ClCompile Include="Actions\ActionAddCourse.cpp" />
-    <ClCompile Include="coursesloop.cpp" />
     <ClCompile Include="functions.cpp" />
     <ClCompile Include="Courses\Course.cpp" />
     <ClCompile Include="GUI\CMUgraphicsLib\CMUgraphics.cpp" />
@@ -55,6 +54,7 @@
     <ClCompile Include="ActionAddStudyPlan.cpp" />
     <ClCompile Include="ImportStudyPlan.cpp" />
     <ClCompile Include="ActionChangeCode.cpp" />
+    <ClCompile Include="ActionShowCourseInfo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActionAddNotes.h" />
@@ -96,6 +96,7 @@
     <ClInclude Include="ActionAddStudyPlan.h" />
     <ClInclude Include="ImportStudyPlan.h" />
     <ClInclude Include="ActionChangeCode.h" />
+    <ClInclude Include="ActionShowCourseInfo.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

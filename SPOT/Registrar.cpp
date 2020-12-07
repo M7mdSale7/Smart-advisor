@@ -5,6 +5,7 @@
 #include "ActionAddNotes.h"
 #include "ActionDeleteCourse.h"
 #include "ActionSavePlan.h"
+#include "ActionShowCourseInfo.h"
 
 Registrar::Registrar()
 {
@@ -16,6 +17,12 @@ Registrar::Registrar()
 GUI* Registrar::getGUI() const
 {
 	return pGUI;
+}
+
+Rules* Registrar::getRules()
+{
+	Rules* R = &RegRules;
+	return R;
 }
 
 //returns the study plan
@@ -44,7 +51,9 @@ Action* Registrar::CreateRequiredAction()
 	case EDIT_CRS:
 		RequiredAction = new ActionChangeCode(this);
 		break;
-
+	case SHOW_INFO:
+		RequiredAction = new ActionShowCourseInfo(this);
+		break;
 	case SAVE:
 		RequiredAction = new ActionSavePlan(this);
 		break;

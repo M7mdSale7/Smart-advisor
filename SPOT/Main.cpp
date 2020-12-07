@@ -14,10 +14,15 @@ int main()
 	string Bla = "Year 1";
 	cout << (Bla == tada + to_string(x + 1)) << endl;
 	*/
-	ifstream infile("CIE.txt");
+	/*ifstream infile("CIE.txt");
 	Registrar* R = new Registrar;
 	ImportStudyPlan bla;
-	bla.StudyPlanImport(infile, R);
+	bla.StudyPlanImport(infile, R);*/
+
+	/*string s = "Seeeeeeee";
+	string* ptr = &s;
+
+	cout << *ptr << endl;*/
 
 	Registrar Reg;
 	Reg.Run();
