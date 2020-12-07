@@ -40,11 +40,13 @@ void GUI::CreateMenu() const
 
 	//First prepare List of images paths for menu item
 	string MenuItemImages[ITM_CNT];
-	MenuItemImages[ITM_ADD] = "GUI\\Images\\Menu\\Menu_add_course.jpg";
-	MenuItemImages[ITM_ADD_NOTES] = "GUI\\Images\\Menu\\Add_Note.jpg";
-	MenuItemImages[ITM_DELETE] = "GUI\\Images\\Menu\\Menu_delete_course.jpg";
+	MenuItemImages[ITM_ADD] = "GUI\\Images\\Menu\\Menu_AddCourse.jpg";
+	MenuItemImages[ITM_DELETE] = "GUI\\Images\\Menu\\Menu_DeleteCourse.jpg";
+	MenuItemImages[ITM_ADD_NOTES] = "GUI\\Images\\Menu\\Menu_AddNotes.jpg";
+	MenuItemImages[ITM_EDITCOURSECODE]= "GUI\\Images\\Menu\\Menu_EditCourseCode.jpg";
 	MenuItemImages[ITM_SAVE_PLAN] = "GUI\\Images\\Menu\\Menu_Save_Plan.jpg";
-	MenuItemImages[ITM_EXIT] = "GUI\\Images\\Menu\\Menu_Exit.jpg";
+	MenuItemImages[ITM_EXIT] = "GUI\\Images\\Menu\\Menu_exitt.jpg";
+
 
 
 	//TODO: Prepare image for each menu item and add it to the list
@@ -76,7 +78,7 @@ void GUI::UpdateInterface() const
 	
 	pWind->SetBuffering(true);
 	//Redraw everything
-	CreateMenu();
+	CreateMenu(); 
 	ClearStatusBar();
 	ClearDrawingArea();
 	pWind->UpdateBuffer();
@@ -123,54 +125,76 @@ void GUI::DrawNotes(const Notes* pNotes)
 		int Notes_y = gInfo.y + NOTES_HEIGHT * 0.05;
 		pWind->SetFont(NOTES_HEIGHT * 0.4, BOLD, BY_NAME, "Gramound");
 		pWind->DrawString(Notes_x, Notes_y, pNotes->getNotes());
-//<<<<<<< HEAD
+
 		
 	}
-//=======
-//>>>>>>> 168c832663804dcd8f3721f5b2cdd46ed4a9029e
+
 }
 
-void GUI::DeleteCourse(double x, double y)
-{
-		pWind->SetPen(DrawColor, 2);
-//<<<<<<< HEAD
-		pWind->SetBrush(RED);
-		pWind->DrawRectangle(x, y, x+CRS_WIDTH, y+CRS_HEIGHT);
-//=======
-		pWind->SetBrush(WHITE);
-		/*pWind->DrawRectangle();*/
-
-
-//>>>>>>> 168c832663804dcd8f3721f5b2cdd46ed4a9029e
-}
+//void GUI::DeleteCourse(double x, double y)
+//{
+//		pWind->SetPen(DrawColor, 2);
+////<<<<<<< HEAD
+//		pWind->SetBrush(RED);
+//		pWind->DrawRectangle(x, y, x+CRS_WIDTH, y+CRS_HEIGHT);
+////=======
+//		pWind->SetBrush(WHITE);
+//		/*pWind->DrawRectangle();*/
+//
+//
+////>>>>>>> 168c832663804dcd8f3721f5b2cdd46ed4a9029e
+//}
 
 
 
 void GUI::DrawAcademicYear(const AcademicYear* pY) 
 {
 	//Drawing Big Rectenagle for each Academic Year
+	//int i;
+
+	//string filename = "year" + tostring(i) + ".jpg";
 	graphicsInfo gInfo = pY->getGfxInfo();
-	pWind->SetPen(DrawColor, 2);
+	pWind->SetPen(BLUE, 2);
 	pWind->SetBrush(BkGrndColor);
-	pWind->DrawRectangle(gInfo.x, gInfo.y, gInfo.x + PLAN_YEAR_WIDTH, gInfo.y + PLAN_YEAR_HEIGHT, FRAME);
+	pWind->DrawRectangle(gInfo.x /*x1*/, gInfo.y /*y1*/, gInfo.x  + PLAN_YEAR_WIDTH /*x2*/, gInfo.y +(SEM_CNT*35) /*Y2*/ , FRAME );
 	//Drawing sub rectengles for each semester
-	pWind->DrawLine(gInfo.x, gInfo.y + PLAN_YEAR_HEIGHT / 2, gInfo.x + PLAN_YEAR_WIDTH / 1.3, gInfo.y + PLAN_YEAR_HEIGHT / 2);
-	pWind->DrawLine(gInfo.x + PLAN_YEAR_WIDTH / 1.3, gInfo.y, gInfo.x + PLAN_YEAR_WIDTH / 1.3, gInfo.y + PLAN_YEAR_HEIGHT);
+	for (int i = 0; i < SEM_CNT; i++)
+	{
+		//Sub Rectengle
+		pWind->SetBrush(BkGrndColor);
+		pWind->SetPen(BLUE, 2);
+		pWind->DrawRectangle(gInfo.x, gInfo.y + (((SEM_CNT * 35) / SEM_CNT) * i), gInfo.x + PLAN_YEAR_WIDTH, gInfo.y + ((SEM_CNT * 35) / SEM_CNT) * (i + 1) , FRAME);
+		//Writing Semesters
+		string Semester;
+		pWind->SetBrush(GREEN);
+		pWind->SetPen(BLACK, 2);
+		pWind->DrawRectangle(gInfo.x - 40, gInfo.y +(((SEM_CNT * 35) / SEM_CNT) * i), gInfo.x + 34, gInfo.y + ((SEM_CNT * 35) / SEM_CNT) * (i + 1));
+		if (i == 0)
+			Semester = "FALL";
+		else if (i == 1)
+			Semester = "SPRING";
+		else if (i == 2)
+			Semester = "SUMMER";
+		pWind->SetFont(35 * 0.5, BOLD, BY_NAME, "Gramound");
+		pWind->SetPen(DARKRED);
+		pWind->DrawString(gInfo.x - 35, gInfo.y + 10 +(35*SEM_CNT) / SEM_CNT * i, Semester);
+	}
 
 	//Writing the number of years
 	graphicsInfo gInfo2 = pY->getGfxInfo();
+	pWind->SetPen(BLACK, 2);
+	pWind->SetBrush(WHITE);
+	pWind->DrawRectangle(gInfo.x - (35 + 35), gInfo.y, gInfo.x - 40, gInfo.y + 105);
+
+	/*graphicsInfo gInfo2 = pY->getGfxInfo();
 	pWind->SetPen(LIGHTSEAGREEN, 2);
+>>>>>>> f84ac742e620903a1dd3681bf6bce0b441526022
 	pWind->SetFont(CRS_HEIGHT * 0.4, BOLD, BY_NAME, "Gramound");
 	pWind->DrawString(gInfo2.x - 45, gInfo2.y + PLAN_YEAR_HEIGHT / 2.2, "YEAR");
 	pWind->SetPen(DrawColor, 2);
 	*Pyear--;
-	pWind->DrawInteger(gInfo2.x - 9, gInfo2.y + PLAN_YEAR_HEIGHT / 2.2, year);
+	pWind->DrawInteger(gInfo2.x - 9, gInfo2.y + PLAN_YEAR_HEIGHT / 2.2, year);*/
 
-	//Writing Fall & Spring & Summer in each sub rectenagle
-	pWind->SetPen(DARKRED, 2);
-	pWind->DrawString(gInfo2.x - 35, gInfo2.y + PLAN_YEAR_HEIGHT / 4.5, "FALL");
-	pWind->DrawString(gInfo2.x - 52, gInfo2.y + PLAN_YEAR_HEIGHT / 1.5, "SPRING");
-	pWind->DrawString(gInfo.x + PLAN_YEAR_WIDTH / 1.3, gInfo2.y + 10, "SUMMER");
 }
 
 
@@ -219,6 +243,8 @@ ActionData GUI::GetUserAction(string msg) const
 				case ITM_ADD_NOTES: return ActionData{ ADD_NOTES };
 				case ITM_DELETE: return ActionData{ DEL_CRS };
 				//case ITM_LOAD_PLAN: return ActionData{ LOAD };
+				case ITM_SAVE_PLAN: return ActionData{ SAVE };
+				case ITM_EDITCOURSECODE: return ActionData{ EDIT_CRS };
 				case ITM_EXIT: return ActionData{ EXIT };		//Exit
 
 				default: return ActionData{ MENU_BAR };	//A click on empty place in menu bar

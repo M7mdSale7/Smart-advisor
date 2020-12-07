@@ -29,6 +29,8 @@ public:
 	bool DeleteCourse(Course*, SEMESTER);
 	list<Course*>* getyearslist();
 	AcademicYear* ImportAcademicYear(ifstream& fin, vector <CourseInfo> Info, string y, stringstream& s_stream);
+	void saveAcademicYear(int year,ofstream&) const;
+	
 
 	void virtual DrawMe(GUI*) const;
 };

@@ -35,9 +35,6 @@ void ImportStudyPlan::StudyPlanImport(ifstream& fin, Registrar* P) {
 		year->ImportAcademicYear(fin, Info, subline, s_stream);
 		years->push_back(year);
 	}
-	for (size_t i = 0; i < years->size(); i++) {
-		cout << years->at(i) << ' ';
-	}
 }
 
 /*void ImportStudyPlan::StudyPlanImport(ifstream& fin, Registrar* P) {

@@ -26,9 +26,10 @@ public:
 	int getCredits() const;
 	int getyear() const;
 	SEMESTER getsemester() const;
+	void saveCourse(ofstream& ) const;
+	Course* getptr();
 
 
 	void DrawMe(GUI*) const;
 	virtual ~Course();
-
 };

@@ -1,3 +1,4 @@
+
 #include "Registrar.h"
 #include "Courses//UnivCourse.h"
 #include "../SPOT/GUI/GUI.h"
@@ -20,3 +21,4 @@ Course* coursesloop(int x, int y, Registrar* pReg)
 	}
 	return nullptr;
 }
+
