@@ -45,6 +45,8 @@ void GUI::CreateMenu() const
 	MenuItemImages[ITM_ADD_NOTES] = "GUI\\Images\\Menu\\Menu_AddNotes.jpg";
 	MenuItemImages[ITM_EDITCOURSECODE]= "GUI\\Images\\Menu\\Menu_EditCourseCode.jpg";
 	MenuItemImages[ITM_SAVE_PLAN] = "GUI\\Images\\Menu\\Menu_Save_Plan.jpg";
+	MenuItemImages[ITM_SHOW_COURSE_INFO] = "GUI\\Images\\Menu\\Menu_Info.jpg";
+	MenuItemImages[ITM_IMPORT] = "GUI\\Images\\Menu\\Menu_Import.jpg";
 	MenuItemImages[ITM_EXIT] = "GUI\\Images\\Menu\\Menu_exitt.jpg";
 
 
@@ -154,9 +156,12 @@ void GUI::DrawAcademicYear(const AcademicYear* pY)
 
 	//string filename = "year" + tostring(i) + ".jpg";
 	graphicsInfo gInfo = pY->getGfxInfo();
-	pWind->SetPen(BLUE, 2);
+	pWind->SetPen(BLACK, 2);
 	pWind->SetBrush(BkGrndColor);
 	pWind->DrawRectangle(gInfo.x /*x1*/, gInfo.y /*y1*/, gInfo.x  + PLAN_YEAR_WIDTH /*x2*/, gInfo.y +(SEM_CNT*35) /*Y2*/ , FRAME );
+	
+
+	
 	//Drawing sub rectengles for each semester
 	for (int i = 0; i < SEM_CNT; i++)
 	{
@@ -184,7 +189,15 @@ void GUI::DrawAcademicYear(const AcademicYear* pY)
 	graphicsInfo gInfo2 = pY->getGfxInfo();
 	pWind->SetPen(BLACK, 2);
 	pWind->SetBrush(WHITE);
-	pWind->DrawRectangle(gInfo.x - (35 + 35), gInfo.y, gInfo.x - 40, gInfo.y + 105);
+	pWind->DrawRectangle(gInfo.x - (35 + 35), gInfo.y, gInfo.x - 40, gInfo.y + 105 , FRAME);
+
+	//Writing Year Num.
+	pWind->SetFont(35, BOLD, BY_NAME, "Gramound");
+	pWind->DrawInteger(gInfo.x - 65, 125, 1);
+	pWind->DrawInteger(gInfo.x - 65, 235, 2);
+	pWind->DrawInteger(gInfo.x - 65, 340, 3);
+	pWind->DrawInteger(gInfo.x - 65, 450, 4);
+	pWind->DrawInteger(gInfo.x - 65, 555, 5);
 
 	/*graphicsInfo gInfo2 = pY->getGfxInfo();
 	pWind->SetPen(LIGHTSEAGREEN, 2);
@@ -244,6 +257,8 @@ ActionData GUI::GetUserAction(string msg) const
 				case ITM_DELETE: return ActionData{ DEL_CRS };
 				case ITM_SAVE_PLAN: return ActionData{ SAVE };
 				case ITM_EDITCOURSECODE: return ActionData{ EDIT_CRS };
+				case ITM_SHOW_COURSE_INFO: return ActionData{ SHOW_INFO };
+				case ITM_IMPORT: return ActionData{ IMPORT };
 				case ITM_EXIT: return ActionData{ EXIT };		//Exit
 
 				default: return ActionData{ MENU_BAR };	//A click on empty place in menu bar

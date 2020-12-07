@@ -123,6 +123,7 @@
     <ClCompile Include="ActionChangeCode.cpp" />
     <ClCompile Include="ActionDeleteCourse.cpp" />
     <ClCompile Include="ActionSavePlan.cpp" />
+    <ClCompile Include="ActionShowCourseInfo.cpp" />
     <ClCompile Include="Actions\ActionAddCourse.cpp" />
     <ClCompile Include="functions.cpp" />
     <ClCompile Include="Courses\Course.cpp" />
@@ -176,6 +177,7 @@
     <ClInclude Include="ActionChangeCode.h" />
     <ClInclude Include="ActionDeleteCourse.h" />
     <ClInclude Include="ActionSavePlan.h" />
+    <ClInclude Include="ActionShowCourseInfo.h" />
     <ClInclude Include="Actions\Action.h" />
     <ClInclude Include="Actions\ActionAddCourse.h" />
     <ClInclude Include="Courses\Course.h" />
