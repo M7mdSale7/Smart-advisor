@@ -22,6 +22,8 @@ class GUI
 		ITM_EDITCOURSECODE,
 //=======
 		ITM_SAVE_PLAN,
+		//ITM_LOAD_PLAN,
+							//TODO: Add more items names here
 //>>>>>>> 2b18021b391db7c43f3494bc599c8748f6d350c5
 						//TODO: Add more items names here
 

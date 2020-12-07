@@ -242,6 +242,7 @@ ActionData GUI::GetUserAction(string msg) const
 				case ITM_ADD: return ActionData{ ADD_CRS };	//Add course
 				case ITM_ADD_NOTES: return ActionData{ ADD_NOTES };
 				case ITM_DELETE: return ActionData{ DEL_CRS };
+				//case ITM_LOAD_PLAN: return ActionData{ LOAD };
 				case ITM_SAVE_PLAN: return ActionData{ SAVE };
 				case ITM_EDITCOURSECODE: return ActionData{ EDIT_CRS };
 				case ITM_EXIT: return ActionData{ EXIT };		//Exit

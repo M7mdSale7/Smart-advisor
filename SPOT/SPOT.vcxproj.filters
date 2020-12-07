@@ -52,6 +52,8 @@
     <ClCompile Include="ImportCatalog.cpp" />
     <ClCompile Include="StudyPlan\AcademicYear.cpp" />
     <ClCompile Include="StudyPlan\StudyPlan.cpp" />
+    <ClCompile Include="ActionAddStudyPlan.cpp" />
+    <ClCompile Include="ImportStudyPlan.cpp" />
     <ClCompile Include="ActionChangeCode.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +93,8 @@
     <ClInclude Include="Rules.h" />
     <ClInclude Include="StudyPlan\AcademicYear.h" />
     <ClInclude Include="StudyPlan\StudyPlan.h" />
+    <ClInclude Include="ActionAddStudyPlan.h" />
+    <ClInclude Include="ImportStudyPlan.h" />
     <ClInclude Include="ActionChangeCode.h" />
   </ItemGroup>
   <ItemGroup>
