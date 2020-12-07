@@ -4,11 +4,11 @@
 #include <vector>
 
 
-void ImportOffering::ImportOfferingFile(vector<AcademicYearOfferings>* offered)
+void ImportOffering::ImportOfferingFile(vector<AcademicYearOfferings>& offered)
 {
 	
-	ifstream finput("C:/Users/mogaz/Desktop/Academic offerings.txt");
-	AcademicYearOfferings* yearOff = new AcademicYearOfferings;
+	ifstream finput("C:/Users/mogaz/Desktop/Academic offerings.txt"); //modify path.
+	AcademicYearOfferings yearOff;
 	istringstream stream;
 	string token, semester; //change this string
 	SEMESTER sem;
@@ -19,12 +19,7 @@ void ImportOffering::ImportOfferingFile(vector<AcademicYearOfferings>* offered)
 	while (finput.getline(line, size)) {
 		stream.str(line);
 		if (counter % 3 == 0) {
-			getline(stream, yearOff->Year, ',');
-			if (counter > 0) {
-				offered->push_back(*yearOff);
-				delete(yearOff);
-				AcademicYearOfferings* yearOff = new AcademicYearOfferings;
-			}
+			getline(stream, yearOff.Year, ',');
 		}
 		else {
 			getline(stream, token, ',');
@@ -46,10 +41,18 @@ void ImportOffering::ImportOfferingFile(vector<AcademicYearOfferings>* offered)
 
 		while (stream.good()) {
 			getline(stream, token, ',');
-			yearOff->Offerings[sem].push_back(token);
+			yearOff.Offerings[sem].push_back(token);
 		}
 		stream.clear();
 		counter++;
+
+		if (counter % 3 == 0) {
+			offered.push_back(yearOff);
+			for (int i = 0; i < SEM_CNT; i++) {
+				yearOff.Offerings[i].clear();
+			}
+
+		}
 	}
 }
 
