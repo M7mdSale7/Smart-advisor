@@ -10,7 +10,7 @@ protected:
 
 public:
 	Action(Registrar* p) { pReg = p; }
-	Action() {}
+
 	//Course* coursesloop(int x, int y, Registrar* pReg)
 	//{
 	//	Course* pointer = nullptr;

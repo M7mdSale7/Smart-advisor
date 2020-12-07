@@ -25,5 +25,6 @@ public:
 	void virtual DrawMe(GUI*) const;
 	virtual ~StudyPlan();
 	vector<AcademicYear*>* getSPvector();
+	vector<Notes*>* getNvector();
 };
 

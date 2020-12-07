@@ -67,3 +67,8 @@ vector<AcademicYear*>* StudyPlan::getSPvector()
 {
 	return &plan;
 }
+
+vector<Notes*>* StudyPlan::getNvector()
+{
+	return &PlanNotees;
+}
