@@ -11,6 +11,7 @@
 using namespace std;
 
 void ImportStudyPlan::StudyPlanImport(ifstream& fin, Registrar* P) {
+	int i = 0;
 	StudyPlan* plan = P->getStudyPlay();
 	vector <AcademicYear*>* years = plan->getSPvector();
 	//ImportCatalog catalog;
@@ -41,8 +42,11 @@ void ImportStudyPlan::StudyPlanImport(ifstream& fin, Registrar* P) {
 		//getline(s_stream, subline, ',');
 		//string y = subline;
 		//string* ptr = &subline;
-		year->ImportAcademicYear(fin, Info, ptr, s_stream);
-		years->push_back(year);
+		/*year->ImportAcademicYear(fin, Info, ptr, s_stream);*/
+		
+		years->at(i) = year->ImportAcademicYear(fin, Info, ptr, s_stream);
+		i++;
+		
 		delete year;
 	}
 }

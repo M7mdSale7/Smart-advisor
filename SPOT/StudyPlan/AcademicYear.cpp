@@ -83,11 +83,20 @@ void AcademicYear::DrawMe(GUI* pGUI) const
 	//Draw all semesters inside this year by iterating on each semester list
 	//to get courses and draw each course
 	
-	for (int sem = FALL; sem < SEM_CNT; sem++)
+	for (int sem = FALL; sem < SEM_CNT; sem++) {
+		int CRS_NUM = 0;
 		for (auto it = YearCourses[sem].begin(); it != YearCourses[sem].end(); ++it) //keywork auto asks the compilor to deduce the type of the variable from initilization
 		{
-			(*it)->DrawMe(pGUI);	//call DrawMe for each course in this semester
+			graphicsInfo gInfo = this->getGfxInfo();
+			int x = gInfo.x + 50 + (CRS_WIDTH + 2.0) * CRS_NUM;
+			int y = gInfo.y + 69 - (((SEM_CNT * 105) / SEM_CNT) * sem);
+			graphicsInfo gInfo1{ x, y };
+			(*it)->setGfxInfo(gInfo1);
+			(*it)->DrawMe(pGUI); //call DrawMe for each course in this semester
+			CRS_NUM++;
+
 		}
+	}
 
 }
 
@@ -103,11 +112,13 @@ AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, vector <CourseInfo
 	string y = *subline;
 	//getline(s_stream, subline, ',');
 	for (size_t j = 0; j < 4; j++) {
+		if (fin.eof()) break;
 		if (flag) {
 			getline(fin, line);
-			stringstream s_stream(line);
-			string subline;
-			getline(s_stream, subline, ',');
+			s_stream.str(line);
+			subline->clear();
+			/*stringstream s_stream(line);*/
+			getline(s_stream, *subline, ',');
 		}
 		flag = true;
 		if (*subline == y) {
@@ -130,8 +141,8 @@ AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, vector <CourseInfo
 			else if (*subline == "Spring") {
 				while (s_stream.good()) {
 					getline(s_stream, *subline, ',');
-					string title;
-					int Cr;
+					string title = "";
+					int Cr = 0;
 					for (size_t k = 0; k < Info->size(); k++) {
 						if (Info->at(k).Code == *subline) {
 							title = Info->at(k).Title;
@@ -145,8 +156,8 @@ AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, vector <CourseInfo
 			else if (*subline == "Summer") {
 				while (s_stream.good()) {
 					getline(s_stream, *subline, ',');
-					string title;
-					int Cr;
+					string title = "";
+					int Cr = 0;
 					for (size_t k = 0; k < Info->size(); k++) {
 						if (Info->at(k).Code == *subline) {
 							title = Info->at(k).Title;
@@ -162,7 +173,7 @@ AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, vector <CourseInfo
 			//flag = false;
 			break;
 		}
-
+		s_stream.clear();
 	}
 
 	

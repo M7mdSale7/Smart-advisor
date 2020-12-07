@@ -6,6 +6,7 @@
 #include "ActionDeleteCourse.h"
 #include "ActionSavePlan.h"
 #include "ActionShowCourseInfo.h"
+#include "ImportStudyPlan.h"
 
 Registrar::Registrar()
 {
@@ -81,10 +82,11 @@ void Registrar::Run()
 {
 	while (true)
 	{
+		
 		//update interface here as CMU Lib doesn't refresh itself
 		//when window is minimized then restored
 		UpdateInterface();
-
+		
 		/*Rules rules;
 		rules.CourseCatalog = ImportCatalog().readCatalog()*/
 

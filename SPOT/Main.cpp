@@ -25,6 +25,9 @@ int main()
 	cout << *ptr << endl;*/
 
 	Registrar Reg;
+	ifstream fin("CIE-StudyPlan.txt");
+	ImportStudyPlan().StudyPlanImport(fin, &Reg);
+
 	Reg.Run();
 
 	return 0;
