@@ -91,7 +91,7 @@ void AcademicYear::DrawMe(GUI* pGUI) const
 
 }
 
-AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, vector <CourseInfo> Info, string subline, stringstream& s_stream) {
+AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, vector <CourseInfo>* Info, string *subline, stringstream& s_stream) {
 	AcademicYear* year = new AcademicYear;
 	string line;
 	bool flag = false;
@@ -100,9 +100,9 @@ AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, vector <CourseInfo
 	//getline(fin, line);
 	//stringstream s_stream(line);
 	//string subline;
-	string y = subline;
+	string y = *subline;
 	//getline(s_stream, subline, ',');
-	for (size_t j = 0; j < 3; j++) {
+	for (size_t j = 0; j < 4; j++) {
 		if (flag) {
 			getline(fin, line);
 			stringstream s_stream(line);
@@ -110,50 +110,50 @@ AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, vector <CourseInfo
 			getline(s_stream, subline, ',');
 		}
 		flag = true;
-		if (subline == y) {
-			getline(s_stream, subline, ',');
-			if (subline == "Fall") {
+		if (*subline == y) {
+			getline(s_stream, *subline, ',');
+			if (*subline == "Fall") {
 				while (s_stream.good()) {
-					getline(s_stream, subline, ',');
+					getline(s_stream, *subline, ',');
 					string title = "";
 					int Cr = 0;
-					for (size_t k = 0; k < Info.size(); k++) {
-						if (Info[k].Code == subline) {
-							title = Info[k].Title;
-							Cr = Info[k].Credits;
+					for (size_t k = 0; k < Info->size(); k++) {
+						if (Info->at(k).Code == *subline) {
+							title = Info->at(k).Title;
+							Cr = Info->at(k).Credits;
 						}
 					}
-					Course* C = new Course(subline, title, Cr);
+					Course* C = new Course(*subline, title, Cr);
 					year->AddCourse(C, FALL);
 				}
 			}
-			else if (subline == "Spring") {
+			else if (*subline == "Spring") {
 				while (s_stream.good()) {
-					getline(s_stream, subline, ',');
+					getline(s_stream, *subline, ',');
 					string title;
 					int Cr;
-					for (size_t j = 0; j < Info.size(); j++) {
-						if (Info[j].Code == subline) {
-							title = Info[j].Title;
-							Cr = Info[j].Credits;
+					for (size_t k = 0; k < Info->size(); k++) {
+						if (Info->at(k).Code == *subline) {
+							title = Info->at(k).Title;
+							Cr = Info->at(k).Credits;
 						}
 					}
-					Course* C = new Course(subline, title, Cr);
+					Course* C = new Course(*subline, title, Cr);
 					year->AddCourse(C, SPRING);
 				}
 			}
-			else if (subline == "Summer") {
+			else if (*subline == "Summer") {
 				while (s_stream.good()) {
-					getline(s_stream, subline, ',');
+					getline(s_stream, *subline, ',');
 					string title;
 					int Cr;
-					for (size_t j = 0; j < Info.size(); j++) {
-						if (Info[j].Code == subline) {
-							title = Info[j].Title;
-							Cr = Info[j].Credits;
+					for (size_t k = 0; k < Info->size(); k++) {
+						if (Info->at(k).Code == *subline) {
+							title = Info->at(k).Title;
+							Cr = Info->at(k).Credits;
 						}
 					}
-					Course* C = new Course(subline, title, Cr);
+					Course* C = new Course(*subline, title, Cr);
 					year->AddCourse(C, SUMMER);
 				}
 			}
