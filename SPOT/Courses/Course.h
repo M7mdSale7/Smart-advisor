@@ -25,6 +25,8 @@ public:
 	string getCode() const;
 	int getCredits() const;
 	int getyear() const;
+	void setyear(int y);
+	void setsemester(SEMESTER s);
 	SEMESTER getsemester() const;
 	void saveCourse(ofstream& ) const;
 	Course* getptr();

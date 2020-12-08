@@ -20,10 +20,13 @@ class GUI
 //<<<<<<< HEAD
 		ITM_ADD_NOTES,
 		ITM_EDITCOURSECODE,
+		ITM_REORDER,  //REORDER COURSE FROM SEMESTER TO ANOTHER
 //=======
 		ITM_SAVE_PLAN,
 //>>>>>>> 2b18021b391db7c43f3494bc599c8748f6d350c5
 						//TODO: Add more items names here
+   /* ITM_IMPORT,
+	ITM_INFO,*/
 
 
 		ITM_EXIT,		//Exit item
@@ -65,7 +68,7 @@ public:
 	void DrawAcademicYear(const AcademicYear*);
 	void UpdateInterface() const;
 	void DrawNotes(const Notes* pNotes); //Member function to Draw Notes on Screen
-	void DeleteCourse(double x, double y);
+	//void DeleteCourse(double x, double y);
 	
 	//input functions
 	ActionData GUI::GetUserAction(string msg = "") const;

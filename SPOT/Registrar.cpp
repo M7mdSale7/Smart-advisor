@@ -5,6 +5,7 @@
 #include "ActionAddNotes.h"
 #include "ActionDeleteCourse.h"
 #include "ActionSavePlan.h"
+#include "ActionReorder.h"
 
 Registrar::Registrar()
 {
@@ -44,8 +45,10 @@ Action* Registrar::CreateRequiredAction()
 	case EDIT_CRS:
 		RequiredAction = new ActionChangeCode(this);
 		break;
-
-	case SAVE:
+    case REORDER_CRS:
+		RequiredAction = new ActionReorder(this);
+		break;
+    case SAVE:
 		RequiredAction = new ActionSavePlan(this);
 		break;
 
