@@ -12,10 +12,7 @@ bool ActionImportStudyPlan::Execute()
 	string filename = pGUI->GetSrting();*/
 	ifstream fin(OOPEN("Choose the file containing plan", "READ"));
 	ImportStudyPlan* x = nullptr;
-	x->StudyPlanImport(fin , pReg);
-	StudyPlan* pS = pReg->getStudyPlay();
-	vector<AcademicYear*>* StudyPlan = pS->getSPvector();
-
+	x->StudyPlanImport(fin , pReg);;
 	return true;
 }
 
