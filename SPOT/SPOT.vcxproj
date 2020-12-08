@@ -120,9 +120,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ActionAddNotes.cpp" />
-    <ClCompile Include="ActionAddStudyPlan.cpp" />
     <ClCompile Include="ActionChangeCode.cpp" />
     <ClCompile Include="ActionDeleteCourse.cpp" />
+    <ClCompile Include="ActionReorder.cpp" />
     <ClCompile Include="ActionImportStudyPlan.cpp" />
     <ClCompile Include="ActionSavePlan.cpp" />
     <ClCompile Include="ActionShowCourseInfo.cpp" />
@@ -177,9 +177,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActionAddNotes.h" />
-    <ClInclude Include="ActionAddStudyPlan.h" />
     <ClInclude Include="ActionChangeCode.h" />
     <ClInclude Include="ActionDeleteCourse.h" />
+    <ClInclude Include="ActionReorder.h" />
     <ClInclude Include="ActionImportStudyPlan.h" />
     <ClInclude Include="ActionSavePlan.h" />
     <ClInclude Include="ActionShowCourseInfo.h" />

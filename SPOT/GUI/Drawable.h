@@ -12,7 +12,8 @@ enum
 	CRS_WIDTH = 80,		//width of course rectangle to be drawn on screen
 	CRS_HEIGHT = 30,	//Height of course rectangle to be drawn on screen
 	PLAN_YEAR_WIDTH = CRS_WIDTH * 10,	//width of plan year rectangle to be drawn on screen	//Height of play year rectangle to be drawn on screen
-	PLAN_SEMESTER_HEIGHT = 33,
+	PLAN_SEMESTER_HEIGHT = 33,	//width of plan year rectangle to be drawn on screen
+	PLAN_YEAR_HEIGHT = CRS_HEIGHT * 3 ,	//Height of play year rectangle to be drawn on screen
 };
 
 enum

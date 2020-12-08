@@ -117,7 +117,6 @@ AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, vector <CourseInfo
 			getline(fin, line);
 			s_stream.str(line);
 			subline->clear();
-			/*stringstream s_stream(line);*/
 			getline(s_stream, *subline, ',');
 		}
 		flag = true;
@@ -170,7 +169,6 @@ AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, vector <CourseInfo
 			}
 		}
 		else {
-			//flag = false;
 			break;
 		}
 		s_stream.clear();
@@ -180,72 +178,6 @@ AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, vector <CourseInfo
 	int x = 70;
 	graphicsInfo gInfo{ x , y };
 	year->setGfxInfo(gInfo);
-	
 	return year;
 		
 }
-
-
-/*AcademicYear* AcademicYear::ImportAcademicYear(ifstream& in) {
-	//ifstream infile("CIE.txt");
-	AcademicYear* year;
-	string line;
-	for (size_t i = 0; i < 3; i++) {
-		getline(in, line);
-		stringstream s_stream(line);
-		string subline;
-		getline(s_stream, subline, ',');
-		ImportCatalog catalog;
-		vector <CourseInfo> Info = catalog.readCatalog();
-		if (subline == "Year 1") {
-			getline(s_stream, subline, ',');
-			if (subline == "Summer") {
-				while (s_stream.good()) {
-					getline(s_stream, subline, ',');
-					string title;
-					int Cr;
-					for (size_t j = 0; j < Info.size(); j++) {
-						if (Info[j].Code == subline) {
-							title = Info[j].Title;
-							Cr = Info[j].Credits;
-						}
-					}
-					Course* C = new Course(subline, title, Cr);
-					year->YearCourses[SUMMER].push_back(C);
-				}
-			}
-			else if (subline == "Fall") {
-				while (s_stream.good()) {
-					getline(s_stream, subline, ',');
-					string title;
-					int Cr;
-					for (size_t j = 0; j < Info.size(); j++) {
-						if (Info[j].Code == subline) {
-							title = Info[j].Title;
-							Cr = Info[j].Credits;
-						}
-					}
-					Course* C = new Course(subline, title, Cr);
-					year->YearCourses[FALL].push_back(C);
-				}
-			}
-			else {
-				while (s_stream.good()) {
-					getline(s_stream, subline, ',');
-					string title;
-					int Cr;
-					for (size_t j = 0; j < Info.size(); j++) {
-						if (Info[j].Code == subline) {
-							title = Info[j].Title;
-							Cr = Info[j].Credits;
-						}
-					}
-					Course* C = new Course(subline, title, Cr);
-					year->YearCourses[SPRING].push_back(C);
-				}
-			}
-		}
-
-	}
-	return year;
-}*/

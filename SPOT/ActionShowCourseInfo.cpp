@@ -1,4 +1,5 @@
 #include "ActionShowCourseInfo.h"
+#include "ActionDeleteCourse.h"
 
 ActionShowCourseInfo::ActionShowCourseInfo(Registrar* p) : Action(p)
 {
@@ -14,7 +15,7 @@ bool ActionShowCourseInfo::Execute()
 	{
 		x = actData.x;
 		y = actData.y;
-		Course* pC = coursesloop(x, y, pReg);
+		Course* pC = ActionDeleteCourse(pReg).coursesloop(x, y, pReg);
 		if (pC == nullptr)
 		{
 			pGUI->PrintMsg("no course selected.");

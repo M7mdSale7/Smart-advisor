@@ -24,6 +24,8 @@ enum ActionType
 	ADD_NOTES,
 	DEL_CRS,	//Delete a course from study plan
 	EDIT_CRS,   //CHANGE COURSE CODE
+    REORDER_CRS,   //REORDER COURSE 
+
 	IMPORT,
 	SHOW_INFO,
 	SAVE,		//Save a study plan to file

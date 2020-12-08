@@ -4,7 +4,7 @@
 #include <vector>
 
 
-void ImportOffering::ImportOfferingFile(vector<AcademicYearOfferings>& offered)
+void ImportOffering::ImportOfferingFile(vector<AcademicYearOfferings>* offered)
 {
 	
 	ifstream finput("C:/Users/mogaz/Desktop/Academic offerings.txt"); //modify path.
@@ -47,7 +47,7 @@ void ImportOffering::ImportOfferingFile(vector<AcademicYearOfferings>& offered)
 		counter++;
 
 		if (counter % 3 == 0) {
-			offered.push_back(yearOff);
+			offered->push_back(yearOff);
 			for (int i = 0; i < SEM_CNT; i++) {
 				yearOff.Offerings[i].clear();
 			}

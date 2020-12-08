@@ -35,6 +35,16 @@ int Course::getyear() const
 	return year;
 }
 
+void Course::setyear(int y)
+{
+	year = y;
+}
+
+void Course::setsemester(SEMESTER s)
+{
+	semester = s;
+}
+
 SEMESTER Course::getsemester() const
 {
 	return semester;

@@ -11,7 +11,7 @@ bool ActionImportStudyPlan::Execute()
 	string filename = pGUI->GetSrting();
 	ifstream fin(filename);
 	ImportStudyPlan* x = nullptr;
-	x->StudyPlanImport(fin , pReg);
+	x->StudyPlanImport(fin , pReg);;
 	return true;
 }
 

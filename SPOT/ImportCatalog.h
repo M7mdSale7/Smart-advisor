@@ -7,6 +7,6 @@
 
 class ImportCatalog {
 public:
-	void readCatalog(vector<CourseInfo>&);
+	void readCatalog(vector<CourseInfo>*);
 	CourseInfo clearCourseInfo(CourseInfo &course);
 };

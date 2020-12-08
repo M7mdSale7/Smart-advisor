@@ -43,8 +43,13 @@ struct Rules	//contains all objects for registrations rules
 	int SemMinCredit;		//min no. of credit hours per semester
 	int SemMaxCredit;		//max no. of credit hours per semester
 	int ReqUnivCredits;		//total no. of credits req by Univ courses
+	int ElectiveUnivCredits;	//total no. of university electives credits
 	int ReqTrackCredits;	//total no. of credits req by Track courses
 	int ReqMajorCredits;	//total no. of credits req by Major courses
+	int ElectiveMajorCredits;	//total no. of major electives credits
+	int TotalMajorCredits;		//total no. of major credits
+	int NofConcentrations;		//no. of concentrations
+
 
 	vector<Course_Code> UnivCompulsory;	//Univ Compulsory courses
 	vector<Course_Code> UnivElective;	//Univ Elective courses
@@ -54,6 +59,12 @@ struct Rules	//contains all objects for registrations rules
 
 	vector<Course_Code> MajorCompulsory;//Major Compulsory courses
 	vector<Course_Code> MajorElective;	//Major Elective courses
+
+	vector <int> ConCompulsoryCr;	//concentrations compulsory credits
+	vector <int> ConElectiveCr;		//concentrations elective credits
+
+	vector <vector<Course_Code>> ConCompulsory;		//concentrations compulsory courses
+	vector <vector<Course_Code>> ConElective;		//concentrations compulsory courses
 
 };
 

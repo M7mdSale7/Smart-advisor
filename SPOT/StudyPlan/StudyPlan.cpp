@@ -16,6 +16,7 @@ StudyPlan::StudyPlan()
 	//	year->setGfxInfo(gInfo);
 	//	plan.push_back(year);
 	//}
+	
 }
 
 //adds a course to the study plan in certain year, semester
@@ -31,8 +32,9 @@ bool StudyPlan::AddCourse(Course* pC, int year, SEMESTER sem)
 
 bool StudyPlan::DeleteCourse(Course* pC)
 {
-	//plan[pC->getyear()-1]->DeleteCourse(pC, pC->getsemester());
-	plan[0]->DeleteCourse(pC, FALL);
+	int z = pC->getyear()-1;
+	plan[z]->DeleteCourse(pC, pC->getsemester());
+	//plan[0]->DeleteCourse(pC, FALL);
 	return true;
 }
 
@@ -66,4 +68,9 @@ StudyPlan::~StudyPlan()
 vector<AcademicYear*>* StudyPlan::getSPvector()
 {
 	return &plan;
+}
+
+vector<Notes*>* StudyPlan::getNvector()
+{
+	return &PlanNotees;
 }

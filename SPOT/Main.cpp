@@ -9,30 +9,8 @@ using namespace std;
 
 int main()
 {	
-	/*string tada = "Year ";
-	int x = 0;
-	string Bla = "Year 1";
-	cout << (Bla == tada + to_string(x + 1)) << endl;
-	*/
-	/*ifstream infile("CIE.txt");
-	Registrar* R = new Registrar;
-	ImportStudyPlan bla;
-	bla.StudyPlanImport(infile, R);*/
-
-	/*string s = "Seeeeeeee";
-	string* ptr = &s;
-
-	cout << *ptr << endl;*/
-
 	Registrar Reg;
-	/*ifstream fin("CIE-StudyPlan.txt");
-	ImportStudyPlan().StudyPlanImport(fin, &Reg);*/
-
 	Reg.Run();
 
 	return 0;
 }
-//6 fol
-//3 t3mya
-//3 btats
-//salata + t7eena

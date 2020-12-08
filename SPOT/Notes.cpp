@@ -1,5 +1,6 @@
 #include "Notes.h"
 #include "../SPOT/GUI/GUI.h"
+#include <fstream>
 
 Notes::Notes(string Note)
 {
