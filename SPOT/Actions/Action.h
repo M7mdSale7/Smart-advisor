@@ -5,6 +5,7 @@
 //#include "../GUI/GUI.h"
 //#include "../StudyPlan/StudyPlan.h"
 //#include "../StudyPlan/AcademicYear.h"
+#include <string>
 class Registrar; //forward class declaration
 
 //Base class for all possible actions (abstract class)
@@ -15,6 +16,7 @@ protected:
 
 public:
 	Action(Registrar* p) { pReg = p; }
+	std::string OOPEN(std::string title, std::string check) const;
 
 
 	//Execute action (code depends on action type)

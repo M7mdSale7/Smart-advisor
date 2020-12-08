@@ -7,7 +7,8 @@
 class ActionSavePlan : public Action {
 
 public:
-		ActionSavePlan(Registrar*);
-		bool virtual Execute();
-		virtual ~ActionSavePlan();
+	ActionSavePlan(Registrar*);
+	
+	bool virtual Execute();
+	virtual ~ActionSavePlan();
 };

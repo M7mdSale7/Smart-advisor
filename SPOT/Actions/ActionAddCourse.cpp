@@ -67,19 +67,18 @@ bool ActionAddCourse::Execute()
 		
 		graphicsInfo gInfo{ x, y };
 
-		//TODO: given course code, get course title, crd hours from registrar
+
 		//For now, we will add any dummy values
 		string Title = "Test101";
 		int crd = 0;
 		Course* pC = new Course(code, Title, crd);
 		pC->setGfxInfo(gInfo);
 
-		//TODO: Ask registrar to add course to the year selected by the user
-		//TODO: add the course to the correct year obtained from registrar
+
 
 		//For the seke of demo, we will add the course to the 1st year, 1st semester
 		StudyPlan* pS = pReg->getStudyPlay();
-		//pS->AddCourse(pC, 1, FALL);
+		
 		if (x < (PLAN_YEAR_WIDTH) && x>70 && y < (520+105) && y>(520+70)) {
 
 			pS->AddCourse(pC, 1, FALL);
@@ -163,7 +162,7 @@ bool ActionAddCourse::Execute()
 	}
 
 	
-	//TODO:
+	
 	
 
 	return true;

@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 
+
 ActionSavePlan::ActionSavePlan(Registrar* p):Action(p)
 {
 }
@@ -11,7 +12,7 @@ ActionSavePlan::ActionSavePlan(Registrar* p):Action(p)
 bool ActionSavePlan::Execute()
 {
 	
-	ofstream fout("SavedPlan.txt");
+	ofstream fout(OOPEN("Choose directory to Save Plan", "SAVE"));
 	StudyPlan* plan = pReg->getStudyPlay();
 	vector<AcademicYear*>* years = plan->getSPvector();
 
@@ -30,7 +31,6 @@ bool ActionSavePlan::Execute()
 	}
 	return true;
 }
-
 
 
 

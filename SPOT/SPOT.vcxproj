@@ -119,6 +119,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Action.cpp" />
     <ClCompile Include="ActionAddNotes.cpp" />
     <ClCompile Include="ActionChangeCode.cpp" />
     <ClCompile Include="ActionDeleteCourse.cpp" />
