@@ -95,8 +95,8 @@ void GUI::DrawCourse(const Course* pCrs)
 	if (pCrs->isSelected())
 		pWind->SetPen(HiColor, 2);
 	else
-	pWind->SetPen(DARKRED, 2);
-	pWind->SetBrush(BLACK);
+	pWind->SetPen(BLACK, 2);
+	pWind->SetBrush(ORANGE);
 	graphicsInfo gInfo = pCrs->getGfxInfo();
 	pWind->DrawRectangle(gInfo.x, gInfo.y, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT);
 	pWind->DrawLine(gInfo.x, gInfo.y + CRS_HEIGHT / 2, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT / 2);
@@ -120,7 +120,7 @@ void GUI::DrawNotes(const Notes* pNotes)
 	else
 	{
 		pWind->SetPen(DrawColor, 2);
-		pWind->SetBrush(FillColor);
+		pWind->SetBrush(RED);
 		graphicsInfo gInfo = pNotes->getGfxInfo();
 		pWind->DrawRectangle(gInfo.x, gInfo.y, gInfo.x + NOTES_WIDTH, gInfo.y + NOTES_HEIGHT);
 		int Notes_x = gInfo.x + NOTES_WIDTH * 0.15;
@@ -167,18 +167,18 @@ void GUI::DrawAcademicYear(const AcademicYear* pY)
 	{
 		//Sub Rectengle
 		pWind->SetBrush(BkGrndColor);
-		pWind->SetPen(BLUE, 2);
+		pWind->SetPen(BLACK, 2);
 		pWind->DrawRectangle(gInfo.x, gInfo.y + (((SEM_CNT * 35) / SEM_CNT) * i), gInfo.x + PLAN_YEAR_WIDTH, gInfo.y + ((SEM_CNT * 35) / SEM_CNT) * (i + 1) , FRAME);
 		//Writing Semesters
 		string Semester;
-		pWind->SetBrush(GREEN);
+		pWind->SetBrush(YELLOW);
 		pWind->SetPen(BLACK, 2);
 		pWind->DrawRectangle(gInfo.x - 40, gInfo.y +(((SEM_CNT * 35) / SEM_CNT) * i), gInfo.x + 34, gInfo.y + ((SEM_CNT * 35) / SEM_CNT) * (i + 1));
-		if (i == 0)
+		if (i == 2)
 			Semester = "FALL";
 		else if (i == 1)
 			Semester = "SPRING";
-		else if (i == 2)
+		else if (i == 0)
 			Semester = "SUMMER";
 		pWind->SetFont(35 * 0.5, BOLD, BY_NAME, "Gramound");
 		pWind->SetPen(DARKRED);
@@ -193,11 +193,11 @@ void GUI::DrawAcademicYear(const AcademicYear* pY)
 
 	//Writing Year Num.
 	pWind->SetFont(35, BOLD, BY_NAME, "Gramound");
-	pWind->DrawInteger(gInfo.x - 65, 125, 1);
-	pWind->DrawInteger(gInfo.x - 65, 235, 2);
+	pWind->DrawInteger(gInfo.x - 65, 555, 1);
+	pWind->DrawInteger(gInfo.x - 65, 450, 2);
 	pWind->DrawInteger(gInfo.x - 65, 340, 3);
-	pWind->DrawInteger(gInfo.x - 65, 450, 4);
-	pWind->DrawInteger(gInfo.x - 65, 555, 5);
+	pWind->DrawInteger(gInfo.x - 65, 235, 4);
+	pWind->DrawInteger(gInfo.x - 65, 125, 5);
 
 	/*graphicsInfo gInfo2 = pY->getGfxInfo();
 	pWind->SetPen(LIGHTSEAGREEN, 2);
@@ -208,7 +208,18 @@ void GUI::DrawAcademicYear(const AcademicYear* pY)
 	*Pyear--;
 	pWind->DrawInteger(gInfo2.x - 9, gInfo2.y + PLAN_YEAR_HEIGHT / 2.2, year);*/
 
+	pWind->SetPen(BLACK, 2);
+	pWind->DrawLine(900, 88, 1200, 88, FRAME);
+	pWind->DrawLine(900, 88, 900, 500, FRAME);
+	pWind->DrawLine(1200, 88, 1200, 500, FRAME);
+	pWind->DrawLine(900, 500, 1200, 500, FRAME);
+	pWind->DrawLine(900, 150, 1200, 150, FRAME);
+	pWind->SetFont(20, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(RED, 2);
+	pWind->DrawString(950, 100, "ADD YOUR NOTES HERE");
+
 }
+
 
 
 ////////////////////////    Input functions    ///////////////////

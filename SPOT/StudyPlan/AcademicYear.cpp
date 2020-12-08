@@ -89,8 +89,8 @@ void AcademicYear::DrawMe(GUI* pGUI) const
 		for (auto it = YearCourses[sem].begin(); it != YearCourses[sem].end(); ++it) //keywork auto asks the compilor to deduce the type of the variable from initilization
 		{
 			graphicsInfo gInfo = this->getGfxInfo();
-			int x = gInfo.x + 50 + (CRS_WIDTH + 2.0) * CRS_NUM;
-			int y = gInfo.y + 69 - (((SEM_CNT * 105) / SEM_CNT) * sem);
+			int x = gInfo.x + 34 + (CRS_WIDTH + 3.0) * CRS_NUM;
+			int y = gInfo.y + 71 - (((SEM_CNT * PLAN_SEMESTER_HEIGHT) / SEM_CNT) * sem);
 			graphicsInfo gInfo1{ x, y };
 			(*it)->setGfxInfo(gInfo1);
 			(*it)->DrawMe(pGUI);	//call DrawMe for each course in this semester
@@ -100,7 +100,7 @@ void AcademicYear::DrawMe(GUI* pGUI) const
 
 }
 
-AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, vector <CourseInfo>* Info, string *subline, stringstream& s_stream) {
+AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, vector <CourseInfo>* Info, string *subline, stringstream& s_stream, int j) {
 	AcademicYear* year = new AcademicYear;
 	string line;
 	bool flag = false;
@@ -109,7 +109,7 @@ AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, vector <CourseInfo
 	//getline(fin, line);
 	//stringstream s_stream(line);
 	//string subline;
-	string y = *subline;
+	string yearName = *subline;
 	//getline(s_stream, subline, ',');
 	for (size_t j = 0; j < 4; j++) {
 		if (fin.eof()) break;
@@ -121,7 +121,7 @@ AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, vector <CourseInfo
 			getline(s_stream, *subline, ',');
 		}
 		flag = true;
-		if (*subline == y) {
+		if (*subline == yearName) {
 			getline(s_stream, *subline, ',');
 			if (*subline == "Fall") {
 				while (s_stream.good()) {
@@ -176,6 +176,10 @@ AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, vector <CourseInfo
 		s_stream.clear();
 	}
 
+	int y = 520 - ((SEM_CNT * 35)+3) * j;
+	int x = 70;
+	graphicsInfo gInfo{ x , y };
+	year->setGfxInfo(gInfo);
 	
 	return year;
 		

@@ -28,7 +28,7 @@ public:
 	bool AddCourse(Course*, SEMESTER );
 	bool DeleteCourse(Course*, SEMESTER);
 	list<Course*>* getyearslist();
-	AcademicYear* ImportAcademicYear(ifstream& fin, vector <CourseInfo>* Info, string* subline, stringstream& s_stream);
+	AcademicYear* ImportAcademicYear(ifstream& fin, vector <CourseInfo>* Info, string* subline, stringstream& s_stream, int j);
 	void saveAcademicYear(int year,ofstream&) const;
 	
 

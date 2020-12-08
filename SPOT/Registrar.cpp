@@ -56,14 +56,12 @@ Action* Registrar::CreateRequiredAction()
 	case SHOW_INFO:
 		RequiredAction = new ActionShowCourseInfo(this);
 		break;
-	//case IMPORT:
-	//	RequiredAction = new ActionImportStudyPlan(this);
-	//	break;
+	case IMPORT:
+		RequiredAction = new ActionImportStudyPlan(this);
+		break;
 	case SAVE:
 		RequiredAction = new ActionSavePlan(this);
 		break;
-
-
 
 	//TODO: Add case for each action
 	

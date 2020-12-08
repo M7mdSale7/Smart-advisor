@@ -32,8 +32,12 @@ void ImportStudyPlan::StudyPlanImport(ifstream& fin, Registrar* P) {
 	getline(fin, line);
 	stringstream s_stream(line);
 	getline(s_stream, subline, ',');
+	int x = 70;
+	int y = 0;
+	int j = 0;
 	while (!fin.eof()) {
 		AcademicYear* year = new AcademicYear;
+		
 
 		//string line;
 		//getline(fin, line);
@@ -44,9 +48,8 @@ void ImportStudyPlan::StudyPlanImport(ifstream& fin, Registrar* P) {
 		//string* ptr = &subline;
 		/*year->ImportAcademicYear(fin, Info, ptr, s_stream);*/
 		
-		years->at(i) = year->ImportAcademicYear(fin, Info, ptr, s_stream);
-		i++;
-		
+		years->push_back(year->ImportAcademicYear(fin, Info, ptr, s_stream, j));
+		j++;
 		delete year;
 	}
 }

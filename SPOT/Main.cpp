@@ -25,10 +25,14 @@ int main()
 	cout << *ptr << endl;*/
 
 	Registrar Reg;
-	ifstream fin("CIE-StudyPlan.txt");
-	ImportStudyPlan().StudyPlanImport(fin, &Reg);
+	/*ifstream fin("CIE-StudyPlan.txt");
+	ImportStudyPlan().StudyPlanImport(fin, &Reg);*/
 
 	Reg.Run();
 
 	return 0;
 }
+//6 fol
+//3 t3mya
+//3 btats
+//salata + t7eena
