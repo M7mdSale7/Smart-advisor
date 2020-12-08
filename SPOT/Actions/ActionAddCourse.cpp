@@ -159,7 +159,7 @@ bool ActionAddCourse::Execute()
 		else 
 			pGUI->PrintMsg("Error: Please press in semester area.");
 
-	
+
 	}
 
 	
