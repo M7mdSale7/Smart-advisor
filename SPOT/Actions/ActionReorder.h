@@ -1,6 +1,6 @@
 #pragma once
 #pragma once
-#include "Actions/Action.h"
+#include "../Actions/Action.h"
 //Class responsible for reorder course 
 class ActionReorder :
 	public Action

@@ -1,13 +1,13 @@
 #include "Registrar.h"
 #include "Actions/ActionAddCourse.h"
 #include "ImportOffering.h"
-#include "ActionChangeCode.h"
-#include "ActionAddNotes.h"
-#include "ActionDeleteCourse.h"
-#include "ActionSavePlan.h"
-#include "ActionReorder.h"
-#include "ActionShowCourseInfo.h"
-#include "ActionImportStudyPlan.h"
+#include "../SPOT/Actions/ActionChangeCode.h"
+#include "../SPOT/Actions/ActionAddNotes.h"
+#include "../SPOT/Actions/ActionDeleteCourse.h"
+#include "../SPOT/Actions/ActionSavePlan.h"
+#include "../SPOT/Actions/ActionReorder.h"
+#include "../SPOT/Actions/ActionShowCourseInfo.h"
+#include "../SPOT/Actions/ActionImportStudyPlan.h"
 #include "ImportStudyPlan.h"
 
 Registrar::Registrar()
@@ -87,7 +87,7 @@ bool Registrar::ExecuteAction(Action* pAct)
 void Registrar::Initialization() {
 	ImportCatalog().readCatalog(&RegRules.CourseCatalog);
 	ImportOffering().ImportOfferingFile(&RegRules.OffringsList);
-	pGUI->PrintMsg("Enter your Major: ");
+	pGUI->PrintMsg("Enter your Major: (CIE or SPC or NANENG or ENV or REE) Without .txt ");
 	string Major = pGUI->GetSrting();
 	string line;
 	bool flag = true;

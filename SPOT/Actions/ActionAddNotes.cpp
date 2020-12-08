@@ -1,5 +1,5 @@
 #include "ActionAddNotes.h"
-#include "Registrar.h"
+#include "..//Registrar.h"
 #include <iostream>
 
 ActionAddNotes::ActionAddNotes(Registrar* p) :Action(p)

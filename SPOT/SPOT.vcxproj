@@ -119,14 +119,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ActionAddNotes.cpp" />
-    <ClCompile Include="ActionChangeCode.cpp" />
-    <ClCompile Include="ActionDeleteCourse.cpp" />
-    <ClCompile Include="ActionReorder.cpp" />
-    <ClCompile Include="ActionImportStudyPlan.cpp" />
-    <ClCompile Include="ActionSavePlan.cpp" />
-    <ClCompile Include="ActionShowCourseInfo.cpp" />
     <ClCompile Include="Actions\ActionAddCourse.cpp" />
+    <ClCompile Include="Actions\ActionAddNotes.cpp" />
+    <ClCompile Include="Actions\ActionChangeCode.cpp" />
+    <ClCompile Include="Actions\ActionDeleteCourse.cpp" />
+    <ClCompile Include="Actions\ActionImportStudyPlan.cpp" />
+    <ClCompile Include="Actions\ActionReorder.cpp" />
+    <ClCompile Include="Actions\ActionSavePlan.cpp" />
+    <ClCompile Include="Actions\ActionShowCourseInfo.cpp" />
     <ClCompile Include="functions.cpp" />
     <ClCompile Include="Courses\Course.cpp" />
     <ClCompile Include="GUI\CMUgraphicsLib\CMUgraphics.cpp" />
@@ -176,15 +176,15 @@
     <ClCompile Include="StudyPlan\StudyPlan.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ActionAddNotes.h" />
-    <ClInclude Include="ActionChangeCode.h" />
-    <ClInclude Include="ActionDeleteCourse.h" />
-    <ClInclude Include="ActionReorder.h" />
-    <ClInclude Include="ActionImportStudyPlan.h" />
-    <ClInclude Include="ActionSavePlan.h" />
-    <ClInclude Include="ActionShowCourseInfo.h" />
     <ClInclude Include="Actions\Action.h" />
     <ClInclude Include="Actions\ActionAddCourse.h" />
+    <ClInclude Include="Actions\ActionAddNotes.h" />
+    <ClInclude Include="Actions\ActionChangeCode.h" />
+    <ClInclude Include="Actions\ActionDeleteCourse.h" />
+    <ClInclude Include="Actions\ActionImportStudyPlan.h" />
+    <ClInclude Include="Actions\ActionReorder.h" />
+    <ClInclude Include="Actions\ActionSavePlan.h" />
+    <ClInclude Include="Actions\ActionShowCourseInfo.h" />
     <ClInclude Include="Courses\Course.h" />
     <ClInclude Include="functions.h" />
     <ClInclude Include="GUI\CMUgraphicsLib\CMUgraphics.h" />

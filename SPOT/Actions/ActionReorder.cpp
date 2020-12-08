@@ -1,9 +1,9 @@
 #include "ActionReorder.h"
 #include <iostream>
 #include "ActionDeleteCourse.h"
-#include "Registrar.h"
-#include "Courses//UnivCourse.h"
-#include "../SPOT/GUI/GUI.h"
+#include "..//Registrar.h"
+#include "..//Courses/UnivCourse.h"
+#include "..//GUI/GUI.h"
 
 ActionReorder::ActionReorder(Registrar* p) : Action(p)
 {
