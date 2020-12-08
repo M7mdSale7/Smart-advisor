@@ -2,6 +2,7 @@
 #include "Registrar.h"
 #include <fstream>
 #include <iostream>
+#include <string>
 
 ActionSavePlan::ActionSavePlan(Registrar* p):Action(p)
 {
@@ -9,6 +10,7 @@ ActionSavePlan::ActionSavePlan(Registrar* p):Action(p)
 
 bool ActionSavePlan::Execute()
 {
+	
 	ofstream fout("SavedPlan.txt");
 	StudyPlan* plan = pReg->getStudyPlay();
 	vector<AcademicYear*>* years = plan->getSPvector();
@@ -28,6 +30,10 @@ bool ActionSavePlan::Execute()
 	}
 	return true;
 }
+
+
+
+
 
 ActionSavePlan::~ActionSavePlan()
 {
