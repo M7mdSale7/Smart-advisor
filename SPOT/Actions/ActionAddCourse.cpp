@@ -78,79 +78,81 @@ bool ActionAddCourse::Execute()
 
 		//For the seke of demo, we will add the course to the 1st year, 1st semester
 		StudyPlan* pS = pReg->getStudyPlay();
+
 		
-		if (x < (PLAN_YEAR_WIDTH) && x>70 && y < (520+105) && y>(520+70)) {
+		if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y < (520+105) && y>(520+70)) {
+
 
 			pS->AddCourse(pC, 1, FALL);
 			pC->setyear(1);
 			pC->setsemester(FALL);
 		}
-		else if (x < (PLAN_YEAR_WIDTH) && x>70 && y<(520+70) && y>(520+35)) {
+		else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(520+70) && y>(520+35)) {
 			pS->AddCourse(pC, 1, SPRING);
 			pC->setyear(1);
 			pC->setsemester(SPRING);
 		}
-		else if (x < (PLAN_YEAR_WIDTH) && x>70 && y<(520+35) && y>(520)) {
+		else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(520+35) && y>(520)) {
 			pS->AddCourse(pC, 1, SUMMER);
 			pC->setyear(1);
 			pC->setsemester(SUMMER);
 		}
-		else if (x < (PLAN_YEAR_WIDTH) && x>70 && y<(412+105) && y>(412+70)) {
+		else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(412+105) && y>(412+70)) {
 			pS->AddCourse(pC, 2, FALL);
 			pC->setyear(2);
 			pC->setsemester(FALL);
 		}
-		else if (x < (PLAN_YEAR_WIDTH) && x>70 && y<(412+70) && y>(412+35)) {
+		else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(412+70) && y>(412+35)) {
 			pS->AddCourse(pC, 2, SPRING);
 			pC->setyear(2);
 			pC->setsemester(SPRING);
 		}
-		else if (x < (PLAN_YEAR_WIDTH) && x>70 && y<(412+35) && y>(412)) {
+		else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(412+35) && y>(412)) {
 			pS->AddCourse(pC, 2, SUMMER);
 			pC->setyear(2);
 			pC->setsemester(SUMMER);
 		}
-		else if (x < (PLAN_YEAR_WIDTH) && x>70 && y<(304+105) && y>(307+70)) {
+		else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(304+105) && y>(307+70)) {
 			pS->AddCourse(pC, 3, FALL);
 			pC->setyear(3);
 			pC->setsemester(FALL);
 		}
-		else if (x < (PLAN_YEAR_WIDTH) && x>70 && y<(304+70) && y>(304+35)) {
+		else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(304+70) && y>(304+35)) {
 			pS->AddCourse(pC, 3, SPRING);
 			pC->setyear(3);
 			pC->setsemester(SPRING);
 		}
-		else if (x < (PLAN_YEAR_WIDTH) && x>70 && y<(304+35) && y>(304)) {
+		else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(304+35) && y>(304)) {
 			pS->AddCourse(pC, 3, SUMMER);
 			pC->setyear(3);
 			pC->setsemester(SUMMER);
 		}
-		else if (x < (PLAN_YEAR_WIDTH) && x>70 && y<(196+105) && y>(196+70)) {
+		else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(196+105) && y>(196+70)) {
 			pS->AddCourse(pC, 4, FALL);
 			pC->setyear(4);
 			pC->setsemester(FALL);
 		}
-		else if (x < (PLAN_YEAR_WIDTH) && x>70 && y<(196+70) && y>(196+35)) {
+		else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(196+70) && y>(196+35)) {
 			pS->AddCourse(pC, 4, SPRING);
 			pC->setyear(4);
 			pC->setsemester(SPRING);
 		}
-		else if (x < (PLAN_YEAR_WIDTH) && x>70 && y<(196+35) && y>(196)) {
+		else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(196+35) && y>(196)) {
 			pS->AddCourse(pC, 4, SUMMER);
 			pC->setyear(4);
 			pC->setsemester(SUMMER);
 		}
-		else if (x < (PLAN_YEAR_WIDTH) && x>70 && y<(88+105) && y>(88+70)) {
+		else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(88+105) && y>(88+70)) {
 			pS->AddCourse(pC, 5, FALL);
 			pC->setyear(5);
 			pC->setsemester(FALL);
 		}
-		else if (x < (PLAN_YEAR_WIDTH) && x>70 && y<(88+70) && y>(88+35)) {
+		else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(88+70) && y>(88+35)) {
 			pS->AddCourse(pC, 5, SPRING);
 			pC->setyear(5);
 			pC->setsemester(SPRING);
 		}
-		else if (x < (PLAN_YEAR_WIDTH) && x>70 && y<(88+35) && y>(88)) {
+		else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(88+35) && y>(88)) {
 			pS->AddCourse(pC, 5, SUMMER);
 			pC->setyear(5);
 			pC->setsemester(SUMMER);

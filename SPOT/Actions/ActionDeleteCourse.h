@@ -1,9 +1,8 @@
 #pragma once
-#include "Actions/Action.h"
-#include "Registrar.h"
-#include <iostream>
-#include "Courses//UnivCourse.h"
-#include "../SPOT/GUI/GUI.h"
+#include "..//Actions/Action.h"
+#include "..//Registrar.h"
+#include "..//Courses/UnivCourse.h"
+#include "..//GUI/GUI.h"
 //Class responsible for Deleting course 
 class ActionDeleteCourse :
 	public Action

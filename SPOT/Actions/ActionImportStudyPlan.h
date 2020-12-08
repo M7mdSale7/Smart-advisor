@@ -1,8 +1,8 @@
 #pragma once
-#include "../SPOT/Actions/Action.h"
-#include "../SPOT/StudyPlan/AcademicYear.h"
-#include "../SPOT/StudyPlan/StudyPlan.h"
-#include "ImportStudyPlan.h"
+#include "..//Actions/Action.h"
+#include "..//StudyPlan/AcademicYear.h"
+#include "../StudyPlan/StudyPlan.h"
+#include "../ImportStudyPlan.h"
 class ActionImportStudyPlan : public Action
 {
 public:
