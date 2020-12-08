@@ -17,17 +17,18 @@ class GUI
 		//If you want to change the menu items order, just change the order here
 		ITM_ADD,	//Add a new course
 		ITM_DELETE,     //DELETE A COURSE 
-//<<<<<<< HEAD
 		ITM_ADD_NOTES,
 		ITM_EDITCOURSECODE,
 		ITM_REORDER,  //REORDER COURSE FROM SEMESTER TO ANOTHER
-//=======
 		ITM_SAVE_PLAN,
-//>>>>>>> 2b18021b391db7c43f3494bc599c8748f6d350c5
+		//ITM_LOAD_PLAN,
+							//TODO: Add more items names here
 						//TODO: Add more items names here
    /* ITM_IMPORT,
 	ITM_INFO,*/
 
+		ITM_SHOW_COURSE_INFO,
+		ITM_IMPORT,
 
 		ITM_EXIT,		//Exit item
 

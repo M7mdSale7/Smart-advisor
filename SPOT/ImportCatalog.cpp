@@ -1,8 +1,7 @@
 #include "ImportCatalog.h"
 using namespace std;
 
-vector<CourseInfo> ImportCatalog::readCatalog() {
-	vector<CourseInfo> catalog;
+void ImportCatalog::readCatalog(vector<CourseInfo>* catalog) {
 	CourseInfo c;
 	string Req, token, temp = "";
 	istringstream sstream, sstream2;
@@ -49,12 +48,11 @@ vector<CourseInfo> ImportCatalog::readCatalog() {
 			temp.clear();
 			sstream2.clear();
 		}
-		catalog.push_back(c);
+		catalog->push_back(c);
 		token.clear();
 		sstream.clear();
 		clearCourseInfo(c);
 	}
-	return catalog;
 }
 
 CourseInfo ImportCatalog::clearCourseInfo(CourseInfo &course)
@@ -63,7 +61,7 @@ CourseInfo ImportCatalog::clearCourseInfo(CourseInfo &course)
 	course.Code = "";
 	course.type = "";
 	course.Credits = 0;
-	course.CoReqList.clear();
+	course.PreReqList.clear();
 	course.CoReqList.clear();
 	return course;
 }

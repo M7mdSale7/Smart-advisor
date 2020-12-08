@@ -51,8 +51,14 @@
     <ClCompile Include="ImportCatalog.cpp" />
     <ClCompile Include="StudyPlan\AcademicYear.cpp" />
     <ClCompile Include="StudyPlan\StudyPlan.cpp" />
+    <ClCompile Include="ImportStudyPlan.cpp" />
     <ClCompile Include="ActionChangeCode.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="ActionReorder.cpp" />
+=======
+    <ClCompile Include="ActionShowCourseInfo.cpp" />
+    <ClCompile Include="ActionImportStudyPlan.cpp" />
+>>>>>>> ab5deb3f24971427410012dfd0cbc7984518c39d
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActionAddNotes.h" />
@@ -91,8 +97,14 @@
     <ClInclude Include="Rules.h" />
     <ClInclude Include="StudyPlan\AcademicYear.h" />
     <ClInclude Include="StudyPlan\StudyPlan.h" />
+    <ClInclude Include="ImportStudyPlan.h" />
     <ClInclude Include="ActionChangeCode.h" />
+<<<<<<< HEAD
     <ClInclude Include="ActionReorder.h" />
+=======
+    <ClInclude Include="ActionShowCourseInfo.h" />
+    <ClInclude Include="ActionImportStudyPlan.h" />
+>>>>>>> ab5deb3f24971427410012dfd0cbc7984518c39d
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

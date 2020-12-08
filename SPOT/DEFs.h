@@ -26,6 +26,8 @@ enum ActionType
 	EDIT_CRS,   //CHANGE COURSE CODE
     REORDER_CRS,   //REORDER COURSE 
 
+	IMPORT,
+	SHOW_INFO,
 	SAVE,		//Save a study plan to file
 	LOAD,		//Load a study plan from a file
 

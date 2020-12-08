@@ -4,9 +4,9 @@
 #include <sstream>
 #include "Rules.h"
 
-//Parent class for all import classes
+
 class ImportCatalog {
 public:
-	vector<CourseInfo> readCatalog();
+	void readCatalog(vector<CourseInfo>*);
 	CourseInfo clearCourseInfo(CourseInfo &course);
 };

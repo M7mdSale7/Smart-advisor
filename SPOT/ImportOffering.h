@@ -3,6 +3,5 @@
 
 class ImportOffering {
 public:
-	vector<AcademicYearOfferings> ImportOfferingData();
-	AcademicYearOfferings clearYearOff(AcademicYearOfferings &offeredYear);
+	void ImportOfferingFile(vector<AcademicYearOfferings>*);
 };

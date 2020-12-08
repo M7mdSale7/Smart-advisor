@@ -14,7 +14,7 @@ class StudyPlan:public Drawable
 
 	vector<AcademicYear*> plan;	//plan is a list of academic years
 
-	string PlanNotes;
+	string PlanNotes; 
 	vector<Notes*> PlanNotees;
 public:
 	StudyPlan();
@@ -25,5 +25,6 @@ public:
 	void virtual DrawMe(GUI*) const;
 	virtual ~StudyPlan();
 	vector<AcademicYear*>* getSPvector();
+	vector<Notes*>* getNvector();
 };
 
