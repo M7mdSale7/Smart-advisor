@@ -8,6 +8,7 @@ StudyPlan::StudyPlan()
 	//More year can be added
 	int x = 70;
 	int y = 0;
+
 	for (int i = 0; i < 5; i++)
 	{
 		AcademicYear* year = new AcademicYear;

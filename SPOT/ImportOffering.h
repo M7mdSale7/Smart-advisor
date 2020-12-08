@@ -3,5 +3,5 @@
 
 class ImportOffering {
 public:
-	void ImportOfferingFile(vector<AcademicYearOfferings>&);
+	void ImportOfferingFile(vector<AcademicYearOfferings>*);
 };
