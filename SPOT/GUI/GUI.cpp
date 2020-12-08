@@ -2,6 +2,7 @@
 #include "../Courses/Course.h"
 #include "../StudyPlan/AcademicYear.h"
 #include <sstream>
+#include <string>
 int year = 5;
 int* Pyear = &year;
 GUI::GUI()
@@ -38,6 +39,7 @@ void GUI::CreateMenu() const
 
 	//You can draw the menu icons any way you want.
 
+	
 	//First prepare List of images paths for menu item
 	string MenuItemImages[ITM_CNT];
 	MenuItemImages[ITM_ADD] = "GUI\\Images\\Menu\\Menu_AddCourse.jpg";

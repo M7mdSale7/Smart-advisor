@@ -3,27 +3,28 @@
 #include "GUI/CMUgraphicsLib/CMUgraphics.h"
 #include <iostream>
 
-std::string Action::OOPEN(std::string title, std::string check) const {
-	std::cout << check << endl;
-	char* filter = "Text Documents(.txt) \0. txt\0";
-	HWND owner = NULL;
-	OPENFILENAME ofn;
+std::string Action::OOPEN(std::string T, std::string chk) const {
+	
+	char* ftr = "Text Documents(.txt) \0* .txt\0";
+	HWND onr = NULL;
+	OPENFILENAME opnFN;
 	char fileName[MAX_PATH] = "";
-	ZeroMemory(&ofn, sizeof(ofn));
-	ofn.lStructSize = sizeof(OPENFILENAME);
-	ofn.hwndOwner = owner;
-	ofn.lpstrFilter = filter;
-	ofn.lpstrFile = fileName;
-	ofn.nMaxFile = MAX_PATH;
-	ofn.Flags = OFN_EXPLORER | OFN_FILEMUSTEXIST | OFN_HIDEREADONLY;
-	ofn.lpstrDefExt = "";
-	ofn.lpstrTitle = title.c_str();
+	ZeroMemory(&opnFN, sizeof(opnFN));
+	opnFN.lStructSize = sizeof(OPENFILENAME);
+	opnFN.hwndOwner = onr;
+	opnFN.lpstrFilter = ftr;
+	opnFN.lpstrFile = fileName;
+	opnFN.nMaxFile = MAX_PATH;
+	opnFN.Flags = OFN_EXPLORER | OFN_FILEMUSTEXIST | OFN_HIDEREADONLY;
+	opnFN.lpstrDefExt = "";
+	opnFN.lpstrTitle = T.c_str();
 	string fileNameStr = "";
-	if (check == "SAVE") { 
-		if (GetSaveFileName(&ofn)) fileNameStr = fileName;
+	if (chk == "SAVE") { 
+		if (GetSaveFileName(&opnFN)) fileNameStr = fileName;
 	}
 	else {
-		if (GetOpenFileName(&ofn)) fileNameStr = fileName;
+		if (GetOpenFileName(&opnFN)) fileNameStr = fileName;
 	}
+	
 	return fileNameStr;
 }

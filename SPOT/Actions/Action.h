@@ -16,7 +16,7 @@ protected:
 
 public:
 	Action(Registrar* p) { pReg = p; }
-	std::string OOPEN(std::string title, std::string check) const;
+	std::string OOPEN(std::string T, std::string chk) const;
 
 
 	//Execute action (code depends on action type)
