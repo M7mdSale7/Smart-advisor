@@ -2,12 +2,9 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="functions.cpp" />
-    <ClCompile Include="ImportOffering.cpp" />
-    <ClCompile Include="ImportStudyPlan.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Notes.cpp" />
     <ClCompile Include="Registrar.cpp" />
-    <ClCompile Include="ImportCatalog.cpp" />
     <ClCompile Include="StudyPlan\StudyPlan.cpp" />
     <ClCompile Include="Actions\exit.cpp" />
     <ClCompile Include="StudyPlan\AcademicYear.cpp">
@@ -74,9 +71,6 @@
       <Filter>GUI\CMUgraphicsLib</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\windowinput.cpp">
-      <Filter>GUI\CMUgraphicsLib</Filter>
-    </ClCompile>
-    <ClCompile Include="GUI\CMUgraphicsLib\auxil.cpp">
       <Filter>GUI\CMUgraphicsLib</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\jpeg\jidctfst.c">
@@ -163,13 +157,19 @@
     <ClCompile Include="GUI\CMUgraphicsLib\jpeg\jutils.c">
       <Filter>GUI\CMUgraphicsLib\jpeg</Filter>
     </ClCompile>
+    <ClCompile Include="ImportCatalog.cpp">
+      <Filter>Imports</Filter>
+    </ClCompile>
+    <ClCompile Include="ImportOffering.cpp">
+      <Filter>Imports</Filter>
+    </ClCompile>
+    <ClCompile Include="ImportStudyPlan.cpp">
+      <Filter>Imports</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="functions.h" />
     <ClInclude Include="DEFs.h" />
-    <ClInclude Include="ImportCatalog.h" />
-    <ClInclude Include="ImportOffering.h" />
-    <ClInclude Include="ImportStudyPlan.h" />
     <ClInclude Include="Notes.h" />
     <ClInclude Include="Registrar.h" />
     <ClInclude Include="Rules.h" />
@@ -250,9 +250,6 @@
     <ClInclude Include="GUI\CMUgraphicsLib\windowinput.h">
       <Filter>GUI\CMUgraphicsLib</Filter>
     </ClInclude>
-    <ClInclude Include="GUI\CMUgraphicsLib\auxil.h">
-      <Filter>GUI\CMUgraphicsLib</Filter>
-    </ClInclude>
     <ClInclude Include="GUI\CMUgraphicsLib\jpeg\jconfig.h">
       <Filter>GUI\CMUgraphicsLib\jpeg</Filter>
     </ClInclude>
@@ -283,6 +280,15 @@
     <ClInclude Include="GUI\CMUgraphicsLib\jpeg\jversion.h">
       <Filter>GUI\CMUgraphicsLib\jpeg</Filter>
     </ClInclude>
+    <ClInclude Include="ImportCatalog.h">
+      <Filter>Imports</Filter>
+    </ClInclude>
+    <ClInclude Include="ImportOffering.h">
+      <Filter>Imports</Filter>
+    </ClInclude>
+    <ClInclude Include="ImportStudyPlan.h">
+      <Filter>Imports</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
@@ -306,6 +312,9 @@
     </Filter>
     <Filter Include="GUI\CMUgraphicsLib\jpeg">
       <UniqueIdentifier>{944ebb2b-34eb-49ec-bccb-d208fea1524e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Imports">
+      <UniqueIdentifier>{9758af83-51a3-45a2-839b-764186bf6f78}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -133,7 +133,6 @@
     <ClCompile Include="Courses\UnivCourse.cpp" />
     <ClCompile Include="functions.cpp" />
     <ClCompile Include="Courses\Course.cpp" />
-    <ClCompile Include="GUI\CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="GUI\CMUgraphicsLib\CMUgraphics.cpp" />
     <ClCompile Include="GUI\CMUgraphicsLib\colors.cpp" />
     <ClCompile Include="GUI\CMUgraphicsLib\image.cpp" />
@@ -196,7 +195,6 @@
     <ClInclude Include="Courses\TrackCourse.h" />
     <ClInclude Include="Courses\UnivCourse.h" />
     <ClInclude Include="functions.h" />
-    <ClInclude Include="GUI\CMUgraphicsLib\auxil.h" />
     <ClInclude Include="GUI\CMUgraphicsLib\CMUgraphics.h" />
     <ClInclude Include="GUI\CMUgraphicsLib\colors.h" />
     <ClInclude Include="GUI\CMUgraphicsLib\error.h" />

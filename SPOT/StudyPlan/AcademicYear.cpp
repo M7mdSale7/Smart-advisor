@@ -75,6 +75,21 @@ void AcademicYear::saveAcademicYear(int year, ofstream& fout) const
 	 
 }
 
+bool AcademicYear::checkYearSemCredits(Rules* R) const
+{
+	int semSum;
+	for (int i = 0; i < SEM_CNT; i++)
+	{
+		semSum = 0;
+		for (auto itr : YearCourses[i])
+		{
+			semSum += itr->getCredits();
+		}
+		if (semSum > R->SemMaxCredit || semSum < R->SemMinCredit) return false;
+	}
+	return true;
+}
+
 
 
 void AcademicYear::DrawMe(GUI* pGUI) const
