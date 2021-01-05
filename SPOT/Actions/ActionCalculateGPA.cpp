@@ -14,18 +14,19 @@ bool ActionCalculateGPA::Execute()
 	vector<AcademicYear*>* Plan = pS->getSPvector();
 	pGUI->PrintMsg("Enter the Year you want to calculate the GPA for (Example: 1)(1 is Year1) , if you want CGPA , Enter CGPA");
 	string year = pGUI->GetSrting();
+	//Any Year
 	if(year != "CGPA")
 	{
-	list<Course*>* Courses = Plan->at(stoi(year))->getyearslist();
-	for (int j = 0; j < 3; j++)
+	list<Course*>* Courses = Plan->at(stoi(year))->getyearslist(); //get courses of that year
+	for (int j = 0; j < 3; j++) //for the semesters
 	{
-		for (auto itr : *(Courses + j))
+		for (auto itr : *(Courses + j)) //for each semester
 		{
-			Total += itr->getQpoints();
-			TotalC += itr->getCredits();
+			Total += itr->getQpoints(); //sum of total Qp
+			TotalC += itr->getCredits(); //sum of total Cr
 		}
 	}
-	double GPA = (Total / TotalC);
+	double GPA = (Total / TotalC); //total GPA
 	pGUI->GetUserAction("GPA for year " + year + " Is: " + to_string(GPA));
 	}
 	//CGPA

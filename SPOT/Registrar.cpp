@@ -9,9 +9,9 @@
 #include "../SPOT/Actions/ActionShowCourseInfo.h"
 #include "../SPOT/Actions/ActionImportStudyPlan.h"
 #include "../SPOT/Actions/ActionCalculateGPA.h"
+#include "../SPOT/Actions/ActionMinorDec.h"
 #include "ImportStudyPlan.h"
 #include "Actions/exit.h"
-
 Registrar::Registrar()
 {
 	pGUI = new GUI;	//create interface object
@@ -34,6 +34,11 @@ Rules* Registrar::getRules()
 StudyPlan* Registrar::getStudyPlay() const
 {
 	return pSPlan;
+}
+
+StudyPlan* Registrar::getStudyPlay2() const
+{
+	return pSPlan2;
 }
 
 
@@ -70,6 +75,9 @@ Action* Registrar::CreateRequiredAction()
 		break;
 	case CALC_GPA:
 		RequiredAction = new ActionCalculateGPA(this);
+		break;
+	case MINOR_DEC:
+		RequiredAction = new ActionMinorDec(this);
 		break;
 	case EXIT:
 		RequiredAction = new ActionExit(this);

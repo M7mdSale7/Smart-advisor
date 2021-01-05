@@ -50,6 +50,7 @@ void GUI::CreateMenu() const
 	MenuItemImages[ITM_SAVE_PLAN] = "GUI\\Images\\Menu\\Menu_Save_Plan.jpg";
 	MenuItemImages[ITM_IMPORT] = "GUI\\Images\\Menu\\Menu_Import.jpg";
 	MenuItemImages[ITM_GPA] = "GUI\\Images\\Menu\\GPA.jpg";
+	MenuItemImages[ITM_MINOR] = "GUI\\Images\\Menu\\MinorDec.jpg";
 	MenuItemImages[ITM_EXIT] = "GUI\\Images\\Menu\\Menu_exitt.jpg";
 
 
@@ -282,6 +283,7 @@ ActionData GUI::GetUserAction(string msg) const
 				case ITM_REORDER: return ActionData{ REORDER_CRS };
 				case ITM_IMPORT: return ActionData{ IMPORT };
 				case ITM_GPA: return ActionData{ CALC_GPA };
+				case ITM_MINOR: return ActionData{ MINOR_DEC };
 				case ITM_EXIT: return ActionData{ EXIT };		//Exit
 
 				default: return ActionData{ MENU_BAR };	//A click on empty place in menu bar

@@ -29,7 +29,7 @@ class GUI
 
 		ITM_IMPORT,
 		ITM_GPA,
-
+		ITM_MINOR,
 		ITM_EXIT,		//Exit item
 
 		ITM_CNT			//no. of menu items ==> This should be the last line in this enum

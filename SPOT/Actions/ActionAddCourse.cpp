@@ -9,14 +9,23 @@
 ActionAddCourse::ActionAddCourse(Registrar* p):Action(p)
 {
 }
-void Space(Course_Code& code) {
+
+//void ActionAddCourse::convert(string& s)
+//{
+//	for (int i = 0; i < s.length(); i++)
+//	{
+//		s[i] = toupper(s[i]);
+//	}
+//}
+void ActionAddCourse::Space(Course_Code& code)
+{
 	if (!(code.find(" ") != string::npos)) {
 		Course_Code cout = "";
 		for (int i = 0; i < code.length(); i++)
 		{
 			if (code[i] == '0' || code[i] == '1' || code[i] == '2' || code[i] == '3' || code[i] == '4' ||
 				code[i] == '5' || code[i] == '6' || code[i] == '7' || code[i] == '8' ||
-				code[i] == '9') 
+				code[i] == '9')
 			{
 				if (code[i + 1] != NULL && code[i + 2] != NULL) {
 					cout += ' ';
@@ -33,14 +42,6 @@ void Space(Course_Code& code) {
 		code = cout;
 	}
 }
-//void ActionAddCourse::convert(string& s)
-//{
-//	for (int i = 0; i < s.length(); i++)
-//	{
-//		s[i] = toupper(s[i]);
-//	}
-//}
-
 bool ActionAddCourse::Execute()
 {
 	GUI* pGUI = pReg->getGUI();	
@@ -174,3 +175,4 @@ bool ActionAddCourse::Execute()
 ActionAddCourse::~ActionAddCourse()
 {
 }
+

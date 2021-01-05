@@ -169,6 +169,12 @@
     <ClCompile Include="Actions\ActionCalculateGPA.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\ActionMinorDec.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="ImportStudyPlanForMinor.cpp">
+      <Filter>Imports</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="functions.h" />
@@ -294,6 +300,12 @@
     </ClInclude>
     <ClInclude Include="Actions\ActionCalculateGPA.h">
       <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionMinorDec.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="ImportStudyPlanForMinor.h">
+      <Filter>Imports</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -125,6 +125,7 @@
     <ClCompile Include="Actions\ActionChangeCode.cpp" />
     <ClCompile Include="Actions\ActionDeleteCourse.cpp" />
     <ClCompile Include="Actions\ActionImportStudyPlan.cpp" />
+    <ClCompile Include="Actions\ActionMinorDec.cpp" />
     <ClCompile Include="Actions\ActionReorder.cpp" />
     <ClCompile Include="Actions\ActionSavePlan.cpp" />
     <ClCompile Include="Actions\ActionShowCourseInfo.cpp" />
@@ -173,6 +174,7 @@
     <ClCompile Include="GUI\GUI.cpp" />
     <ClCompile Include="ImportOffering.cpp" />
     <ClCompile Include="ImportStudyPlan.cpp" />
+    <ClCompile Include="ImportStudyPlanForMinor.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Notes.cpp" />
     <ClCompile Include="Registrar.cpp" />
@@ -188,6 +190,7 @@
     <ClInclude Include="Actions\ActionChangeCode.h" />
     <ClInclude Include="Actions\ActionDeleteCourse.h" />
     <ClInclude Include="Actions\ActionImportStudyPlan.h" />
+    <ClInclude Include="Actions\ActionMinorDec.h" />
     <ClInclude Include="Actions\ActionReorder.h" />
     <ClInclude Include="Actions\ActionSavePlan.h" />
     <ClInclude Include="Actions\ActionShowCourseInfo.h" />
@@ -222,6 +225,7 @@
     <ClInclude Include="ImportCatalog.h" />
     <ClInclude Include="ImportOffering.h" />
     <ClInclude Include="ImportStudyPlan.h" />
+    <ClInclude Include="ImportStudyPlanForMinor.h" />
     <ClInclude Include="Notes.h" />
     <ClInclude Include="Registrar.h" />
     <ClInclude Include="Rules.h" />
