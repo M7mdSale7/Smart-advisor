@@ -24,7 +24,7 @@ enum ActionType
 	ADD_NOTES,
 	DEL_CRS,	//Delete a course from study plan
 	EDIT_CRS,   //CHANGE COURSE CODE
-    REORDER_CRS,   //REORDER COURSE 
+	REORDER_CRS,   //REORDER COURSE 
 
 	IMPORT,
 	SHOW_INFO,
@@ -33,7 +33,7 @@ enum ActionType
 
 	UNDO,		//Undo the last Action preformed
 	REDO,		//Redo the last Action canceled
-
+	CALC_GPA,
 	EXIT,		//Exit the application
 
 	STATUS_BAR,	//A click on the status bar

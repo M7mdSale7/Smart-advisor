@@ -8,6 +8,7 @@
 #include "../SPOT/Actions/ActionReorder.h"
 #include "../SPOT/Actions/ActionShowCourseInfo.h"
 #include "../SPOT/Actions/ActionImportStudyPlan.h"
+#include "../SPOT/Actions/ActionCalculateGPA.h"
 #include "ImportStudyPlan.h"
 #include "Actions/exit.h"
 
@@ -66,6 +67,9 @@ Action* Registrar::CreateRequiredAction()
 		break;
 	case SAVE:
 		RequiredAction = new ActionSavePlan(this);
+		break;
+	case CALC_GPA:
+		RequiredAction = new ActionCalculateGPA(this);
 		break;
 	case EXIT:
 		RequiredAction = new ActionExit(this);

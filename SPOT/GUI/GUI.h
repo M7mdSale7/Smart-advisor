@@ -28,6 +28,7 @@ class GUI
 	ITM_INFO,*/
 
 		ITM_IMPORT,
+		ITM_GPA,
 
 		ITM_EXIT,		//Exit item
 
