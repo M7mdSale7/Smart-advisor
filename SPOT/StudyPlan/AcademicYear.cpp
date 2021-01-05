@@ -119,13 +119,7 @@ AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, vector <CourseInfo
 	AcademicYear* year = new AcademicYear;
 	string line;
 	bool flag = false;
-	//ImportCatalog catalog;
-	//vector <CourseInfo> Info = catalog.readCatalog();//pass as argument
-	//getline(fin, line);
-	//stringstream s_stream(line);
-	//string subline;
 	string yearName = *subline;
-	//getline(s_stream, subline, ',');
 	for (size_t j = 0; j < 4; j++) {
 		if (fin.eof()) break;
 		if (flag) {

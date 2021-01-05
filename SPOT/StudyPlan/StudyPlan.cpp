@@ -83,3 +83,9 @@ bool StudyPlan::CreditsCheck(Rules* R) const
 	}
 	return true;
 }
+
+void StudyPlan::checkPlan() const
+{
+	//after building all checks functions, put here if else statements
+	//and show message in case of each warning or error.
+}

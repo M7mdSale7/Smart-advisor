@@ -99,7 +99,7 @@ void Registrar::Initialization() {
 	ifstream fin;
 	while (flag) {
 		if (Major == "CIE") {
-			infile.open("MajorsData.txt");//MajorsData.txt is a trial file for testing because no files for majors' rules has been shared with us
+			infile.open("majors requirements/CIE-Requirements.txt");//MajorsData.txt is a trial file for testing because no files for majors' rules has been shared with us
 			fin.open("CIE.txt");
 			flag = false;
 		}

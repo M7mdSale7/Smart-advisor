@@ -28,5 +28,6 @@ public:
 	vector<AcademicYear*>* getSPvector();
 	vector<Notes*>* getNvector();
 	bool CreditsCheck(Rules*) const;
+	void checkPlan() const;
 };
 
