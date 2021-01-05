@@ -62,6 +62,28 @@ Course* Course::getptr()
 
 }
 
+string Course::getPreq()
+{
+	string pre;
+	for (auto itr : PreReq)
+	{
+		pre += itr;
+		pre += " ";
+	}
+	return pre;
+}
+
+string Course::getCoreq()
+{
+	string co;
+	for (auto itr : CoReq)
+	{
+		co += itr;
+		co += " ";
+	}
+	return co;
+}
+
 void Course::DrawMe(GUI* pG) const
 {
 	pG->DrawCourse(this);

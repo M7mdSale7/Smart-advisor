@@ -58,8 +58,8 @@ Action* Registrar::CreateRequiredAction()
     case REORDER_CRS:
 		RequiredAction = new ActionReorder(this);
 		break;
-	case SHOW_INFO:
-		RequiredAction = new ActionShowCourseInfo(this);
+	case DRAW_AREA:
+		RequiredAction = new ActionShowCourseInfo(this , actData.x , actData.y);
 		break;
 	case IMPORT:
 		RequiredAction = new ActionImportStudyPlan(this);

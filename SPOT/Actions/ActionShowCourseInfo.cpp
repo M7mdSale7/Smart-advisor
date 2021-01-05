@@ -1,46 +1,34 @@
 #include "ActionShowCourseInfo.h"
 #include "ActionDeleteCourse.h"
-
-ActionShowCourseInfo::ActionShowCourseInfo(Registrar* p) : Action(p)
+int nx;
+int ny;
+ActionShowCourseInfo::ActionShowCourseInfo(Registrar* p , int x , int y) : Action(p)
 {
-
+	nx = x;
+	ny = y;
 }
 
 bool ActionShowCourseInfo::Execute()
 {
 	GUI* pGUI = pReg->getGUI();
-	ActionData actData = pGUI->GetUserAction("Show Course Information: Click on the course you want to show it's info in the status bar");
-	int x, y;
-	if (actData.actType == DRAW_AREA)	//user clicked inside drawing area
-	{
-		x = actData.x;
-		y = actData.y;
-		Course* pC = ActionDeleteCourse(pReg).coursesloop(x, y, pReg);
+		Course* pC = ActionDeleteCourse(pReg).coursesloop(nx, ny, pReg);
 		if (pC == nullptr)
 		{
-			pGUI->PrintMsg("no course selected.");
+			pGUI->GetUserAction("No Course Selected, please click anywhere to dismiss");
 		}
 		else
 		{
-			string code;
-			string title;
-			int credits;
-			string type;
-			Rules* r = pReg->getRules();
-			for (int i = 0; i < r->CourseCatalog.size() ; i++)
-			{
-				 code = r->CourseCatalog.at(i).Code;
-				title = r->CourseCatalog.at(i).Title;
-				credits = r->CourseCatalog.at(i).Credits;
-				type = r->CourseCatalog.at(i).type;
-
-			}
-			//SHOWING THE COURSE INFO IS RELATED TO THE FILE
-			//WAITING FOR SENDING THE COURSE CATALOG TXT FILE
+			pC->setSelected(true);
+			pReg->UpdateInterface();
+			
+			pReg->getGUI()->GetUserAction("Title: " + pC->getTitle()
+				+ ", Credits: " + to_string(pC->getCredits())
+				+ "Prerequisite: " + pC->getPreq() + "Corequisite " + pC->getCoreq() +" .Please click anywhere to deselect.");
+			pC->setSelected(false);
 		}
+		return true;
 	}
-	return true;
-}
+
 ActionShowCourseInfo::~ActionShowCourseInfo()
 {
 }

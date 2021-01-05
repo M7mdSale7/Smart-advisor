@@ -27,7 +27,6 @@ class GUI
    /* ITM_IMPORT,
 	ITM_INFO,*/
 
-		ITM_SHOW_COURSE_INFO,
 		ITM_IMPORT,
 
 		ITM_EXIT,		//Exit item

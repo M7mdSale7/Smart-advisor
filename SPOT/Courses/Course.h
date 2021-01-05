@@ -30,7 +30,8 @@ public:
 	SEMESTER getsemester() const;
 	void saveCourse(ofstream& ) const;
 	Course* getptr();
-
+	string getPreq();
+	string getCoreq();
 
 	void DrawMe(GUI*) const;
 	virtual ~Course();

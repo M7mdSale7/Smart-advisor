@@ -9,6 +9,13 @@
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
+    <NestedTypes>
+      <Enum Name="GUI::MENU_ITEM" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>GUI\GUI.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
     <TypeIdentifier>
       <HashCode>CgABAIBAAAQQQAAAJAAAEAAAhBAIAAgGAABEFAgAgHA=</HashCode>
       <FileName>GUI\GUI.h</FileName>
@@ -45,7 +52,7 @@
       <Method Name="Action" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAQAAAAACAAAAEAAAAAAAAAAAAAAAAQ=</HashCode>
+      <HashCode>AAAAIAAAAAAAAAQAAAAACAAAAEAAAAAAAAAAAAAAAAQ=</HashCode>
       <FileName>Actions\Action.h</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -80,7 +87,7 @@
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>BAAAAUAAAAAAAgACAAwQBEAABAEAAAAAAAAAAAAIAAA=</HashCode>
+      <HashCode>BQAAAUAAAAIAAgAGAAwQBEAABAEAAAAAABQAIAAIAAA=</HashCode>
       <FileName>StudyPlan\StudyPlan.h</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -117,7 +124,7 @@
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AEAQAAAAAEAAQAAAQAAAAAAAQAAAAAAABAAAABAIAAY=</HashCode>
+      <HashCode>AEAQAAAACEAAQAAAQAAAAAAAQAAAAAAABAAAABCIAAY=</HashCode>
       <FileName>Registrar.h</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -149,7 +156,7 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>CIBAAQAAAAAAAECAAIAAAAAAIAABAEAAAAAAAIAAAAA=</HashCode>
+      <HashCode>CIBEIQAAAAAAAECAgIAAACAEIAABAFAARABACIAAAAA=</HashCode>
       <FileName>Courses\Course.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -163,7 +170,7 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>BAEAAQAAAAAAAgABAIQQBEAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>BAEAAwAAAAAAAgABAIQQBEAAJAABAAAQAAAAIAAAAAA=</HashCode>
       <FileName>StudyPlan\AcademicYear.h</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -193,7 +200,7 @@
       <Field Name="UnivElective" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAABAhEAAABIAIQAAABAgAAIACAAAA=</HashCode>
+      <HashCode>AAgCBAACAIAAAAAABAxEAAABIAIQIAABAgIAIACAAAA=</HashCode>
       <FileName>Rules.h</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
