@@ -11,7 +11,7 @@ class Registrar
 	GUI *pGUI;	//pointer to GUI 
 	Rules RegRules;	//Registration rules
 	StudyPlan *pSPlan;
-	StudyPlan* pSPlan2;
+	StudyPlan *pSPlan2;
 
 public:
 	Registrar();

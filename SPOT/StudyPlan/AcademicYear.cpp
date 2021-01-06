@@ -140,6 +140,7 @@ AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, vector <CourseInfo
 						if (Info->at(k).Code == *subline) {
 							title = Info->at(k).Title;
 							Cr = Info->at(k).Credits;
+							break;
 						}
 					}
 					Course* C = new Course(*subline, title, Cr);
@@ -155,6 +156,7 @@ AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, vector <CourseInfo
 						if (Info->at(k).Code == *subline) {
 							title = Info->at(k).Title;
 							Cr = Info->at(k).Credits;
+							break;
 						}
 					}
 					Course* C = new Course(*subline, title, Cr);
@@ -170,6 +172,7 @@ AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, vector <CourseInfo
 						if (Info->at(k).Code == *subline) {
 							title = Info->at(k).Title;
 							Cr = Info->at(k).Credits;
+							break;
 						}
 					}
 					Course* C = new Course(*subline, title, Cr);

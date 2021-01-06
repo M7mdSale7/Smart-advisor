@@ -174,7 +174,6 @@
     <ClCompile Include="GUI\GUI.cpp" />
     <ClCompile Include="ImportOffering.cpp" />
     <ClCompile Include="ImportStudyPlan.cpp" />
-    <ClCompile Include="ImportStudyPlanForMinor.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Notes.cpp" />
     <ClCompile Include="Registrar.cpp" />
@@ -225,7 +224,6 @@
     <ClInclude Include="ImportCatalog.h" />
     <ClInclude Include="ImportOffering.h" />
     <ClInclude Include="ImportStudyPlan.h" />
-    <ClInclude Include="ImportStudyPlanForMinor.h" />
     <ClInclude Include="Notes.h" />
     <ClInclude Include="Registrar.h" />
     <ClInclude Include="Rules.h" />

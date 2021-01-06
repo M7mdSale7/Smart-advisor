@@ -4,14 +4,16 @@
 #include "../DEFs.h"
 #include "../StudyPlan/AcademicYear.h"
 #include "../StudyPlan/StudyPlan.h"
-#include "../ImportStudyPlanForMinor.h"
 #include "../ImportStudyPlan.h"
 #include <algorithm>
+#include <fstream>
+#include "../Rules.h"
 using namespace std;
 
 int ActionMinorDec::Num = 0;
 //Minor Type
 string MinorType;
+vector<Course_Code> Minor;
 ActionMinorDec::ActionMinorDec(Registrar* p) : Action(p)
 {
 }
@@ -20,98 +22,144 @@ bool ActionMinorDec::Execute()
 {
 	GUI* pGUI = pReg->getGUI(); //Pointer to GUI
 	//Taking Input
-	if (Num == 0) //First time to try to enter your Minor
+	if (Num == 0) //First course to be added correctly so we are taking the program of minor
 	{
-		pGUI->PrintMsg("Enter Your Minor Name (CIE or SPC ... )");
+		pGUI->PrintMsg("Enter Your Minor Name (CIE or SPC ... )"); //Program of minor
 		MinorType = pGUI->GetSrting();
-		//Get the study plan of the choosen major to minor
-
-		//case SPC
-		//if (MinorType == "SPC")
-		//{
-		//	ImportStudyPlanForMinor* x = nullptr;
-		//	ifstream filename("SPC.txt");
-		//	x->StudyPlanImportMinor(filename, pReg);
-		//}
 	}
-
-
-
-	pGUI->PrintMsg("Add Course to plan: Enter course Code(e.g. CIE202):");
-	Course_Code code = pGUI->GetSrting();
-	transform(code.begin(), code.end(), code.begin(), toupper);
-	ActionAddCourse(pReg).Space(code);
-
-	//Check if the course is in The current Study Plan
+	//Getting Elective courses to check and compulsory courses to fill
 	StudyPlan* pS = pReg->getStudyPlay();
-	vector<AcademicYear*>* Plan = pS->getSPvector(); //The whole study plan
-	
-	bool flag = false;
-	bool flag2 = false;
-	for (int i = 0; i < Plan->size(); i++)
+	Rules* R = pReg->getRules();
+	vector<Course_Code>* MinorComp = &R->MinorCompulsory; //Getting the list of minor compulsory
+	vector<Course_Code>* Elective = &R->TrackElective;
+
+	while (Minor.size() != 5) //5 courses in minor
 	{
-		list<Course*>* Courses = Plan->at(i)->getyearslist();
-		for (int j = 0; j < 3; j++)
+		pGUI->PrintMsg("Add course number " + to_string((Num + 1)) + " To your plan");
+		Course_Code code = pGUI->GetSrting();
+		transform(code.begin(), code.end(), code.begin(), toupper); //Make Sure The course code is upper case
+		ActionAddCourse(pReg).Space(code); //Make sure there is a space between letters and numbers
+
+		//Check if the course is in The current Study Plan
+		StudyPlan* pS = pReg->getStudyPlay();
+		vector<AcademicYear*>* Plan = pS->getSPvector(); //The whole study plan
+
+		bool flag = false; //Checking Flag for if the course is in the current study plan
+		bool flag2 = false; //Checking flag for if the course is in the program minor study plan
+		for (int i = 0; i < Plan->size(); i++)
 		{
+			list<Course*>* Courses = Plan->at(i)->getyearslist();
 			if (flag == true) //Check
 			{
 				break;
 			}
-			for (auto itr : *(Courses + j))
-			{
-				string Crs = itr->getCode(); //course code from plan ( we are looping on each course )
-				if (Crs == code)
-				{
-					flag = true;
-					break;
-				}
-			}
-		}
-	}
-
-	if (flag == true)
-	{
-		pGUI->GetUserAction("You cannot take such course in your minor, this course is already in your study plan");
-	}
-	else
-	{
-		Num++;
-		//Checking if the course of minor in the plan of the program
-		
-		vector<AcademicYear*>* Plan2 = pS->getSPvector2();
-		for (int i = 0; i < Plan2->size(); i++)
-		{
-			if (flag2 == true)
-			{
-				break;
-			}
-			list<Course*>* Courses = Plan2->at(i)->getyearslist();
 			for (int j = 0; j < 3; j++)
 			{
 				for (auto itr : *(Courses + j))
 				{
-					if (code == itr->getCode())
+					string Crs = itr->getCode(); //course code from plan ( we are looping on each course )
+					if (Crs == code)
 					{
-						flag2 = true;
+						flag = true;
 						break;
 					}
 				}
 			}
 		}
-	}
 
-	if (flag2 && !flag)
-	{
-		pGUI->GetUserAction("YAAAAAAAAAAAAAAAAAAAAAAAY");
-	}
+		//checking if the course is in the elective track courses list
+		bool flag4 = true; //flag check for if the course is already in the elective courses 
+		for (int i = 0; i < Elective->size(); i++)
+		{
+			if (Elective->at(i) == code)
+			{
+				flag4 = false;
+				break;
+			}
+		}
 
-	//Creating list of courses for minor courses
-	if (Num == 5)
-	{
-		pGUI->GetUserAction("Great, You have now made a minor");
+		//Checking if the course is in the given program plan to minor
+		int offset;
+		string line;
+		ifstream Myfile;
+		Myfile.open(MinorType + ".txt"); //Open file of the program minor
+		if (Myfile.is_open())
+		{
+			while (!Myfile.eof())
+			{
+				getline(Myfile, line);
+				if ((offset = line.find(code, 0)) != string::npos)
+				{
+					Myfile.close();
+					flag2 = true;
+				}
+
+			}
+		}
+
+
+		bool flag3 = true; //checking if the user has entered the same course code twice
+		for (int i = 0; i < Minor.size(); i++)
+		{
+			if (code == Minor.at(i))
+			{
+				flag3 = false;
+				break;
+			}
+		}
+
+		if (flag2 && !flag && flag3 && flag4) //if there is no issue with adding the course
+		{
+			pGUI->PrintMsg("Course Added To Minor , Press any key to continue");
+			pGUI->GetSrting(); //waiting for the user to press enter
+			Minor.push_back(code); //adding the course in the vector of minor , we need it to reach 5 to return the function
+			MinorComp->push_back(code); //Adding the course to the minor comp list in rules
+			Num++; //increment the static variable num that the user can see how many courses he has added
+		}
+
+		//Error Cases Display
+		else if (flag && !flag2)
+			pGUI->PrintMsg("The course " + code + " Cannot be added " + " Becuase its not in " + MinorType + " Program plan " + " and already in your major plan ");
+		else if (flag && !flag3)
+			pGUI->PrintMsg("The course " + code + " Cannot be added " + " Becuase its not in " + " Your Major Plan " + " and you have also entered this course code once");
+		else if (!flag2 && !flag3)
+			pGUI->PrintMsg("The course " + code + " Cannot be added " + " Becuase its not in " + "The program minor plan" + " You have also entered this code twice");
+		else if (flag)
+			pGUI->PrintMsg("The course " + code + " Cannot be added " + " Becuase its in " + "Your Major Plan");
+		else if (!flag2)
+			pGUI->PrintMsg("The course " + code + " Cannot be added " + " Becuase its not in " + "Program of minor plan");
+		else if (!flag3)
+			pGUI->PrintMsg("The course " + code + " Cannot be added " + " Becuase its already entered once");
+		else if (!flag4)
+			pGUI->PrintMsg("The course " + code + " Cannot be added " + " Becuase its in you elective lsit");
+		else if (flag && !flag2 && !flag3)
+			pGUI->PrintMsg("The course " + code + " Cannot be added " + " Becuase its not in " + MinorType + " Program plan " + " and already in your major plan " + "And Already entered once");
+
+
+		pGUI->GetSrting(); //waiting for user to see the msg and press enter
+
+		//Check if minor is complete
+		if (Minor.size() == 5)
+		{
+			pGUI->GetUserAction("Great, You have now made a minor in " + MinorType);
+			break; //exit the while loob (if its not included the "Do you want to continue will display)
+		}
+
+		//asking the user if he wants to continue adding courses regardless he has filled the 5 courses or not
+		pGUI->PrintMsg("Do You Want To continue adding other courses to your minor? (if Yes enter Yes (case sensitave))");
+		string will = pGUI->GetSrting(); //waiting for the users input
+		if (will == "Yes" && Minor.size() != 5)
+		{
+			continue; //continue in your loob
+		}
+		else
+			break;
 	}
 	return true;
 }
+
+
+
 
 ActionMinorDec::~ActionMinorDec()
 {

@@ -14,7 +14,6 @@ class StudyPlan:public Drawable
 		TotalMinorCredits=0;
 
 	vector<AcademicYear*> plan;	//plan is a list of academic years
-	vector<AcademicYear*> plan2;
 	string PlanNotes; 
 	vector<Notes*> PlanNotees;
 public:
@@ -26,7 +25,6 @@ public:
 	void virtual DrawMe(GUI*) const;
 	virtual ~StudyPlan();
 	vector<AcademicYear*>* getSPvector();
-	vector<AcademicYear*>* getSPvector2();
 	vector<Notes*>* getNvector();
 	bool CreditsCheck(Rules*) const;
 	void checkPlan() const;
