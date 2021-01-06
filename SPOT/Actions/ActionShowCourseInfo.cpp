@@ -1,4 +1,5 @@
 #include "ActionShowCourseInfo.h"
+#include "ActionDeleteCourse.h"
 
 ActionShowCourseInfo::ActionShowCourseInfo(Registrar* p) : Action(p)
 {
@@ -14,16 +15,28 @@ bool ActionShowCourseInfo::Execute()
 	{
 		x = actData.x;
 		y = actData.y;
-		Course* pC = coursesloop(x, y, pReg);
+		Course* pC = ActionDeleteCourse(pReg).coursesloop(x, y, pReg);
 		if (pC == nullptr)
 		{
 			pGUI->PrintMsg("no course selected.");
 		}
 		else
 		{
-		//Implement the code for showing the course information
-		//we have pointer to the course the user clicked on , we just need to print it's info on the status bar
-		//waiting till Saleh import course information
+			string code;
+			string title;
+			int credits;
+			string type;
+			Rules* r = pReg->getRules();
+			for (int i = 0; i < r->CourseCatalog.size() ; i++)
+			{
+				 code = r->CourseCatalog.at(i).Code;
+				title = r->CourseCatalog.at(i).Title;
+				credits = r->CourseCatalog.at(i).Credits;
+				type = r->CourseCatalog.at(i).type;
+
+			}
+			//SHOWING THE COURSE INFO IS RELATED TO THE FILE
+			//WAITING FOR SENDING THE COURSE CATALOG TXT FILE
 		}
 	}
 	return true;
