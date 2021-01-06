@@ -54,6 +54,8 @@ struct Rules	//contains all objects for registrations rules
 	vector<Course_Code> UnivCompulsory;	//Univ Compulsory courses
 	vector<Course_Code> UnivElective;	//Univ Elective courses
 
+	vector<Course_Code> MinorCompulsory; //And this should add a list of compulsory courses
+
 	vector<Course_Code> TrackCompulsory;//Track Compulsory courses
 	vector<Course_Code> TrackElective;	//Track Elective courses (added for future)
 

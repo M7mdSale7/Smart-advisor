@@ -102,8 +102,8 @@ void AcademicYear::DrawMe(GUI* pGUI) const
 		for (auto it = YearCourses[sem].begin(); it != YearCourses[sem].end(); ++it) //keywork auto asks the compilor to deduce the type of the variable from initilization
 		{
 			graphicsInfo gInfo = this->getGfxInfo();
-			int x = gInfo.x + 34 + (CRS_WIDTH + 3.0) * CRS_NUM;
-			int y = gInfo.y + 71 - (((SEM_CNT * PLAN_SEMESTER_HEIGHT) / SEM_CNT) * sem);
+			int x = gInfo.x + 36 + (CRS_WIDTH + 27) * CRS_NUM;
+			int y = gInfo.y + 73 - (((SEM_CNT * PLAN_SEMESTER_HEIGHT) / SEM_CNT) * sem);
 			graphicsInfo gInfo1{ x, y };
 			(*it)->setGfxInfo(gInfo1);
 			(*it)->DrawMe(pGUI);	//call DrawMe for each course in this semester

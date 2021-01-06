@@ -9,6 +9,13 @@
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
+    <NestedTypes>
+      <Enum Name="GUI::MENU_ITEM" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>GUI\GUI.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
     <TypeIdentifier>
       <HashCode>CgABAIBAAAQQQAAAJAAAEAAAhBAIAAgGAABEFAgAgHA=</HashCode>
       <FileName>GUI\GUI.h</FileName>

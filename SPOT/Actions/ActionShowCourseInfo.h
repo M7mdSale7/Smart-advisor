@@ -9,7 +9,9 @@ class ActionShowCourseInfo :
 	public Action
 {
 public:
-	ActionShowCourseInfo(Registrar*);
+	ActionShowCourseInfo(Registrar* , int x , int y);
+	int getX();
+	int getY();
 	bool virtual Execute();
 	virtual ~ActionShowCourseInfo();
 };

@@ -8,9 +8,10 @@
 #include "../SPOT/Actions/ActionReorder.h"
 #include "../SPOT/Actions/ActionShowCourseInfo.h"
 #include "../SPOT/Actions/ActionImportStudyPlan.h"
+#include "../SPOT/Actions/ActionCalculateGPA.h"
+#include "../SPOT/Actions/ActionMinorDec.h"
 #include "ImportStudyPlan.h"
 #include "Actions/exit.h"
-
 Registrar::Registrar()
 {
 	pGUI = new GUI;	//create interface object
@@ -33,6 +34,11 @@ Rules* Registrar::getRules()
 StudyPlan* Registrar::getStudyPlay() const
 {
 	return pSPlan;
+}
+
+StudyPlan* Registrar::getStudyPlay2() const
+{
+	return pSPlan2;
 }
 
 
@@ -58,8 +64,8 @@ Action* Registrar::CreateRequiredAction()
     case REORDER_CRS: //reorder_course action
 		RequiredAction = new ActionReorder(this);
 		break;
-	case SHOW_INFO: //show_info action
-		RequiredAction = new ActionShowCourseInfo(this);
+	case DRAW_AREA:
+		RequiredAction = new ActionShowCourseInfo(this , actData.x , actData.y);
 		break;
 	case IMPORT: //import_study_plan action
 		RequiredAction = new ActionImportStudyPlan(this);
@@ -67,7 +73,13 @@ Action* Registrar::CreateRequiredAction()
 	case SAVE: //save_study_plan action
 		RequiredAction = new ActionSavePlan(this);
 		break;
-	case EXIT: ///Exit_program action
+	case CALC_GPA:
+		RequiredAction = new ActionCalculateGPA(this);
+		break;
+	case MINOR_DEC:
+		RequiredAction = new ActionMinorDec(this);
+		break;
+	case EXIT:
 		RequiredAction = new ActionExit(this);
 		break;
 	

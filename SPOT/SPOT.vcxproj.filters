@@ -162,8 +162,10 @@
     <ClCompile Include="ImportStudyPlan.cpp">
       <Filter>Imports</Filter>
     </ClCompile>
-    <ClCompile Include="StudyPlan\AcademicYear.cpp" />
-    <ClCompile Include="Actions\exit.cpp">
+    <ClCompile Include="Actions\ActionCalculateGPA.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ActionMinorDec.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
   </ItemGroup>
@@ -285,8 +287,10 @@
     <ClInclude Include="ImportStudyPlan.h">
       <Filter>Imports</Filter>
     </ClInclude>
-    <ClInclude Include="StudyPlan\AcademicYear.h" />
-    <ClInclude Include="Actions\exit.h">
+    <ClInclude Include="Actions\ActionCalculateGPA.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionMinorDec.h">
       <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>

@@ -19,6 +19,8 @@ class Course : public Drawable
 	bool Done = 0;		//Done or not yet?
 	vector<Course_Code> PreReq;	//vector of prerequisites
 	vector<Course_Code> CoReq;	//vector of prerequisites
+	string Grade;
+	double qPoints;
 public:
 	Course();
 	Course(Course_Code r_code,string r_title, int crd);
@@ -31,8 +33,13 @@ public:
 	SEMESTER getsemester() const;
 	void saveCourse(ofstream& ) const;
 	Course* getptr();
+	string getPreq();
+	string getCoreq();
 	void FillData(Rules* R, int index); //fills the data of coReq, preReq, and type
 
 	void DrawMe(GUI*) const;
+	void setGrade(string Grade);
+	string getGrade();
+	double getQpoints();
 	virtual ~Course();
 };
