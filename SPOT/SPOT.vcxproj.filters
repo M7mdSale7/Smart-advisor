@@ -6,10 +6,6 @@
     <ClCompile Include="Notes.cpp" />
     <ClCompile Include="Registrar.cpp" />
     <ClCompile Include="StudyPlan\StudyPlan.cpp" />
-    <ClCompile Include="Actions\exit.cpp" />
-    <ClCompile Include="StudyPlan\AcademicYear.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
     <ClCompile Include="Actions\ActionAddCourse.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
@@ -166,6 +162,10 @@
     <ClCompile Include="ImportStudyPlan.cpp">
       <Filter>Imports</Filter>
     </ClCompile>
+    <ClCompile Include="StudyPlan\AcademicYear.cpp" />
+    <ClCompile Include="Actions\exit.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="functions.h" />
@@ -174,11 +174,7 @@
     <ClInclude Include="Registrar.h" />
     <ClInclude Include="Rules.h" />
     <ClInclude Include="StudyPlan\StudyPlan.h" />
-    <ClInclude Include="Actions\exit.h" />
     <ClInclude Include="Actions\Action.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="StudyPlan\AcademicYear.h">
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="Actions\ActionAddCourse.h">
@@ -288,6 +284,10 @@
     </ClInclude>
     <ClInclude Include="ImportStudyPlan.h">
       <Filter>Imports</Filter>
+    </ClInclude>
+    <ClInclude Include="StudyPlan\AcademicYear.h" />
+    <ClInclude Include="Actions\exit.h">
+      <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

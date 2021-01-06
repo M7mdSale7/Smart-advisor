@@ -62,6 +62,15 @@ Course* Course::getptr()
 
 }
 
+void Course::FillData(Rules* R, int index)
+{
+	PreReq = R->CourseCatalog.at(index).PreReqList;
+	CoReq = R->CourseCatalog.at(index).CoReqList;
+	type = R->CourseCatalog.at(index).type;
+}
+
+
+
 void Course::DrawMe(GUI* pG) const
 {
 	pG->DrawCourse(this);

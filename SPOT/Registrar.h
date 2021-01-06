@@ -23,6 +23,7 @@ public:
 	void Initialization();
 	//add in import to call for it at the start of the application
 	void Run();
+	void fillCoursesType();
 
 	~Registrar();
 };

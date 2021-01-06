@@ -28,10 +28,9 @@ public:
 	bool AddCourse(Course*, SEMESTER );
 	bool DeleteCourse(Course*, SEMESTER);
 	list<Course*>* getyearslist();
-	AcademicYear* ImportAcademicYear(ifstream& fin, vector <CourseInfo>* Info, string* subline, stringstream& s_stream, int j);
+	AcademicYear* ImportAcademicYear(ifstream& fin, Rules* R, string* subline, stringstream& s_stream, int j);
 	void saveAcademicYear(int year,ofstream&) const;
 	bool checkYearSemCredits(Rules*) const; //returns true only if each semester in the year is valid in terms of credits
-	
 
 	void virtual DrawMe(GUI*) const;
 };

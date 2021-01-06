@@ -24,7 +24,8 @@ StudyPlan::StudyPlan()
 bool StudyPlan::AddCourse(Course* pC, int year, SEMESTER sem)
 {
 	//TODO: add all requried checks to add the course 
-
+	pC->setyear(year);
+	pC->setsemester(sem);
 	plan[year - 1]->AddCourse(pC, sem);
 	
 	return true;

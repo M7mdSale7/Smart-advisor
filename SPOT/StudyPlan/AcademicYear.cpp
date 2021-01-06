@@ -25,7 +25,7 @@ bool AcademicYear::AddCourse(Course* pC, SEMESTER sem)
 	//This function still needs many checks to be compelete
 	YearCourses[sem].push_back(pC);
 	TotalCredits += pC->getCredits();
-
+	pC->setsemester(sem);
 	//TODO: acording to course type incremenet corrsponding toatl hours for that year
 
 
@@ -90,8 +90,6 @@ bool AcademicYear::checkYearSemCredits(Rules* R) const
 	return true;
 }
 
-
-
 void AcademicYear::DrawMe(GUI* pGUI) const
 {
 	pGUI->DrawAcademicYear(this);
@@ -115,12 +113,14 @@ void AcademicYear::DrawMe(GUI* pGUI) const
 
 }
 
-AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, vector <CourseInfo>* Info, string *subline, stringstream& s_stream, int j) {
+AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, Rules* R, string *subline, stringstream& s_stream, int j) {
+	vector <CourseInfo>* Info = &R->CourseCatalog;
 	AcademicYear* year = new AcademicYear;
 	string line;
 	bool flag = false;
 	string yearName = *subline;
-	for (size_t j = 0; j < 4; j++) {
+	size_t k;
+	for (size_t s = 0; s < 4; s++) {
 		if (fin.eof()) break;
 		if (flag) {
 			getline(fin, line);
@@ -136,14 +136,23 @@ AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, vector <CourseInfo
 					getline(s_stream, *subline, ',');
 					string title = "";
 					int Cr = 0;
-					for (size_t k = 0; k < Info->size(); k++) {
+					for (k = 0; k < Info->size(); k++) {
 						if (Info->at(k).Code == *subline) {
 							title = Info->at(k).Title;
 							Cr = Info->at(k).Credits;
+							Course* C = new Course(*subline, title, Cr);
+							C->FillData(R, k);
+							C->setyear(j+1);
+							year->AddCourse(C, FALL);
+							break;
 						}
 					}
-					Course* C = new Course(*subline, title, Cr);
-					year->AddCourse(C, FALL);
+					if (k == Info->size())
+					{
+						Course* C = new Course(*subline, title, Cr);
+						C->setyear(j + 1);
+						year->AddCourse(C, FALL);
+					}
 				}
 			}
 			else if (*subline == "Spring") {
@@ -151,14 +160,23 @@ AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, vector <CourseInfo
 					getline(s_stream, *subline, ',');
 					string title = "";
 					int Cr = 0;
-					for (size_t k = 0; k < Info->size(); k++) {
+					for (k = 0; k < Info->size(); k++) {
 						if (Info->at(k).Code == *subline) {
 							title = Info->at(k).Title;
 							Cr = Info->at(k).Credits;
+							Course* C = new Course(*subline, title, Cr);
+							C->FillData(R, k);
+							C->setyear(j + 1);
+							year->AddCourse(C, SPRING);
+							break;
 						}
 					}
-					Course* C = new Course(*subline, title, Cr);
-					year->AddCourse(C, SPRING);
+					if (k == Info->size())
+					{
+						Course* C = new Course(*subline, title, Cr);
+						C->setyear(j + 1);
+						year->AddCourse(C, SPRING);
+					}
 				}
 			}
 			else if (*subline == "Summer") {
@@ -166,14 +184,23 @@ AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, vector <CourseInfo
 					getline(s_stream, *subline, ',');
 					string title = "";
 					int Cr = 0;
-					for (size_t k = 0; k < Info->size(); k++) {
+					for (k = 0; k < Info->size(); k++) {
 						if (Info->at(k).Code == *subline) {
 							title = Info->at(k).Title;
 							Cr = Info->at(k).Credits;
+							Course* C = new Course(*subline, title, Cr);
+							C->FillData(R, k);
+							C->setyear(j + 1);
+							year->AddCourse(C, SUMMER);
+							break;
 						}
 					}
-					Course* C = new Course(*subline, title, Cr);
-					year->AddCourse(C, SUMMER);
+					if (k == Info->size())
+					{
+						Course* C = new Course(*subline, title, Cr);
+						C->setyear(j + 1);
+						year->AddCourse(C, SUMMER);
+					}
 				}
 			}
 		}

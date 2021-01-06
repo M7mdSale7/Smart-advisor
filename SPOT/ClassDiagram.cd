@@ -45,7 +45,7 @@
       <Method Name="Action" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAQAAAAACAAAAEAAAAAAAAAAAAAAAAQ=</HashCode>
+      <HashCode>AAAAIAAAAAAAAAQAAAAACAAAAEAAAAAAAAAAAAAAAAQ=</HashCode>
       <FileName>Actions\Action.h</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -80,7 +80,7 @@
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>BAAAAUAAAAAAAgACAAwQBEAABAEAAAAAAAAAAAAIAAA=</HashCode>
+      <HashCode>BQAAAUAAAAIAAgAGAAwQBEAABAEAAAAAABQAIAAIAAA=</HashCode>
       <FileName>StudyPlan\StudyPlan.h</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -117,7 +117,7 @@
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AEAQAAAAAEAAQAAAQAAAAAAAQAAAAAAABAAAABAIAAY=</HashCode>
+      <HashCode>AEAQAAAACEAAQAAAQAAAAAAAQAAAAAAABAAAABCIAAY=</HashCode>
       <FileName>Registrar.h</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -149,7 +149,7 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>CIBAAQAAAAAAAECAAIAAAAAAIAABAEAAAAAAAIAAAAA=</HashCode>
+      <HashCode>CIBEAQAAAAAAAECAgIAAACAEIAABAFAABABACIAAAAA=</HashCode>
       <FileName>Courses\Course.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -163,7 +163,7 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>BAEAAQAAAAAAAgABAIQQBEAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>BAEAAwAAAAAAAgABAIQQJEAAJAABAAAQAAAAIAAAAAA=</HashCode>
       <FileName>StudyPlan\AcademicYear.h</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -193,7 +193,7 @@
       <Field Name="UnivElective" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAABAhEAAABIAIQAAABAgAAIACAAAA=</HashCode>
+      <HashCode>AAgCBAACAIAAAAAABAxEAAABIAIQIAABAgIAIACAAAA=</HashCode>
       <FileName>Rules.h</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>

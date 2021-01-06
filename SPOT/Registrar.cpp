@@ -46,36 +46,31 @@ Action* Registrar::CreateRequiredAction()
 	case ADD_CRS:	//add_course action
 		RequiredAction = new ActionAddCourse(this);
 		break;
-	case ADD_NOTES:
+	case ADD_NOTES: // add_notes action
 		RequiredAction = new ActionAddNotes(this);
 		break;
-	case DEL_CRS:
+	case DEL_CRS: // delete_course action
 		RequiredAction = new ActionDeleteCourse(this);
 		break;
-	case EDIT_CRS:
+	case EDIT_CRS: //edit_course action
 		RequiredAction = new ActionChangeCode(this);
 		break;
-    case REORDER_CRS:
+    case REORDER_CRS: //reorder_course action
 		RequiredAction = new ActionReorder(this);
 		break;
-	case SHOW_INFO:
+	case SHOW_INFO: //show_info action
 		RequiredAction = new ActionShowCourseInfo(this);
 		break;
-	case IMPORT:
+	case IMPORT: //import_study_plan action
 		RequiredAction = new ActionImportStudyPlan(this);
 		break;
-	case SAVE:
+	case SAVE: //save_study_plan action
 		RequiredAction = new ActionSavePlan(this);
 		break;
-	case EXIT:
+	case EXIT: ///Exit_program action
 		RequiredAction = new ActionExit(this);
 		break;
-
-	//TODO: Add case for each action
 	
-	/*case EXIT:
-		break;
-		*/
 	}
 	return RequiredAction;
 }
@@ -145,6 +140,7 @@ void Registrar::Initialization() {
 		}
 		else {
 			pGUI->PrintMsg("Invalid Major Name");
+			Major = pGUI->GetSrting();
 		}
 	}
 	for (size_t j = 1; j <= 13; j++) {
@@ -241,7 +237,7 @@ void Registrar::Initialization() {
 					getline(s_stream, subline, ',');
 					ConElect.push_back(subline);
 				}
-				/*for (auto a : ConElect)
+				/*for (auto a : ConElect) 
 					cout << a << ' ';*/
 				RegRules.ConElective.push_back(ConElect);
 				if (RegRules.ConElective.size() != RegRules.NofConcentrations) {
@@ -252,7 +248,9 @@ void Registrar::Initialization() {
 		//getline(s_stream, subline, ',');
 	}
 	
+	fillCoursesType();
 	ImportStudyPlan().StudyPlanImport(fin, this);
+	
 }
 
 void Registrar::Run()
@@ -279,12 +277,103 @@ void Registrar::Run()
 	
 }
 
+void Registrar::fillCoursesType()
+{
+	for (auto& itr : RegRules.UnivCompulsory)
+	{
+		for (auto& itr_catalog : RegRules.CourseCatalog)
+		{
+			if (itr == itr_catalog.Code)
+			{
+				itr_catalog.type = "Univ Compulsory";
+			}
+		}
+	}
+	for (auto& itr : RegRules.UnivElective)
+	{
+		for (auto& itr_catalog : RegRules.CourseCatalog)
+		{
+			if (itr == itr_catalog.Code)
+			{
+				itr_catalog.type = "Univ Elective";
+			}
+		}
+	}
+	for (auto& itr : RegRules.TrackCompulsory)
+	{
+		for (auto& itr_catalog : RegRules.CourseCatalog)
+		{
+			if (itr == itr_catalog.Code)
+			{
+				itr_catalog.type = "Track Compulsory";
+			}
+		}
+	}
+	for (auto& itr : RegRules.TrackElective)
+	{
+		for (auto& itr_catalog : RegRules.CourseCatalog)
+		{
+			if (itr == itr_catalog.Code)
+			{
+				itr_catalog.type = "Track Elective";
+			}
+		}
+	}
+	for (auto& itr : RegRules.MajorCompulsory)
+	{
+		for (auto& itr_catalog : RegRules.CourseCatalog)
+		{
+			if (itr == itr_catalog.Code)
+			{
+				itr_catalog.type = "Major Compulsory";
+			}
+		}
+	}
+	for (auto& itr : RegRules.MajorElective)
+	{
+		for (auto& itr_catalog : RegRules.CourseCatalog)
+		{
+			if (itr == itr_catalog.Code)
+			{
+				itr_catalog.type = "Major Elective";
+			}
+		}
+	}
+	for (auto& itr_vector : RegRules.ConCompulsory)
+	{
+		for (auto& itr : itr_vector)
+		{
+			for (auto& itr_catalog : RegRules.CourseCatalog)
+			{
+				if (itr == itr_catalog.Code)
+				{
+					itr_catalog.type = "Concentration Compulsory";
+				}
+			}
+		}
+	}
+	for (auto& itr_vector : RegRules.ConElective)
+	{
+		for (auto& itr : itr_vector)
+		{
+			for (auto& itr_catalog : RegRules.CourseCatalog)
+			{
+				if (itr == itr_catalog.Code)
+				{
+					itr_catalog.type = "Concentration Elective";
+				}
+			}
+		}
+	}
+}
+
 
 void Registrar::UpdateInterface()
 {
 	pGUI->UpdateInterface();	//update interface items
 	pSPlan->DrawMe(pGUI);		//make study plan draw itself
 }
+
 
 Registrar::~Registrar()
 {
