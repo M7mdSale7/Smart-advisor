@@ -31,12 +31,13 @@ bool ActionMinorDec::Execute()
 	StudyPlan* pS = pReg->getStudyPlay();
 	Rules* R = pReg->getRules();
 	vector<Course_Code>* MinorComp = &R->MinorCompulsory; //Getting the list of minor compulsory
-	vector<Course_Code>* Elective = &R->TrackElective;
-
+	vector<Course_Code>* Elective = &R->TrackElective; //Track elective to compare if the user added a course in his elective
+	vector <CourseInfo>* Info = &R->CourseCatalog; //Course Catalog to add course info
+	Course_Code code; //code to get from user
 	while (Minor.size() != 5) //5 courses in minor
 	{
 		pGUI->PrintMsg("Add course number " + to_string((Num + 1)) + " To your plan");
-		Course_Code code = pGUI->GetSrting();
+		code = pGUI->GetSrting();
 		transform(code.begin(), code.end(), code.begin(), toupper); //Make Sure The course code is upper case
 		ActionAddCourse(pReg).Space(code); //Make sure there is a space between letters and numbers
 
@@ -115,6 +116,35 @@ bool ActionMinorDec::Execute()
 			Minor.push_back(code); //adding the course in the vector of minor , we need it to reach 5 to return the function
 			MinorComp->push_back(code); //Adding the course to the minor comp list in rules
 			Num++; //increment the static variable num that the user can see how many courses he has added
+
+			//Drawing the course and adding it to the study plan of the user
+			string title;
+			int Cr = 0;
+			for (int k = 0; k < Info->size(); k++) { //finding course code
+				if (Info->at(k).Code == code) {
+					title = Info->at(k).Title;
+					Cr = Info->at(k).Credits;
+					break;
+				}
+			}
+			pGUI->GetUserAction("Enter the year you want to add the course " + code + " in");
+			string year = pGUI->GetSrting();
+			int yearInt = stoi(year);
+			pGUI->GetUserAction("Enter the semester you want to add the course " + code + " in");
+			string semester = pGUI->GetSrting();
+			SEMESTER s;
+			if (semester == "Fall")
+			{
+				s = (SEMESTER)0;
+			}
+			else if (semester == "Spring")
+			{
+				s = (SEMESTER)1;
+			}
+			else
+				s = (SEMESTER)2;
+			Course* C = new Course(code, title, Cr);
+			pS->AddCourse(C, yearInt, s);
 		}
 
 		//Error Cases Display
@@ -155,6 +185,12 @@ bool ActionMinorDec::Execute()
 		else
 			break;
 	}
+
+	//Once the user enters the 5 courses , he has to add them in the study plan
+	//and choose the semester and the year for each course
+
+		
+
 	return true;
 }
 
