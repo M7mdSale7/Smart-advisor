@@ -75,6 +75,21 @@ void AcademicYear::saveAcademicYear(int year, ofstream& fout) const
 	 
 }
 
+bool AcademicYear::checkYearSemCredits(Rules* R) const
+{
+	int semSum;
+	for (int i = 0; i < SEM_CNT; i++)
+	{
+		semSum = 0;
+		for (auto itr : YearCourses[i])
+		{
+			semSum += itr->getCredits();
+		}
+		if (semSum > R->SemMaxCredit || semSum < R->SemMinCredit) return false;
+	}
+	return true;
+}
+
 
 
 void AcademicYear::DrawMe(GUI* pGUI) const
@@ -89,8 +104,8 @@ void AcademicYear::DrawMe(GUI* pGUI) const
 		for (auto it = YearCourses[sem].begin(); it != YearCourses[sem].end(); ++it) //keywork auto asks the compilor to deduce the type of the variable from initilization
 		{
 			graphicsInfo gInfo = this->getGfxInfo();
-			int x = gInfo.x + 34 + (CRS_WIDTH + 3.0) * CRS_NUM;
-			int y = gInfo.y + 71 - (((SEM_CNT * PLAN_SEMESTER_HEIGHT) / SEM_CNT) * sem);
+			int x = gInfo.x + 36 + (CRS_WIDTH + 27) * CRS_NUM;
+			int y = gInfo.y + 73 - (((SEM_CNT * PLAN_SEMESTER_HEIGHT) / SEM_CNT) * sem);
 			graphicsInfo gInfo1{ x, y };
 			(*it)->setGfxInfo(gInfo1);
 			(*it)->DrawMe(pGUI);	//call DrawMe for each course in this semester
@@ -104,13 +119,7 @@ AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, vector <CourseInfo
 	AcademicYear* year = new AcademicYear;
 	string line;
 	bool flag = false;
-	//ImportCatalog catalog;
-	//vector <CourseInfo> Info = catalog.readCatalog();//pass as argument
-	//getline(fin, line);
-	//stringstream s_stream(line);
-	//string subline;
 	string yearName = *subline;
-	//getline(s_stream, subline, ',');
 	for (size_t j = 0; j < 4; j++) {
 		if (fin.eof()) break;
 		if (flag) {

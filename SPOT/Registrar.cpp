@@ -8,8 +8,10 @@
 #include "../SPOT/Actions/ActionReorder.h"
 #include "../SPOT/Actions/ActionShowCourseInfo.h"
 #include "../SPOT/Actions/ActionImportStudyPlan.h"
+#include "../SPOT/Actions/ActionCalculateGPA.h"
+#include "../SPOT/Actions/ActionMinorDec.h"
 #include "ImportStudyPlan.h"
-
+#include "Actions/exit.h"
 Registrar::Registrar()
 {
 	pGUI = new GUI;	//create interface object
@@ -32,6 +34,11 @@ Rules* Registrar::getRules()
 StudyPlan* Registrar::getStudyPlay() const
 {
 	return pSPlan;
+}
+
+StudyPlan* Registrar::getStudyPlay2() const
+{
+	return pSPlan2;
 }
 
 
@@ -57,14 +64,23 @@ Action* Registrar::CreateRequiredAction()
     case REORDER_CRS:
 		RequiredAction = new ActionReorder(this);
 		break;
-	case SHOW_INFO:
-		RequiredAction = new ActionShowCourseInfo(this);
+	case DRAW_AREA:
+		RequiredAction = new ActionShowCourseInfo(this , actData.x , actData.y);
 		break;
 	case IMPORT:
 		RequiredAction = new ActionImportStudyPlan(this);
 		break;
 	case SAVE:
 		RequiredAction = new ActionSavePlan(this);
+		break;
+	case CALC_GPA:
+		RequiredAction = new ActionCalculateGPA(this);
+		break;
+	case MINOR_DEC:
+		RequiredAction = new ActionMinorDec(this);
+		break;
+	case EXIT:
+		RequiredAction = new ActionExit(this);
 		break;
 
 	//TODO: Add case for each action
@@ -95,7 +111,7 @@ void Registrar::Initialization() {
 	ifstream fin;
 	while (flag) {
 		if (Major == "CIE") {
-			infile.open("MajorsData.txt");//MajorsData.txt is a trial file for testing because no files for majors' rules has been shared with us
+			infile.open("majors requirements/CIE-Requirements.txt");//MajorsData.txt is a trial file for testing because no files for majors' rules has been shared with us
 			fin.open("CIE.txt");
 			flag = false;
 		}

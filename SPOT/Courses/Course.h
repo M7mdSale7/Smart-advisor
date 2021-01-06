@@ -18,6 +18,8 @@ class Course : public Drawable
 	bool Done;		//Done or not yet?
 	list<Course_Code> PreReq;	//list of prerequisites
 	list<Course_Code> CoReq;	//list of prerequisites
+	string Grade;
+	double qPoints;
 public:
 	Course();
 	Course(Course_Code r_code,string r_title, int crd);
@@ -30,8 +32,11 @@ public:
 	SEMESTER getsemester() const;
 	void saveCourse(ofstream& ) const;
 	Course* getptr();
-
-
+	string getPreq();
+	string getCoreq();
 	void DrawMe(GUI*) const;
+	void setGrade(string Grade);
+	string getGrade();
+	double getQpoints();
 	virtual ~Course();
 };

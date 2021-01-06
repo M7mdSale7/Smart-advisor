@@ -9,14 +9,23 @@
 ActionAddCourse::ActionAddCourse(Registrar* p):Action(p)
 {
 }
-void Space(Course_Code& code) {
+
+//void ActionAddCourse::convert(string& s)
+//{
+//	for (int i = 0; i < s.length(); i++)
+//	{
+//		s[i] = toupper(s[i]);
+//	}
+//}
+void ActionAddCourse::Space(Course_Code& code)
+{
 	if (!(code.find(" ") != string::npos)) {
 		Course_Code cout = "";
 		for (int i = 0; i < code.length(); i++)
 		{
 			if (code[i] == '0' || code[i] == '1' || code[i] == '2' || code[i] == '3' || code[i] == '4' ||
 				code[i] == '5' || code[i] == '6' || code[i] == '7' || code[i] == '8' ||
-				code[i] == '9') 
+				code[i] == '9')
 			{
 				if (code[i + 1] != NULL && code[i + 2] != NULL) {
 					cout += ' ';
@@ -33,14 +42,6 @@ void Space(Course_Code& code) {
 		code = cout;
 	}
 }
-//void ActionAddCourse::convert(string& s)
-//{
-//	for (int i = 0; i < s.length(); i++)
-//	{
-//		s[i] = toupper(s[i]);
-//	}
-//}
-
 bool ActionAddCourse::Execute()
 {
 	GUI* pGUI = pReg->getGUI();	
@@ -67,20 +68,21 @@ bool ActionAddCourse::Execute()
 		
 		graphicsInfo gInfo{ x, y };
 
-		//TODO: given course code, get course title, crd hours from registrar
+
 		//For now, we will add any dummy values
 		string Title = "Test101";
 		int crd = 0;
 		Course* pC = new Course(code, Title, crd);
 		pC->setGfxInfo(gInfo);
 
-		//TODO: Ask registrar to add course to the year selected by the user
-		//TODO: add the course to the correct year obtained from registrar
+
 
 		//For the seke of demo, we will add the course to the 1st year, 1st semester
 		StudyPlan* pS = pReg->getStudyPlay();
-		//pS->AddCourse(pC, 1, FALL);
+
+		
 		if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y < (520+105) && y>(520+70)) {
+
 
 			pS->AddCourse(pC, 1, FALL);
 			pC->setyear(1);
@@ -159,11 +161,11 @@ bool ActionAddCourse::Execute()
 		else 
 			pGUI->PrintMsg("Error: Please press in semester area.");
 
-	
+
 	}
 
 	
-	//TODO:
+	
 	
 
 	return true;
@@ -173,3 +175,4 @@ bool ActionAddCourse::Execute()
 ActionAddCourse::~ActionAddCourse()
 {
 }
+

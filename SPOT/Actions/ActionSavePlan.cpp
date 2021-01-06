@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+using namespace std;
 
 ActionSavePlan::ActionSavePlan(Registrar* p):Action(p)
 {
@@ -10,8 +11,10 @@ ActionSavePlan::ActionSavePlan(Registrar* p):Action(p)
 
 bool ActionSavePlan::Execute()
 {
-	
-	ofstream fout("SavedPlan.txt");
+	GUI* pGUI = pReg->getGUI();
+	pGUI->PrintMsg("Type The File Name You Want To save the plan to (eg. savedPlan.txt)");
+	string filename = "saved files/" + pGUI->GetSrting();
+	ofstream fout(filename);
 	StudyPlan* plan = pReg->getStudyPlay();
 	vector<AcademicYear*>* years = plan->getSPvector();
 
@@ -20,7 +23,9 @@ bool ActionSavePlan::Execute()
 		years->at(i)->saveAcademicYear(i+1, fout);
 	}
 	fout.close();
-	fout.open("SavedNotes.txt");
+	pGUI->PrintMsg("Type The File Name You Want To save the notes to (eg. savedNotes.txt)");
+	filename = "saved files/" + pGUI->GetSrting();
+	fout.open(filename);
 	vector<Notes*>* notes = plan->getNvector();
 
 

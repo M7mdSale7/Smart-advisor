@@ -32,7 +32,7 @@ bool StudyPlan::AddCourse(Course* pC, int year, SEMESTER sem)
 
 bool StudyPlan::DeleteCourse(Course* pC)
 {
-	int z = pC->getyear()-1;
+	int z = pC->getyear();
 	plan[z]->DeleteCourse(pC, pC->getsemester());
 	//plan[0]->DeleteCourse(pC, FALL);
 	return true;
@@ -70,7 +70,27 @@ vector<AcademicYear*>* StudyPlan::getSPvector()
 	return &plan;
 }
 
+vector<AcademicYear*>* StudyPlan::getSPvector2()
+{
+	return &plan2;
+}
+
 vector<Notes*>* StudyPlan::getNvector()
 {
 	return &PlanNotees;
+}
+
+bool StudyPlan::CreditsCheck(Rules* R) const
+{
+	for (auto itrY : plan)
+	{
+		if (!(itrY->checkYearSemCredits(R))) return false;
+	}
+	return true;
+}
+
+void StudyPlan::checkPlan() const
+{
+	//after building all checks functions, put here if else statements
+	//and show message in case of each warning or error.
 }

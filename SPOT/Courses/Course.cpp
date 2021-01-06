@@ -6,6 +6,7 @@ Course::Course(){}
 Course::Course(Course_Code r_code, string r_title, int crd):code(r_code),Title(r_title)
 {
 	credits = crd;
+	Grade = "NA";
 }
 
 Course::~Course()
@@ -62,7 +63,63 @@ Course* Course::getptr()
 
 }
 
+string Course::getPreq()
+{
+	string pre;
+	for (auto itr : PreReq)
+	{
+		pre += itr;
+		pre += " ";
+	}
+	return pre;
+}
+
+string Course::getCoreq()
+{
+	string co;
+	for (auto itr : CoReq)
+	{
+		co += itr;
+		co += " ";
+	}
+	return co;
+}
+
 void Course::DrawMe(GUI* pG) const
 {
 	pG->DrawCourse(this);
+}
+
+void Course::setGrade(string Grade)
+{
+	this->Grade = Grade;
+}
+
+string Course::getGrade()
+{
+	return Grade;
+}
+
+double Course::getQpoints()
+{
+	if (Grade == "A")
+		return 4.0 * (double)credits;
+	else if (Grade == "A-")
+		return 3.7 * (double)credits;
+	else if (Grade == "B+")
+		return 3.3 * (double)credits;
+	else if (Grade == "B")
+		return 3.0 * (double)credits;
+	else if (Grade == "B-")
+		return 2.7 * (double)credits;
+	else if (Grade == "C+")
+		return 2.3 * (double)credits;
+	else if (Grade == "C")
+		return 2.0 * (double)credits;
+	else if (Grade == "C-")
+		return 1.7 * (double)credits;
+	else if (Grade == "F")
+		return 0.0 * (double)credits;
+	else //default
+		return 3.5 * (double)credits;
 }
