@@ -37,13 +37,11 @@ public:
 	string getPreq();
 	string getCoreq();
 	void FillData(Rules* R, int index); //fills the data of coReq, preReq, and type
-	bool isMinor() const;
-	void setMinor(bool minor);
 	void DrawMe(GUI*) const;
 	void setGrade(string Grade);
 	string getGrade();
 	double getQpoints();
-	bool getFilter();
+	bool getFilter() const;
 	void setFiler(bool filter);
 	void setType(string type);
 	string getType();

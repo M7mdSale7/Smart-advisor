@@ -133,7 +133,7 @@ double Course::getQpoints()
 		return 3.5 * (double)credits;
 }
 
-bool Course::getFilter()
+bool Course::getFilter() const
 {
 	return filter;
 }

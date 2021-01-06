@@ -11,9 +11,9 @@ bool ActionFilters::Execute()
 		StudyPlan* pS = pReg->getStudyPlay();
 		vector<AcademicYear*>* Plan = pS->getSPvector(); //getting study plan
 		//Check If the user want to display a certain year or a certain semester or group of courses
-		pGUI->PrintMsg("Enter the filer, (Year Or Semester Or Courses or defualt)");
+		pGUI->PrintMsg("Enter the filer, (Year Or Semester Or Courses or Defualt)");
 		string Filter = pGUI->GetSrting();
-		if (Filter == "year")//Go check which year
+		if (Filter == "Year")//Go check which year
 		{
 			pGUI->PrintMsg("Enter year number (1 - 2 - 3 - 4 - 5)");
 			string year = pGUI->GetSrting();
@@ -27,8 +27,10 @@ bool ActionFilters::Execute()
 				{
 					for (auto itr : *(Courses + j))
 					{
-						if(itr->getyear() != yearNum)
-						itr->setFiler(false);
+						if (itr->getyear() != yearNum)
+							itr->setFiler(false);
+						else if (itr->getyear() == yearNum)
+							itr->setFiler(true);
 					}
 				}
 			}
@@ -62,6 +64,8 @@ bool ActionFilters::Execute()
 					{
 						if (itr->getyear() != yearNum || itr->getsemester() != s)
 							itr->setFiler(false);
+						else if (itr->getyear() == yearNum && itr->getsemester() == s)
+							itr->setFiler(true);
 					}
 				}
 			}
@@ -82,13 +86,15 @@ bool ActionFilters::Execute()
 					{
 						if (itr->getType() != type)
 							itr->setFiler(false);
+						else if(itr->getType() == type)
+							itr->setFiler(true);
 					}
 				}
 			}
 
 		}
-		//default
-		else if (Filter == "default")
+		//default //set all to true
+		else if (Filter == "Default")
 		{
 			for (int i = 0; i < Plan->size(); i++)
 			{
