@@ -7,6 +7,7 @@ Course::Course(Course_Code r_code, string r_title, int crd):code(r_code),Title(r
 {
 	credits = crd;
 	Grade = "NA";
+	filter = true;
 }
 
 Course::~Course()
@@ -71,7 +72,6 @@ void Course::FillData(Rules* R, int index)
 }
 
 
-
 string Course::getPreq()
 {
 	string pre;
@@ -131,4 +131,24 @@ double Course::getQpoints()
 		return 0.0 * (double)credits;
 	else //default
 		return 3.5 * (double)credits;
+}
+
+bool Course::getFilter()
+{
+	return filter;
+}
+
+void Course::setFiler(bool filter)
+{
+	this->filter = filter;
+}
+
+void Course::setType(string type)
+{
+	this->type = type;
+}
+
+string Course::getType()
+{
+	return type;
 }

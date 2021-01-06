@@ -3,6 +3,7 @@
 #include "../StudyPlan/AcademicYear.h"
 #include <sstream>
 #include <string>
+#include "../Actions/ActionFilters.h"
 int year = 5;
 int* Pyear = &year;
 GUI::GUI()
@@ -78,6 +79,46 @@ void GUI::PrintMsg(string msg) const
 	pWind->DrawString(MsgX, WindHeight - MsgY, msg);
 }
 
+string GUI::GetSrting() const
+{
+	//Reads a complete string from the user until the user presses "ENTER".
+	//If the user presses "ESCAPE". This function should return an empty string.
+	//"BACKSPACE" is also supported
+	//User should see what he is typing at the status bar
+
+
+
+	string userInput;
+	char Key;
+	while (1)
+	{
+		pWind->WaitKeyPress(Key);
+
+		switch (Key)
+		{
+		case 27: //ESCAPE key is pressed
+			PrintMsg("");
+			return ""; //returns nothing as user has cancelled the input
+
+		case 13:		//ENTER key is pressed
+			return userInput;
+
+		case 8:		//BackSpace is pressed
+			if (userInput.size() > 0)
+				userInput.resize(userInput.size() - 1);
+			break;
+
+		default:
+			userInput += Key;
+		};
+
+		PrintMsg(userInput);
+	}
+
+
+}
+
+
 //////////////////////////////////////////////////////////////////////////
 void GUI::UpdateInterface() const
 {
@@ -97,14 +138,20 @@ void GUI::UpdateInterface() const
 void GUI::DrawCourse(const Course* pCrs)
 {
 	if (pCrs->isSelected())
+	{
 		pWind->SetPen(HiColor, 2);
+	}
 	else
-	pWind->SetPen(BLACK, 2);
+	{
+		pWind->SetPen(BLACK, 2);
+	}
+
+
 	pWind->SetBrush(LIGHTBLUE);
 	graphicsInfo gInfo = pCrs->getGfxInfo();
 	pWind->DrawRectangle(gInfo.x, gInfo.y, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT);
 	pWind->DrawLine(gInfo.x, gInfo.y + CRS_HEIGHT / 2, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT / 2);
-	
+
 	//Write the course code and credit hours.
 	int Code_x = gInfo.x + CRS_WIDTH * 0.15;
 	int Code_y = gInfo.y + CRS_HEIGHT * 0.05;
@@ -199,8 +246,8 @@ void GUI::DrawAcademicYear(const AcademicYear* pY)
 	graphicsInfo gInfo2 = pY->getGfxInfo();
 	pWind->SetPen(BLACK, 2);
 //>>>>>>> 11532e52c9debeeaa8dfb99faff9ed04e9003c17
-	pWind->SetBrush(WHITE);
-	pWind->DrawRectangle(gInfo.x - (35 + 35), gInfo.y, gInfo.x - 40, gInfo.y + 105 , FRAME);
+	pWind->SetBrush(LIGHTGREEN);
+	pWind->DrawRectangle(gInfo.x - (35 + 35), gInfo.y, gInfo.x - 40, gInfo.y + 105);
 
 	//Writing Year Num.
 	pWind->SetFont(35, BOLD, BY_NAME, "Gramound");
@@ -303,44 +350,6 @@ ActionData GUI::GetUserAction(string msg) const
 
 }
 
-string GUI::GetSrting() const
-{
-	//Reads a complete string from the user until the user presses "ENTER".
-	//If the user presses "ESCAPE". This function should return an empty string.
-	//"BACKSPACE" is also supported
-	//User should see what he is typing at the status bar
-
-	
-
-	string userInput;
-	char Key;
-	while (1)
-	{
-		pWind->WaitKeyPress(Key);
-
-		switch (Key)
-		{
-		case 27: //ESCAPE key is pressed
-			PrintMsg("");
-			return ""; //returns nothing as user has cancelled the input
-
-		case 13:		//ENTER key is pressed
-			return userInput;
-
-		case 8:		//BackSpace is pressed
-			if (userInput.size() > 0)
-				userInput.resize(userInput.size() - 1);
-			break;
-
-		default:
-			userInput += Key;
-		};
-
-		PrintMsg(userInput);
-	}
-	
-
-}
 
 
 

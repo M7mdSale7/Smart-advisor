@@ -144,6 +144,7 @@ bool ActionMinorDec::Execute()
 			else
 				s = (SEMESTER)2;
 			Course* C = new Course(code, title, Cr);
+			C->setType("Minor");
 			pS->AddCourse(C, yearInt, s);
 		}
 
