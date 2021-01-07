@@ -54,6 +54,15 @@ bool StudyPlan::AddNote(Notes* Note)
 
 void StudyPlan::DrawMe(GUI* pGUI) const
 {
+	pGUI->pWind->SetPen(BLACK, 2);
+	pWind->DrawLine(900, 88, 1200, 88, FRAME);
+	pWind->DrawLine(900, 88, 900, 500, FRAME);
+	pWind->DrawLine(1200, 88, 1200, 500, FRAME);
+	pWind->DrawLine(900, 500, 1200, 500, FRAME);
+	pWind->DrawLine(900, 150, 1200, 150, FRAME);
+	pWind->SetFont(20, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(RED, 2);
+	pWind->DrawString(950, 100, "ADD YOUR NOTES HERE");
 	//Plan draws all year inside it.
 	for (int i = 0; i < plan.size(); i++)
 		plan[i]->DrawMe(pGUI);

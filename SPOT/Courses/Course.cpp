@@ -75,7 +75,7 @@ void Course::FillData(Rules* R, int index)
 string Course::getPreq()
 {
 	string pre;
-	for (auto itr : PreReq)
+	for (auto &itr : PreReq)
 	{
 		pre += itr;
 		pre += " ";

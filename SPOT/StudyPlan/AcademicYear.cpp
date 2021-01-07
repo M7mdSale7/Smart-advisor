@@ -26,7 +26,42 @@ bool AcademicYear::AddCourse(Course* pC, SEMESTER sem)
 	YearCourses[sem].push_back(pC);
 	TotalCredits += pC->getCredits();
 	pC->setsemester(sem);
-	//TODO: acording to course type incremenet corrsponding toatl hours for that year
+	if (pC->getType() == "Univ Compulsory")
+	{
+		TotalUnivCredits += pC->getCredits();
+	}
+	else if(pC->getType() == "Univ Elective")
+	{
+		TotalUnivCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Track Compulsory")
+	{
+		TotalTrackCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Track Elective")
+	{
+		TotalTrackCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Major Compulsory")
+	{
+		TotalMajorCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Major Elective")
+	{
+		TotalMajorCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Concentration Compulsory")
+	{
+		TotalConcentrationCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Concentration Elective")
+	{
+		TotalConcentrationCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Minor")
+	{
+		TotalMinorCredits += pC->getCredits();
+	}
 
 
 	return true;

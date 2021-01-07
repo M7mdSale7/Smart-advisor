@@ -257,15 +257,7 @@ void GUI::DrawAcademicYear(const AcademicYear* pY)
 	pWind->DrawInteger(gInfo.x - 65, 235, 4);
 	pWind->DrawInteger(gInfo.x - 65, 125, 5);
 
-	/*graphicsInfo gInfo2 = pY->getGfxInfo();
-	pWind->SetPen(LIGHTSEAGREEN, 2);
->>>>>>> f84ac742e620903a1dd3681bf6bce0b441526022
-	pWind->SetFont(CRS_HEIGHT * 0.4, BOLD, BY_NAME, "Gramound");
-	pWind->DrawString(gInfo2.x - 45, gInfo2.y + PLAN_YEAR_HEIGHT / 2.2, "YEAR");
-	pWind->SetPen(DrawColor, 2);
-	*Pyear--;
-	pWind->DrawInteger(gInfo2.x - 9, gInfo2.y + PLAN_YEAR_HEIGHT / 2.2, year);*/
-
+	//Drawing notes area
 	pWind->SetPen(BLACK, 2);
 	pWind->DrawLine(900, 88, 1200, 88, FRAME);
 	pWind->DrawLine(900, 88, 900, 500, FRAME);

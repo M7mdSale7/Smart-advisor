@@ -26,7 +26,7 @@ public:
 	virtual ~StudyPlan();
 	vector<AcademicYear*>* getSPvector();
 	vector<Notes*>* getNvector();
-	bool CreditsCheck(Rules*) const;
+	bool CreditsCheck(Rules*) const; 
 	void checkPlan() const;
 };
 
