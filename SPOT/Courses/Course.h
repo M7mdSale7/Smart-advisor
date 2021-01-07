@@ -44,6 +44,7 @@ public:
 	bool getFilter() const;
 	void setFiler(bool filter);
 	void setType(string type);
+	string getGrad() const;
 	string getType();
 	virtual ~Course();
 };
