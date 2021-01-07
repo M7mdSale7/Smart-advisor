@@ -127,10 +127,10 @@ bool ActionMinorDec::Execute()
 					break;
 				}
 			}
-			pGUI->GetUserAction("Enter the year you want to add the course " + code + " in");
+			pGUI->PrintMsg("Enter the year you want to add the course " + code + " in");
 			string year = pGUI->GetSrting();
 			int yearInt = stoi(year);
-			pGUI->GetUserAction("Enter the semester you want to add the course " + code + " in");
+			pGUI->PrintMsg("Enter the semester you want to add the course " + code + " in");
 			string semester = pGUI->GetSrting();
 			SEMESTER s;
 			if (semester == "Fall")

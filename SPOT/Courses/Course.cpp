@@ -129,11 +129,9 @@ double Course::getQpoints()
 		return 1.7 * (double)credits;
 	else if (Grade == "F")
 		return 0.0 * (double)credits;
-	else //default
-		return 3.5 * (double)credits;
 }
 
-bool Course::getFilter()
+bool Course::getFilter() const
 {
 	return filter;
 }
@@ -146,6 +144,11 @@ void Course::setFiler(bool filter)
 void Course::setType(string type)
 {
 	this->type = type;
+}
+
+string Course::getGrad() const
+{
+	return this->Grade;
 }
 
 string Course::getType()

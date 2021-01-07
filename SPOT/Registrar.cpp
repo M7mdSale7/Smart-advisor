@@ -10,6 +10,7 @@
 #include "../SPOT/Actions/ActionImportStudyPlan.h"
 #include "../SPOT/Actions/ActionCalculateGPA.h"
 #include "../SPOT/Actions/ActionMinorDec.h"
+#include "../SPOT/Actions/ActionFilters.h"
 #include "ImportStudyPlan.h"
 #include "Actions/exit.h"
 Registrar::Registrar()
@@ -78,6 +79,9 @@ Action* Registrar::CreateRequiredAction()
 		break;
 	case MINOR_DEC:
 		RequiredAction = new ActionMinorDec(this);
+		break;
+	case SEARCH:
+		RequiredAction = new ActionFilters(this);
 		break;
 	case EXIT:
 		RequiredAction = new ActionExit(this);

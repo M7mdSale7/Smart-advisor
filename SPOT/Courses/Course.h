@@ -41,9 +41,10 @@ public:
 	void setGrade(string Grade);
 	string getGrade();
 	double getQpoints();
-	bool getFilter();
+	bool getFilter() const;
 	void setFiler(bool filter);
 	void setType(string type);
+	string getGrad() const;
 	string getType();
 	virtual ~Course();
 };

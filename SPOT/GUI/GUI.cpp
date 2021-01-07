@@ -52,6 +52,7 @@ void GUI::CreateMenu() const
 	MenuItemImages[ITM_IMPORT] = "GUI\\Images\\Menu\\Menu_Import.jpg";
 	MenuItemImages[ITM_GPA] = "GUI\\Images\\Menu\\GPA.jpg";
 	MenuItemImages[ITM_MINOR] = "GUI\\Images\\Menu\\MinorDec.jpg";
+	MenuItemImages[ITM_SEARCH] = "GUI\\Images\\Menu\\Search.jpg";
 	MenuItemImages[ITM_EXIT] = "GUI\\Images\\Menu\\Menu_exitt.jpg";
 
 
@@ -137,31 +138,45 @@ void GUI::UpdateInterface() const
 ////////////////////////    Drawing functions    ///////////////////
 void GUI::DrawCourse(const Course* pCrs)
 {
-	if (pCrs->isSelected())
+	if (pCrs->isSelected() && pCrs->getFilter() == 1)
 	{
 		pWind->SetPen(HiColor, 2);
+		pWind->SetBrush(YELLOW);
+		graphicsInfo gInfo = pCrs->getGfxInfo();
+		pWind->DrawRectangle(gInfo.x, gInfo.y, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT);
+		pWind->DrawLine(gInfo.x, gInfo.y + CRS_HEIGHT / 2, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT / 2);
+
+		//Write the course code and credit hours.
+		int Code_x = gInfo.x + CRS_WIDTH * 0.15;
+		int Code_y = gInfo.y + CRS_HEIGHT * 0.05;
+		pWind->SetFont(CRS_HEIGHT * 0.4, BOLD, BY_NAME, "Gramound");
+		pWind->SetPen(DARKRED);
+
+		ostringstream crd;
+		crd << "crd:" << pCrs->getCredits();
+		pWind->DrawString(Code_x, Code_y, pCrs->getCode());
+		pWind->DrawString(Code_x, Code_y + CRS_HEIGHT / 2, crd.str());
+
 	}
-	else
+	if (pCrs->getFilter() == 1 && pCrs->isSelected() == 0)
 	{
 		pWind->SetPen(BLACK, 2);
+		pWind->SetBrush(LIGHTBLUE);
+		graphicsInfo gInfo = pCrs->getGfxInfo();
+		pWind->DrawRectangle(gInfo.x, gInfo.y, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT);
+		pWind->DrawLine(gInfo.x, gInfo.y + CRS_HEIGHT / 2, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT / 2);
+
+		//Write the course code and credit hours.
+		int Code_x = gInfo.x + CRS_WIDTH * 0.15;
+		int Code_y = gInfo.y + CRS_HEIGHT * 0.05;
+		pWind->SetFont(CRS_HEIGHT * 0.4, BOLD, BY_NAME, "Gramound");
+		pWind->SetPen(DARKRED);
+
+		ostringstream crd;
+		crd << "crd:" << pCrs->getCredits();
+		pWind->DrawString(Code_x, Code_y, pCrs->getCode());
+		pWind->DrawString(Code_x, Code_y + CRS_HEIGHT / 2, crd.str());
 	}
-
-
-	pWind->SetBrush(LIGHTBLUE);
-	graphicsInfo gInfo = pCrs->getGfxInfo();
-	pWind->DrawRectangle(gInfo.x, gInfo.y, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT);
-	pWind->DrawLine(gInfo.x, gInfo.y + CRS_HEIGHT / 2, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT / 2);
-
-	//Write the course code and credit hours.
-	int Code_x = gInfo.x + CRS_WIDTH * 0.15;
-	int Code_y = gInfo.y + CRS_HEIGHT * 0.05;
-	pWind->SetFont(CRS_HEIGHT * 0.4, BOLD , BY_NAME, "Gramound");
-	pWind->SetPen(DARKRED);
-
-	ostringstream crd;
-	crd<< "crd:" << pCrs->getCredits();
-	pWind->DrawString(Code_x, Code_y, pCrs->getCode());
-	pWind->DrawString(Code_x, Code_y + CRS_HEIGHT/2, crd.str());
 }
 
 void GUI::DrawNotes(const Notes* pNotes)
@@ -260,10 +275,10 @@ void GUI::DrawAcademicYear(const AcademicYear* pY)
 	//Drawing notes area
 	pWind->SetPen(BLACK, 2);
 	pWind->DrawLine(900, 88, 1200, 88, FRAME);
-	pWind->DrawLine(900, 88, 900, 500, FRAME);
-	pWind->DrawLine(1200, 88, 1200, 500, FRAME);
-	pWind->DrawLine(900, 500, 1200, 500, FRAME);
-	pWind->DrawLine(900, 150, 1200, 150, FRAME);
+	pWind->DrawLine(900, 88, 900, 310, FRAME);
+	pWind->DrawLine(1200, 88, 1200, 310, FRAME);
+	pWind->DrawLine(900, 310, 1200, 310, FRAME);
+	pWind->DrawLine(900, 120, 1200, 120, FRAME);
 	pWind->SetFont(20, BOLD, BY_NAME, "Gramound");
 	pWind->SetPen(RED, 2);
 	pWind->DrawString(950, 100, "ADD YOUR NOTES HERE");
@@ -323,6 +338,7 @@ ActionData GUI::GetUserAction(string msg) const
 				case ITM_IMPORT: return ActionData{ IMPORT };
 				case ITM_GPA: return ActionData{ CALC_GPA };
 				case ITM_MINOR: return ActionData{ MINOR_DEC };
+				case ITM_SEARCH: return ActionData{ SEARCH };
 				case ITM_EXIT: return ActionData{ EXIT };		//Exit
 
 				default: return ActionData{ MENU_BAR };	//A click on empty place in menu bar
