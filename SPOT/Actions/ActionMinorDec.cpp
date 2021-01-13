@@ -79,11 +79,11 @@ bool ActionMinorDec::Execute()
 			}
 		}
 
-		//Checking if the course is in the given program plan to minor
+		//Checking if the course is in the given program plan to minor Or Elective
 		int offset;
 		string line;
 		ifstream Myfile;
-		Myfile.open(MinorType + ".txt"); //Open file of the program minor
+		Myfile.open(MinorType + "-Requirements.txt"); //OPEN FILE OF REQU ( CONTAIN STUDY PLAN + ELECTIVE )
 		if (Myfile.is_open())
 		{
 			while (!Myfile.eof())
