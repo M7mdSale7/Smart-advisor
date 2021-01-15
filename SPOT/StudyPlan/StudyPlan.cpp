@@ -94,3 +94,39 @@ void StudyPlan::checkPlan() const
 	//after building all checks functions, put here if else statements
 	//and show message in case of each warning or error.
 }
+
+Course* StudyPlan::searchStudyPlan(Course_Code code) const {
+	for (int i = 0; i < plan.size(); i++) {
+		if (plan[i]->searchAcademicYear(code))
+			return plan[i]->searchAcademicYear(code);
+	}
+	return nullptr;
+}
+
+bool StudyPlan::checkConReq(Rules* R) const {
+	if (R->NofConcentrations == 0)
+		return true;
+	
+	for (int i = 0; i < R->NofConcentrations; i++) {
+		bool flag1 = true, flag2 = true;
+		for (auto code : R->ConCompulsory[i]) {
+			if (!searchStudyPlan(code)) {
+				flag1 = false;
+				break;
+			}
+		}
+
+		int NoOfConCredits = 0;
+		for (auto code : R->ConElective[i]) {
+			Course* course = searchStudyPlan(code);
+			if (course) {
+				NoOfConCredits += course->getCredits();
+			}
+		}
+		if (NoOfConCredits < R->ConElectiveCr[i])
+			flag2 = false;
+		if (flag1 && flag2)
+			return true;
+	}
+	return false;
+}

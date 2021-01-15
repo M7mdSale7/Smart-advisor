@@ -1,9 +1,11 @@
 #pragma once
 #include <string>
 using namespace std;
+#include "..\Registrar.h"
 #include "..\DEFs.h"
 #include "CMUgraphicsLib\CMUgraphics.h"
 #include "../Notes.h"
+
 class Course;
 class AcademicYear;
 class Notes;
@@ -77,7 +79,7 @@ public:
 
 
 	
-	
+	//Course* coursesloop(int x, int y, Registrar*);
 
 	~GUI();
 };

@@ -30,5 +30,7 @@ public:
 	vector<Notes*>* getNvector();
 	bool CreditsCheck(Rules*) const;
 	void checkPlan() const;
+	bool checkConReq(Rules*) const;
+	Course* searchStudyPlan(Course_Code) const;
 };
 

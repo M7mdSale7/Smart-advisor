@@ -20,6 +20,7 @@ class Course : public Drawable
 	list<Course_Code> CoReq;	//list of prerequisites
 	string Grade;
 	double qPoints;
+	string Status;	//Done, In Progress, Pending
 public:
 	Course();
 	Course(Course_Code r_code,string r_title, int crd);
@@ -38,5 +39,7 @@ public:
 	void setGrade(string Grade);
 	string getGrade();
 	double getQpoints();
+	void setStatus(string status);
+	string getStatus() const;
 	virtual ~Course();
 };

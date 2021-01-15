@@ -190,3 +190,23 @@ AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, vector <CourseInfo
 	return year;
 		
 }
+
+
+//bool AcademicYear::searchAcademicYear(Course_Code code) const {
+//	for (int i = 0; i < SEM_CNT; i++) {
+//		for (auto course : YearCourses[i]) {
+//			if (course->getCode() == code)
+//				return true;
+//		}
+//	}
+//	return false;
+//}
+Course* AcademicYear::searchAcademicYear(Course_Code code) const {
+	for (int i = 0; i < SEM_CNT; i++) {
+		for (auto course : YearCourses[i]) {
+			if (course->getCode() == code)
+				return course;
+		}
+	}
+	return nullptr;
+}

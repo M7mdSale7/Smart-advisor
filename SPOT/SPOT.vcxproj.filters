@@ -175,6 +175,7 @@
     <ClCompile Include="ImportStudyPlanForMinor.cpp">
       <Filter>Imports</Filter>
     </ClCompile>
+    <ClCompile Include="ActionCourseStatus.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="functions.h" />
@@ -307,6 +308,7 @@
     <ClInclude Include="ImportStudyPlanForMinor.h">
       <Filter>Imports</Filter>
     </ClInclude>
+    <ClInclude Include="ActionCourseStatus.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

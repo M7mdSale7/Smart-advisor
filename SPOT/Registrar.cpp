@@ -186,15 +186,19 @@ void Registrar::Initialization() {
 		else if (j == 5) {
 			getline(s_stream, subline, ',');
 			RegRules.NofConcentrations = stoi(subline);
-			if (RegRules.NofConcentrations == 0)
+			/*if (RegRules.NofConcentrations == 0) {
+				getline(s_stream, subline, ',');
 				j++;
+			}*/
 		}
 		else if (j == 6) {
-			for (size_t k = 0; k < RegRules.NofConcentrations; k++) {
-				getline(s_stream, subline, ',');
-				RegRules.ConCompulsoryCr.push_back(stoi(subline));
-				getline(s_stream, subline, ',');
-				RegRules.ConElectiveCr.push_back(stoi(subline));
+			if (RegRules.NofConcentrations != 0) {
+				for (size_t k = 0; k < RegRules.NofConcentrations; k++) {
+					getline(s_stream, subline, ',');
+					RegRules.ConCompulsoryCr.push_back(stoi(subline));
+					getline(s_stream, subline, ',');
+					RegRules.ConElectiveCr.push_back(stoi(subline));
+				}
 			}
 		}
 		else if (j == 7) {
@@ -236,6 +240,7 @@ void Registrar::Initialization() {
 				}
 				RegRules.ConCompulsory.push_back(ConComp);
 			}
+			cout << RegRules.NofConcentrations << endl;
 			/*vector <Course_Code> ConElect;
 			while (s_stream.good()) {
 				cout << "aaaa" << endl;
@@ -265,6 +270,11 @@ void Registrar::Initialization() {
 	}
 	
 	ImportStudyPlan().StudyPlanImport(fin, this);
+	/*if (pSPlan->searchStudyPlan("CIE 202"))
+		cout << "Found" << endl;
+	else
+		cout << "Not Found" << endl;*/
+	//cout << "checkConReq: " << pSPlan->checkConReq(&RegRules) << endl;
 }
 
 void Registrar::Run()

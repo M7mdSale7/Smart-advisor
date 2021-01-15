@@ -64,7 +64,7 @@ struct Rules	//contains all objects for registrations rules
 	vector <int> ConElectiveCr;		//concentrations elective credits
 
 	vector <vector<Course_Code>> ConCompulsory;		//concentrations compulsory courses
-	vector <vector<Course_Code>> ConElective;		//concentrations compulsory courses
+	vector <vector<Course_Code>> ConElective;		//concentrations Elective courses
 
 };
 

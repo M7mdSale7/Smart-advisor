@@ -123,3 +123,11 @@ double Course::getQpoints()
 	else //default
 		return 3.5 * (double)credits;
 }
+
+void Course::setStatus(string status) {
+	this->Status = status;
+}
+
+string Course::getStatus() const {
+	return Status;
+}
