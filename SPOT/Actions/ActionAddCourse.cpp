@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
-
+#include "../Rules.h"
 
 ActionAddCourse::ActionAddCourse(Registrar* p):Action(p)
 {
@@ -86,6 +86,13 @@ bool ActionAddCourse::Execute()
 			vector<Course_Code> PreReq = pCRINF->PreReqList;
             string CourseTitle = pCRINF->Title;
 			Course* pC = new Course(code, CourseTitle, credit, CoReq, PreReq);
+			Rules* R = pReg->getRules();
+			vector<Course_Code>* MinorComp = &R->MinorCompulsory;
+			for (int i = 0; i < MinorComp->size(); i++)
+			{
+				if (code == MinorComp->at(i))
+					pC->setType("Minor");
+			}
 			pC->setGfxInfo(gInfo);
 			pC -> settype( pCRINF ->type);
 			if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y < (520 + 105) && y>(520 + 70)) 

@@ -111,11 +111,10 @@ bool ActionMinorDec::Execute()
 
 		if (flag2 && !flag && flag3 && flag4) //if there is no issue with adding the course
 		{
-			R->MinorCompulsory.push_back(code); //list of compulsory courses
+			R->MinorCompulsory.push_back(code); //Adding the course to the minor comp list in rules
 			pGUI->PrintMsg("Course Added To Minor , Press any key to continue");
 			pGUI->GetSrting(); //waiting for the user to press enter
 			Minor.push_back(code); //adding the course in the vector of minor , we need it to reach 5 to return the function
-			MinorComp->push_back(code); //Adding the course to the minor comp list in rules
 			Num++; //increment the static variable num that the user can see how many courses he has added
 
 			//Drawing the course and adding it to the study plan of the user
@@ -128,25 +127,25 @@ bool ActionMinorDec::Execute()
 					break;
 				}
 			}
-			pGUI->PrintMsg("Enter the year you want to add the course " + code + " in");
-			string year = pGUI->GetSrting();
-			int yearInt = stoi(year);
-			pGUI->PrintMsg("Enter the semester you want to add the course " + code + " in");
-			string semester = pGUI->GetSrting();
-			SEMESTER s;
-			if (semester == "Fall")
-			{
-				s = (SEMESTER)0;
-			}
-			else if (semester == "Spring")
-			{
-				s = (SEMESTER)1;
-			}
-			else
-				s = (SEMESTER)2;
-			Course* C = new Course(code, title, Cr);
-			C->setType("Minor");
-			pS->AddCourse(C, yearInt, s);
+			//pGUI->PrintMsg("Enter the year you want to add the course " + code + " in");
+			//string year = pGUI->GetSrting();
+			//int yearInt = stoi(year);
+			//pGUI->PrintMsg("Enter the semester you want to add the course " + code + " in");
+			//string semester = pGUI->GetSrting();
+			//SEMESTER s;
+			//if (semester == "Fall")
+			//{
+			//	s = (SEMESTER)0;
+			//}
+			//else if (semester == "Spring")
+			//{
+			//	s = (SEMESTER)1;
+			//}
+			//else
+			//	s = (SEMESTER)2;
+			//Course* C = new Course(code, title, Cr);
+			//C->setType("Minor");
+			//pS->AddCourse(C, yearInt, s);
 		}
 
 		//Error Cases Display

@@ -36,6 +36,7 @@ class GUI
 		ITM_MINOR,
 		ITM_SEARCH,
 		ITM_STATUS,
+		ITM_ERROR,
 		ITM_EXIT,		//Exit item
 
 		ITM_CNT			//no. of menu items ==> This should be the last line in this enum

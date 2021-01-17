@@ -59,6 +59,7 @@ void GUI::CreateMenu() const
 	MenuItemImages[ITM_MINOR] = "GUI\\Images\\Menu\\MinorDec.jpg";
 	MenuItemImages[ITM_SEARCH] = "GUI\\Images\\Menu\\Search.jpg";
 	MenuItemImages[ITM_STATUS] = "GUI\\Images\\Menu\\status.jpg";
+	MenuItemImages[ITM_ERROR] = "GUI\\Images\\Menu\\Error.jpg";
 	MenuItemImages[ITM_EXIT] = "GUI\\Images\\Menu\\Menu_exitt.jpg";
 
 
@@ -371,6 +372,7 @@ ActionData GUI::GetUserAction(string msg) const
 				case ITM_MINOR: return ActionData{ MINOR_DEC };
 				case ITM_SEARCH: return ActionData{ SEARCH };
 				case ITM_STATUS: return ActionData{ STATUS };
+				case ITM_ERROR: return ActionData{ ERRORR };
 				case ITM_EXIT: return ActionData{ EXIT };		//Exit
 
 				default: return ActionData{ MENU_BAR };	//A click on empty place in menu bar

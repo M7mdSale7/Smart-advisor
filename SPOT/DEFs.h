@@ -46,6 +46,7 @@ enum ActionType
 	MINOR_DEC,
 	SEARCH,
 	STATUS,
+	ERRORR,
 	EXIT,		//Exit the application
 
 	STATUS_BAR,	//A click on the status bar
