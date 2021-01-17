@@ -8,12 +8,15 @@ Course::Course(Course_Code c_code, string c_title, int c_crd, vector<Course_Code
 	credits = c_crd;
 	CoReq = c_CoReq;
 	PreReq = c_PreReq;
+	filter = true;
 }
 Course::Course(Course_Code r_code, string r_title, int crd):code(r_code),Title(r_title)
 {
 	credits = crd;
 	Grade = "NA";
 	filter = true;
+	Status = "Pending";
+	Done = true;
 }
 
 Course::~Course()
@@ -170,4 +173,16 @@ string Course::getGrad() const
 string Course::getType()
 {
 	return type;
+}
+
+void Course::setStatus(string status) {
+	this->Status = status;
+}
+
+string Course::getStatus() const {
+	return Status;
+}
+
+void Course::setDone(bool descision) {
+	this->Done = descision;
 }

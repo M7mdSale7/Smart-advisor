@@ -1,4 +1,5 @@
 #include "GUI.h"
+#include "..//Registrar.h"
 #include "../Courses/Course.h"
 #include "../StudyPlan/AcademicYear.h"
 #include <sstream>
@@ -6,6 +7,7 @@
 #include <iostream>
 using namespace std;
 #include "../Actions/ActionFilters.h"
+#include "..//StudyPlan/StudyPlan.h"
 int year = 5;
 int* Pyear = &year;
 GUI::GUI()
@@ -56,6 +58,8 @@ void GUI::CreateMenu() const
 	MenuItemImages[ITM_GPA] = "GUI\\Images\\Menu\\Menu_GPA.jpg";
 	MenuItemImages[ITM_MINOR] = "GUI\\Images\\Menu\\MinorDec.jpg";
 	MenuItemImages[ITM_SEARCH] = "GUI\\Images\\Menu\\Search.jpg";
+	MenuItemImages[ITM_STATUS] = "GUI\\Images\\Menu\\status.jpg";
+	MenuItemImages[ITM_ERROR] = "GUI\\Images\\Menu\\Error.jpg";
 	MenuItemImages[ITM_EXIT] = "GUI\\Images\\Menu\\Menu_exitt.jpg";
 
 
@@ -237,7 +241,23 @@ void GUI::DrawNotes(const Notes* pNotes)
 ////>>>>>>> 168c832663804dcd8f3721f5b2cdd46ed4a9029e
 //}
 
+void GUI::DrawStudentLevel(const StudyPlan* pSPlan) {
+	//graphicsInfo gInfo = pSPlan->getGfxInfo();
 
+	pWind->SetPen(BLACK, 2);
+	pWind->DrawRectangle(1100, 10, 1200, 70);
+	pWind->SetFont(20, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(RED, 2);
+	string StudentLevel = pSPlan->StudentLevel();
+	if (StudentLevel == "Freshman")
+		pWind->DrawString(1110, 30, "Freshman");
+	else if (StudentLevel == "Sophomore")
+		pWind->DrawString(1105, 30, "Sophomore");
+	else if (StudentLevel == "Junior")
+		pWind->DrawString(1125, 30, "Junior");
+	else
+		pWind->DrawString(1125, 30, "Senior");
+}
 
 void GUI::DrawAcademicYear(const AcademicYear* pY) 
 {
@@ -372,6 +392,8 @@ ActionData GUI::GetUserAction(string msg) const
 				case ITM_GPA: return ActionData{ CALC_GPA };
 				case ITM_MINOR: return ActionData{ MINOR_DEC };
 				case ITM_SEARCH: return ActionData{ SEARCH };
+				case ITM_STATUS: return ActionData{ STATUS };
+				case ITM_ERROR: return ActionData{ ERRORR };
 				case ITM_EXIT: return ActionData{ EXIT };		//Exit
 
 				default: return ActionData{ MENU_BAR };	//A click on empty place in menu bar
@@ -393,7 +415,41 @@ ActionData GUI::GetUserAction(string msg) const
 
 
 
-
+/*Course* GUI::coursesloop(int x, int y, Registrar* pReg) {
+	Course* pointer = nullptr;
+	StudyPlan* pS = pReg->getStudyPlay();
+	vector<AcademicYear*>* pV = pS->getSPvector();
+	bool z = 0;
+	for (AcademicYear* year : *pV)
+	{
+		list<Course*>* pYear = year->getyearslist();
+		for (int sem = FALL; sem < SEM_CNT; sem++)
+		{
+			for (auto i = pYear[sem].begin(); i != pYear[sem].end(); i++)
+			{
+				int cx, cy;
+				cx = (*i)->getGfxInfo().x;
+				cy = (*i)->getGfxInfo().y;
+				if (x > cx && x<(cx + CRS_WIDTH) && y>cy && y < (cy + CRS_HEIGHT))
+				{
+					z = 1;
+					pointer = (*i)->getptr();
+					break;
+				}
+			}
+			if (z) break;
+		}
+		if (z) break;
+	}
+	if (z)
+	{
+		return pointer;
+	}
+	else
+	{
+		return nullptr;
+	}
+}*/
 
 
 

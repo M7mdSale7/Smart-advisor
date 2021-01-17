@@ -17,11 +17,12 @@ class Course : public Drawable
 	//Type type;
 	SEMESTER semester;
 	string type;	//Univ, track, or major.....etc.
-	bool Done = 0;		//Done or not yet?
+	bool Done;		//Done or not yet?
 	vector<Course_Code> PreReq;	//vector of prerequisites
-	vector<Course_Code> CoReq;	//vector of prerequisites
+	vector<Course_Code> CoReq;	//vector of corequisites
 	string Grade;
 	double qPoints;
+	string Status;	//Done, In Progress, Pending
 	bool filter;
 public:
 	Course();
@@ -46,6 +47,9 @@ public:
 	void setGrade(string Grade);
 	string getGrade();
 	double getQpoints();
+	void setStatus(string status);
+	string getStatus() const;
+	void setDone(bool descision);
 	bool getFilter() const;
 	void setFiler(bool filter);
 	void setType(string type);

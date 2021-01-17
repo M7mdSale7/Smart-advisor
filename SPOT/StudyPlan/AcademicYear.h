@@ -33,6 +33,10 @@ public:
 	bool checkYearSemCredits(Rules*) const; //returns true only if each semester in the year is valid in terms of credits
 	bool checksemesteroff(Rules*) const;
 
+	Course* searchAcademicYear(Course_Code code) const;
+	int CrOfDoneCourses() const;
+	bool checkYearPReNCO() const;
+
 	void virtual DrawMe(GUI*) const;
 };
 

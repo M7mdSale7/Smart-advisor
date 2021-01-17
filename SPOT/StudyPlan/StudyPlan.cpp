@@ -1,6 +1,8 @@
+#include <iostream>
 #include "StudyPlan.h"
 #include "../Notes.h"
-
+#include "../GUI/GUI.h"
+#include "../Registrar.h"
 
 StudyPlan::StudyPlan()
 {
@@ -60,6 +62,9 @@ void StudyPlan::DrawMe(GUI* pGUI) const
 
 	for (int i = 0; i < PlanNotees.size(); i++)
 		PlanNotees[i]->DrawMe(pGUI);
+	//Draw the student level according to the Study Plan
+	if (!plan.empty())
+		pGUI->DrawStudentLevel(this);
 }
 
 StudyPlan::~StudyPlan()
@@ -77,6 +82,38 @@ vector<Notes*>* StudyPlan::getNvector()
 	return &PlanNotees;
 }
 
+vector<string> StudyPlan::checkMinor(Rules* R)
+{
+	vector<Course_Code>* MinorComp = &R->MinorCompulsory;
+	vector<string> VectorOfErrors;
+	for (int cry = 0; cry < MinorComp->size(); cry++)
+	{
+		bool found = false;
+		for (int i = 0; i < plan.size(); i++)
+		{
+			list<Course*>* Courses = plan.at(i)->getyearslist();
+			for (int j = 0; j < 3; j++)
+			{
+				if (found)
+					break;
+				for (auto itr : *(Courses + j))
+				{
+					string Crs = itr->getCode(); //course code from plan ( we are looping on each course )
+					if (MinorComp->at(cry) == Crs)
+						found = true;
+				}
+			}
+		}
+		if (!found)
+		{
+			string Error;
+			Error = "Course " + MinorComp->at(cry) + " Not Taken although it's choosen in minor";
+			VectorOfErrors.push_back(Error);
+		}
+	}
+	return VectorOfErrors;
+}
+
 bool StudyPlan::CreditsCheck(Rules* R) const
 {
 	for (auto itrY : plan)
@@ -92,6 +129,61 @@ void StudyPlan::checkPlan() const
 	//and show message in case of each warning or error.
 }
 
+Course* StudyPlan::searchStudyPlan(Course_Code code) const {
+	for (int i = 0; i < plan.size(); i++) {
+		if (plan[i]->searchAcademicYear(code))
+			return plan[i]->searchAcademicYear(code);
+	}
+	return nullptr;
+}
+
+bool StudyPlan::checkConReq(Rules* R) const {
+	if (R->NofConcentrations == 0)
+		return true;
+	
+	for (int i = 0; i < R->NofConcentrations; i++) {
+		bool flag1 = true, flag2 = true;
+		for (auto code : R->ConCompulsory[i]) {
+			if (!searchStudyPlan(code)) {
+				flag1 = false;
+				break;
+			}
+		}
+
+		int NoOfConCredits = 0;
+		for (auto code : R->ConElective[i]) {
+			Course* course = searchStudyPlan(code);
+			if (course) {
+				NoOfConCredits += course->getCredits();
+			}
+		}
+		if (NoOfConCredits < R->ConElectiveCr[i])
+			flag2 = false;
+		if (flag1 && flag2)
+			return true;
+	}
+	return false;
+}
+
+string StudyPlan::StudentLevel() const {
+	int credits = creditsOfDoneCourses();
+	if (credits <= 32)
+		return string("Freshman");
+	else if (credits <= 64)
+		return string("Sophomore");
+	else if (credits <= 96)
+		return string("Junior");
+	else
+		return string("Senior");
+}
+
+int StudyPlan::creditsOfDoneCourses() const {
+	int credits = 0;
+	for (int i = 0; i < plan.size(); i++) {
+		credits += plan[i]->CrOfDoneCourses();
+	}
+	return credits;
+}
 //Course* StudyPlan::coursesloop(Registrar* pReg)
 //{
 //	Course* pointer = nullptr;
