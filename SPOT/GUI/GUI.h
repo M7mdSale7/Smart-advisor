@@ -1,9 +1,12 @@
 #pragma once
 #include <string>
 using namespace std;
+#include "..\Registrar.h"
 #include "..\DEFs.h"
 #include "CMUgraphicsLib\CMUgraphics.h"
 #include "../Notes.h"
+#include "..//StudyPlan/StudyPlan.h"
+
 class Course;
 class AcademicYear;
 class Notes;
@@ -21,6 +24,7 @@ class GUI
 		ITM_EDITCOURSECODE,
 		ITM_REORDER,  //REORDER COURSE FROM SEMESTER TO ANOTHER
 		ITM_SAVE_PLAN,
+		ITM_Double,
 		//ITM_LOAD_PLAN,
 							//TODO: Add more items names here
 						//TODO: Add more items names here
@@ -31,6 +35,7 @@ class GUI
 		ITM_GPA,
 		ITM_MINOR,
 		ITM_SEARCH,
+		ITM_STATUS,
 		ITM_EXIT,		//Exit item
 
 		ITM_CNT			//no. of menu items ==> This should be the last line in this enum
@@ -70,6 +75,7 @@ public:
 	void DrawAcademicYear(const AcademicYear*);
 	void UpdateInterface() const;
 	void DrawNotes(const Notes* pNotes); //Member function to Draw Notes on Screen
+	void DrawStudentLevel(const StudyPlan* pSPlan);
 	//void DeleteCourse(double x, double y);
 	
 	//input functions
@@ -78,7 +84,7 @@ public:
 
 
 	
-	
+	//Course* coursesloop(int x, int y, Registrar*);
 
 	~GUI();
 };

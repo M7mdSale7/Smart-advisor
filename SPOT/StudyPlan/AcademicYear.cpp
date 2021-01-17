@@ -163,6 +163,11 @@ vector<int> AcademicYear::checkYearSemCredits(Rules* R) const
 	return notSatisfying;
 }
 
+bool AcademicYear::checksemesteroff(Rules*) const
+{
+	return false;
+}
+
 void AcademicYear::DrawMe(GUI* pGUI) const
 {
 	pGUI->DrawAcademicYear(this);
@@ -289,4 +294,44 @@ AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, Rules* R, string *
 	year->setGfxInfo(gInfo);
 	return year;
 		
+}
+
+
+//bool AcademicYear::searchAcademicYear(Course_Code code) const {
+//	for (int i = 0; i < SEM_CNT; i++) {
+//		for (auto course : YearCourses[i]) {
+//			if (course->getCode() == code)
+//				return true;
+//		}
+//	}
+//	return false;
+//}
+Course* AcademicYear::searchAcademicYear(Course_Code code) const {
+	for (int i = 0; i < SEM_CNT; i++) {
+		for (auto course : YearCourses[i]) {
+			if (course->getCode() == code)
+				return course;
+		}
+	}
+	return nullptr;
+}
+
+int AcademicYear::CrOfDoneCourses() const {
+	int credits = 0;
+	for (int i = 0; i < SEM_CNT; i++) {
+		for (auto course : YearCourses[i]) {
+			if (course->getStatus() == "Done")
+				credits += course->getCredits();
+		}
+	}
+	return credits;
+}
+
+bool AcademicYear::checkYearPReNCO() const {
+	for (int i = 0; i < SEM_CNT; i++) {
+		for (auto course : YearCourses[i]) {
+			
+		}
+	}
+	return true;//
 }

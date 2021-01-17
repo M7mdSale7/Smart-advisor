@@ -14,23 +14,29 @@ class Course : public Drawable
 	const string Title;		//course title: e.g. "Fundamentals of Computer Programming"
 	int credits;	//no. of course credits
 	int year;
+	//Type type;
 	SEMESTER semester;
 	string type;	//Univ, track, or major.....etc.
-	bool Done = 0;		//Done or not yet?
+	bool Done;		//Done or not yet?
 	vector<Course_Code> PreReq;	//vector of prerequisites
-	vector<Course_Code> CoReq;	//vector of prerequisites
+	vector<Course_Code> CoReq;	//vector of corequisites
 	string Grade;
 	double qPoints;
+	string Status;	//Done, In Progress, Pending
 	bool filter;
 public:
 	Course();
+	Course(Course_Code r_code, string r_title, int c_crd, vector<Course_Code> r_CoReq, vector<Course_Code> r_PreReq);
 	Course(Course_Code r_code,string r_title, int crd);
+
 	string getTitle() const;
 	string getCode() const;
 	int getCredits() const;
 	int getyear() const;
 	void setyear(int y);
 	void setsemester(SEMESTER s);
+	void settype(string newtype);
+	string gettype() const;
 	SEMESTER getsemester() const;
 	void saveCourse(ofstream& ) const;
 	Course* getptr();
@@ -41,6 +47,9 @@ public:
 	void setGrade(string Grade);
 	string getGrade();
 	double getQpoints();
+	void setStatus(string status);
+	string getStatus() const;
+	void setDone(bool descision);
 	bool getFilter() const;
 	void setFiler(bool filter);
 	void setType(string type);

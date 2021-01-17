@@ -18,6 +18,7 @@ public:
 	GUI* getGUI() const;
 	Rules* getRules();
 	Action* CreateRequiredAction();
+	CourseInfo* CatalogSearch(string code, bool& coursefound);
 	bool ExecuteAction(Action*);
 	void UpdateInterface();
 	StudyPlan* getStudyPlay() const;

@@ -6,6 +6,15 @@ using namespace std;
 typedef string Course_Code;
 typedef string Note;
 
+//enum TYPE
+//{
+//	Elective,
+//	Major,
+//	Minor,
+//	Concentration,
+//	University,
+//	Track
+//};
 
 struct yearSemPair //ordered pair of year and semester to ease reporting the error in semesters for the user
 {
@@ -29,8 +38,8 @@ enum ActionType
 	ADD_NOTES,
 	DEL_CRS,	//Delete a course from study plan
 	EDIT_CRS,   //CHANGE COURSE CODE
-	REORDER_CRS,   //REORDER COURSE 
-
+	REORDER_CRS, //REORDER COURSE 
+	Double,
 	IMPORT,
 	SHOW_INFO,
 	SAVE,		//Save a study plan to file
@@ -41,6 +50,7 @@ enum ActionType
 	CALC_GPA,
 	MINOR_DEC,
 	SEARCH,
+	STATUS,
 	EXIT,		//Exit the application
 
 	STATUS_BAR,	//A click on the status bar

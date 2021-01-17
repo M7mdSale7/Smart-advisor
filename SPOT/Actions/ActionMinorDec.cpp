@@ -79,11 +79,11 @@ bool ActionMinorDec::Execute()
 			}
 		}
 
-		//Checking if the course is in the given program plan to minor
+		//Checking if the course is in the given program plan to minor Or Elective
 		int offset;
 		string line;
 		ifstream Myfile;
-		Myfile.open(MinorType + ".txt"); //Open file of the program minor
+		Myfile.open(MinorType + "-Requirements.txt"); //OPEN FILE OF REQU ( CONTAIN STUDY PLAN + ELECTIVE )
 		if (Myfile.is_open())
 		{
 			while (!Myfile.eof())
@@ -111,6 +111,7 @@ bool ActionMinorDec::Execute()
 
 		if (flag2 && !flag && flag3 && flag4) //if there is no issue with adding the course
 		{
+			R->MinorCompulsory.push_back(code); //list of compulsory courses
 			pGUI->PrintMsg("Course Added To Minor , Press any key to continue");
 			pGUI->GetSrting(); //waiting for the user to press enter
 			Minor.push_back(code); //adding the course in the vector of minor , we need it to reach 5 to return the function

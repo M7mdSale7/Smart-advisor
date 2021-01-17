@@ -169,12 +169,17 @@
       <Filter>Actions</Filter>
     </ClCompile>
     <ClCompile Include="StudyPlan\AcademicYear.cpp" />
+    <ClCompile Include="ActionDouble.cpp">
     <ClCompile Include="Actions\ActionFilters.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="Actions\exit.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+=======
+    <ClCompile Include="ActionCourseStatus.cpp" />
+>>>>>>> 8e0ed7a9ff6f3e4a1cbf3d7f9361666344e73bb8
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="functions.h" />
@@ -301,12 +306,17 @@
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="StudyPlan\AcademicYear.h" />
+    <ClInclude Include="ActionDouble.h">
     <ClInclude Include="Actions\ActionFilters.h">
       <Filter>Actions</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="Actions\exit.h">
       <Filter>Actions</Filter>
     </ClInclude>
+=======
+    <ClInclude Include="ActionCourseStatus.h" />
+>>>>>>> 8e0ed7a9ff6f3e4a1cbf3d7f9361666344e73bb8
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

@@ -30,7 +30,16 @@ public:
 	list<Course*>* getyearslist();
 	AcademicYear* ImportAcademicYear(ifstream& fin, Rules* R, string* subline, stringstream& s_stream, int j);
 	void saveAcademicYear(int year,ofstream&) const;
+<<<<<<< HEAD
 	vector<int> checkYearSemCredits(Rules*) const; //returns true only if each semester in the year is valid in terms of credits
+=======
+	bool checkYearSemCredits(Rules*) const; //returns true only if each semester in the year is valid in terms of credits
+	bool checksemesteroff(Rules*) const;
+
+	Course* searchAcademicYear(Course_Code code) const;
+	int CrOfDoneCourses() const;
+	bool checkYearPReNCO() const;
+>>>>>>> 8e0ed7a9ff6f3e4a1cbf3d7f9361666344e73bb8
 
 	void virtual DrawMe(GUI*) const;
 };
