@@ -62,6 +62,7 @@ void StudyPlan::DrawMe(GUI* pGUI) const
 
 	for (int i = 0; i < PlanNotees.size(); i++)
 		PlanNotees[i]->DrawMe(pGUI);
+	//Draw the student level according to the Study Plan
 	if (!plan.empty())
 		pGUI->DrawStudentLevel(this);
 }

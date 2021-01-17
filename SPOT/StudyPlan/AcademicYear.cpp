@@ -248,3 +248,12 @@ int AcademicYear::CrOfDoneCourses() const {
 	}
 	return credits;
 }
+
+bool AcademicYear::checkYearPReNCO() const {
+	for (int i = 0; i < SEM_CNT; i++) {
+		for (auto course : YearCourses[i]) {
+			
+		}
+	}
+	return true;//
+}

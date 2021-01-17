@@ -29,6 +29,7 @@ public:
 	bool CreditsCheck(Rules*) const;
 	void checkPlan() const;
 	bool checkConReq(Rules*) const;
+	bool checkSPPreNCo();
 	int creditsOfDoneCourses() const;
 	string StudentLevel() const;
 	Course* searchStudyPlan(Course_Code) const;
