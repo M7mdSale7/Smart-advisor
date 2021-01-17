@@ -44,6 +44,7 @@ enum ActionType
 	REDO,		//Redo the last Action canceled
 	CALC_GPA,
 	MINOR_DEC,
+	SEARCH,
 	EXIT,		//Exit the application
 
 	STATUS_BAR,	//A click on the status bar

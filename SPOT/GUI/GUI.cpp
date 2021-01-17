@@ -5,6 +5,7 @@
 #include <string>
 #include <iostream>
 using namespace std;
+#include "../Actions/ActionFilters.h"
 int year = 5;
 int* Pyear = &year;
 GUI::GUI()
@@ -54,6 +55,7 @@ void GUI::CreateMenu() const
 	MenuItemImages[ITM_IMPORT] = "GUI\\Images\\Menu\\Menu_Import.jpg";
 	MenuItemImages[ITM_GPA] = "GUI\\Images\\Menu\\Menu_GPA.jpg";
 	MenuItemImages[ITM_MINOR] = "GUI\\Images\\Menu\\MinorDec.jpg";
+	MenuItemImages[ITM_SEARCH] = "GUI\\Images\\Menu\\Search.jpg";
 	MenuItemImages[ITM_EXIT] = "GUI\\Images\\Menu\\Menu_exitt.jpg";
 
 
@@ -81,6 +83,46 @@ void GUI::PrintMsg(string msg) const
 	pWind->DrawString(MsgX, WindHeight - MsgY, msg);
 }
 
+string GUI::GetSrting() const
+{
+	//Reads a complete string from the user until the user presses "ENTER".
+	//If the user presses "ESCAPE". This function should return an empty string.
+	//"BACKSPACE" is also supported
+	//User should see what he is typing at the status bar
+
+
+
+	string userInput;
+	char Key;
+	while (1)
+	{
+		pWind->WaitKeyPress(Key);
+
+		switch (Key)
+		{
+		case 27: //ESCAPE key is pressed
+			PrintMsg("");
+			return ""; //returns nothing as user has cancelled the input
+
+		case 13:		//ENTER key is pressed
+			return userInput;
+
+		case 8:		//BackSpace is pressed
+			if (userInput.size() > 0)
+				userInput.resize(userInput.size() - 1);
+			break;
+
+		default:
+			userInput += Key;
+		};
+
+		PrintMsg(userInput);
+	}
+
+
+}
+
+
 //////////////////////////////////////////////////////////////////////////
 void GUI::UpdateInterface() const
 {
@@ -99,15 +141,31 @@ void GUI::UpdateInterface() const
 ////////////////////////    Drawing functions    ///////////////////
 void GUI::DrawCourse(const Course* pCrs)
 {
-	graphicsInfo gInfo = pCrs->getGfxInfo();
-	if (pCrs->isSelected())
+	if (pCrs->isSelected() && pCrs->getFilter() == 1)
+	{
 		pWind->SetPen(HiColor, 2);
-	else
-		//graphicsInfo gInfo = pCrs->getGfxInfo();
+		pWind->SetBrush(YELLOW);
+		graphicsInfo gInfo = pCrs->getGfxInfo();
+		pWind->DrawRectangle(gInfo.x, gInfo.y, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT);
+		pWind->DrawLine(gInfo.x, gInfo.y + CRS_HEIGHT / 2, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT / 2);
+
+		//Write the course code and credit hours.
+		int Code_x = gInfo.x + CRS_WIDTH * 0.15;
+		int Code_y = gInfo.y + CRS_HEIGHT * 0.05;
+		pWind->SetFont(CRS_HEIGHT * 0.4, BOLD, BY_NAME, "Gramound");
+		pWind->SetPen(DARKRED);
+
+		ostringstream crd;
+		crd << "crd:" << pCrs->getCredits();
+		pWind->DrawString(Code_x, Code_y, pCrs->getCode());
+		pWind->DrawString(Code_x, Code_y + CRS_HEIGHT / 2, crd.str());
+
+	}
+	if (pCrs->getFilter() == 1 && pCrs->isSelected() == 0)
 	{
 		pWind->SetPen(BLACK, 2);
 		pWind->SetBrush(LIGHTBLUE);
-		//graphicsInfo gInfo = pCrs->getGfxInfo();
+		graphicsInfo gInfo = pCrs->getGfxInfo();
 		pWind->DrawRectangle(gInfo.x, gInfo.y, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT);
 		pWind->DrawLine(gInfo.x, gInfo.y + CRS_HEIGHT / 2, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT / 2);
 
@@ -206,8 +264,8 @@ void GUI::DrawAcademicYear(const AcademicYear* pY)
 	graphicsInfo gInfo2 = pY->getGfxInfo();
 	pWind->SetPen(BLACK, 2);
 //>>>>>>> 11532e52c9debeeaa8dfb99faff9ed04e9003c17
-	pWind->SetBrush(WHITE);
-	pWind->DrawRectangle(gInfo.x - (35 + 35), gInfo.y, gInfo.x - 40, gInfo.y + 105 , FRAME);
+	pWind->SetBrush(LIGHTGREEN);
+	pWind->DrawRectangle(gInfo.x - (35 + 35), gInfo.y, gInfo.x - 40, gInfo.y + 105);
 
 	//Writing Year Num.
 	pWind->SetFont(35, BOLD, BY_NAME, "Gramound");
@@ -228,10 +286,10 @@ void GUI::DrawAcademicYear(const AcademicYear* pY)
 
 	pWind->SetPen(BLACK, 2);
 	pWind->DrawLine(900, 88, 1200, 88, FRAME);
-	pWind->DrawLine(900, 88, 900, 500, FRAME);
-	pWind->DrawLine(1200, 88, 1200, 500, FRAME);
-	pWind->DrawLine(900, 500, 1200, 500, FRAME);
-	pWind->DrawLine(900, 150, 1200, 150, FRAME);
+	pWind->DrawLine(900, 88, 900, 310, FRAME);
+	pWind->DrawLine(1200, 88, 1200, 310, FRAME);
+	pWind->DrawLine(900, 310, 1200, 310, FRAME);
+	pWind->DrawLine(900, 120, 1200, 120, FRAME);
 	pWind->SetFont(20, BOLD, BY_NAME, "Gramound");
 	pWind->SetPen(RED, 2);
 	pWind->DrawString(950, 100, "ADD YOUR NOTES HERE");
@@ -292,6 +350,7 @@ ActionData GUI::GetUserAction(string msg) const
 				case ITM_IMPORT: return ActionData{ IMPORT };
 				case ITM_GPA: return ActionData{ CALC_GPA };
 				case ITM_MINOR: return ActionData{ MINOR_DEC };
+				case ITM_SEARCH: return ActionData{ SEARCH };
 				case ITM_EXIT: return ActionData{ EXIT };		//Exit
 
 				default: return ActionData{ MENU_BAR };	//A click on empty place in menu bar
@@ -311,44 +370,6 @@ ActionData GUI::GetUserAction(string msg) const
 
 }
 
-string GUI::GetSrting() const
-{
-	//Reads a complete string from the user until the user presses "ENTER".
-	//If the user presses "ESCAPE". This function should return an empty string.
-	//"BACKSPACE" is also supported
-	//User should see what he is typing at the status bar
-
-	
-
-	string userInput;
-	char Key;
-	while (1)
-	{
-		pWind->WaitKeyPress(Key);
-
-		switch (Key)
-		{
-		case 27: //ESCAPE key is pressed
-			PrintMsg("");
-			return ""; //returns nothing as user has cancelled the input
-
-		case 13:		//ENTER key is pressed
-			return userInput;
-
-		case 8:		//BackSpace is pressed
-			if (userInput.size() > 0)
-				userInput.resize(userInput.size() - 1);
-			break;
-
-		default:
-			userInput += Key;
-		};
-
-		PrintMsg(userInput);
-	}
-	
-
-}
 
 
 

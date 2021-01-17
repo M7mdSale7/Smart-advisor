@@ -79,11 +79,11 @@ bool ActionMinorDec::Execute()
 			}
 		}
 
-		//Checking if the course is in the given program plan to minor
+		//Checking if the course is in the given program plan to minor Or Elective
 		int offset;
 		string line;
 		ifstream Myfile;
-		Myfile.open(MinorType + ".txt"); //Open file of the program minor
+		Myfile.open(MinorType + "-Requirements.txt"); //OPEN FILE OF REQU ( CONTAIN STUDY PLAN + ELECTIVE )
 		if (Myfile.is_open())
 		{
 			while (!Myfile.eof())
@@ -127,10 +127,10 @@ bool ActionMinorDec::Execute()
 					break;
 				}
 			}
-			pGUI->GetUserAction("Enter the year you want to add the course " + code + " in");
+			pGUI->PrintMsg("Enter the year you want to add the course " + code + " in");
 			string year = pGUI->GetSrting();
 			int yearInt = stoi(year);
-			pGUI->GetUserAction("Enter the semester you want to add the course " + code + " in");
+			pGUI->PrintMsg("Enter the semester you want to add the course " + code + " in");
 			string semester = pGUI->GetSrting();
 			SEMESTER s;
 			if (semester == "Fall")
@@ -144,6 +144,7 @@ bool ActionMinorDec::Execute()
 			else
 				s = (SEMESTER)2;
 			Course* C = new Course(code, title, Cr);
+			C->setType("Minor");
 			pS->AddCourse(C, yearInt, s);
 		}
 

@@ -4,12 +4,12 @@
 #include "..//Registrar.h"
 #include "..//Courses/UnivCourse.h"
 #include "..//GUI/GUI.h"
-//Class responsible for Showing course Info
-class ActionShowCourseInfo :
-	public Action
+
+class ActionFilters : public Action
 {
 public:
-	ActionShowCourseInfo(Registrar* , int x , int y);
+	ActionFilters(Registrar*);
 	bool virtual Execute();
-	virtual ~ActionShowCourseInfo();
+	virtual ~ActionFilters();
+	
 };

@@ -125,6 +125,7 @@
     <ClCompile Include="Actions\ActionCalculateGPA.cpp" />
     <ClCompile Include="Actions\ActionChangeCode.cpp" />
     <ClCompile Include="Actions\ActionDeleteCourse.cpp" />
+    <ClCompile Include="Actions\ActionFilters.cpp" />
     <ClCompile Include="Actions\ActionImportStudyPlan.cpp" />
     <ClCompile Include="Actions\ActionMinorDec.cpp" />
     <ClCompile Include="Actions\ActionReorder.cpp" />
@@ -190,6 +191,7 @@
     <ClInclude Include="Actions\ActionCalculateGPA.h" />
     <ClInclude Include="Actions\ActionChangeCode.h" />
     <ClInclude Include="Actions\ActionDeleteCourse.h" />
+    <ClInclude Include="Actions\ActionFilters.h" />
     <ClInclude Include="Actions\ActionImportStudyPlan.h" />
     <ClInclude Include="Actions\ActionMinorDec.h" />
     <ClInclude Include="Actions\ActionReorder.h" />

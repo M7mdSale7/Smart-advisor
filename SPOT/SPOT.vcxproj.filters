@@ -171,6 +171,7 @@
     <ClCompile Include="Actions\exit.cpp" />
     <ClCompile Include="StudyPlan\AcademicYear.cpp" />
     <ClCompile Include="ActionDouble.cpp">
+    <ClCompile Include="Actions\ActionFilters.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
   </ItemGroup>
@@ -301,6 +302,7 @@
     <ClInclude Include="Actions\exit.h" />
     <ClInclude Include="StudyPlan\AcademicYear.h" />
     <ClInclude Include="ActionDouble.h">
+    <ClInclude Include="Actions\ActionFilters.h">
       <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>

@@ -22,6 +22,7 @@ class Course : public Drawable
 	vector<Course_Code> CoReq;	//vector of prerequisites
 	string Grade;
 	double qPoints;
+	bool filter;
 public:
 	Course();
 	Course(Course_Code r_code, string r_title, int c_crd, vector<Course_Code> r_CoReq, vector<Course_Code> r_PreReq);
@@ -41,10 +42,14 @@ public:
 	string getPreq();
 	string getCoreq();
 	void FillData(Rules* R, int index); //fills the data of coReq, preReq, and type
-
 	void DrawMe(GUI*) const;
 	void setGrade(string Grade);
 	string getGrade();
 	double getQpoints();
+	bool getFilter() const;
+	void setFiler(bool filter);
+	void setType(string type);
+	string getGrad() const;
+	string getType();
 	virtual ~Course();
 };
