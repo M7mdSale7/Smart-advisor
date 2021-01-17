@@ -156,7 +156,7 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>CIBEIQAAAAAAAECAgIAAACAEIAABAFAARABACIAAAAA=</HashCode>
+      <HashCode>CIBEAQAAAAAAAECAgIAAACAEIAABAFAABABACIAAAAA=</HashCode>
       <FileName>Courses\Course.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -170,7 +170,7 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>BAEAAwAAAAAAAgABAIQQBEAAJAABAAAQAAAAIAAAAAA=</HashCode>
+      <HashCode>BAEAAwAAAAAAAgABAIQQJEAAJAABAAAQAAAAIAAAAAA=</HashCode>
       <FileName>StudyPlan\AcademicYear.h</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>

@@ -7,6 +7,9 @@ Course::Course(Course_Code r_code, string r_title, int crd):code(r_code),Title(r
 {
 	credits = crd;
 	Grade = "NA";
+	filter = true;
+	Status = "Done";
+	Done = true;
 }
 
 Course::~Course()
@@ -62,6 +65,14 @@ Course* Course::getptr()
 	return this;
 
 }
+
+void Course::FillData(Rules* R, int index)
+{
+	PreReq = R->CourseCatalog.at(index).PreReqList;
+	CoReq = R->CourseCatalog.at(index).CoReqList;
+	type = R->CourseCatalog.at(index).type;
+}
+
 
 string Course::getPreq()
 {
@@ -120,8 +131,31 @@ double Course::getQpoints()
 		return 1.7 * (double)credits;
 	else if (Grade == "F")
 		return 0.0 * (double)credits;
-	else //default
-		return 3.5 * (double)credits;
+}
+
+bool Course::getFilter() const
+{
+	return filter;
+}
+
+void Course::setFiler(bool filter)
+{
+	this->filter = filter;
+}
+
+void Course::setType(string type)
+{
+	this->type = type;
+}
+
+string Course::getGrad() const
+{
+	return this->Grade;
+}
+
+string Course::getType()
+{
+	return type;
 }
 
 void Course::setStatus(string status) {
@@ -130,4 +164,8 @@ void Course::setStatus(string status) {
 
 string Course::getStatus() const {
 	return Status;
+}
+
+void Course::setDone(bool descision) {
+	this->Done = descision;
 }

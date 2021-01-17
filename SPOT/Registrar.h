@@ -11,7 +11,7 @@ class Registrar
 	GUI *pGUI;	//pointer to GUI 
 	Rules RegRules;	//Registration rules
 	StudyPlan *pSPlan;
-	StudyPlan* pSPlan2;
+	StudyPlan *pSPlan2;
 
 public:
 	Registrar();
@@ -25,6 +25,7 @@ public:
 	void Initialization();
 	//add in import to call for it at the start of the application
 	void Run();
+	void fillCoursesType();
 
 	~Registrar();
 };

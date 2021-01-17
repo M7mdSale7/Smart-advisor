@@ -22,8 +22,8 @@ bool ActionShowCourseInfo::Execute()
 			pReg->UpdateInterface();
 			
 			pReg->getGUI()->GetUserAction("Title: " + pC->getTitle()
-				+ ", Credits: " + to_string(pC->getCredits())
-				+ "Prerequisite: " + pC->getPreq() + "Corequisite " + pC->getCoreq() +".Please click anywhere to deselect.");
+				+ " , Credits: " + to_string(pC->getCredits())
+				+ " Prerequisite: " + pC->getPreq() + " Corequisite " + pC->getCoreq() +" .Please click anywhere to deselect.");
 			pC->setSelected(false);
 		}
 		return true;

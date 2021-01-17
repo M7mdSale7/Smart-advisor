@@ -7,7 +7,7 @@
 void ImportOffering::ImportOfferingFile(vector<AcademicYearOfferings>* offered)
 {
 	
-	ifstream finput("C:/Users/mogaz/Desktop/Academic offerings.txt"); //modify path.
+	ifstream finput("info files/Academic offerings.txt"); //modify path.
 	AcademicYearOfferings yearOff;
 	istringstream stream;
 	string token, semester; //change this string

@@ -5,6 +5,7 @@ using namespace std;
 #include "..\DEFs.h"
 #include "CMUgraphicsLib\CMUgraphics.h"
 #include "../Notes.h"
+#include "..//StudyPlan/StudyPlan.h"
 
 class Course;
 class AcademicYear;
@@ -32,6 +33,8 @@ class GUI
 		ITM_IMPORT,
 		ITM_GPA,
 		ITM_MINOR,
+		ITM_SEARCH,
+		ITM_STATUS,
 		ITM_EXIT,		//Exit item
 
 		ITM_CNT			//no. of menu items ==> This should be the last line in this enum
@@ -71,6 +74,7 @@ public:
 	void DrawAcademicYear(const AcademicYear*);
 	void UpdateInterface() const;
 	void DrawNotes(const Notes* pNotes); //Member function to Draw Notes on Screen
+	void DrawStudentLevel(const StudyPlan* pSPlan);
 	//void DeleteCourse(double x, double y);
 	
 	//input functions

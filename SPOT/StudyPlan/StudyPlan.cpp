@@ -1,5 +1,7 @@
+#include <iostream>
 #include "StudyPlan.h"
 #include "../Notes.h"
+#include "../GUI/GUI.h"
 
 
 StudyPlan::StudyPlan()
@@ -24,7 +26,8 @@ StudyPlan::StudyPlan()
 bool StudyPlan::AddCourse(Course* pC, int year, SEMESTER sem)
 {
 	//TODO: add all requried checks to add the course 
-
+	pC->setyear(year);
+	pC->setsemester(sem);
 	plan[year - 1]->AddCourse(pC, sem);
 	
 	return true;
@@ -59,6 +62,8 @@ void StudyPlan::DrawMe(GUI* pGUI) const
 
 	for (int i = 0; i < PlanNotees.size(); i++)
 		PlanNotees[i]->DrawMe(pGUI);
+	if (!plan.empty())
+		pGUI->DrawStudentLevel(this);
 }
 
 StudyPlan::~StudyPlan()
@@ -70,10 +75,6 @@ vector<AcademicYear*>* StudyPlan::getSPvector()
 	return &plan;
 }
 
-vector<AcademicYear*>* StudyPlan::getSPvector2()
-{
-	return &plan2;
-}
 
 vector<Notes*>* StudyPlan::getNvector()
 {
@@ -129,4 +130,24 @@ bool StudyPlan::checkConReq(Rules* R) const {
 			return true;
 	}
 	return false;
+}
+
+string StudyPlan::StudentLevel() const {
+	int credits = creditsOfDoneCourses();
+	if (credits <= 32)
+		return string("Freshman");
+	else if (credits <= 64)
+		return string("Sophomore");
+	else if (credits <= 96)
+		return string("Junior");
+	else
+		return string("Senior");
+}
+
+int StudyPlan::creditsOfDoneCourses() const {
+	int credits = 0;
+	for (int i = 0; i < plan.size(); i++) {
+		credits += plan[i]->CrOfDoneCourses();
+	}
+	return credits;
 }

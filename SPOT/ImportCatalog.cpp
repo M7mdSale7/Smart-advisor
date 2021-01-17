@@ -5,7 +5,7 @@ void ImportCatalog::readCatalog(vector<CourseInfo>* catalog) {
 	CourseInfo c;
 	string Req, token, temp = "";
 	istringstream sstream, sstream2;
-	ifstream finput("info files/Course Catalog.txt");
+	ifstream finput("info files/Catalog - 2020 12 19.txt");
 	const int size = 300;
 	char line[size];
 
@@ -19,8 +19,7 @@ void ImportCatalog::readCatalog(vector<CourseInfo>* catalog) {
 
 		if (token[0] == 'C') { //remember to check the input file if the C in Coreq is capital or small
 			sstream2.str(token);
-			getline(sstream, token, ',');
-			getline(sstream2, Req, ':');
+			getline(sstream2, Req, ' ');
 			while (sstream2.good()) {
 				getline(sstream2, Req, ' ');
 				temp = Req;
@@ -33,9 +32,12 @@ void ImportCatalog::readCatalog(vector<CourseInfo>* catalog) {
 			temp.clear();
 			sstream2.clear();
 		}
+
+		getline(sstream, token, ',');
+
 		if (token[0] == 'P') { //remember to check the input file if the P in Prereq is capital or small
 			sstream2.str(token);
-			getline(sstream2, Req, ':');
+			getline(sstream2, Req, ' ');
 			while (sstream2.good()) {
 				getline(sstream2, Req, ' ');
 				temp = Req;

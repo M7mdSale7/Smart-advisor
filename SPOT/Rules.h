@@ -10,7 +10,7 @@ using namespace std;
 //Title, code, credit hours, and pre-req list, type
 struct CourseInfo
 {
-	string Title;
+	string Title; 
 	Course_Code	Code;
 	vector<Course_Code> PreReqList;	//Pre-requesite list of courses codes
 	vector<Course_Code> CoReqList;	//Co-requesite list of courses codes
@@ -54,14 +54,16 @@ struct Rules	//contains all objects for registrations rules
 	vector<Course_Code> UnivCompulsory;	//Univ Compulsory courses
 	vector<Course_Code> UnivElective;	//Univ Elective courses
 
+	vector<Course_Code> MinorCompulsory; //And this should add a list of compulsory courses
+
 	vector<Course_Code> TrackCompulsory;//Track Compulsory courses
 	vector<Course_Code> TrackElective;	//Track Elective courses (added for future)
 
 	vector<Course_Code> MajorCompulsory;//Major Compulsory courses
 	vector<Course_Code> MajorElective;	//Major Elective courses
 
-	vector <int> ConCompulsoryCr;	//concentrations compulsory credits
-	vector <int> ConElectiveCr;		//concentrations elective credits
+	vector <int> ConCompulsoryCr;	//Concentration Compulsory credits
+	vector <int> ConElectiveCr;		//Concentration Elective credits
 
 	vector <vector<Course_Code>> ConCompulsory;		//concentrations compulsory courses
 	vector <vector<Course_Code>> ConElective;		//concentrations Elective courses

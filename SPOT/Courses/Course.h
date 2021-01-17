@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <list>
+#include "../Rules.h"
 using namespace std;
 #include "..\DEFs.h"
 
@@ -9,18 +10,19 @@ using namespace std;
 //Base class for all types of courses
 class Course : public Drawable
 {
-	const Course_Code code;	//course code: e.g. "CIE202". This is the course ID
+	const Course_Code code;	//course code: e.g. "CIE 202". This is the course ID
 	const string Title;		//course title: e.g. "Fundamentals of Computer Programming"
 	int credits;	//no. of course credits
 	int year;
 	SEMESTER semester;
 	string type;	//Univ, track, or major.....etc.
 	bool Done;		//Done or not yet?
-	list<Course_Code> PreReq;	//list of prerequisites
-	list<Course_Code> CoReq;	//list of prerequisites
+	vector<Course_Code> PreReq;	//vector of prerequisites
+	vector<Course_Code> CoReq;	//vector of corequisites
 	string Grade;
 	double qPoints;
 	string Status;	//Done, In Progress, Pending
+	bool filter;
 public:
 	Course();
 	Course(Course_Code r_code,string r_title, int crd);
@@ -35,11 +37,18 @@ public:
 	Course* getptr();
 	string getPreq();
 	string getCoreq();
+	void FillData(Rules* R, int index); //fills the data of coReq, preReq, and type
 	void DrawMe(GUI*) const;
 	void setGrade(string Grade);
 	string getGrade();
 	double getQpoints();
 	void setStatus(string status);
 	string getStatus() const;
+	void setDone(bool descision);
+	bool getFilter() const;
+	void setFiler(bool filter);
+	void setType(string type);
+	string getGrad() const;
+	string getType();
 	virtual ~Course();
 };

@@ -1,4 +1,6 @@
+#include <iostream>
 #include "ActionCourseStatus.h"
+using namespace std;
 
 ActionCourseStatus::ActionCourseStatus(Registrar* p) : Action(p) {
 
@@ -43,6 +45,7 @@ Course* ActionCourseStatus::coursesloop(int x, int y, Registrar* pReg)
 
 bool ActionCourseStatus::Execute() {
 	GUI* pGUI = pReg->getGUI();
+	//cout << "Blaa" << endl;
 	//pGUI->PrintMsg("Enter the Course Status (Done, In Progress, Pending)");
 	ActionData actionData = pGUI->GetUserAction("Press on a course.");
 	//string courseStatus = pGUI->GetSrting();
@@ -58,10 +61,17 @@ bool ActionCourseStatus::Execute() {
 			pGUI->PrintMsg("Current Course Status: " + course->getStatus() + ". Enter the Course Status (Done, In Progress, Pending)");
 			string courseStatus = pGUI->GetSrting();
 			
-			if (courseStatus == "Done" || courseStatus == "In Progress" || courseStatus == "Pending")
+			if (courseStatus == "Done" || courseStatus == "In Progress" || courseStatus == "Pending") {
 				course->setStatus(courseStatus);
-			else
+				if (courseStatus == "Done")
+					course->setDone(true);
+				else
+					course->setDone(false);
+			}
+			else {
 				pGUI->PrintMsg("Invalid syntax input");
+				//pGUI->GetSrting();
+			}
 		}
 
 	}
