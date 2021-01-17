@@ -21,6 +21,7 @@ class GUI
 		ITM_EDITCOURSECODE,
 		ITM_REORDER,  //REORDER COURSE FROM SEMESTER TO ANOTHER
 		ITM_SAVE_PLAN,
+		ITM_Double,
 		//ITM_LOAD_PLAN,
 							//TODO: Add more items names here
 						//TODO: Add more items names here

@@ -3,6 +3,8 @@
 #include "../StudyPlan/AcademicYear.h"
 #include <sstream>
 #include <string>
+#include <iostream>
+using namespace std;
 int year = 5;
 int* Pyear = &year;
 GUI::GUI()
@@ -47,9 +49,10 @@ void GUI::CreateMenu() const
 	MenuItemImages[ITM_ADD_NOTES] = "GUI\\Images\\Menu\\Menu_AddNotes.jpg";
 	MenuItemImages[ITM_EDITCOURSECODE]= "GUI\\Images\\Menu\\Menu_EditCourseCode.jpg";
 	MenuItemImages[ITM_REORDER] = "GUI\\Images\\Menu\\Menu_Reorder.jpg";
+	MenuItemImages[ITM_Double] = "GUI\\Images\\Menu\\Menu_Double.jpg";
 	MenuItemImages[ITM_SAVE_PLAN] = "GUI\\Images\\Menu\\Menu_Save_Plan.jpg";
 	MenuItemImages[ITM_IMPORT] = "GUI\\Images\\Menu\\Menu_Import.jpg";
-	MenuItemImages[ITM_GPA] = "GUI\\Images\\Menu\\GPA.jpg";
+	MenuItemImages[ITM_GPA] = "GUI\\Images\\Menu\\Menu_GPA.jpg";
 	MenuItemImages[ITM_MINOR] = "GUI\\Images\\Menu\\MinorDec.jpg";
 	MenuItemImages[ITM_EXIT] = "GUI\\Images\\Menu\\Menu_exitt.jpg";
 
@@ -96,25 +99,29 @@ void GUI::UpdateInterface() const
 ////////////////////////    Drawing functions    ///////////////////
 void GUI::DrawCourse(const Course* pCrs)
 {
+	graphicsInfo gInfo = pCrs->getGfxInfo();
 	if (pCrs->isSelected())
 		pWind->SetPen(HiColor, 2);
 	else
-	pWind->SetPen(BLACK, 2);
-	pWind->SetBrush(LIGHTBLUE);
-	graphicsInfo gInfo = pCrs->getGfxInfo();
-	pWind->DrawRectangle(gInfo.x, gInfo.y, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT);
-	pWind->DrawLine(gInfo.x, gInfo.y + CRS_HEIGHT / 2, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT / 2);
-	
-	//Write the course code and credit hours.
-	int Code_x = gInfo.x + CRS_WIDTH * 0.15;
-	int Code_y = gInfo.y + CRS_HEIGHT * 0.05;
-	pWind->SetFont(CRS_HEIGHT * 0.4, BOLD , BY_NAME, "Gramound");
-	pWind->SetPen(DARKRED);
+		//graphicsInfo gInfo = pCrs->getGfxInfo();
+	{
+		pWind->SetPen(BLACK, 2);
+		pWind->SetBrush(LIGHTBLUE);
+		//graphicsInfo gInfo = pCrs->getGfxInfo();
+		pWind->DrawRectangle(gInfo.x, gInfo.y, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT);
+		pWind->DrawLine(gInfo.x, gInfo.y + CRS_HEIGHT / 2, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT / 2);
 
-	ostringstream crd;
-	crd<< "crd:" << pCrs->getCredits();
-	pWind->DrawString(Code_x, Code_y, pCrs->getCode());
-	pWind->DrawString(Code_x, Code_y + CRS_HEIGHT/2, crd.str());
+		//Write the course code and credit hours.
+		int Code_x = gInfo.x + CRS_WIDTH * 0.15;
+		int Code_y = gInfo.y + CRS_HEIGHT * 0.05;
+		pWind->SetFont(CRS_HEIGHT * 0.4, BOLD, BY_NAME, "Gramound");
+		pWind->SetPen(DARKRED);
+
+		ostringstream crd;
+		crd << "crd:" << pCrs->getCredits();
+		pWind->DrawString(Code_x, Code_y, pCrs->getCode());
+		pWind->DrawString(Code_x, Code_y + CRS_HEIGHT / 2, crd.str());
+	}
 }
 
 void GUI::DrawNotes(const Notes* pNotes)
@@ -278,6 +285,7 @@ ActionData GUI::GetUserAction(string msg) const
 				case ITM_ADD_NOTES: return ActionData{ ADD_NOTES };
 				case ITM_DELETE: return ActionData{ DEL_CRS };
 				//case ITM_LOAD_PLAN: return ActionData{ LOAD };
+				case ITM_Double: return ActionData{ Double };
 				case ITM_SAVE_PLAN: return ActionData{ SAVE };
 				case ITM_EDITCOURSECODE: return ActionData{ EDIT_CRS };
 				case ITM_REORDER: return ActionData{ REORDER_CRS };

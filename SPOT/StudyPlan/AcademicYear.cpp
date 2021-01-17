@@ -90,6 +90,11 @@ bool AcademicYear::checkYearSemCredits(Rules* R) const
 	return true;
 }
 
+bool AcademicYear::checksemesteroff(Rules*) const
+{
+	return false;
+}
+
 void AcademicYear::DrawMe(GUI* pGUI) const
 {
 	pGUI->DrawAcademicYear(this);

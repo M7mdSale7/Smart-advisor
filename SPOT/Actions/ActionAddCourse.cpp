@@ -45,6 +45,7 @@ void ActionAddCourse::Space(Course_Code& code)
 bool ActionAddCourse::Execute()
 {
 	GUI* pGUI = pReg->getGUI();	
+	bool coursefound;
 	
 	pGUI->PrintMsg("Add Course to plan: Enter course Code(e.g. CIE202):");
 	Course_Code code = pGUI->GetSrting();
@@ -53,9 +54,16 @@ bool ActionAddCourse::Execute()
 	/*convert(code);*/
 
 	//TODO: add input validation
+	CourseInfo* pCRINF = pReg->CatalogSearch(code, coursefound);
+	while (coursefound == 0)
+	{
+		pGUI->PrintMsg("invalid course code: please re-enter a valid one");
+		code = pGUI->GetSrting();
+		pCRINF = pReg->CatalogSearch(code, coursefound);
+	}
 
 
-	ActionData actData = pGUI->GetUserAction("Select a year to add coures to:(To be implemented in phase1) we will just draw coures where user clicks");
+	ActionData actData = pGUI->GetUserAction("Select a year to add coures to.");
 	//TODO: add input validation
 
 	int x, y;
@@ -70,99 +78,119 @@ bool ActionAddCourse::Execute()
 
 
 		//For now, we will add any dummy values
-		string Title = "Test101";
-		int crd = 0;
-		Course* pC = new Course(code, Title, crd);
-		pC->setGfxInfo(gInfo);
+		if (pCRINF != nullptr)
+		{
+			StudyPlan* pS = pReg->getStudyPlay();
+			int credit = pCRINF->Credits;
+			vector<Course_Code>  CoReq = pCRINF->CoReqList;
+			vector<Course_Code> PreReq = pCRINF->PreReqList;
+            string CourseTitle = pCRINF->Title;
+			Course* pC = new Course(code, CourseTitle, credit, CoReq, PreReq);
+			pC->setGfxInfo(gInfo);
+			pC -> settype( pCRINF ->type);
+			if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y < (520 + 105) && y>(520 + 70)) 
+			{
+				pS->AddCourse(pC, 1, FALL);
+				pC->setyear(1);
+				pC->setsemester(FALL);
+			}
+			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(520 + 70) && y>(520 + 35)) 
+			{
+				pS->AddCourse(pC, 1, SPRING);
+				pC->setyear(1);
+				pC->setsemester(SPRING);
+			}
+			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(520 + 35) && y>(520)) 
+			{
+				pS->AddCourse(pC, 1, SUMMER);
+				pC->setyear(1);
+				pC->setsemester(SUMMER);
+			}
+			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(412 + 105) && y>(412 + 70)) 
+			{
+				pS->AddCourse(pC, 2, FALL);
+				pC->setyear(2);
+				pC->setsemester(FALL);
+			}
+			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(412 + 70) && y>(412 + 35)) 
+			{
+				pS->AddCourse(pC, 2, SPRING);
+				pC->setyear(2);
+				pC->setsemester(SPRING);
+			}
+			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(412 + 35) && y>(412)) 
+			{
+				pS->AddCourse(pC, 2, SUMMER);
+				pC->setyear(2);
+				pC->setsemester(SUMMER);
+			}
+			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(304 + 105) && y>(307 + 70)) 
+			{
+				pS->AddCourse(pC, 3, FALL);
+				pC->setyear(3);
+				pC->setsemester(FALL);
+			}
+			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(304 + 70) && y>(304 + 35))
+			{
+				pS->AddCourse(pC, 3, SPRING);
+				pC->setyear(3);
+				pC->setsemester(SPRING);
+			}
+			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(304 + 35) && y>(304)) 
+			{
+				pS->AddCourse(pC, 3, SUMMER);
+				pC->setyear(3);
+				pC->setsemester(SUMMER);
+			}
+			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(196 + 105) && y>(196 + 70))
+			{
+				pS->AddCourse(pC, 4, FALL);
+				pC->setyear(4);
+				pC->setsemester(FALL);
+			}
+			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(196 + 70) && y>(196 + 35))
+			{
+				pS->AddCourse(pC, 4, SPRING);
+				pC->setyear(4);
+				pC->setsemester(SPRING);
+			}
+			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(196 + 35) && y>(196)) 
+			{
+				pS->AddCourse(pC, 4, SUMMER);
+				pC->setyear(4);
+				pC->setsemester(SUMMER);
+			}
+			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(88 + 105) && y>(88 + 70))
+			{
+				pS->AddCourse(pC, 5, FALL);
+				pC->setyear(5);
+				pC->setsemester(FALL);
+			}
+			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(88 + 70) && y>(88 + 35)) 
+			{
+				pS->AddCourse(pC, 5, SPRING);
+				pC->setyear(5);
+				pC->setsemester(SPRING);
+			}
+			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(88 + 35) && y>(88)) 
+			{
+				pS->AddCourse(pC, 5, SUMMER);
+				pC->setyear(5);
+				pC->setsemester(SUMMER);
+			}
+			else
+				pGUI->PrintMsg("Error: Please press in semester area.");
+
+
+		}
 
 
 
-		//For the seke of demo, we will add the course to the 1st year, 1st semester
-		StudyPlan* pS = pReg->getStudyPlay();
-
+			
+			/*StudyPlan* pS = pReg->getStudyPlay();*/
+		}
 		
-		if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y < (520+105) && y>(520+70)) {
-
-
-			pS->AddCourse(pC, 1, FALL);
-			pC->setyear(1);
-			pC->setsemester(FALL);
-		}
-		else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(520+70) && y>(520+35)) {
-			pS->AddCourse(pC, 1, SPRING);
-			pC->setyear(1);
-			pC->setsemester(SPRING);
-		}
-		else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(520+35) && y>(520)) {
-			pS->AddCourse(pC, 1, SUMMER);
-			pC->setyear(1);
-			pC->setsemester(SUMMER);
-		}
-		else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(412+105) && y>(412+70)) {
-			pS->AddCourse(pC, 2, FALL);
-			pC->setyear(2);
-			pC->setsemester(FALL);
-		}
-		else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(412+70) && y>(412+35)) {
-			pS->AddCourse(pC, 2, SPRING);
-			pC->setyear(2);
-			pC->setsemester(SPRING);
-		}
-		else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(412+35) && y>(412)) {
-			pS->AddCourse(pC, 2, SUMMER);
-			pC->setyear(2);
-			pC->setsemester(SUMMER);
-		}
-		else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(304+105) && y>(307+70)) {
-			pS->AddCourse(pC, 3, FALL);
-			pC->setyear(3);
-			pC->setsemester(FALL);
-		}
-		else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(304+70) && y>(304+35)) {
-			pS->AddCourse(pC, 3, SPRING);
-			pC->setyear(3);
-			pC->setsemester(SPRING);
-		}
-		else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(304+35) && y>(304)) {
-			pS->AddCourse(pC, 3, SUMMER);
-			pC->setyear(3);
-			pC->setsemester(SUMMER);
-		}
-		else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(196+105) && y>(196+70)) {
-			pS->AddCourse(pC, 4, FALL);
-			pC->setyear(4);
-			pC->setsemester(FALL);
-		}
-		else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(196+70) && y>(196+35)) {
-			pS->AddCourse(pC, 4, SPRING);
-			pC->setyear(4);
-			pC->setsemester(SPRING);
-		}
-		else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(196+35) && y>(196)) {
-			pS->AddCourse(pC, 4, SUMMER);
-			pC->setyear(4);
-			pC->setsemester(SUMMER);
-		}
-		else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(88+105) && y>(88+70)) {
-			pS->AddCourse(pC, 5, FALL);
-			pC->setyear(5);
-			pC->setsemester(FALL);
-		}
-		else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(88+70) && y>(88+35)) {
-			pS->AddCourse(pC, 5, SPRING);
-			pC->setyear(5);
-			pC->setsemester(SPRING);
-		}
-		else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(88+35) && y>(88)) {
-			pS->AddCourse(pC, 5, SUMMER);
-			pC->setyear(5);
-			pC->setsemester(SUMMER);
-		}
-		else 
-			pGUI->PrintMsg("Error: Please press in semester area.");
-
-
-	}
+	
 
 	
 	
