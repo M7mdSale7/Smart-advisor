@@ -14,6 +14,7 @@ class Course : public Drawable
 	const string Title;		//course title: e.g. "Fundamentals of Computer Programming"
 	int credits;	//no. of course credits
 	int year;
+	//Type type;
 	SEMESTER semester;
 	string type;	//Univ, track, or major.....etc.
 	bool Done;		//Done or not yet?
@@ -25,13 +26,17 @@ class Course : public Drawable
 	bool filter;
 public:
 	Course();
+	Course(Course_Code r_code, string r_title, int c_crd, vector<Course_Code> r_CoReq, vector<Course_Code> r_PreReq);
 	Course(Course_Code r_code,string r_title, int crd);
+
 	string getTitle() const;
 	string getCode() const;
 	int getCredits() const;
 	int getyear() const;
 	void setyear(int y);
 	void setsemester(SEMESTER s);
+	void settype(string newtype);
+	string gettype() const;
 	SEMESTER getsemester() const;
 	void saveCourse(ofstream& ) const;
 	Course* getptr();

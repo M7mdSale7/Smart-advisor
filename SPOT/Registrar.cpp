@@ -14,6 +14,7 @@
 #include "ActionCourseStatus.h"
 #include "ImportStudyPlan.h"
 #include "Actions/exit.h"
+#include "ActionDouble.h"
 Registrar::Registrar()
 {
 	pGUI = new GUI;	//create interface object
@@ -90,9 +91,37 @@ Action* Registrar::CreateRequiredAction()
 	case EXIT:
 		RequiredAction = new ActionExit(this);
 		break;
+	case Double:
+		RequiredAction = new ActionDouble(this);
+		break;
 	
 	}
 	return RequiredAction;
+}
+
+CourseInfo* Registrar::CatalogSearch(string code, bool& coursefound)
+{
+	bool z = 0;
+    int i= 0;
+	for (CourseInfo cr : RegRules.CourseCatalog)
+	{
+	if (cr.Code == code)
+		{
+			z = 1;
+			coursefound = 1;
+			break;
+		}
+		i++;
+	}
+	if (z)
+	{
+		return&(RegRules.CourseCatalog[i]);
+	}
+	else
+	{
+		coursefound = 0;
+		return nullptr;
+	}
 }
 
 //Executes the action, Releases its memory, and return true if done, false if cancelled

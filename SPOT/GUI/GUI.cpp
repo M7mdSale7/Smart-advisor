@@ -4,6 +4,8 @@
 #include "../StudyPlan/AcademicYear.h"
 #include <sstream>
 #include <string>
+#include <iostream>
+using namespace std;
 #include "../Actions/ActionFilters.h"
 #include "..//StudyPlan/StudyPlan.h"
 int year = 5;
@@ -50,9 +52,10 @@ void GUI::CreateMenu() const
 	MenuItemImages[ITM_ADD_NOTES] = "GUI\\Images\\Menu\\Menu_AddNotes.jpg";
 	MenuItemImages[ITM_EDITCOURSECODE]= "GUI\\Images\\Menu\\Menu_EditCourseCode.jpg";
 	MenuItemImages[ITM_REORDER] = "GUI\\Images\\Menu\\Menu_Reorder.jpg";
+	MenuItemImages[ITM_Double] = "GUI\\Images\\Menu\\Menu_Double.jpg";
 	MenuItemImages[ITM_SAVE_PLAN] = "GUI\\Images\\Menu\\Menu_Save_Plan.jpg";
 	MenuItemImages[ITM_IMPORT] = "GUI\\Images\\Menu\\Menu_Import.jpg";
-	MenuItemImages[ITM_GPA] = "GUI\\Images\\Menu\\GPA.jpg";
+	MenuItemImages[ITM_GPA] = "GUI\\Images\\Menu\\Menu_GPA.jpg";
 	MenuItemImages[ITM_MINOR] = "GUI\\Images\\Menu\\MinorDec.jpg";
 	MenuItemImages[ITM_SEARCH] = "GUI\\Images\\Menu\\Search.jpg";
 	MenuItemImages[ITM_STATUS] = "GUI\\Images\\Menu\\status.jpg";
@@ -359,6 +362,7 @@ ActionData GUI::GetUserAction(string msg) const
 				case ITM_ADD_NOTES: return ActionData{ ADD_NOTES };
 				case ITM_DELETE: return ActionData{ DEL_CRS };
 				//case ITM_LOAD_PLAN: return ActionData{ LOAD };
+				case ITM_Double: return ActionData{ Double };
 				case ITM_SAVE_PLAN: return ActionData{ SAVE };
 				case ITM_EDITCOURSECODE: return ActionData{ EDIT_CRS };
 				case ITM_REORDER: return ActionData{ REORDER_CRS };

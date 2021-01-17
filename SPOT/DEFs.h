@@ -6,6 +6,15 @@ using namespace std;
 typedef string Course_Code;
 typedef string Note;
 
+//enum TYPE
+//{
+//	Elective,
+//	Major,
+//	Minor,
+//	Concentration,
+//	University,
+//	Track
+//};
 
 //Semesters
 enum SEMESTER
@@ -24,8 +33,8 @@ enum ActionType
 	ADD_NOTES,
 	DEL_CRS,	//Delete a course from study plan
 	EDIT_CRS,   //CHANGE COURSE CODE
-	REORDER_CRS,   //REORDER COURSE 
-
+	REORDER_CRS, //REORDER COURSE 
+	Double,
 	IMPORT,
 	SHOW_INFO,
 	SAVE,		//Save a study plan to file

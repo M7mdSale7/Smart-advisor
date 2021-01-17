@@ -3,6 +3,12 @@
 #include <fstream>
 
 Course::Course(){}
+Course::Course(Course_Code c_code, string c_title, int c_crd, vector<Course_Code> c_CoReq, vector<Course_Code> c_PreReq):code(c_code),Title(c_title)
+{
+	credits = c_crd;
+	CoReq = c_CoReq;
+	PreReq = c_PreReq;
+}
 Course::Course(Course_Code r_code, string r_title, int crd):code(r_code),Title(r_title)
 {
 	credits = crd;
@@ -47,6 +53,16 @@ void Course::setyear(int y)
 void Course::setsemester(SEMESTER s)
 {
 	semester = s;
+}
+
+void Course::settype( string newtype)
+{
+	type = newtype;
+}
+
+string Course::gettype() const
+{
+	return type;
 }
 
 SEMESTER Course::getsemester() const
