@@ -141,6 +141,7 @@ void GUI::UpdateInterface() const
 ////////////////////////    Drawing functions    ///////////////////
 void GUI::DrawCourse(const Course* pCrs)
 {
+	//graphicsInfo gInfo = pCrs->getGfxInfo();
 	if (pCrs->isSelected() && pCrs->getFilter() == 1)
 	{
 		pWind->SetPen(HiColor, 2);
@@ -163,7 +164,27 @@ void GUI::DrawCourse(const Course* pCrs)
 	}
 	if (pCrs->getFilter() == 1 && pCrs->isSelected() == 0)
 	{
-		pWind->SetPen(BLACK, 2);
+		if (pCrs->gettype() == "Univ Compulsory" || pCrs->gettype() == "Univ Elective")
+		{
+			pWind->SetPen(DARKRED, 2);
+		}
+		else if (pCrs->gettype() == "Track Compulsory" || pCrs->gettype() == "Track Elective")
+		{
+			pWind->SetPen(RED, 2);
+		}
+		else if (pCrs->gettype() == "Major Compulsory" || pCrs->gettype() == "Major Elective")
+		{
+			pWind->SetPen(DARKGREEN, 2);
+		}
+		else if (pCrs->gettype() == "Concentration Compulsory" || pCrs->gettype() == "Concentration Elective")
+		{
+			pWind->SetPen(VIOLET, 2);
+		}
+		else
+		{
+			pWind->SetPen(BLACK, 2);
+		}
+		//pWind->SetPen(BLACK, 2);
 		pWind->SetBrush(LIGHTBLUE);
 		graphicsInfo gInfo = pCrs->getGfxInfo();
 		pWind->DrawRectangle(gInfo.x, gInfo.y, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT);
