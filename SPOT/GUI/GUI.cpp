@@ -274,14 +274,25 @@ void GUI::DrawAcademicYear(const AcademicYear* pY)
 
 	//Drawing notes area
 	pWind->SetPen(BLACK, 2);
-	pWind->DrawLine(900, 88, 1200, 88, FRAME);
-	pWind->DrawLine(900, 88, 900, 310, FRAME);
-	pWind->DrawLine(1200, 88, 1200, 310, FRAME);
-	pWind->DrawLine(900, 310, 1200, 310, FRAME);
-	pWind->DrawLine(900, 120, 1200, 120, FRAME);
+	pWind->DrawLine(900,  88, 1250,  88, FRAME);
+	pWind->DrawLine(900,  88,  900, 310, FRAME);
+	pWind->DrawLine(1250, 88, 1250, 310, FRAME);
+	pWind->DrawLine(900, 310, 1250, 310, FRAME);
+	pWind->DrawLine(900, 120, 1250, 120, FRAME);
 	pWind->SetFont(20, BOLD, BY_NAME, "Gramound");
 	pWind->SetPen(RED, 2);
-	pWind->DrawString(950, 100, "ADD YOUR NOTES HERE");
+	pWind->DrawString(980, 100, "ADD YOUR NOTES HERE");
+
+	//Drawing errors area
+	pWind->SetPen(BLACK, 2);
+	pWind->DrawLine(900,  330, 1250, 330, FRAME);
+	pWind->DrawLine(900,  330,  900, 620, FRAME);
+	pWind->DrawLine(1250, 330, 1250, 620, FRAME);
+	pWind->DrawLine(900,  620, 1250, 620, FRAME);
+	pWind->DrawLine(900,  354, 1250, 354, FRAME);
+	pWind->SetFont(20, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(RED, 2);
+	pWind->DrawString(1035, 334, "Error list");
 
 }
 

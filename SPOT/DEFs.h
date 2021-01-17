@@ -7,6 +7,11 @@ typedef string Course_Code;
 typedef string Note;
 
 
+struct yearSemPair //ordered pair of year and semester to ease reporting the error in semesters for the user
+{
+	int Y, S;
+};
+
 //Semesters
 enum SEMESTER
 {

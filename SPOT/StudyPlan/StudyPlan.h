@@ -5,6 +5,7 @@
 #include "../Notes.h"
 #include "../Rules.h"
 
+
 //A full study plan for as student
 class StudyPlan:public Drawable
 {
@@ -26,7 +27,8 @@ public:
 	virtual ~StudyPlan();
 	vector<AcademicYear*>* getSPvector();
 	vector<Notes*>* getNvector();
-	bool CreditsCheck(Rules*) const; 
+	vector<yearSemPair> CreditsCheck(Rules*) const;
+	bool ProgReqCheck(Rules*) const;
 	void checkPlan() const;
 };
 

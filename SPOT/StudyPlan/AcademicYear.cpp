@@ -69,9 +69,45 @@ bool AcademicYear::AddCourse(Course* pC, SEMESTER sem)
 bool AcademicYear::DeleteCourse(Course* pC, SEMESTER sem)
 {
 	YearCourses[sem].remove(pC);
-	TotalCredits = pC->getCredits();
+	TotalCredits =- pC->getCredits();
+	if (pC->getType() == "Univ Compulsory")
+	{
+		TotalUnivCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Univ Elective")
+	{
+		TotalUnivCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Track Compulsory")
+	{
+		TotalTrackCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Track Elective")
+	{
+		TotalTrackCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Major Compulsory")
+	{
+		TotalMajorCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Major Elective")
+	{
+		TotalMajorCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Concentration Compulsory")
+	{
+		TotalConcentrationCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Concentration Elective")
+	{
+		TotalConcentrationCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Minor")
+	{
+		TotalMinorCredits += pC->getCredits();
+	}
 
-
+	/*delete pC;*/
 
 	return true;
 }
@@ -110,9 +146,10 @@ void AcademicYear::saveAcademicYear(int year, ofstream& fout) const
 	 
 }
 
-bool AcademicYear::checkYearSemCredits(Rules* R) const
+vector<int> AcademicYear::checkYearSemCredits(Rules* R) const
 {
 	int semSum;
+	vector<int> notSatisfying;
 	for (int i = 0; i < SEM_CNT; i++)
 	{
 		semSum = 0;
@@ -120,9 +157,10 @@ bool AcademicYear::checkYearSemCredits(Rules* R) const
 		{
 			semSum += itr->getCredits();
 		}
-		if (semSum > R->SemMaxCredit || semSum < R->SemMinCredit) return false;
+		if (semSum > R->SemMaxCredit || semSum < R->SemMinCredit)
+			notSatisfying.push_back(i+1);
 	}
-	return true;
+	return notSatisfying;
 }
 
 void AcademicYear::DrawMe(GUI* pGUI) const

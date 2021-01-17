@@ -2,6 +2,7 @@
 #include "../Notes.h"
 
 
+
 StudyPlan::StudyPlan()
 {
 	////By default, the study plan starts with 5 years
@@ -25,7 +26,6 @@ bool StudyPlan::AddCourse(Course* pC, int year, SEMESTER sem)
 {
 	//TODO: add all requried checks to add the course 
 	pC->setyear(year);
-	pC->setsemester(sem);
 	plan[year - 1]->AddCourse(pC, sem);
 	
 	return true;
@@ -54,15 +54,6 @@ bool StudyPlan::AddNote(Notes* Note)
 
 void StudyPlan::DrawMe(GUI* pGUI) const
 {
-	pGUI->pWind->SetPen(BLACK, 2);
-	pWind->DrawLine(900, 88, 1200, 88, FRAME);
-	pWind->DrawLine(900, 88, 900, 500, FRAME);
-	pWind->DrawLine(1200, 88, 1200, 500, FRAME);
-	pWind->DrawLine(900, 500, 1200, 500, FRAME);
-	pWind->DrawLine(900, 150, 1200, 150, FRAME);
-	pWind->SetFont(20, BOLD, BY_NAME, "Gramound");
-	pWind->SetPen(RED, 2);
-	pWind->DrawString(950, 100, "ADD YOUR NOTES HERE");
 	//Plan draws all year inside it.
 	for (int i = 0; i < plan.size(); i++)
 		plan[i]->DrawMe(pGUI);
@@ -86,13 +77,28 @@ vector<Notes*>* StudyPlan::getNvector()
 	return &PlanNotees;
 }
 
-bool StudyPlan::CreditsCheck(Rules* R) const
+vector<yearSemPair> StudyPlan::CreditsCheck(Rules* R) const //If this vector is empty when returned, this implies that all semesters
+															//satisfy the maximum/minimum credits limits.
 {
-	for (auto itrY : plan)
+	vector<yearSemPair> Allpairs;	//container for all the semesters not satisfying the max/min credits requirements
+								//Those semesters are written as a pair of the year number and semester number
+	yearSemPair* tempPair;
+	for (int i = 0;i < plan.size(); i++)
 	{
-		if (!(itrY->checkYearSemCredits(R))) return false;
+		if (!(plan[i]->checkYearSemCredits(R).empty()))
+		{
+			for (auto iter : plan[i]->checkYearSemCredits(R))
+			{
+				tempPair = new yearSemPair;
+				tempPair->Y = i+1;
+				tempPair->S = iter;
+				Allpairs.push_back(*tempPair);
+				delete tempPair;
+				tempPair = nullptr;
+			}
+		}
 	}
-	return true;
+	return Allpairs; //returns true if no semester in any year exceeds the limit
 }
 
 void StudyPlan::checkPlan() const
