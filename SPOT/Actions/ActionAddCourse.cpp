@@ -88,13 +88,13 @@ bool ActionAddCourse::Execute()
 			Course* pC = new Course(code, CourseTitle, credit, CoReq, PreReq);
 			Rules* R = pReg->getRules();
 			vector<Course_Code>* MinorComp = &R->MinorCompulsory;
+			pC->setGfxInfo(gInfo);
+			pC->settype(pCRINF->type);
 			for (int i = 0; i < MinorComp->size(); i++)
 			{
 				if (code == MinorComp->at(i))
 					pC->setType("Minor");
 			}
-			pC->setGfxInfo(gInfo);
-			pC -> settype( pCRINF ->type);
 			if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y < (520 + 105) && y>(520 + 70)) 
 			{
 				pS->AddCourse(pC, 1, FALL);
@@ -109,9 +109,11 @@ bool ActionAddCourse::Execute()
 			}
 			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(520 + 35) && y>(520)) 
 			{
-				pS->AddCourse(pC, 1, SUMMER);
+				pC->setType("Minor");
 				pC->setyear(1);
 				pC->setsemester(SUMMER);
+				pS->AddCourse(pC, 1, SUMMER);
+
 			}
 			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(412 + 105) && y>(412 + 70)) 
 			{
