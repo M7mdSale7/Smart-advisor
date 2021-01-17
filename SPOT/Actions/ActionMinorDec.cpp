@@ -111,6 +111,7 @@ bool ActionMinorDec::Execute()
 
 		if (flag2 && !flag && flag3 && flag4) //if there is no issue with adding the course
 		{
+			R->MinorCompulsory.push_back(code); //list of compulsory courses
 			pGUI->PrintMsg("Course Added To Minor , Press any key to continue");
 			pGUI->GetSrting(); //waiting for the user to press enter
 			Minor.push_back(code); //adding the course in the vector of minor , we need it to reach 5 to return the function
