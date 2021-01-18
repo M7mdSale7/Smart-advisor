@@ -1,4 +1,3 @@
-#include <iostream>
 #include "StudyPlan.h"
 #include "../Notes.h"
 #include "../GUI/GUI.h"
@@ -388,52 +387,49 @@ void StudyPlan::checkPlan() const
 
 Course* StudyPlan::searchStudyPlan(Course_Code code) const {
 	for (int i = 0; i < plan.size(); i++) {
-		if (plan[i]->searchAcademicYear(code))
-			return plan[i]->searchAcademicYear(code);
+		Course* course = plan[i]->searchAcademicYear(code);
+		if (course)
+			return course;
 	}
 	return nullptr;
 }
 
 Course* StudyPlan::searchYear(Course_Code code, int year) const {
-	if (plan[year - 1]->searchAcademicYear(code))
-		return plan[year - 1]->searchAcademicYear(code);
+	Course* course = plan[year - 1]->searchAcademicYear(code);
+	if (course)
+		return course;;
 	return nullptr;
 }
 
 Course* StudyPlan::searchSemester(Course_Code code, int year, SEMESTER semester) const {
-	if (plan[year - 1]->searchSemester(code, semester))
-		return plan[year - 1]->searchSemester(code, semester);
+	Course* course = plan[year - 1]->searchSemester(code, semester);
+	if (course)
+		return course;
 	return nullptr;
 }
 
 
-bool StudyPlan::checkConReq(Rules* R) const {
+vector <vector <Course_Code>> StudyPlan::checkConReq(Rules* R) const {
 	vector <vector <Course_Code>> Error(2);
 	if (R->NofConcentrations == 0)
-		return true;
+		return Error;
 
-	for (int i = 0; i < R->NofConcentrations; i++) {
-		bool flag1 = true, flag2 = true;
-		for (auto &code : R->ConCompulsory[i]) {
-			if (!searchStudyPlan(code)) {
-				flag1 = false;
-				break;
-			}
-		}
-
-		int NoOfConCredits = 0;
-		for (auto &code : R->ConElective[i]) {
-			Course* course = searchStudyPlan(code);
-			if (course) {
-				NoOfConCredits += course->getCredits();
-			}
-		}
-		if (NoOfConCredits < R->ConElectiveCr[i])
-			flag2 = false;
-		if (flag1 && flag2)
-			return true;
+	for (auto code : R->ConCompulsory[concentration - 1]) {
+		if (!searchStudyPlan(code))
+			Error[0].push_back(code);
 	}
-	return false;
+
+	int NoOfConCredits = 0;
+	for (auto& code : R->ConElective[concentration - 1]) {
+		Course* course = searchStudyPlan(code);
+		if (course) {
+			NoOfConCredits += course->getCredits();
+		}
+	}
+	if (NoOfConCredits < R->ConElectiveCr[concentration - 1])
+		Error[1].push_back(to_string(NoOfConCredits));
+
+	return Error;
 }
 
 string StudyPlan::StudentLevel() const {
@@ -466,29 +462,21 @@ vector <vector <Course_Code>> StudyPlan::checkPreCo() const {
 				for (auto preReq : course->getPreReq()) {
 					Course* C = searchStudyPlan(preReq);
 					if (C == nullptr) {
-						Error[0].push_back(preReq);
-						cout << "preReq: " << preReq << endl;
-						cout << "Error code: " << course->getCode() << endl;
+						Error[0].push_back(course->getCode());
 					}
 					else {
 						if (C->getyear() > course->getyear()) {
-							Error[0].push_back(preReq);
-							cout << "preReq: " << preReq << endl;
-							cout << "Error code: " << course->getCode() << endl;
+							Error[0].push_back(course->getCode());
 						}
 						else if (C->getyear() == course->getyear() && C->getsemester() >= course->getsemester()) {
-							Error[0].push_back(preReq);
-							cout << "preReq: " << preReq << endl;
-							cout << "Error code: " << course->getCode() << endl;
+							Error[0].push_back(course->getCode());
 						}
 					}
 				}
 				for (auto coReq : course->getCoReq()) {
 					Course* C = searchSemester(coReq, course->getyear(), course->getsemester());
 					if (C == nullptr) {
-						Error[1].push_back(coReq);
-						cout << "coReq: " << coReq << endl;
-						cout << "Error code: " << course->getCode() << endl;
+						Error[1].push_back(course->getCode());
 					}
 				}
 			}
@@ -497,6 +485,13 @@ vector <vector <Course_Code>> StudyPlan::checkPreCo() const {
 	return Error;
 }
 
+void StudyPlan::setConcentration(int con) {
+	this->concentration = con;
+}
+
+int StudyPlan::getConcentration() const {
+	return concentration;
+}
 
 void StudyPlan::checkoff() const
 {

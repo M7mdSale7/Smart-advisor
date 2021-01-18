@@ -236,7 +236,6 @@ void GUI::DrawNotes(const Notes* pNotes)
 }
 
 void GUI::DrawStudentLevel(const StudyPlan* pSPlan) {
-	//graphicsInfo gInfo = pSPlan->getGfxInfo();
 
 	pWind->SetPen(BLACK, 2);
 	pWind->SetBrush(YELLOW);

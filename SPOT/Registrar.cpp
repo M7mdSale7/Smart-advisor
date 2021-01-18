@@ -152,15 +152,13 @@ void Registrar::Initialization() {
 	ifstream infile;
 	ifstream fin;
 	ImportRequiements().ImportReqs(fin, pGUI, Major, &RegRules);
+	if (RegRules.NofConcentrations != 0) {
+		pGUI->PrintMsg("Enter your Concentration number: ");
+		string Concentration = pGUI->GetSrting();
+		pSPlan->setConcentration(stoi(Concentration));
+	}
 	fillCoursesType();
 	ImportStudyPlan().StudyPlanImport(fin, this);
-	/*if (pSPlan->searchStudyPlan("CIE 202"))
-		cout << "Found" << endl;
-	else
-		cout << "Not Found" << endl;*/
-	//cout << "checkConReq: " << pSPlan->checkConReq(&RegRules) << endl;
-	//pSPlan->displayStudentLevel();
-	//pSPlan->checkPreCo();
 }
 
 void Registrar::Run()

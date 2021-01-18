@@ -13,6 +13,8 @@ class StudyPlan:public Drawable
 		TotalTrackCredits=0, TotalConcentrationCredits=0,
 		TotalMinorCredits=0;
 
+	int concentration;
+
 	vector<AcademicYear*> plan;	//plan is a list of academic years
 	string PlanNotes; 
 	vector<Notes*> PlanNotees;
@@ -24,13 +26,16 @@ public:
 	bool AddNote(Notes*);
 	void virtual DrawMe(GUI*) const;
 	
+	void setConcentration(int);
+	int getConcentration() const;
+
 	vector<AcademicYear*>* getSPvector();
 	vector<Notes*>* getNvector();
 
 	vector<string> checkMinor(Rules*);
 	void addeYearCredits(AcademicYear*);
 	
-	bool checkConReq(Rules*) const;
+	vector <vector <Course_Code>> checkConReq(Rules*) const;
 	vector <vector <Course_Code>> checkPreCo() const;
 	int creditsOfDoneCourses() const;
 	string StudentLevel() const;
