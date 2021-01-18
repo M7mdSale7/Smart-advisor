@@ -6,15 +6,7 @@ using namespace std;
 typedef string Course_Code;
 typedef string Note;
 
-//enum TYPE
-//{
-//	Elective,
-//	Major,
-//	Minor,
-//	Concentration,
-//	University,
-//	Track
-//};
+
 struct codeTypePair
 {
 	Course_Code code;

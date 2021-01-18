@@ -15,7 +15,6 @@ void ImportStudyPlan::StudyPlanImport(ifstream& fin, Registrar* P) {
 	StudyPlan* plan = P->getStudyPlay();
 	vector <AcademicYear*>* years = plan->getSPvector();
 	years->clear();
-	//vector <CourseInfo>* Info = &R->CourseCatalog;
 	string line;
 	string subline;
 	string* ptr = &subline;

@@ -46,12 +46,6 @@ StudyPlan* Registrar::getStudyPlay() const
 	return pSPlan;
 }
 
-StudyPlan* Registrar::getStudyPlay2() const
-{
-	return pSPlan2;
-}
-
-
 Action* Registrar::CreateRequiredAction() 
 {	
 	ActionData actData = pGUI->GetUserAction("Pick and action...");
@@ -182,7 +176,6 @@ void Registrar::Run()
 				UpdateInterface();
 			}
 		}
-		
 	}
 	
 }
@@ -290,4 +283,5 @@ void Registrar::UpdateInterface()
 Registrar::~Registrar()
 {
 	delete pGUI;
+	delete pSPlan;
 }

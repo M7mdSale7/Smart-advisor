@@ -12,7 +12,6 @@ class Registrar
 	Rules RegRules;		//Registration rules
 	Rules RegRules2;	//Registration rules for second major
 	StudyPlan *pSPlan;
-	StudyPlan *pSPlan2;
 
 public:
 	Registrar();
@@ -24,7 +23,6 @@ public:
 	bool ExecuteAction(Action*);
 	void UpdateInterface();
 	StudyPlan* getStudyPlay() const;
-	StudyPlan* getStudyPlay2() const;
 	void Initialization();
 	//add in import to call for it at the start of the application
 	void Run();

@@ -125,7 +125,7 @@ string Course::getPreq()
 string Course::getCoreq()
 {
 	string co;
-	for (auto itr : CoReq)
+	for (auto &itr : CoReq)
 	{
 		co += itr;
 		co += " ";

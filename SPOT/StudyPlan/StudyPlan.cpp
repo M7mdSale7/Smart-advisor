@@ -96,6 +96,7 @@ bool StudyPlan::DeleteCourse(Course* pC)
 		TotalMinorCredits -= pC->getCredits();
 	}
 	return true;
+	delete pC;
 }
 
 bool StudyPlan::AddNote(Notes* Note)
@@ -120,6 +121,15 @@ void StudyPlan::DrawMe(GUI* pGUI) const
 
 StudyPlan::~StudyPlan()
 {
+	//clearing dynamically allocated memory
+	for (int i = 0; i < plan.size(); i++)
+	{
+		delete plan[i];
+	}
+	for (int i = 0; i < PlanNotees.size(); i++)
+	{
+		delete PlanNotees[i];
+	}
 }
 
 vector<AcademicYear*>* StudyPlan::getSPvector()
