@@ -38,6 +38,7 @@ public:
 	void addeYearCredits(AcademicYear*);
 	
 	vector <vector <Course_Code>> checkConReq(Rules*) const;
+	vector <vector <Course_Code>> checkDoubleConReq(Rules*) const;
 	vector <vector <Course_Code>> checkPreCo() const;
 	vector <Course_Code> checkOfferings(Rules*) const;
 	

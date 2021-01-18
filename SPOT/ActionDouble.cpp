@@ -43,7 +43,7 @@ bool ActionDouble::Execute()
 		else
 		{
 			pS->setConcentration2(conNo);
-			pGUI->GetUserAction("Second concentration added ! Please add their courses");
+			pGUI->GetUserAction("Second concentration added ! Please add their courses manually using add course");
 		}
 	}
 	return true;

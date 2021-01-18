@@ -391,7 +391,7 @@ bool StudyPlan::searchOfferings(Rules* R, Course_Code code, int year, SEMESTER s
 
 vector <vector <Course_Code>> StudyPlan::checkConReq(Rules* R) const {
 	vector <vector <Course_Code>> Error(2);
-	if (R->NofConcentrations == 0)
+	if (R->NofConcentrations == 0 )
 		return Error;
 
 	for (auto &code : R->ConCompulsory[concentration - 1]) {
@@ -407,6 +407,30 @@ vector <vector <Course_Code>> StudyPlan::checkConReq(Rules* R) const {
 		}
 	}
 	if (NoOfConCredits < R->ConElectiveCr[concentration - 1])
+		Error[1].push_back(to_string(NoOfConCredits));
+
+	return Error;
+}
+
+vector<vector<Course_Code>> StudyPlan::checkDoubleConReq(Rules* R) const
+{
+	vector <vector <Course_Code>> Error(2);
+	if (R->NofConcentrations == 1 || R->NofConcentrations == 0)
+		return Error;
+
+	for (auto& code : R->ConCompulsory[DoubleConcentration - 1]) {
+		if (!searchStudyPlan(code))
+			Error[0].push_back(code);
+	}
+
+	int NoOfConCredits = 0;
+	for (auto& code : R->ConElective[DoubleConcentration - 1]) {
+		Course* course = searchStudyPlan(code);
+		if (course) {
+			NoOfConCredits += course->getCredits();
+		}
+	}
+	if (NoOfConCredits < R->ConElectiveCr[DoubleConcentration - 1])
 		Error[1].push_back(to_string(NoOfConCredits));
 
 	return Error;

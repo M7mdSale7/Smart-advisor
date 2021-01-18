@@ -214,7 +214,41 @@ bool ActionErrors::Execute()
 		file << "You have taken only " << Errors6.at(1).at(0) << " Credits" << " Which is less than minimum requirments for the concentration elective" << endl << endl;
 	}
 
-	//8- Course Offerings (Amr)
+	//7- Double Concentration
+	file << "7- Concentration Check (Compulsory and Elective)" << endl << endl;
+	vector<vector<Course_Code>> Errors7 = pS->checkDoubleConReq(R);
+	//a- Concentration Compulsory
+	file << "a- Concentration Compulsory" << endl;
+	if (Errors7.at(0).size() == 0)
+	{
+		file << "No Issues Found in the compulsory courses of concentration!" << endl << endl;
+	}
+	else
+	{
+		for (int i = 0; i < Errors7.at(0).size(); i++)
+		{
+			file << "Criticial Issue: " << "Course: " << Errors7.at(0).at(i) << "," << "Concentration Compulsory Course ";
+
+			for (int j = 0; j < Errors7.at(0).size(); j++)
+			{
+				if (i == j)
+				{
+					file << Errors7.at(0).at(j) << " Not Taken" << ".";
+				}
+			}
+			file << endl;
+		}
+		file << endl;
+	}
+	file << "b- Concentration Elective" << endl;
+	if (Errors7.at(1).size() == 0)
+	{
+		file << "No Issues found in Elevtive Courses" << endl << endl;
+	}
+	else
+	{
+		file << "You have taken only " << Errors7.at(1).at(0) << " Credits" << " Which is less than minimum requirments for the concentration elective" << endl << endl;
+	}
 
 
 	file.close();

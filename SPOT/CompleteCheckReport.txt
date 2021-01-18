@@ -1,14 +1,24 @@
 1-No issues in minor since no minor was maken 
 
 2- Overload or underload petitions: 
-Moderate Issue: In year 4,Semester 2 Number of credits is: 8 And Underload Petition needed
-Moderate Issue: In year 5,Semester 1 Number of credits is: 3 And Underload Petition needed
-Moderate Issue: In year 5,Semester 2 Number of credits is: 3 And Underload Petition needed
+Moderate Issue: In year 2,Semester 1 Number of credits is: 11 And Underload Petition needed
+Moderate Issue: In year 2,Semester 2 Number of credits is: 3 And Underload Petition needed
+Moderate Issue: In year 3,Semester 1 Number of credits is: 8 And Underload Petition needed
+Moderate Issue: In year 3,Semester 2 Number of credits is: 3 And Underload Petition needed
+Moderate Issue: In year 4,Semester 1 Number of credits is: 0 And Underload Petition needed
+Moderate Issue: In year 4,Semester 2 Number of credits is: 2 And Underload Petition needed
+Moderate Issue: In year 5,Semester 1 Number of credits is: 0 And Underload Petition needed
+Moderate Issue: In year 5,Semester 2 Number of credits is: 0 And Underload Petition needed
 
 3- Program Requirments issues
 a- Compulsory Courses
-Critical Issue:Course: Math 101 Type: Track Compulsory Is not taken , must added
-Critical Issue:Course: CIE 439 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: SCH 260 Type: Univ Compulsory Is not taken , must added
+Critical Issue:Course: SCH 261 Type: Univ Compulsory Is not taken , must added
+Critical Issue:Course: SCH 264 Type: Univ Compulsory Is not taken , must added
+Critical Issue:Course: NANENG 581 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: NANENG 582 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: NANENG 583 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: NANENG 584 Type: Major Compulsory Is not taken , must added
 
 b-Elective Courses
 b-1- University elective Courses
@@ -23,7 +33,8 @@ You havn't taken all university Major elective credits yet !
 5- Co requisite and Pre requisite check
 
 a- Prerequisite
-No Issues Found in Prerequisite !
+Criticial Issue: Course: MATH 102,Prerequites are: MATH 101.
+Criticial Issue: Course: PHYS 102,Prerequites are: MATH 101.
 
 b- Corequisite
 No Issues Found in Corequisite!
@@ -31,8 +42,11 @@ No Issues Found in Corequisite!
 6- Concentration Check (Compulsory and Elective)
 
 a- Concentration Compulsory
-No Issues Found in the compulsory courses of concentration!
+Criticial Issue: Course: NANENG 501,Concentration Compulsory Course NANENG 501 Not Taken.
+Criticial Issue: Course: NANENG 522,Concentration Compulsory Course NANENG 522 Not Taken.
 
 b- Concentration Elective
 No Issues found in Elevtive Courses
+
+7- Concentration Check (Compulsory and Elective)
 
