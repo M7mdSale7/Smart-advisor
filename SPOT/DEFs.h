@@ -21,11 +21,19 @@ struct codeTypePair
 	string type;
 };
 
-struct yearSemPair //ordered pair of year and semester to ease reporting the error in semesters for the user
+
+struct OverUnder
 {
-	int Y, S;
+	int credits;
+	int semester;
+	string Case;
 };
 
+struct yearSemPair //ordered pair of year and semester to ease reporting the error in semesters for the user
+{
+	int Y;
+	OverUnder X;
+};
 //Semesters
 enum SEMESTER
 {
