@@ -35,6 +35,7 @@ public:
 	bool checksemesteroff(Rules*) const;
 
 	Course* searchAcademicYear(Course_Code code) const;
+	Course* searchSemester(Course_Code code, SEMESTER semester) const;
 	int CrOfDoneCourses() const;
 	bool checkYearPReNCO() const;
 

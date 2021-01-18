@@ -154,8 +154,13 @@ void Registrar::Initialization() {
 	ImportRequiements().ImportReqs(fin, pGUI, Major, &RegRules);
 	fillCoursesType();
 	ImportStudyPlan().StudyPlanImport(fin, this);
-
-	
+	/*if (pSPlan->searchStudyPlan("CIE 202"))
+		cout << "Found" << endl;
+	else
+		cout << "Not Found" << endl;*/
+	//cout << "checkConReq: " << pSPlan->checkConReq(&RegRules) << endl;
+	//pSPlan->displayStudentLevel();
+	//pSPlan->checkPreCo();
 }
 
 void Registrar::Run()

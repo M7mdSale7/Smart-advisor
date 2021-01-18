@@ -43,6 +43,8 @@ public:
 	Course* getptr();
 	string getPreq();
 	string getCoreq();
+	vector<Course_Code> getPreReq() const;
+	vector<Course_Code> getCoReq() const;
 	void FillData(Rules* R, int index); //fills the data of coReq, preReq, and type
 	void DrawMe(GUI*) const;
 	void setGrade(string Grade);
