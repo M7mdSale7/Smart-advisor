@@ -37,11 +37,13 @@ public:
 	
 	vector <vector <Course_Code>> checkConReq(Rules*) const;
 	vector <vector <Course_Code>> checkPreCo() const;
+	vector <Course_Code> checkOfferings() const;
 	int creditsOfDoneCourses() const;
 	string StudentLevel() const;
 	Course* searchStudyPlan(Course_Code) const;
 	Course* searchYear(Course_Code, int) const;
 	Course* searchSemester(Course_Code, int, SEMESTER) const;
+	bool searchOfferings(Course_Code, int, SEMESTER) const;
 	//Course* coursesloop(Registrar* pReg);
 	void checkoff() const;
 
