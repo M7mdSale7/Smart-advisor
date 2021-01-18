@@ -1,8 +1,6 @@
-No issues in minor since no minor was maken 
+1-No issues in minor since no minor was maken 
 
 2- Overload or underload petitions: 
-Moderate Issue: In year 2,Semester 1 Number of credits is: 21 And Overload Petition needed
-Moderate Issue: In year 2,Semester 2 Number of credits is: 11 And Underload Petition needed
 Moderate Issue: In year 4,Semester 2 Number of credits is: 8 And Underload Petition needed
 Moderate Issue: In year 5,Semester 1 Number of credits is: 3 And Underload Petition needed
 Moderate Issue: In year 5,Semester 2 Number of credits is: 3 And Underload Petition needed
@@ -65,7 +63,6 @@ Critical Issue:Course: CIE 593 Type: Major Elective Is not taken , must added
 Critical Issue:Course: CIE 594 Type: Major Elective Is not taken , must added
 Critical Issue:Course: CIE 595 Type: Major Elective Is not taken , must added
 Critical Issue:Course: CIE 597 Type: Major Elective Is not taken , must added
-Critical Issue:Course: CIE 205 Type: Major Compulsory Is not taken , must added
-Critical Issue:Course: CIE 206 Type: Major Compulsory Is not taken , must added
 Critical Issue:Course: CIE 439 Type: Major Compulsory Is not taken , must added
 
+4-Double Major Program Requirments issues

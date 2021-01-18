@@ -55,7 +55,7 @@ bool ActionErrors::Execute()
 	}
 	file << endl;
 
-	//3- Program Requirments 
+	//3- Program Requirments (Saleh)
 	vector<codeTypePair> Errors3 = pS->ProgReqCheck(R);
 	if (Errors3.size() == 0)
 		file << "3-Progrem requriements are fullfilled !" << endl;
@@ -69,8 +69,29 @@ bool ActionErrors::Execute()
 	}
 	file << endl;
 
-	//4- Courses Pre and Co req
+	//4- 2nd Major Program Requirments (Khaled)
+	Rules* R2 = pReg->getRules2();
+	vector<codeTypePair> Errors4 = pS->ProgReqCheck(R2);
+	if (Errors3.size() == 0)
+		file << "4-Double Major Progrem requriements are fullfilled !" << endl;
+	else
+	{
+		file << "4-Double Major Program Requirments issues" << endl;
+		for (int i = 0; i < Errors4.size(); i++)
+		{
+			file << "Critical Issue:" << "Course: " << Errors4.at(i).code << " Type: " << Errors4.at(i).type << " Is not taken , must added" << endl;
+		}
+	}
+
+	//5- Co and Pre Requisite check (7masa)
+
+	//6- Course Offering Check (Amr)
+
+	//7- Concentration Requirment check (Amr)
+
 	file.close();
+	GUI* pGUI = pReg->getGUI();
+	pGUI->GetUserAction("Report was save in a complete check report txt file");
 	return true;
 }
 

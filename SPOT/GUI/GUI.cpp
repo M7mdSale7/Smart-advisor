@@ -194,6 +194,10 @@ void GUI::DrawCourse(const Course* pCrs)
 		{
 			pWind->SetBrush(LIGHTGREEN);
 		}
+		if (pCrs->gettype() == "DoubleMajor")
+		{
+			pWind->SetBrush(PINK);
+		}
 		graphicsInfo gInfo = pCrs->getGfxInfo();
 		pWind->DrawRectangle(gInfo.x, gInfo.y, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT);
 		pWind->DrawLine(gInfo.x, gInfo.y + CRS_HEIGHT / 2, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT / 2);
@@ -201,7 +205,7 @@ void GUI::DrawCourse(const Course* pCrs)
 		//Write the course code and credit hours.
 		int Code_x = gInfo.x + CRS_WIDTH * 0.15;
 		int Code_y = gInfo.y + CRS_HEIGHT * 0.05;
-		pWind->SetFont(CRS_HEIGHT * 0.4, BOLD, BY_NAME, "Gramound");
+		pWind->SetFont(CRS_HEIGHT * 0.37, BOLD, BY_NAME, "Gramound");
 		pWind->SetPen(DARKRED);
 
 		ostringstream crd;
@@ -235,7 +239,7 @@ void GUI::DrawStudentLevel(const StudyPlan* pSPlan) {
 	//graphicsInfo gInfo = pSPlan->getGfxInfo();
 
 	pWind->SetPen(BLACK, 2);
-	pWind->SetBrush(LIGHTBLUE);
+	pWind->SetBrush(YELLOW);
 	pWind->DrawRectangle(1100, 10, 1200, 70);
 	pWind->SetFont(20, BOLD, BY_NAME, "Gramound");
 	pWind->SetPen(RED, 2);

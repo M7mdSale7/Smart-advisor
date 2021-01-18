@@ -86,14 +86,46 @@ bool ActionAddCourse::Execute()
             string CourseTitle = pCRINF->Title;
 			Course* pC = new Course(code, CourseTitle, credit, CoReq, PreReq);
 			Rules* R = pReg->getRules();
+			Rules* R2 = pReg->getRules2(); //Rules for the double major (if found)
 			vector<Course_Code>* MinorComp = &R->MinorCompulsory;
 			pC->setGfxInfo(gInfo);
 			pC->settype(pCRINF->type);
-			for (int i = 0; i < MinorComp->size(); i++)
+			for (int i = 0; i < MinorComp->size(); i++) //Setting type to Minor in case of minor
 			{
 				if (code == MinorComp->at(i))
 					pC->setType("Minor");
 			}
+			for (int i = 0; i < R2->UnivCompulsory.size(); i++) //Setting type to double major in case of double major
+			{
+				if (code == R2->UnivCompulsory.at(i))
+					pC->setType("DoubleMajor");
+			}
+			for (int i = 0; i < R2->UnivElective.size(); i++)
+			{
+				if (code == R2->UnivElective.at(i))
+					pC->setType("DoubleMajor");
+			}
+			for (int i = 0; i < R2->TrackCompulsory.size(); i++)
+			{
+				if (code == R2->TrackCompulsory.at(i))
+					pC->setType("DoubleMajor");
+			}
+			for (int i = 0; i < R2->TrackElective.size(); i++)
+			{
+				if (code == R2->TrackElective.at(i))
+					pC->setType("DoubleMajor");
+			}
+			for (int i = 0; i < R2->MajorCompulsory.size(); i++)
+			{
+				if (code == R2->MajorCompulsory.at(i))
+					pC->setType("DoubleMajor");
+			}
+			for (int i = 0; i < R2->MajorElective.size(); i++)
+			{
+				if (code == R2->MajorElective.at(i))
+					pC->setType("DoubleMajor");
+			}
+
 			if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y < (520 + 105) && y>(520 + 70)) 
 			{
 				pS->AddCourse(pC, 1, FALL);
