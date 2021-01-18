@@ -348,6 +348,11 @@ void StudyPlan::checkPlan(Registrar* R) const
 	{
 		R->getGUI()->printError("Course dependencies violated!", 1, Ylocation);
 	}
+	if (!(checkConReq(R->getRules())[0].empty()) || !(checkConReq(R->getRules())[1].empty()))
+	{
+		R->getGUI()->printError("Concentration dependencies violated!", 1, Ylocation);
+	}
+	
 }
 
 Course* StudyPlan::searchStudyPlan(Course_Code code) const {
@@ -379,7 +384,7 @@ vector <vector <Course_Code>> StudyPlan::checkConReq(Rules* R) const {
 	if (R->NofConcentrations == 0)
 		return Error;
 
-	for (auto code : R->ConCompulsory[concentration - 1]) {
+	for (auto &code : R->ConCompulsory[concentration - 1]) {
 		if (!searchStudyPlan(code))
 			Error[0].push_back(code);
 	}
@@ -430,14 +435,15 @@ vector <vector <Course_Code>> StudyPlan::checkPreCo() const {
 					Course* C = searchStudyPlan(preReq);
 					if (C == nullptr) {
 						Error[0].push_back(preReq);
-						course->setPreStatus(0);;
 					}
 					else {
 						if (C->getyear() > course->getyear()) {
 							Error[0].push_back(course->getCode());
+							course->setPreStatus(0);
 						}
 						else if (C->getyear() == course->getyear() && C->getsemester() >= course->getsemester()) {
 							Error[0].push_back(course->getCode());
+							course->setPreStatus(0);
 						}
 					}
 				}

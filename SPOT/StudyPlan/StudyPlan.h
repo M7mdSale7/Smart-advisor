@@ -37,7 +37,7 @@ public:
 	void addeYearCredits(AcademicYear*);
 	
 	vector <vector <Course_Code>> checkConReq(Rules*) const;
-	vector <vector <Course_Code>> checkPreCo() const;
+	
 	int creditsOfDoneCourses() const;
 	string StudentLevel() const;
 	Course* searchStudyPlan(Course_Code) const;
