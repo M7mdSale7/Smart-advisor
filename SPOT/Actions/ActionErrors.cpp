@@ -140,7 +140,8 @@ bool ActionErrors::Execute()
 	//3- Program Requirments (Saleh)
 	vector<codeTypePair> Errors3 = pS->ProgReqCheck(R); //making error check for that program requirments
 	if (Errors3.size() == 0) //if no errors
-		file << "3-Progrem requriements are fullfilled !" << endl;
+		file << "3-Progrem requriements are fullfilled !" << endl << endl;
+
 	else
 	{
 		file << "3- Program Requirments issues" << endl;
@@ -152,22 +153,24 @@ bool ActionErrors::Execute()
 		file << endl;
 		file << "b-Elective Courses" << endl;
 		file << "b-1- University elective Courses" << endl;
-		//Elective Courses
-		//a- University
-		bool isOk = pS->checkUnivElectiveCrd(R);
-		if (isOk)
-			file << "No issues in university elective courses ! You have choosen all !" << endl;
-		else
-			file << "You havn't taken all university Univeristy elective credits yet !" << endl << endl;
-		//b- Major
-		file << "b-2-Major Elective Courses" << endl;
-		bool isOk2 = pS->checkMajorElectiveCrd(R);
-		if (isOk)
-			file << "No issues in Major elective courses ! You have choosen all !" << endl;
-		else
-			file << "You havn't taken all university Major elective credits yet !" << endl;
-		file << endl;
+	
 	}
+	//Elective Courses
+	//a- University
+	file << "b-3-University Elective Courses" << endl;
+	bool isOk = pS->checkUnivElectiveCrd(R);
+	if (isOk)
+		file << "No issues in university elective courses ! You have choosen all !" << endl;
+	else
+		file << "You havn't taken all university Univeristy elective credits yet !" << endl << endl;
+	//b- Major
+	file << "b-3-Major Elective Courses" << endl;
+	bool isOk2 = pS->checkMajorElectiveCrd(R);
+	if (isOk)
+		file << "No issues in Major elective courses ! You have choosen all !" << endl;
+	else
+		file << "You havn't taken all university Major elective credits yet !" << endl;
+	file << endl;
 
 
 	//4- 2nd Major Program Requirments (Khaled)
