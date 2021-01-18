@@ -344,7 +344,7 @@ void StudyPlan::checkPlan(Registrar* R) const
 	{
 		R->getGUI()->printError("Program requirements violated!", 1, Ylocation);
 	}
-	if (!(checkPreCo()[0].empty()) || !(checkPreCo()[1].empty()))
+	if (!(checkPreCo()[0].empty()) || !(checkPreCo()[2].empty()))
 	{
 		R->getGUI()->printError("Course dependencies violated!", 1, Ylocation);
 	}
