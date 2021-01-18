@@ -169,10 +169,6 @@ void Registrar::Run()
 		//update interface here as CMU Lib doesn't refresh itself
 		//when window is minimized then restored
 		UpdateInterface();
-		/*Rules rules;
-		rules.CourseCatalog = ImportCatalog().readCatalog()*/
-		pGUI->printError("First error", 0);
-		pGUI->printError("Second error", 1);
 		Action* pAct = CreateRequiredAction();
 		if (pAct)	//if user doesn't cancel
 		{
