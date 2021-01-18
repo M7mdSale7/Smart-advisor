@@ -59,6 +59,7 @@ void GUI::CreateMenu() const
 	MenuItemImages[ITM_MINOR] = "GUI\\Images\\Menu\\MinorDec.jpg";
 	MenuItemImages[ITM_SEARCH] = "GUI\\Images\\Menu\\Search.jpg";
 	MenuItemImages[ITM_STATUS] = "GUI\\Images\\Menu\\status.jpg";
+	MenuItemImages[ITM_ERROR] = "GUI\\Images\\Menu\\Error.jpg";
 	MenuItemImages[ITM_EXIT] = "GUI\\Images\\Menu\\Menu_exitt.jpg";
 
 
@@ -144,6 +145,7 @@ void GUI::UpdateInterface() const
 ////////////////////////    Drawing functions    ///////////////////
 void GUI::DrawCourse(const Course* pCrs)
 {
+	//graphicsInfo gInfo = pCrs->getGfxInfo();
 	if (pCrs->isSelected() && pCrs->getFilter() == 1)
 	{
 		pWind->SetPen(HiColor, 2);
@@ -166,8 +168,32 @@ void GUI::DrawCourse(const Course* pCrs)
 	}
 	if (pCrs->getFilter() == 1 && pCrs->isSelected() == 0)
 	{
-		pWind->SetPen(BLACK, 2);
+		if (pCrs->gettype() == "Univ Compulsory" || pCrs->gettype() == "Univ Elective")
+		{
+			pWind->SetPen(YELLOWGREEN, 2);
+		}
+		else if (pCrs->gettype() == "Track Compulsory" || pCrs->gettype() == "Track Elective")
+		{
+			pWind->SetPen(BLUE, 2);
+		}
+		else if (pCrs->gettype() == "Major Compulsory" || pCrs->gettype() == "Major Elective")
+		{
+			pWind->SetPen(ORANGE, 2);
+		}
+		else if (pCrs->gettype() == "Concentration Compulsory" || pCrs->gettype() == "Concentration Elective")
+		{
+			pWind->SetPen(GREEN, 2);
+		}
+		else
+		{
+			pWind->SetPen(DARKRED, 2);
+		}
+		//pWind->SetPen(BLACK, 2);
 		pWind->SetBrush(LIGHTBLUE);
+		if (pCrs->gettype() == "Minor")
+		{
+			pWind->SetBrush(LIGHTGREEN);
+		}
 		graphicsInfo gInfo = pCrs->getGfxInfo();
 		pWind->DrawRectangle(gInfo.x, gInfo.y, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT);
 		pWind->DrawLine(gInfo.x, gInfo.y + CRS_HEIGHT / 2, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT / 2);
@@ -355,6 +381,7 @@ ActionData GUI::GetUserAction(string msg) const
 				case ITM_MINOR: return ActionData{ MINOR_DEC };
 				case ITM_SEARCH: return ActionData{ SEARCH };
 				case ITM_STATUS: return ActionData{ STATUS };
+				case ITM_ERROR: return ActionData{ ERRORR };
 				case ITM_EXIT: return ActionData{ EXIT };		//Exit
 
 				default: return ActionData{ MENU_BAR };	//A click on empty place in menu bar

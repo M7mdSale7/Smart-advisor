@@ -4,6 +4,7 @@
 #include "../GUI/Drawable.h"
 #include "../Notes.h"
 #include "../Rules.h"
+#include "../Rules.h"
 //A full study plan for as student
 class StudyPlan:public Drawable
 {
@@ -25,6 +26,7 @@ public:
 	
 	vector<AcademicYear*>* getSPvector();
 	vector<Notes*>* getNvector();
+	vector<string> checkMinor(Rules*);
 	void addeYearCredits(AcademicYear*);
 	
 	bool checkConReq(Rules*) const;

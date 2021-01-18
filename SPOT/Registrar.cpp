@@ -11,6 +11,7 @@
 #include "../SPOT/Actions/ActionCalculateGPA.h"
 #include "../SPOT/Actions/ActionMinorDec.h"
 #include "../SPOT/Actions/ActionFilters.h"
+#include "../SPOT/Actions/ActionErrors.h"
 #include "ActionCourseStatus.h"
 #include "ImportStudyPlan.h"
 #include "Actions/exit.h"
@@ -93,6 +94,9 @@ Action* Registrar::CreateRequiredAction()
 		break;
 	case Double:
 		RequiredAction = new ActionDouble(this);
+		break;
+	case ERRORR:
+		RequiredAction = new ActionErrors(this);
 		break;
 	
 	}
@@ -426,6 +430,7 @@ void Registrar::fillCoursesType()
 			}
 		}
 	}
+
 }
 
 

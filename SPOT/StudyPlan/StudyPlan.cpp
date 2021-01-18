@@ -2,7 +2,7 @@
 #include "StudyPlan.h"
 #include "../Notes.h"
 #include "../GUI/GUI.h"
-
+#include "../Registrar.h"
 
 StudyPlan::StudyPlan()
 {
@@ -356,6 +356,43 @@ vector<codeTypePair> StudyPlan::ProgReqCheck(Rules* R) const
 			
 		}
 
+vector<string> StudyPlan::checkMinor(Rules* R)
+{
+	vector<Course_Code>* MinorComp = &R->MinorCompulsory;
+	vector<string> VectorOfErrors;
+	for (int cry = 0; cry < MinorComp->size(); cry++)
+	{
+		bool found = false;
+		for (int i = 0; i < plan.size(); i++)
+		{
+			list<Course*>* Courses = plan.at(i)->getyearslist();
+			for (int j = 0; j < 3; j++)
+			{
+				if (found)
+					break;
+				for (auto itr : *(Courses + j))
+				{
+					string Crs = itr->getCode(); //course code from plan ( we are looping on each course )
+					if (MinorComp->at(cry) == Crs)
+						found = true;
+				}
+			}
+		}
+		if (!found)
+		{
+			string Error;
+			Error = "Course " + MinorComp->at(cry) + " Not Taken although it's choosen in minor";
+			VectorOfErrors.push_back(Error);
+		}
+	}
+	return VectorOfErrors;
+}
+
+bool StudyPlan::CreditsCheck(Rules* R) const
+{
+	for (auto itrY : plan)
+	{
+		if (!(itrY->checkYearSemCredits(R))) return false;
 	}
 
 	return pairs;
@@ -371,7 +408,6 @@ void StudyPlan::checkPlan() const
 	//after building all checks functions, put here if else statements
 	//and show message in case of each warning or error.
 }
-
 
 Course* StudyPlan::searchStudyPlan(Course_Code code) const {
 	for (int i = 0; i < plan.size(); i++) {
@@ -428,7 +464,6 @@ int StudyPlan::creditsOfDoneCourses() const {
 	}
 	return credits;
 }
-
 //Course* StudyPlan::coursesloop(Registrar* pReg)
 //{
 //	Course* pointer = nullptr;
