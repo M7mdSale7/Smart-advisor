@@ -37,27 +37,19 @@ public:
 	void addeYearCredits(AcademicYear*);
 	
 	vector <vector <Course_Code>> checkConReq(Rules*) const;
-<<<<<<< HEAD
 	vector <vector <Course_Code>> checkPreCo() const;
-	vector <Course_Code> checkOfferings() const;
-=======
+	vector <Course_Code> checkOfferings(Rules*) const;
 	
->>>>>>> 7b1d9a2de91aa3c53eeec88e315f7ecf7c161542
 	int creditsOfDoneCourses() const;
 	string StudentLevel() const;
 	Course* searchStudyPlan(Course_Code) const;
 	Course* searchYear(Course_Code, int) const;
 	Course* searchSemester(Course_Code, int, SEMESTER) const;
-<<<<<<< HEAD
-	bool searchOfferings(Course_Code, int, SEMESTER) const;
-	//Course* coursesloop(Registrar* pReg);
-=======
->>>>>>> 7b1d9a2de91aa3c53eeec88e315f7ecf7c161542
+	bool searchOfferings(Rules*, Course_Code, int, SEMESTER) const;
 	void checkoff() const;
 
 	vector<yearSemPair> CreditsCheck(Rules*) const;
 	vector<codeTypePair> ProgReqCheck(Rules*) const;
-	vector <vector <Course_Code>> checkPreCo() const;
 	bool checkUnivElectiveCrd(Rules*) const;
 	bool checkMajorElectiveCrd(Rules*) const;
 

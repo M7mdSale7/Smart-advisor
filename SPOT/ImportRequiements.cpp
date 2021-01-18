@@ -142,14 +142,11 @@ void ImportRequiements::ImportReqs(ifstream& fin, GUI *pGUI, string Major, Rules
 					getline(s_stream, subline, ',');
 					ConElect.push_back(subline);
 				}
-				/*for (auto a : ConElect)
-					cout << a << ' ';*/
 				RegRules->ConElective.push_back(ConElect);
 				if (RegRules->ConElective.size() != RegRules->NofConcentrations) {
 					j -= 2;
 				}
 			}
 		}
-		//getline(s_stream, subline, ',');
 	}
 }

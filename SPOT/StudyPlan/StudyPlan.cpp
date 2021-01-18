@@ -378,17 +378,16 @@ Course* StudyPlan::searchSemester(Course_Code code, int year, SEMESTER semester)
 	return nullptr;
 }
 
-/*bool StudyPlan::searchOfferings(Course_Code code, int year, SEMESTER semester) const {
-	vector<AcademicYearOfferings> offerings = 
-	for (size_t i = 0; i < plan.size(); i++) {
-		list<Course*>* YearCourses = plan[i]->getyearslist();
-		for (size_t j = 0; j < SEM_CNT; j++) {
-			for (auto course : YearCourses[j]) {
-
-			}
+bool StudyPlan::searchOfferings(Rules* R, Course_Code code, int year, SEMESTER semester) const {
+	vector<AcademicYearOfferings> offerings = R->OffringsList;
+	vector<Course_Code> YearOfferings = offerings[year - 1].Offerings[semester];
+	for (auto Code : YearOfferings) {
+		if (Code == code) {
+			return true;
 		}
 	}
-}*/
+	return false;
+}
 
 vector <vector <Course_Code>> StudyPlan::checkConReq(Rules* R) const {
 	vector <vector <Course_Code>> Error(2);
@@ -447,27 +446,18 @@ vector <vector <Course_Code>> StudyPlan::checkPreCo() const {
 					if (C == nullptr) {
 						Error[0].push_back(course->getCode());
 						Error[1].push_back(preReq);
-<<<<<<< HEAD
-=======
 						course->setPreStatus(0);
->>>>>>> 7b1d9a2de91aa3c53eeec88e315f7ecf7c161542
 					}
 					else {
 						if (C->getyear() > course->getyear()) {
 							Error[0].push_back(course->getCode());
 							Error[1].push_back(preReq);
-<<<<<<< HEAD
-=======
 							course->setPreStatus(0);
->>>>>>> 7b1d9a2de91aa3c53eeec88e315f7ecf7c161542
 						}
 						else if (C->getyear() == course->getyear() && C->getsemester() >= course->getsemester()) {
 							Error[0].push_back(course->getCode());
 							Error[1].push_back(preReq);
-<<<<<<< HEAD
-=======
 							course->setPreStatus(0);
->>>>>>> 7b1d9a2de91aa3c53eeec88e315f7ecf7c161542
 						}
 					}
 				}
@@ -476,10 +466,7 @@ vector <vector <Course_Code>> StudyPlan::checkPreCo() const {
 					if (C == nullptr) {
 						Error[2].push_back(course->getCode());
 						Error[3].push_back(coReq);
-<<<<<<< HEAD
-=======
 						course->setCoStatus(0);
->>>>>>> 7b1d9a2de91aa3c53eeec88e315f7ecf7c161542
 					}
 				}
 			}
@@ -488,19 +475,21 @@ vector <vector <Course_Code>> StudyPlan::checkPreCo() const {
 	return Error;
 }
 
-<<<<<<< HEAD
-/*vector <Course_Code> StudyPlan::checkOfferings() const {
+vector <Course_Code> StudyPlan::checkOfferings(Rules* R) const {
 	vector <Course_Code> Error;
 	for (size_t i = 0; i < plan.size(); i++) {
 		list<Course*>* YearCourses = plan[i]->getyearslist();
 		for (size_t j = 0; j < SEM_CNT; j++) {
 			for (auto course : YearCourses[j]) {
-				
+				if (!searchOfferings(R, course->getCode(), i + 1, (SEMESTER)j)) {
+					Error.push_back(course->getCode());
+				}
 			}
 		}
 	}
-}*/
-=======
+	return Error;
+}
+
 bool StudyPlan::checkUnivElectiveCrd(Rules* R) const
 {
 	if (TotalUnivCredits < (R->ElectiveUnivCredits + R->ReqUnivCredits)) return false;
@@ -512,7 +501,6 @@ bool StudyPlan::checkMajorElectiveCrd(Rules* R) const
 	if (TotalUnivCredits < (R->ReqMajorCredits + R->ElectiveMajorCredits)) return false;
 	else return true;
 }
->>>>>>> 7b1d9a2de91aa3c53eeec88e315f7ecf7c161542
 
 void StudyPlan::setConcentration(int con) {
 	this->concentration = con;
