@@ -1,6 +1,5 @@
 #include "ActionShowDependencies.h"
 #include "Registrar.h"
-#include "../SPOT/Courses/UnivCourse.h"
 #include <iostream>
 #include <string>
 #include <algorithm>

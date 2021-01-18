@@ -23,10 +23,6 @@ public:
 	StudyPlan();
 	bool AddCourse(Course*, int year, SEMESTER);
 	bool DeleteCourse(Course*);
-<<<<<<< HEAD
-=======
-
->>>>>>> 27e548dab7d5b8b43e3b32c5c05052ae6cd3709f
 	bool AddNote(Notes*);
 	void virtual DrawMe(GUI*) const;
 	
@@ -48,12 +44,9 @@ public:
 	int creditsOfDoneCourses() const;
 	string StudentLevel() const;
 	Course* searchStudyPlan(Course_Code) const;
-<<<<<<< HEAD
-=======
 	Course* searchYear(Course_Code, int) const;
 	Course* searchSemester(Course_Code, int, SEMESTER) const;
 	bool searchOfferings(Rules*, Course_Code, int, SEMESTER) const;
->>>>>>> 27e548dab7d5b8b43e3b32c5c05052ae6cd3709f
 	void checkoff() const;
 
 	vector<yearSemPair> CreditsCheck(Rules*) const;

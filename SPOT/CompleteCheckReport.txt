@@ -1,14 +1,43 @@
-1-No issues in minor since no minor was maken 
+1- Minor Courses Errors: 
+Course CIE 239 Not Taken although it's choosen in minor.
+Course CIE 205 Not Taken although it's choosen in minor.
+Course CIE 206 Not Taken although it's choosen in minor.
+Course CIE 301 Not Taken although it's choosen in minor.
 
 2- Overload or underload petitions: 
-Moderate Issue: In year 4,Semester 2 Number of credits is: 8 And Underload Petition needed
-Moderate Issue: In year 5,Semester 1 Number of credits is: 3 And Underload Petition needed
-Moderate Issue: In year 5,Semester 2 Number of credits is: 3 And Underload Petition needed
+Moderate Issue: In year 2,Semester 1 Number of credits is: 6 And Underload Petition needed
+Moderate Issue: In year 2,Semester 2 Number of credits is: 6 And Underload Petition needed
+Moderate Issue: In year 3,Semester 1 Number of credits is: 3 And Underload Petition needed
+Moderate Issue: In year 3,Semester 2 Number of credits is: 3 And Underload Petition needed
+Moderate Issue: In year 4,Semester 1 Number of credits is: 0 And Underload Petition needed
+Moderate Issue: In year 4,Semester 2 Number of credits is: 3 And Underload Petition needed
+Moderate Issue: In year 5,Semester 1 Number of credits is: 0 And Underload Petition needed
+Moderate Issue: In year 5,Semester 2 Number of credits is: 0 And Underload Petition needed
 
 3- Program Requirments issues
 a- Compulsory Courses
-Critical Issue:Course: Math 101 Type: Track Compulsory Is not taken , must added
-Critical Issue:Course: CIE 439 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: SCH 260 Type: Univ Compulsory Is not taken , must added
+Critical Issue:Course: SCH 261 Type: Univ Compulsory Is not taken , must added
+Critical Issue:Course: SCH 262 Type: Univ Compulsory Is not taken , must added
+Critical Issue:Course: SCH 263 Type: Univ Compulsory Is not taken , must added
+Critical Issue:Course: SCH 264 Type: Univ Compulsory Is not taken , must added
+Critical Issue:Course: CIE 205 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: CIE 239 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: CIE 327 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: CIE 337 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: ENGR 346 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: MATSCI 201 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: REE 222 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: REE 302 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: REE 312 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: SPC 202 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: SPC 310 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: SPC 406 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: SPC 407 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: SPC 409 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: SPC 410 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: SPC 470 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: SPC 577 Type: Major Compulsory Is not taken , must added
 
 b-Elective Courses
 b-1- University elective Courses
@@ -23,7 +52,8 @@ You havn't taken all university Major elective credits yet !
 5- Co requisite and Pre requisite check
 
 a- Prerequisite
-No Issues Found in Prerequisite !
+Criticial Issue: Course: MATH 102,Prerequites are: MATH 101.
+Criticial Issue: Course: PHYS 102,Prerequites are: MATH 101.
 
 b- Corequisite
 No Issues Found in Corequisite!
@@ -43,6 +73,7 @@ Course BIOL 111 Is registered in a non offering time
 Course CHEM 101 Is registered in a non offering time
 Course CHEM 111 Is registered in a non offering time
 Course ENG 151 Is registered in a non offering time
+Course Math 101 Is registered in a non offering time
 Course PHYS 101 Is registered in a non offering time
 Course PHYS 111 Is registered in a non offering time
 Course CSCI 101 Is registered in a non offering time
@@ -51,50 +82,50 @@ Course ENGR 102 Is registered in a non offering time
 Course ENGR 221 Is registered in a non offering time
 Course PHYS 102 Is registered in a non offering time
 Course PHYS 112 Is registered in a non offering time
-Course CIE 239 Is registered in a non offering time
-Course ENGR 210 Is registered in a non offering time
+Course ENGR 201 Is registered in a non offering time
+Course ENGR 205 Is registered in a non offering time
 Course MATH 201 Is registered in a non offering time
-Course PEU 228 Is registered in a non offering time
-Course PHYS 201 Is registered in a non offering time
-Course PHYS 211 Is registered in a non offering time
-Course CIE 205 Is registered in a non offering time
-Course CIE 206 Is registered in a non offering time
-Course CIE 212 Is registered in a non offering time
-Course CIE 227 Is registered in a non offering time
+Course SCH XXX Is registered in a non offering time
+Course SPC 201 Is registered in a non offering time
+Course SPC 208 Is registered in a non offering time
+Course ENGR 207 Is registered in a non offering time
 Course MATH 202 Is registered in a non offering time
-Course SCH 260 Is registered in a non offering time
-Course CIE 328 Is registered in a non offering time
-Course CIE 301 Is registered in a non offering time
-Course CIE 302 Is registered in a non offering time
-Course CIE 327 Is registered in a non offering time
+Course SCH XXX Is registered in a non offering time
+Course SPC 218 Is registered in a non offering time
+Course SPC 227 Is registered in a non offering time
 Course MATH 302 Is registered in a non offering time
-Course SCH 261 Is registered in a non offering time
-Course CIE 318 Is registered in a non offering time
-Course CIE 320 Is registered in a non offering time
-Course CIE 337 Is registered in a non offering time
-Course CIE 338 Is registered in a non offering time
-Course MATH 308 Is registered in a non offering time
-Course SCH 262 Is registered in a non offering time
-Course CIE XXX Is registered in a non offering time
-Course CIE 408 Is registered in a non offering time
-Course CIE 417 Is registered in a non offering time
-Course CIE 425 Is registered in a non offering time
-Course CIE 437 Is registered in a non offering time
-Course CIE 442 Is registered in a non offering time
-Course CIE XXX Is registered in a non offering time
-Course CIE XXX Is registered in a non offering time
-Course CIE 405 Is registered in a non offering time
-Course CIE 447 Is registered in a non offering time
-Course SCH 263 Is registered in a non offering time
+Course SPC 307 Is registered in a non offering time
+Course SPC 309 Is registered in a non offering time
+Course SPC 318 Is registered in a non offering time
+Course SPC 392 Is registered in a non offering time
+Course SPC 305 Is registered in a non offering time
+Course MATH 306 Is registered in a non offering time
+Course SCH XXX Is registered in a non offering time
+Course SPC 304 Is registered in a non offering time
+Course SPC 308 Is registered in a non offering time
+Course SPC 316 Is registered in a non offering time
+Course SPC 328 Is registered in a non offering time
+Course SCH XXX Is registered in a non offering time
+Course SPC 402 Is registered in a non offering time
+Course SPC 412 Is registered in a non offering time
+Course SPC 418 Is registered in a non offering time
+Course SPC 419 Is registered in a non offering time
+Course MATH 301 Is registered in a non offering time
+Course SCH XXX Is registered in a non offering time
+Course SPC 408 Is registered in a non offering time
+Course SPC 413 Is registered in a non offering time
+Course SPC 428 Is registered in a non offering time
+Course SPC 491 Is registered in a non offering time
 Course ENGR 444 Is registered in a non offering time
-Course CIE XXX Is registered in a non offering time
-Course CIE XXX Is registered in a non offering time
-Course CIE XXX Is registered in a non offering time
-Course CIE 598 Is registered in a non offering time
-Course SCH 264 Is registered in a non offering time
 Course SCH XXX Is registered in a non offering time
-Course CIE XXX Is registered in a non offering time
-Course CIE XXX Is registered in a non offering time
-Course CIE 599 Is registered in a non offering time
+Course SPC XXX Is registered in a non offering time
+Course SPC XXX Is registered in a non offering time
+Course SPC 535 Is registered in a non offering time
+Course SPC 592 Is registered in a non offering time
+Course SPC 598 Is registered in a non offering time
 Course SCH XXX Is registered in a non offering time
 Course SCH XXX Is registered in a non offering time
+Course SPC XXX Is registered in a non offering time
+Course SPC XXX Is registered in a non offering time
+Course SPC XXX Is registered in a non offering time
+Course SPC 599 Is registered in a non offering time

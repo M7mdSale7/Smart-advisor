@@ -16,12 +16,9 @@
 #include "ImportStudyPlan.h"
 #include "Actions/exit.h"
 #include "ActionDouble.h"
-<<<<<<< HEAD
 #include "ActionShowDependencies.h"
-=======
 #include "ImportRequiements.h"
 
->>>>>>> 27e548dab7d5b8b43e3b32c5c05052ae6cd3709f
 Registrar::Registrar()
 {
 	pGUI = new GUI;	//create interface object

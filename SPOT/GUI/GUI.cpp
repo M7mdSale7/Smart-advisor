@@ -411,23 +411,6 @@ ActionData GUI::GetUserAction(string msg) const
 
 				switch (ClickedItemOrder)
 				{
-<<<<<<< HEAD
-				case ITM_ADD: return ActionData{ ADD_CRS };	//Add course
-				case ITM_ADD_NOTES: return ActionData{ ADD_NOTES };
-				case ITM_DELETE: return ActionData{ DEL_CRS };
-				//case ITM_LOAD_PLAN: return ActionData{ LOAD };
-				case ITM_Double: return ActionData{ Double };
-				case ITM_SAVE_PLAN: return ActionData{ SAVE };
-				case ITM_EDITCOURSECODE: return ActionData{ EDIT_CRS };
-				case ITM_REORDER: return ActionData{ REORDER_CRS };
-				case ITM_IMPORT: return ActionData{ IMPORT };
-				case ITM_GPA: return ActionData{ CALC_GPA };
-				case ITM_MINOR: return ActionData{ MINOR_DEC };
-				case ITM_SEARCH: return ActionData{ SEARCH };
-				case ITM_STATUS: return ActionData{ STATUS };
-				case ITM_SHOWDPND: return ActionData{ SHOW_DPND };
-				case ITM_EXIT: return ActionData{ EXIT };		//Exit
-=======
 				case ITM_ADD: return ActionData{ ADD_CRS };				//Add course
 				case ITM_ADD_NOTES: return ActionData{ ADD_NOTES };		//Add notes
 				case ITM_DELETE: return ActionData{ DEL_CRS };			//Delete course or note
@@ -441,9 +424,8 @@ ActionData GUI::GetUserAction(string msg) const
 				case ITM_SEARCH: return ActionData{ SEARCH };			
 				case ITM_STATUS: return ActionData{ STATUS };			
 				case ITM_ERROR: return ActionData{ ERRORR };
+				case ITM_SHOWDPND: return ActionData{ SHOW_DPND };
 				case ITM_EXIT: return ActionData{ EXIT };				//Exit The program
->>>>>>> 27e548dab7d5b8b43e3b32c5c05052ae6cd3709f
-
 				default: return ActionData{ MENU_BAR };	//A click on empty place in menu bar
 				}
 			}
