@@ -97,18 +97,23 @@ vector<yearSemPair> StudyPlan::CreditsCheck(Rules* R) const //If this vector is 
 	vector<yearSemPair> Allpairs;	//container for all the semesters not satisfying the max/min credits requirements
 								//Those semesters are written as a pair of the year number and semester number
 	yearSemPair* tempPair;
+	int x = 0;
 	for (int i = 0;i < plan.size(); i++)
 	{
+		
 		if (!(plan[i]->checkYearSemCredits(R).empty()))
 		{
 			for (auto iter : plan[i]->checkYearSemCredits(R))
 			{
 				tempPair = new yearSemPair;
 				tempPair->Y = i+1;
-				tempPair->S = iter;
+				tempPair->X.semester = iter.semester;
+				tempPair->X.Case = iter.Case;
+				tempPair->X.credits = iter.credits;
 				Allpairs.push_back(*tempPair);
 				delete tempPair;
 				tempPair = nullptr;
+				x++;
 			}
 		}
 	}
@@ -121,7 +126,7 @@ vector<codeTypePair> StudyPlan::ProgReqCheck(Rules* R) const
 	codeTypePair* tempPair;
 	bool ExistsFlag;
 
-	for (auto &itr : R->UnivElective)
+	for (auto& itr : R->UnivElective)
 	{
 		ExistsFlag = false;
 		for (auto itrYear : plan)
@@ -148,7 +153,7 @@ vector<codeTypePair> StudyPlan::ProgReqCheck(Rules* R) const
 			delete tempPair;
 			tempPair = nullptr;
 		}
-		
+
 	}
 
 	for (auto& itr : R->UnivCompulsory)
@@ -207,7 +212,7 @@ vector<codeTypePair> StudyPlan::ProgReqCheck(Rules* R) const
 			delete tempPair;
 			tempPair = nullptr;
 		}
-		
+
 	}
 	for (auto& itr : R->TrackCompulsory)
 	{
@@ -353,8 +358,11 @@ vector<codeTypePair> StudyPlan::ProgReqCheck(Rules* R) const
 				delete tempPair;
 				tempPair = nullptr;
 			}
-			
+
 		}
+	}
+	return pairs;
+}
 
 vector<string> StudyPlan::checkMinor(Rules* R)
 {
@@ -388,15 +396,6 @@ vector<string> StudyPlan::checkMinor(Rules* R)
 	return VectorOfErrors;
 }
 
-bool StudyPlan::CreditsCheck(Rules* R) const
-{
-	for (auto itrY : plan)
-	{
-		if (!(itrY->checkYearSemCredits(R))) return false;
-	}
-
-	return pairs;
-}
 
 //vector<string> StudyPlan::ProgReqCheck(Rules*) const
 //{

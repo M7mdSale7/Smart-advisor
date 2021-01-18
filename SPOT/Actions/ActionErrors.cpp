@@ -9,7 +9,7 @@
 #include <algorithm>
 #include <fstream>
 #include "../Rules.h"
-
+#include "../DEFs.h"
 ActionErrors::ActionErrors(Registrar* p) : Action(p)
 {
 }
@@ -28,6 +28,13 @@ bool ActionErrors::Execute()
 		file << Errors.at(i) <<"." <<endl;
 	}
 	GUI* pGUI = pReg->getGUI();
+
+	//2- Overload or underload
+	vector<yearSemPair> Errors2 = pS->CreditsCheck(R);
+	for (int i = 0; i < Errors.size(); i++)
+	{
+		file <<"In year " <<Errors2.at(i).Y << "," <<"Semester " << Errors2.at(i).X.semester << " Number of credits is: " << Errors2.at(i).X.credits << " And " << Errors2.at(i).X.Case << " Petition needed" <<endl;
+	}
 	file.close();
 	return true;
 }

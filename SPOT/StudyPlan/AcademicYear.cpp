@@ -146,10 +146,10 @@ void AcademicYear::saveAcademicYear(int year, ofstream& fout) const
 	 
 }
 
-vector<int> AcademicYear::checkYearSemCredits(Rules* R) const
+vector<OverUnder> AcademicYear::checkYearSemCredits(Rules* R) const
 {
 	int semSum;
-	vector<int> notSatisfying;
+	vector<OverUnder> notSatisfying;
 	for (int i = 0; i < SEM_CNT; i++)
 	{
 		semSum = 0;
@@ -157,8 +157,24 @@ vector<int> AcademicYear::checkYearSemCredits(Rules* R) const
 		{
 			semSum += itr->getCredits();
 		}
-		if (semSum > R->SemMaxCredit || semSum < R->SemMinCredit)
-			notSatisfying.push_back(i+1);
+		if (semSum > R->SemMaxCredit)
+		{
+			string Case = "Overload";
+			OverUnder Issue;
+			Issue.Case = Case;
+			Issue.credits = semSum;
+			Issue.semester = i + 1;
+			notSatisfying.push_back(Issue);
+		}
+		else if (semSum < R->SemMinCredit)
+		{
+			string Case = "Underload";
+			OverUnder Issue;
+			Issue.Case = Case;
+			Issue.credits = semSum;
+			Issue.semester = i + 1;
+			notSatisfying.push_back(Issue);
+		}
 	}
 	return notSatisfying;
 }
