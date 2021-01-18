@@ -15,6 +15,13 @@ AcademicYear::AcademicYear()
 
 AcademicYear::~AcademicYear()
 {
+	for (int i = 0; i < SEM_CNT; i++)
+	{
+		for (auto course : YearCourses[i])
+		{
+			delete course;
+		}
+	}
 }
 
 //Adds a course to this year in the spesified semester

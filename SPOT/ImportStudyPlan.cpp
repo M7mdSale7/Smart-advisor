@@ -23,7 +23,7 @@ void ImportStudyPlan::StudyPlanImport(ifstream& fin, Registrar* P) {
 	getline(s_stream, subline, ',');
 	int j = 0;
 	while (!fin.eof()) {
-		AcademicYear* year = new AcademicYear;
+		AcademicYear* year = nullptr;
 		years->push_back(year->ImportAcademicYear(fin, P, ptr, s_stream, j));
 		j++;
 		delete year;

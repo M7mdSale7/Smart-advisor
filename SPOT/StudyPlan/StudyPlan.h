@@ -46,13 +46,13 @@ public:
 	Course* searchStudyPlan(Course_Code) const;
 	Course* searchYear(Course_Code, int) const;
 	Course* searchSemester(Course_Code, int, SEMESTER) const;
-	bool searchOfferings(Rules*, Course_Code, int, SEMESTER) const;
-	void checkoff() const;
+	
 
 	vector<yearSemPair> CreditsCheck(Rules*) const;
 	vector<codeTypePair> ProgReqCheck(Rules*) const;
 	bool checkUnivElectiveCrd(Rules*) const;
 	bool checkMajorElectiveCrd(Rules*) const;
+	bool searchOfferings(Rules*, Course_Code, int, SEMESTER) const;
 
 	void checkPlan(Registrar* R) const;
 	

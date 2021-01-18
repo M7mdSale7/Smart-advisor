@@ -362,6 +362,10 @@ void StudyPlan::checkPlan(Registrar* R) const
 	{
 		R->getGUI()->printError("Concentration dependencies violated!", 1, Ylocation);
 	}
+	if (!(checkOfferings(R->getRules()).empty()))
+	{
+		R->getGUI()->printError("Courses offerings violated!", 0, Ylocation);
+	}
 	
 }
 
@@ -552,8 +556,4 @@ int StudyPlan::getConcentration2() const
 void StudyPlan::setConcentration2(int DoubleConcentration)
 {
 	this->concentration = DoubleConcentration;
-}
-
-void StudyPlan::checkoff() const
-{
 }
