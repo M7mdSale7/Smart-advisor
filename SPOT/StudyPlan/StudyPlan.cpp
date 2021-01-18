@@ -378,6 +378,16 @@ Course* StudyPlan::searchSemester(Course_Code code, int year, SEMESTER semester)
 	return nullptr;
 }
 
+bool StudyPlan::searchOfferings(Rules* R, Course_Code code, int year, SEMESTER semester) const {
+	vector<AcademicYearOfferings> offerings = R->OffringsList;
+	vector<Course_Code> YearOfferings = offerings[year - 1].Offerings[semester];
+	for (auto Code : YearOfferings) {
+		if (Code == code) {
+			return true;
+		}
+	}
+	return false;
+}
 
 vector <vector <Course_Code>> StudyPlan::checkConReq(Rules* R) const {
 	vector <vector <Course_Code>> Error(2);
@@ -458,6 +468,21 @@ vector <vector <Course_Code>> StudyPlan::checkPreCo() const {
 						Error[3].push_back(coReq);
 						course->setCoStatus(0);
 					}
+				}
+			}
+		}
+	}
+	return Error;
+}
+
+vector <Course_Code> StudyPlan::checkOfferings(Rules* R) const {
+	vector <Course_Code> Error;
+	for (size_t i = 0; i < plan.size(); i++) {
+		list<Course*>* YearCourses = plan[i]->getyearslist();
+		for (size_t j = 0; j < SEM_CNT; j++) {
+			for (auto course : YearCourses[j]) {
+				if (!searchOfferings(R, course->getCode(), i + 1, (SEMESTER)j)) {
+					Error.push_back(course->getCode());
 				}
 			}
 		}
