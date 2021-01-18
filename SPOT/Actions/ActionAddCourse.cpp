@@ -221,12 +221,7 @@ bool ActionAddCourse::Execute()
 
 
 		}
-
-
-
-			
-			/*StudyPlan* pS = pReg->getStudyPlay();*/
-		}
+	}
 		
 	
 

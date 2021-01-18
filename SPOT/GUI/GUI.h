@@ -37,6 +37,7 @@ class GUI
 		ITM_SEARCH,
 		ITM_STATUS,
 		ITM_ERROR,
+		ITM_SHOWDPND,
 		ITM_EXIT,		//Exit item
 
 		ITM_CNT			//no. of menu items ==> This should be the last line in this enum
@@ -73,6 +74,8 @@ public:
 
 	//Drawing functions
 	void DrawCourse(const Course* );
+	void Drawpre(const Course* pC1, Course* pC2);
+	void Drawco(const Course* pC1, Course* pC2);
 	void DrawAcademicYear(const AcademicYear*);
 	void UpdateInterface() const;
 	void DrawNotes(const Notes* pNotes); //Member function to Draw Notes on Screen

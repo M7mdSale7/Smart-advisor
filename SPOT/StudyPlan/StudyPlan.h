@@ -15,7 +15,7 @@ class StudyPlan:public Drawable
 		TotalMinorCredits=0;
 
 	int concentration;
-
+	int DoubleConcentration;
 	vector<AcademicYear*> plan;	//plan is a list of academic years
 	string PlanNotes; 
 	vector<Notes*> PlanNotees;
@@ -23,13 +23,13 @@ public:
 	StudyPlan();
 	bool AddCourse(Course*, int year, SEMESTER);
 	bool DeleteCourse(Course*);
-
 	bool AddNote(Notes*);
 	void virtual DrawMe(GUI*) const;
 	
 	void setConcentration(int);
 	int getConcentration() const;
-
+	int getConcentration2() const;
+	void setConcentration2(int);
 	vector<AcademicYear*>* getSPvector();
 	vector<Notes*>* getNvector();
 
@@ -37,17 +37,20 @@ public:
 	void addeYearCredits(AcademicYear*);
 	
 	vector <vector <Course_Code>> checkConReq(Rules*) const;
+	vector <vector <Course_Code>> checkDoubleConReq(Rules*) const;
+	vector <vector <Course_Code>> checkPreCo() const;
+	vector <Course_Code> checkOfferings(Rules*) const;
 	
 	int creditsOfDoneCourses() const;
 	string StudentLevel() const;
 	Course* searchStudyPlan(Course_Code) const;
 	Course* searchYear(Course_Code, int) const;
 	Course* searchSemester(Course_Code, int, SEMESTER) const;
+	bool searchOfferings(Rules*, Course_Code, int, SEMESTER) const;
 	void checkoff() const;
 
 	vector<yearSemPair> CreditsCheck(Rules*) const;
 	vector<codeTypePair> ProgReqCheck(Rules*) const;
-	vector <vector <Course_Code>> checkPreCo() const;
 	bool checkUnivElectiveCrd(Rules*) const;
 	bool checkMajorElectiveCrd(Rules*) const;
 

@@ -60,6 +60,7 @@ void GUI::CreateMenu() const
 	MenuItemImages[ITM_SEARCH] = "GUI\\Images\\Menu\\Search.jpg";
 	MenuItemImages[ITM_STATUS] = "GUI\\Images\\Menu\\status.jpg";
 	MenuItemImages[ITM_ERROR] = "GUI\\Images\\Menu\\Error.jpg";
+	MenuItemImages[ITM_SHOWDPND] = "GUI\\Images\\Menu\\Menu_D.jpg";
 	MenuItemImages[ITM_EXIT] = "GUI\\Images\\Menu\\Menu_exitt.jpg";
 
 
@@ -220,6 +221,28 @@ void GUI::DrawCourse(const Course* pCrs)
 		pWind->DrawString(Code_x, Code_y, pCrs->getCode());
 		pWind->DrawString(Code_x, Code_y + CRS_HEIGHT / 2, crd.str());
 	}
+}
+
+void GUI::Drawpre(const Course* pC1,  Course* pC2)
+{
+	int x1, y1, x2, y2;
+	x1 = pC1->getGfxInfo().x;
+	y1 = pC1->getGfxInfo().y;
+	x2 = pC2->getGfxInfo().x;
+	y2 = pC2->getGfxInfo().y;
+	pWind->SetPen(ORANGE,2);
+	pWind->DrawLine((x1+CRS_WIDTH), (y1+(CRS_HEIGHT/2)), (x2+CRS_WIDTH), (y2+(CRS_HEIGHT/2)));
+}
+
+void GUI::Drawco(const Course* pC1,  Course* pC2)
+{
+	int x1, y1, x2, y2;
+	x1 = pC1->getGfxInfo().x;
+	y1 = pC1->getGfxInfo().y;
+	x2 = pC2->getGfxInfo().x;
+	y2 = pC2->getGfxInfo().y;
+	pWind->SetPen(DARKOLIVEGREEN,2);
+	pWind->DrawLine((x1 + CRS_WIDTH), (y1 + (CRS_HEIGHT / 2)), x2 , y2 );
 }
 
 void GUI::DrawNotes(const Notes* pNotes)
@@ -401,8 +424,8 @@ ActionData GUI::GetUserAction(string msg) const
 				case ITM_SEARCH: return ActionData{ SEARCH };			
 				case ITM_STATUS: return ActionData{ STATUS };			
 				case ITM_ERROR: return ActionData{ ERRORR };
+				case ITM_SHOWDPND: return ActionData{ SHOW_DPND };
 				case ITM_EXIT: return ActionData{ EXIT };				//Exit The program
-
 				default: return ActionData{ MENU_BAR };	//A click on empty place in menu bar
 				}
 			}

@@ -1,15 +1,9 @@
 #include "ActionReorder.h"
-//#include <iostream>
-//#include "ActionDeleteCourse.h"
-//#include "..//Registrar.h"
-//#include "..//Courses/UnivCourse.h"
-//#include "..//GUI/GUI.h"
 #include <iostream>
 #include "ActionDeleteCourse.h"
 #include "..//Registrar.h"
 #include "..//GUI/GUI.h"
-/*#include "functions.h*/
-//#include "ActionChangeCode.h"
+
 #include <algorithm>
 #include "../Rules.h"
 
@@ -24,13 +18,8 @@ bool ActionReorder::Execute()
 	ActionData actData = pGUI->GetUserAction("Reorder Course(Move course from semester to another): press on the course you want to reorder.");
 	int x, y;
 	string code;
-	/*bool coursefound;*/
-	/*CourseInfo* pCINF = pReg->CatalogSearch(code, coursefound);*/
-	if (actData.actType == DRAW_AREA)	//user clicked inside drawing area
+	if (actData.actType == DRAW_AREA)
 	{
-		/*bool coursefound;*/
-		/*string code;*/
-		/*CourseInfo* pCRINF = pReg->CatalogSearch(code, coursefound);*/
 		x = actData.x;
 		y = actData.y;
 		Course* pC = ActionDeleteCourse(pReg).coursesloop(x, y, pReg);
@@ -40,15 +29,12 @@ bool ActionReorder::Execute()
 		}
 		else
 		{
-			//CourseInfo* pCRINF;
-			//bool coursefound;
 			StudyPlan* pS = pReg->getStudyPlay();
 			string code = pC->getCode();
 			pS->DeleteCourse(pC);
 			ActionData actData = pGUI->GetUserAction("Please press in the new semester.");
 			int nx, ny;
-			/*graphicsInfo gInfo{ nx, ny };*/
-			if (actData.actType == DRAW_AREA) //user clicked inside drawing area
+			if (actData.actType == DRAW_AREA) 
 			{
 			bool coursefound = 1;
 			CourseInfo* pCRINF = pReg->CatalogSearch(code, coursefound);
@@ -57,7 +43,6 @@ bool ActionReorder::Execute()
 				graphicsInfo gInfo{ nx, ny };
 				if (pCRINF != nullptr)
 				{
-					/*StudyPlan* pS = pReg->getStudyPlay();*/
 					int credit = pCRINF->Credits;
 					vector<Course_Code>  CoReq = pCRINF->CoReqList;
 					vector<Course_Code> PreReq = pCRINF->PreReqList;
@@ -65,13 +50,7 @@ bool ActionReorder::Execute()
 					Course* pC = new Course(code, CourseTitle, credit, CoReq, PreReq);
 					pC->setGfxInfo(gInfo);
 					pC->settype(pCRINF->type);
-
-					/*graphicsInfo gInfo{ nx, ny };
-					string Title = "Test101";
-					int crd = 0;*/
-					/*Course* pC = new Course(code, Title, crd);*/
 					pC->setGfxInfo(gInfo);
-					/*StudyPlan* pS = pReg->getStudyPlay();*/
 					if (nx < (PLAN_YEAR_WIDTH) && nx>70 && ny < (520 + 105) && ny>(520 + 70)) {
 
 						pS->AddCourse(pC, 1, FALL);

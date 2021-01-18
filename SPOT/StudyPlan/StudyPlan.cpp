@@ -388,10 +388,20 @@ Course* StudyPlan::searchSemester(Course_Code code, int year, SEMESTER semester)
 	return nullptr;
 }
 
+bool StudyPlan::searchOfferings(Rules* R, Course_Code code, int year, SEMESTER semester) const {
+	vector<AcademicYearOfferings> offerings = R->OffringsList;
+	vector<Course_Code> YearOfferings = offerings[year - 1].Offerings[semester];
+	for (auto Code : YearOfferings) {
+		if (Code == code) {
+			return true;
+		}
+	}
+	return false;
+}
 
 vector <vector <Course_Code>> StudyPlan::checkConReq(Rules* R) const {
 	vector <vector <Course_Code>> Error(2);
-	if (R->NofConcentrations == 0)
+	if (R->NofConcentrations == 0 )
 		return Error;
 
 	for (auto &code : R->ConCompulsory[concentration - 1]) {
@@ -407,6 +417,30 @@ vector <vector <Course_Code>> StudyPlan::checkConReq(Rules* R) const {
 		}
 	}
 	if (NoOfConCredits < R->ConElectiveCr[concentration - 1])
+		Error[1].push_back(to_string(NoOfConCredits));
+
+	return Error;
+}
+
+vector<vector<Course_Code>> StudyPlan::checkDoubleConReq(Rules* R) const
+{
+	vector <vector <Course_Code>> Error(2);
+	if (R->NofConcentrations == 1 || R->NofConcentrations == 0)
+		return Error;
+
+	for (auto& code : R->ConCompulsory[DoubleConcentration - 1]) {
+		if (!searchStudyPlan(code))
+			Error[0].push_back(code);
+	}
+
+	int NoOfConCredits = 0;
+	for (auto& code : R->ConElective[DoubleConcentration - 1]) {
+		Course* course = searchStudyPlan(code);
+		if (course) {
+			NoOfConCredits += course->getCredits();
+		}
+	}
+	if (NoOfConCredits < R->ConElectiveCr[DoubleConcentration - 1])
 		Error[1].push_back(to_string(NoOfConCredits));
 
 	return Error;
@@ -475,6 +509,21 @@ vector <vector <Course_Code>> StudyPlan::checkPreCo() const {
 	return Error;
 }
 
+vector <Course_Code> StudyPlan::checkOfferings(Rules* R) const {
+	vector <Course_Code> Error;
+	for (size_t i = 0; i < plan.size(); i++) {
+		list<Course*>* YearCourses = plan[i]->getyearslist();
+		for (size_t j = 0; j < SEM_CNT; j++) {
+			for (auto course : YearCourses[j]) {
+				if (!searchOfferings(R, course->getCode(), i + 1, (SEMESTER)j)) {
+					Error.push_back(course->getCode());
+				}
+			}
+		}
+	}
+	return Error;
+}
+
 bool StudyPlan::checkUnivElectiveCrd(Rules* R) const
 {
 	if (TotalUnivCredits < (R->ElectiveUnivCredits + R->ReqUnivCredits)) return false;
@@ -493,6 +542,16 @@ void StudyPlan::setConcentration(int con) {
 
 int StudyPlan::getConcentration() const {
 	return concentration;
+}
+
+int StudyPlan::getConcentration2() const
+{
+	return DoubleConcentration;
+}
+
+void StudyPlan::setConcentration2(int DoubleConcentration)
+{
+	this->concentration = DoubleConcentration;
 }
 
 void StudyPlan::checkoff() const

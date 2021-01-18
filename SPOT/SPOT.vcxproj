@@ -121,6 +121,7 @@
   <ItemGroup>
     <ClCompile Include="ActionCourseStatus.cpp" />
     <ClCompile Include="ActionDouble.cpp" />
+    <ClCompile Include="ActionShowDependencies.cpp" />
     <ClCompile Include="Actions\ActionAddCourse.cpp" />
     <ClCompile Include="Actions\ActionAddNotes.cpp" />
     <ClCompile Include="Actions\ActionCalculateGPA.cpp" />
@@ -186,6 +187,7 @@
   <ItemGroup>
     <ClInclude Include="ActionCourseStatus.h" />
     <ClInclude Include="ActionDouble.h" />
+    <ClInclude Include="ActionShowDependencies.h" />
     <ClInclude Include="Actions\Action.h" />
     <ClInclude Include="Actions\ActionAddCourse.h" />
     <ClInclude Include="Actions\ActionAddNotes.h" />

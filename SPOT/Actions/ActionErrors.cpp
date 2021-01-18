@@ -144,25 +144,63 @@ bool ActionErrors::Execute()
 	else
 	{
 		file << "3- Program Requirments issues" << endl;
+		file << "a- Compulsory Courses" << endl;
 		for (int i = 0; i < Errors3.size(); i++) //print all errors line in the file
 		{
 			file << "Critical Issue:" <<"Course: " << Errors3.at(i).code << " Type: " << Errors3.at(i).type << " Is not taken , must added" << endl;
 		}
+		file << endl;
+		file << "b-Elective Courses" << endl;
+		file << "b-1- University elective Courses" << endl;
+		//Elective Courses
+		//a- University
+		bool isOk = pS->checkUnivElectiveCrd(R);
+		if (isOk)
+			file << "No issues in university elective courses ! You have choosen all !" << endl;
+		else
+			file << "You havn't taken all university Univeristy elective credits yet !" << endl << endl;
+		//b- Major
+		file << "b-2-Major Elective Courses" << endl;
+		bool isOk2 = pS->checkMajorElectiveCrd(R);
+		if (isOk)
+			file << "No issues in Major elective courses ! You have choosen all !" << endl;
+		else
+			file << "You havn't taken all university Major elective credits yet !" << endl;
+		file << endl;
 	}
-	file << endl;
+
 
 	//4- 2nd Major Program Requirments (Khaled)
 	Rules* R2 = pReg->getRules2(); //getting the rules for the 2nd major
 	vector<codeTypePair> Errors4 = pS->ProgReqCheck(R2); //making error check for that program requirments
-	if (Errors4.size() == 0) //if no errors
-		file << "4-Double Major Progrem requriements are fullfilled !" << endl;
+	if (Errors4.size() == 0 && R2->TrackCompulsory.size() != 0) //if no errors
+		file << "4-Double Major Progrem requriements are fullfilled !" << endl << endl;
+	else if(Errors4.size() == 0 && R2->TrackCompulsory.size() == 0)
+		file << "4-No Double Majot to check for" << endl <<endl;
 	else
 	{
 		file << "4-Double Major Program Requirments issues" << endl;
+		file << "a- Compulsory Courses" << endl;
 		for (int i = 0; i < Errors4.size(); i++) //print all errors line in the file
 		{
 			file << "Critical Issue:" << "Course: " << Errors4.at(i).code << " Type: " << Errors4.at(i).type << " Is not taken , must added" << endl;
 		}
+		file << endl;
+		//Elective Courses
+		//a- University
+		bool isOk = pS->checkUnivElectiveCrd(R2);
+		if (isOk)
+			file << "No issues in university elective courses ! You have choosen all !" << endl;
+		else
+			file << "You havn't taken all university Univeristy elective credits yet !" << endl << endl;
+		//b- Major
+		file << "b-2-Major Elective Courses" << endl;
+		bool isOk2 = pS->checkMajorElectiveCrd(R2);
+		if (isOk)
+			file << "No issues in Major elective courses ! You have choosen all !" << endl;
+		else
+			file << "You havn't taken all university Major elective credits yet !" << endl;
+		file << endl;
 	}
 	file << endl;
 
@@ -171,62 +209,129 @@ bool ActionErrors::Execute()
 	vector<vector<Course_Code>> Errors5 = pS->checkPreCo();
 	//a- Prerequisites
 	file << "a- Prerequisite" << endl;
-	for (int i = 0; i < Errors5.at(0).size(); i++)
+	if (Errors5.at(0).size() == 0)
 	{
-		file << "Criticial Issue: " << "Course: " << Errors5.at(0).at(i) << "," << "Prerequites are: ";
-
-		for (int j = 0; j < Errors5.at(1).size(); j++)
+		file << "No Issues Found in Prerequisite !" << endl << endl;
+	}
+	else
+	{
+		for (int i = 0; i < Errors5.at(0).size(); i++)
 		{
-			if (i == j)
+			file << "Criticial Issue: " << "Course: " << Errors5.at(0).at(i) << "," << "Prerequites are: ";
+
+			for (int j = 0; j < Errors5.at(1).size(); j++)
 			{
-				file << Errors5.at(1).at(j) << ".";
+				if (i == j)
+				{
+					file << Errors5.at(1).at(j) << ".";
+				}
 			}
+			file << endl;
 		}
 		file << endl;
 	}
-	file << endl;
 	//b- Corequisites
 	file << "b- Corequisite" << endl;
-	for (int i = 0; i < Errors5.at(2).size(); i++)
+	if (Errors5.at(2).size() == 0)
 	{
-		file << "Criticial Issue: " << " Course: " << Errors5.at(2).at(i)<< "," << "Corequisites are: ";
-		for (int j = 0; j < Errors5.at(3).size(); j++)
+		file << "No Issues Found in Corequisite!" << endl << endl;
+	}
+	else
+	{
+		for (int i = 0; i < Errors5.at(2).size(); i++)
 		{
-			if (i == j)
+			file << "Criticial Issue: " << " Course: " << Errors5.at(2).at(i) << "," << "Corequisites are: ";
+			for (int j = 0; j < Errors5.at(3).size(); j++)
 			{
-				file << Errors5.at(3).at(j) << ".";
+				if (i == j)
+				{
+					file << Errors5.at(3).at(j) << ".";
+				}
 			}
+			file << endl;
 		}
 		file << endl;
 	}
-	file << endl;
 
 	//6- Conentration Requirments (7masa)
 	file << "6- Concentration Check (Compulsory and Elective)" << endl << endl;
 	vector<vector<Course_Code>> Errors6 = pS->checkConReq(R);
 	//a- Concentration Compulsory
 	file << "a- Concentration Compulsory" << endl;
-	for (int i = 0; i < Errors6.at(0).size(); i++)
+	if (Errors6.at(0).size() == 0)
 	{
-		file << "Criticial Issue: " << "Course: " << Errors6.at(0).at(i) << "," << "Concentration Compulsory Course ";
-
-		for (int j = 0; j < Errors6.at(0).size(); j++)
+		file << "No Issues Found in the compulsory courses of concentration!" << endl << endl;
+	}
+	else
+	{
+		for (int i = 0; i < Errors6.at(0).size(); i++)
 		{
-			if (i == j)
+			file << "Criticial Issue: " << "Course: " << Errors6.at(0).at(i) << "," << "Concentration Compulsory Course ";
+
+			for (int j = 0; j < Errors6.at(0).size(); j++)
 			{
-				file << Errors6.at(0).at(j) <<" Not Taken" <<".";
+				if (i == j)
+				{
+					file << Errors6.at(0).at(j) << " Not Taken" << ".";
+				}
 			}
+			file << endl;
 		}
 		file << endl;
 	}
 	file << "b- Concentration Elective" << endl;
 	if (Errors6.at(1).size() == 0)
 	{
-		file << "No Issues found in Elevtive Courses" << endl;
+		file << "No Issues found in Elevtive Courses" << endl << endl;
 	}
 	else
 	{
-		file << "You have taken only " << Errors6.at(1).at(0) << " Credits" << " Which is less than minimum requirments for the concentration elective" << endl;
+		file << "You have taken only " << Errors6.at(1).at(0) << " Credits" << " Which is less than minimum requirments for the concentration elective" << endl << endl;
+	}
+	file << endl;
+
+	////7- Double Concentration
+	//file << "7- Concentration Check (Compulsory and Elective)" << endl << endl;
+	//vector<vector<Course_Code>> Errors7 = pS->checkDoubleConReq(R);
+	////a- Concentration Compulsory
+	//file << "a- Concentration Compulsory" << endl;
+	//if (Errors7.at(0).size() == 0)
+	//{
+	//	file << "No Issues Found in the compulsory courses of concentration!" << endl << endl;
+	//}
+	//else
+	//{
+	//	for (int i = 0; i < Errors7.at(0).size(); i++)
+	//	{
+	//		file << "Criticial Issue: " << "Course: " << Errors7.at(0).at(i) << "," << "Concentration Compulsory Course ";
+
+	//		for (int j = 0; j < Errors7.at(0).size(); j++)
+	//		{
+	//			if (i == j)
+	//			{
+	//				file << Errors7.at(0).at(j) << " Not Taken" << ".";
+	//			}
+	//		}
+	//		file << endl;
+	//	}
+	//	file << endl;
+	//}
+	//file << "b- Concentration Elective" << endl;
+	//if (Errors7.at(1).size() == 0)
+	//{
+	//	file << "No Issues found in Elevtive Courses" << endl << endl;
+	//}
+	//else
+	//{
+	//	file << "You have taken only " << Errors7.at(1).at(0) << " Credits" << " Which is less than minimum requirments for the concentration elective" << endl << endl;
+	//}
+
+	//8 - Offerings
+	file << "8- Course Offersings Check" << endl;
+	vector<Course_Code> Errors8 = pS->checkOfferings(R);
+	for (int i = 0; i < Errors8.size() ; i++)
+	{
+		file << "Course " << Errors8.at(i) << " Is registered in a non offering time" << endl;
 	}
 
 

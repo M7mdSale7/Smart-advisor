@@ -133,6 +133,14 @@ string Course::getCoreq()
 	return co;
 }
 
+vector<Course_Code> Course::getPreReq() const {
+	return PreReq;
+}
+
+vector<Course_Code> Course::getCoReq() const {
+	return CoReq;
+}
+
 void Course::DrawMe(GUI* pG) const
 {
 	pG->DrawCourse(this);
@@ -207,11 +215,3 @@ void Course::setDone(bool descision) {
 	this->Done = descision;
 }
 
-
-vector<Course_Code> Course::getPreReq() const {
-	return PreReq;
-}
-
-vector<Course_Code> Course::getCoReq() const {
-	return CoReq;
-}
