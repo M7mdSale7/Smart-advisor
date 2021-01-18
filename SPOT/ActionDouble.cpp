@@ -13,7 +13,7 @@ ActionDouble::ActionDouble(Registrar* p): Action(p)
 
 bool ActionDouble::Execute()
 {
-	ifstream fin;
+	ifstream fin; //to read file
 	GUI* pGUI = pReg->getGUI();
 	Rules* RegRules = pReg->getRules2();
 	pGUI->PrintMsg("Doubling: do you want to double major or concentration?"); 
@@ -23,9 +23,10 @@ bool ActionDouble::Execute()
 	{
 		pGUI->PrintMsg("Please enter the Major (CIE , SPC , NANENG , ENV , REE).");
 		string maj = pGUI->GetSrting();
-		transform(maj.begin(), maj.end(), maj.begin(), toupper);
-		ImportRequiements().ImportReqs(fin, pGUI, maj, RegRules);
-
+		transform(maj.begin(), maj.end(), maj.begin(), toupper); //Making letters capital
+		ImportRequiements().ImportReqs(fin, pGUI, maj, RegRules); //Importing the requirments for the second major
+		//Error checking for invalid input are implemented ubsude the function importReqs
+		pGUI->GetUserAction("You have added the second major (Double Major) as : " + maj);
 		cout << "m";
 	}
 	if (choose == "CONCENTRATION")

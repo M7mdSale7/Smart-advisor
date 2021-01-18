@@ -1,9 +1,14 @@
 1-No issues in minor since no minor was maken 
 
 2- Overload or underload petitions: 
-Moderate Issue: In year 4,Semester 2 Number of credits is: 8 And Underload Petition needed
-Moderate Issue: In year 5,Semester 1 Number of credits is: 3 And Underload Petition needed
-Moderate Issue: In year 5,Semester 2 Number of credits is: 3 And Underload Petition needed
+Moderate Issue: In year 2,Semester 1 Number of credits is: 11 And Underload Petition needed
+Moderate Issue: In year 2,Semester 2 Number of credits is: 3 And Underload Petition needed
+Moderate Issue: In year 3,Semester 1 Number of credits is: 8 And Underload Petition needed
+Moderate Issue: In year 3,Semester 2 Number of credits is: 3 And Underload Petition needed
+Moderate Issue: In year 4,Semester 1 Number of credits is: 0 And Underload Petition needed
+Moderate Issue: In year 4,Semester 2 Number of credits is: 2 And Underload Petition needed
+Moderate Issue: In year 5,Semester 1 Number of credits is: 0 And Underload Petition needed
+Moderate Issue: In year 5,Semester 2 Number of credits is: 0 And Underload Petition needed
 
 3- Program Requirments issues
 Critical Issue:Course: ENV 301 Type: Univ Elective Is not taken , must added
@@ -26,6 +31,46 @@ Critical Issue:Course: SCH 244 Type: Univ Elective Is not taken , must added
 Critical Issue:Course: SCH 258 Type: Univ Elective Is not taken , must added
 Critical Issue:Course: SCH 265 Type: Univ Elective Is not taken , must added
 Critical Issue:Course: SCH 266 Type: Univ Elective Is not taken , must added
-Critical Issue:Course: CIE 439 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: SCH 260 Type: Univ Compulsory Is not taken , must added
+Critical Issue:Course: SCH 261 Type: Univ Compulsory Is not taken , must added
+Critical Issue:Course: SCH 264 Type: Univ Compulsory Is not taken , must added
+Critical Issue:Course: NANENG 503 Type: Major Elective Is not taken , must added
+Critical Issue:Course: NANENG 514 Type: Major Elective Is not taken , must added
+Critical Issue:Course: NANENG 523 Type: Major Elective Is not taken , must added
+Critical Issue:Course: NANENG 524 Type: Major Elective Is not taken , must added
+Critical Issue:Course: NANENG 525 Type: Major Elective Is not taken , must added
+Critical Issue:Course: NANENG 535 Type: Major Elective Is not taken , must added
+Critical Issue:Course: NANENG 540 Type: Major Elective Is not taken , must added
+Critical Issue:Course: NANENG 597 Type: Major Elective Is not taken , must added
+Critical Issue:Course: NANENG 581 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: NANENG 582 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: NANENG 583 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: NANENG 584 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: NANENG 513 Type: Concentration Compulsory Is not taken , must added
+Critical Issue:Course: NANENG 515 Type: Concentration Compulsory Is not taken , must added
+Critical Issue:Course: NANENG 501 Type: Concentration Compulsory Is not taken , must added
+Critical Issue:Course: NANENG 522 Type: Concentration Compulsory Is not taken , must added
+Critical Issue:Course: NANENG 511 Type: Concentration Compulsory Is not taken , must added
+Critical Issue:Course: NANENG 530 Type: Concentration Compulsory Is not taken , must added
+Critical Issue:Course: 0 Type: Concentration Elective Is not taken , must added
+Critical Issue:Course: 0 Type: Concentration Elective Is not taken , must added
+Critical Issue:Course: NANENG 511 Type: Concentration Elective Is not taken , must added
+Critical Issue:Course: NANENG 530 Type: Concentration Elective Is not taken , must added
 
-4-Double Major Program Requirments issues
+4-Double Major Progrem requriements are fullfilled !
+
+5- Co requisite and Pre requisite check
+
+a- Prerequisite
+Criticial Issue: Course: MATH 102,Prerequites are: MATH 101.
+Criticial Issue: Course: PHYS 102,Prerequites are: MATH 101.
+
+b- Corequisite
+
+6- Concentration Check (Compulsory and Elective)
+
+a- Concentration Compulsory
+Criticial Issue: Course: NANENG 513,Concentration Compulsory Course NANENG 513 Not Taken.
+Criticial Issue: Course: NANENG 515,Concentration Compulsory Course NANENG 515 Not Taken.
+b- Concentration Elective
+No Issues found in Elevtive Courses
