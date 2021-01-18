@@ -173,12 +173,16 @@ void Registrar::Run()
 		
 		//update interface here as CMU Lib doesn't refresh itself
 		//when window is minimized then restored
+		
 		UpdateInterface();
+		
 		Action* pAct = CreateRequiredAction();
 		if (pAct)	//if user doesn't cancel
 		{
 			if (ExecuteAction(pAct))	//if action is not cancelled
+			{
 				UpdateInterface();
+			}
 		}
 		
 	}
@@ -280,6 +284,7 @@ void Registrar::fillCoursesType()
 void Registrar::UpdateInterface()
 {
 	pGUI->UpdateInterface();	//update interface items
+	pSPlan->checkPlan(this);
 	pSPlan->DrawMe(pGUI);		//make study plan draw itself
 }
 

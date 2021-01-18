@@ -7,6 +7,8 @@
 #include "..\Courses\Course.h"
 #include "../GUI/Drawable.h"
 
+
+class Registrar;
 //Represent one year in the student's study plan
 class AcademicYear:public Drawable
 {
@@ -29,7 +31,7 @@ public:
 	bool AddCourse(Course*, SEMESTER );
 	bool DeleteCourse(Course*, SEMESTER);
 	list<Course*>* getyearslist();
-	AcademicYear* ImportAcademicYear(ifstream& fin, Rules* R, string* subline, stringstream& s_stream, int j);
+	AcademicYear* ImportAcademicYear(ifstream& fin, Registrar* R, string* subline, stringstream& s_stream, int j);
 	void saveAcademicYear(int year,ofstream&) const;
 	vector<OverUnder> checkYearSemCredits(Rules*) const; //returns true only if each semester in the year is valid in terms of credits
 	bool checksemesteroff(Rules*) const;

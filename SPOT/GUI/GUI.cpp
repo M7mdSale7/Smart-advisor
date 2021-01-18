@@ -145,7 +145,6 @@ void GUI::UpdateInterface() const
 ////////////////////////    Drawing functions    ///////////////////
 void GUI::DrawCourse(const Course* pCrs)
 {
-	//graphicsInfo gInfo = pCrs->getGfxInfo();
 	if (pCrs->isSelected() && pCrs->getFilter() == 1)
 	{
 		pWind->SetPen(HiColor, 2);
@@ -166,7 +165,7 @@ void GUI::DrawCourse(const Course* pCrs)
 		pWind->DrawString(Code_x, Code_y + CRS_HEIGHT / 2, crd.str());
 
 	}
-	if (pCrs->getFilter() == 1 && pCrs->isSelected() == 0)
+	else if (pCrs->getFilter() == 1 && pCrs->isSelected() == 0)
 	{
 		if (pCrs->gettype() == "Univ Compulsory" || pCrs->gettype() == "Univ Elective")
 		{
@@ -190,11 +189,19 @@ void GUI::DrawCourse(const Course* pCrs)
 		}
 		//pWind->SetPen(BLACK, 2);
 		pWind->SetBrush(LIGHTBLUE);
-		if (pCrs->gettype() == "Minor")
+		if (!(pCrs->getPreStatus()))
+		{
+			pWind->SetBrush(RED);
+		}
+		else if (!(pCrs->getCoStatus()))
+		{
+			pWind->SetBrush(YELLOW);
+		}
+		else if (pCrs->gettype() == "Minor")
 		{
 			pWind->SetBrush(LIGHTGREEN);
 		}
-		if (pCrs->gettype() == "DoubleMajor")
+		else if (pCrs->gettype() == "DoubleMajor")
 		{
 			pWind->SetBrush(PINK);
 		}
@@ -254,10 +261,9 @@ void GUI::DrawStudentLevel(const StudyPlan* pSPlan) {
 		pWind->DrawString(1125, 30, "Senior");
 }
 
-void GUI::printError(string error, bool issue)
+void GUI::printError(string error, bool issue, int &Ylocation)
 {
 	int XLocation = 910;
-	static int Ylocation = 364;
 	pWind->SetFont(15, BOLD, BY_NAME, "Gramound");
 	pWind->SetPen(RED, 2);
 	if(!issue) pWind->DrawString(XLocation, Ylocation, "Moderate Issue: " + error);

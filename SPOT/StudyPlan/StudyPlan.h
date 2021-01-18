@@ -3,8 +3,9 @@
 #include "AcademicYear.h"
 #include "../GUI/Drawable.h"
 #include "../Notes.h"
-#include "../Rules.h"
-#include "../Rules.h"
+#include "../Registrar.h"
+
+class Registrar;
 //A full study plan for as student
 class StudyPlan:public Drawable
 {
@@ -20,7 +21,7 @@ public:
 	StudyPlan();
 	bool AddCourse(Course*, int year, SEMESTER);
 	bool DeleteCourse(Course*);
-	/*string changecode(Course*, string newcode);*/
+
 	bool AddNote(Notes*);
 	void virtual DrawMe(GUI*) const;
 	
@@ -30,20 +31,21 @@ public:
 	vector<string> checkMinor(Rules*);
 	void addeYearCredits(AcademicYear*);
 	
-	bool checkConReq(Rules*) const;
-	vector <vector <Course_Code>> checkPreCo() const;
+	bool checkConReq(Rules*) const; //SHOULD BE DELETED
 	int creditsOfDoneCourses() const;
 	string StudentLevel() const;
 	Course* searchStudyPlan(Course_Code) const;
 	Course* searchYear(Course_Code, int) const;
 	Course* searchSemester(Course_Code, int, SEMESTER) const;
-	//Course* coursesloop(Registrar* pReg);
 	void checkoff() const;
 
 	vector<yearSemPair> CreditsCheck(Rules*) const;
 	vector<codeTypePair> ProgReqCheck(Rules*) const;
+	vector <vector <Course_Code>> checkPreCo() const;
+	bool checkUnivElectiveCrd(Rules*) const;
+	bool checkMajorElectiveCrd(Rules*) const;
 
-	void checkPlan() const;
+	void checkPlan(Registrar* R) const;
 	
 	virtual ~StudyPlan();
 };

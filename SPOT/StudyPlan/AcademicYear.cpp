@@ -69,42 +69,42 @@ bool AcademicYear::AddCourse(Course* pC, SEMESTER sem)
 bool AcademicYear::DeleteCourse(Course* pC, SEMESTER sem)
 {
 	YearCourses[sem].remove(pC);
-	TotalCredits =- pC->getCredits();
+	TotalCredits -= pC->getCredits();
 	if (pC->getType() == "Univ Compulsory")
 	{
-		TotalUnivCredits += pC->getCredits();
+		TotalUnivCredits -= pC->getCredits();
 	}
 	else if (pC->getType() == "Univ Elective")
 	{
-		TotalUnivCredits += pC->getCredits();
+		TotalUnivCredits -= pC->getCredits();
 	}
 	else if (pC->getType() == "Track Compulsory")
 	{
-		TotalTrackCredits += pC->getCredits();
+		TotalTrackCredits -= pC->getCredits();
 	}
 	else if (pC->getType() == "Track Elective")
 	{
-		TotalTrackCredits += pC->getCredits();
+		TotalTrackCredits -= pC->getCredits();
 	}
 	else if (pC->getType() == "Major Compulsory")
 	{
-		TotalMajorCredits += pC->getCredits();
+		TotalMajorCredits -= pC->getCredits();
 	}
 	else if (pC->getType() == "Major Elective")
 	{
-		TotalMajorCredits += pC->getCredits();
+		TotalMajorCredits -= pC->getCredits();
 	}
 	else if (pC->getType() == "Concentration Compulsory")
 	{
-		TotalConcentrationCredits += pC->getCredits();
+		TotalConcentrationCredits -= pC->getCredits();
 	}
 	else if (pC->getType() == "Concentration Elective")
 	{
-		TotalConcentrationCredits += pC->getCredits();
+		TotalConcentrationCredits -= pC->getCredits();
 	}
 	else if (pC->getType() == "Minor")
 	{
-		TotalMinorCredits += pC->getCredits();
+		TotalMinorCredits -= pC->getCredits();
 	}
 
 	/*delete pC;*/
@@ -216,8 +216,8 @@ void AcademicYear::DrawMe(GUI* pGUI) const
 
 }
 
-AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, Rules* R, string *subline, stringstream& s_stream, int j) {
-	vector <CourseInfo>* Info = &R->CourseCatalog;
+AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, Registrar* R, string *subline, stringstream& s_stream, int j) {
+	vector <CourseInfo>* Info = &R->getRules()->CourseCatalog;
 	AcademicYear* year = new AcademicYear;
 	string line;
 	bool flag = false;
@@ -244,7 +244,7 @@ AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, Rules* R, string *
 							title = Info->at(k).Title;
 							Cr = Info->at(k).Credits;
 							Course* C = new Course(*subline, title, Cr);
-							C->FillData(R, k);
+							C->FillData(R->getRules(), k);
 							C->setyear(j+1);
 							year->AddCourse(C, FALL);
 							break;
@@ -268,7 +268,7 @@ AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, Rules* R, string *
 							title = Info->at(k).Title;
 							Cr = Info->at(k).Credits;
 							Course* C = new Course(*subline, title, Cr);
-							C->FillData(R, k);
+							C->FillData(R->getRules(), k);
 							C->setyear(j + 1);
 							year->AddCourse(C, SPRING);
 							break;
@@ -292,7 +292,7 @@ AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, Rules* R, string *
 							title = Info->at(k).Title;
 							Cr = Info->at(k).Credits;
 							Course* C = new Course(*subline, title, Cr);
-							C->FillData(R, k);
+							C->FillData(R->getRules(), k);
 							C->setyear(j + 1);
 							year->AddCourse(C, SUMMER);
 							break;
@@ -317,6 +317,7 @@ AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, Rules* R, string *
 	int x = 70;
 	graphicsInfo gInfo{ x , y };
 	year->setGfxInfo(gInfo);
+	R->getStudyPlay()->addeYearCredits(year);
 	return year;
 		
 }
