@@ -15,7 +15,7 @@ Course::Course(Course_Code r_code, string r_title, int crd):code(r_code),Title(r
 	credits = crd;
 	Grade = "NA";
 	filter = true;
-	Status = "Pending";
+	Status = "Done";
 	Done = true;
 }
 

@@ -13,7 +13,6 @@ AcademicYear::AcademicYear()
 	//TODO: make all necessary initializations
 }
 
-
 AcademicYear::~AcademicYear()
 {
 }
@@ -63,7 +62,6 @@ bool AcademicYear::AddCourse(Course* pC, SEMESTER sem)
 		TotalMinorCredits += pC->getCredits();
 	}
 
-
 	return true;
 }
 bool AcademicYear::DeleteCourse(Course* pC, SEMESTER sem)
@@ -106,8 +104,6 @@ bool AcademicYear::DeleteCourse(Course* pC, SEMESTER sem)
 	{
 		TotalMinorCredits -= pC->getCredits();
 	}
-
-	/*delete pC;*/
 
 	return true;
 }
@@ -322,24 +318,11 @@ AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, Registrar* R, stri
 		
 }
 
-
-//bool AcademicYear::searchAcademicYear(Course_Code code) const {
-//	for (int i = 0; i < SEM_CNT; i++) {
-//		for (auto course : YearCourses[i]) {
-//			if (course->getCode() == code)
-//				return true;
-//		}
-//	}
-//	return false;
-//}
 Course* AcademicYear::searchAcademicYear(Course_Code code) const {
 	for (int i = 0; i < SEM_CNT; i++) {
-		/*for (auto course : YearCourses[i]) {
-			if (course->getCode() == code)
-				return course;
-		}*/
-		if (searchSemester(code, (SEMESTER)i))
-			return searchSemester(code, (SEMESTER)i);
+		Course* course = searchSemester(code, (SEMESTER)i);
+		if (course)
+			return course;
 	}
 	return nullptr;
 }
@@ -362,11 +345,3 @@ int AcademicYear::CrOfDoneCourses() const {
 	}
 	return credits;
 }
-
-//bool AcademicYear::checkYearPReNCO() const {
-//	for (int i = 0; i < SEM_CNT; i++) {
-//		for (auto course : YearCourses[i]) {
-//			
-//		}
-//	}
-//}
