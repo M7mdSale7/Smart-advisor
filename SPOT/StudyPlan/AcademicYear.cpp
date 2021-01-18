@@ -157,7 +157,7 @@ vector<OverUnder> AcademicYear::checkYearSemCredits(Rules* R) const
 		{
 			semSum += itr->getCredits();
 		}
-		if (semSum > R->SemMaxCredit)
+		if (semSum > R->SemMaxCredit && i != 2)
 		{
 			string Case = "Overload";
 			OverUnder Issue;
@@ -166,9 +166,18 @@ vector<OverUnder> AcademicYear::checkYearSemCredits(Rules* R) const
 			Issue.semester = i + 1;
 			notSatisfying.push_back(Issue);
 		}
-		else if (semSum < R->SemMinCredit)
+		else if (semSum < R->SemMinCredit && i != 2)
 		{
 			string Case = "Underload";
+			OverUnder Issue;
+			Issue.Case = Case;
+			Issue.credits = semSum;
+			Issue.semester = i + 1;
+			notSatisfying.push_back(Issue);
+		}
+		else if (semSum > R->SummerMaxCredit && i == 2)
+		{
+			string Case = "Overload";
 			OverUnder Issue;
 			Issue.Case = Case;
 			Issue.credits = semSum;
