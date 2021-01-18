@@ -20,7 +20,6 @@ public:
 	StudyPlan();
 	bool AddCourse(Course*, int year, SEMESTER);
 	bool DeleteCourse(Course*);
-	/*string changecode(Course*, string newcode);*/
 	bool AddNote(Notes*);
 	void virtual DrawMe(GUI*) const;
 	virtual ~StudyPlan();
@@ -34,8 +33,6 @@ public:
 	int creditsOfDoneCourses() const;
 	string StudentLevel() const;
 	Course* searchStudyPlan(Course_Code) const;
-	/*void checkPlan() const; */
-	//Course* coursesloop(Registrar* pReg);
 	void checkoff() const;
 };
 

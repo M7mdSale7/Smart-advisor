@@ -3,7 +3,6 @@
 #include "..//Registrar.h"
 #include "..//Courses/UnivCourse.h"
 #include "..//GUI/GUI.h"
-/*#include "functions.h*/
 #include "ActionChangeCode.h"
 #include <algorithm>
 
@@ -36,11 +35,9 @@ void ADDSpace(Course_Code& code) {
 bool ActionChangeCode::Execute()
 {
 	GUI* pGUI = pReg->getGUI();
-	//pGUI->PrintMsg("Delete course from the plan: press on the course you want to delete.  ");
 	ActionData actData = pGUI->GetUserAction("Change course code: press on the course you want to change its code.");
-	//Course_Code code = pGUI->GetSrting();
 	int x, y;
-	if (actData.actType == DRAW_AREA)	//user clicked inside drawing area{
+	if (actData.actType == DRAW_AREA)	
 	{
 		x = actData.x;
 		y = actData.y;
@@ -79,13 +76,8 @@ bool ActionChangeCode::Execute()
 				Course* pC = new Course(newcode, CourseTitle, credit, CoReq, PreReq);
 				pC->setGfxInfo(gInfo);
 				pC->settype(pCRINF->type);
-				/*string Title = "Test101";
-				int crd = 0;
-				Course* pC = new Course(newcode, Title, crd);
-				pC->setGfxInfo(gInfo);*/
 				if (nx < (PLAN_YEAR_WIDTH) && nx>70 && ny < (520 + 105) && ny>(520 + 70))
 				{
-
 					pS->AddCourse(pC, 1, FALL);
 					pC->setyear(1);
 					pC->setsemester(FALL);

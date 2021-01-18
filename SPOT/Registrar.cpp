@@ -16,6 +16,7 @@
 #include "ImportStudyPlan.h"
 #include "Actions/exit.h"
 #include "ActionDouble.h"
+#include "ActionShowDependencies.h"
 Registrar::Registrar()
 {
 	pGUI = new GUI;	//create interface object
@@ -94,6 +95,9 @@ Action* Registrar::CreateRequiredAction()
 		break;
 	case Double:
 		RequiredAction = new ActionDouble(this);
+		break;
+	case SHOW_DPND: //reorder_course action
+		RequiredAction = new ActionShowDependencies(this);
 		break;
 	case ERRORR:
 		RequiredAction = new ActionErrors(this);

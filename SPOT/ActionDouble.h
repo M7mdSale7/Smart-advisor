@@ -9,7 +9,6 @@ class ActionDouble :
 	public Action
 {
 public:
-	/*void convert(string&);*/
 	ActionDouble(Registrar*);
 	bool virtual Execute();
 	virtual ~ActionDouble();

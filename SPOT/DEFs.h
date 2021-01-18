@@ -47,6 +47,7 @@ enum ActionType
 	SEARCH,
 	STATUS,
 	ERRORR,
+	SHOW_DPND,
 	EXIT,		//Exit the application
 
 	STATUS_BAR,	//A click on the status bar

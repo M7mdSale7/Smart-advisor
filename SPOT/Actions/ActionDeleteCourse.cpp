@@ -3,8 +3,6 @@
 #include "..//Registrar.h"
 #include "..//Courses/UnivCourse.h"
 #include "..//GUI/GUI.h"
-//#include "functions.h"
-
 
 
 ActionDeleteCourse::ActionDeleteCourse(Registrar* p) : Action(p)
@@ -49,13 +47,10 @@ Course* ActionDeleteCourse::coursesloop(int x, int y, Registrar* pReg)
 bool ActionDeleteCourse::Execute()
 {
 	GUI* pGUI = pReg->getGUI();
-	//pGUI->PrintMsg("Delete course from the plan: press on the course you want to delete.  ");
 	ActionData actData = pGUI->GetUserAction("press on the course you want to delete.");
-	//Course_Code code = pGUI->GetSrting();
-
 
 	int x, y;
-	if (actData.actType == DRAW_AREA)	//user clicked inside drawing area{
+	if (actData.actType == DRAW_AREA)	
 	{
 		x = actData.x;
 		y = actData.y;
@@ -73,9 +68,8 @@ bool ActionDeleteCourse::Execute()
 		}
 	}
 	return true;
-
-
 }
+
 ActionDeleteCourse::~ActionDeleteCourse()
 {
 }
