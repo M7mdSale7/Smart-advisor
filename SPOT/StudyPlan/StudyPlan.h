@@ -15,7 +15,7 @@ class StudyPlan:public Drawable
 		TotalMinorCredits=0;
 
 	int concentration;
-
+	int DoubleConcentration;
 	vector<AcademicYear*> plan;	//plan is a list of academic years
 	string PlanNotes; 
 	vector<Notes*> PlanNotees;
@@ -29,7 +29,8 @@ public:
 	
 	void setConcentration(int);
 	int getConcentration() const;
-
+	int getConcentration2() const;
+	void setConcentration2(int);
 	vector<AcademicYear*>* getSPvector();
 	vector<Notes*>* getNvector();
 

@@ -31,24 +31,21 @@ bool ActionDouble::Execute()
 	}
 	if (choose == "CONCENTRATION")
 	{
-		pGUI->PrintMsg("Please enter the concentration. (Nano vlsi , Nano fabrication and mems, Nano photonics)");
+		pGUI->PrintMsg("Please enter the concentration no.");
 		string con = pGUI->GetSrting();
-		transform(con.begin(), con.end(), con.begin(), toupper);
-		if (con == "NANO VLSI")
+		int conNo = stoi(con);
+		StudyPlan* pS = pReg->getStudyPlay();
+		int conNo1 = pS->getConcentration();
+		if (conNo == conNo1)
 		{
-
+			pGUI->GetUserAction("Error! you have taken this concentration already in your main choice");
 		}
-		if (con == "NANO FABRICATION AND MEMS")
+		else
 		{
-
+			pS->setConcentration2(conNo);
+			pGUI->GetUserAction("Second concentration added ! Please add their courses");
 		}
-		if (con == "NANO PHOTONICS")
-		{
-
-		}
-		cout << "c";
 	}
-	
 	return true;
 }
 

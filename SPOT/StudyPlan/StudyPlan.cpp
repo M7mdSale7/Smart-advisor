@@ -485,6 +485,16 @@ int StudyPlan::getConcentration() const {
 	return concentration;
 }
 
+int StudyPlan::getConcentration2() const
+{
+	return DoubleConcentration;
+}
+
+void StudyPlan::setConcentration2(int DoubleConcentration)
+{
+	this->concentration = DoubleConcentration;
+}
+
 void StudyPlan::checkoff() const
 {
 }
