@@ -436,6 +436,7 @@ vector <vector <Course_Code>> StudyPlan::checkPreCo() const {
 					if (C == nullptr) {
 						Error[0].push_back(course->getCode());
 						Error[1].push_back(preReq);
+						course->setPreStatus(0);
 					}
 					else {
 						if (C->getyear() > course->getyear()) {
