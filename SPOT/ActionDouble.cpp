@@ -1,9 +1,10 @@
 #include "ActionDouble.h"
 #include "Registrar.h"
-//#include "../Courses/UnivCourse.h"
 #include <iostream>
 #include <string>
 #include <algorithm>
+#include <fstream>
+#include "ImportRequiements.h"
 
 
 ActionDouble::ActionDouble(Registrar* p): Action(p)
@@ -12,8 +13,10 @@ ActionDouble::ActionDouble(Registrar* p): Action(p)
 
 bool ActionDouble::Execute()
 {
+	ifstream fin;
 	GUI* pGUI = pReg->getGUI();
-	pGUI->PrintMsg("Doubling: do you want to diuble major or concentration?"); 
+	Rules* RegRules = pReg->getRules2();
+	pGUI->PrintMsg("Doubling: do you want to double major or concentration?"); 
 	string choose = pGUI->GetSrting();
 	transform(choose.begin(), choose.end(), choose.begin(), toupper);
 	if (choose == "MAJOR") 
@@ -21,6 +24,7 @@ bool ActionDouble::Execute()
 		pGUI->PrintMsg("Please enter the Major (CIE , SPC , NANENG , ENV , REE).");
 		string maj = pGUI->GetSrting();
 		transform(maj.begin(), maj.end(), maj.begin(), toupper);
+		ImportRequiements().ImportReqs(fin, pGUI, maj, RegRules);
 
 		cout << "m";
 	}

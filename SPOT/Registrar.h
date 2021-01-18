@@ -8,8 +8,9 @@
 //The maestro class for the application
 class Registrar
 {
-	GUI *pGUI;	//pointer to GUI 
-	Rules RegRules;	//Registration rules
+	GUI *pGUI;			//pointer to GUI 
+	Rules RegRules;		//Registration rules
+	Rules RegRules2;	//Registration rules for second major
 	StudyPlan *pSPlan;
 	StudyPlan *pSPlan2;
 
@@ -17,6 +18,7 @@ public:
 	Registrar();
 	GUI* getGUI() const;
 	Rules* getRules();
+	Rules* getRules2();
 	Action* CreateRequiredAction();
 	CourseInfo* CatalogSearch(string code, bool& coursefound);
 	bool ExecuteAction(Action*);

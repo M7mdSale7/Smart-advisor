@@ -250,6 +250,17 @@ void GUI::DrawStudentLevel(const StudyPlan* pSPlan) {
 		pWind->DrawString(1125, 30, "Senior");
 }
 
+void GUI::printError(string error, bool issue)
+{
+	int XLocation = 910;
+	static int Ylocation = 364;
+	pWind->SetFont(15, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(RED, 2);
+	if(!issue) pWind->DrawString(XLocation, Ylocation, "Moderate Issue: " + error);
+	else pWind->DrawString(XLocation, Ylocation, "Critical Issue: " + error);
+	Ylocation += 20;
+}
+
 void GUI::DrawAcademicYear(const AcademicYear* pY) 
 {
 	//Drawing Big Rectenagle for each Academic Year
@@ -368,21 +379,20 @@ ActionData GUI::GetUserAction(string msg) const
 
 				switch (ClickedItemOrder)
 				{
-				case ITM_ADD: return ActionData{ ADD_CRS };	//Add course
-				case ITM_ADD_NOTES: return ActionData{ ADD_NOTES };
-				case ITM_DELETE: return ActionData{ DEL_CRS };
-				//case ITM_LOAD_PLAN: return ActionData{ LOAD };
-				case ITM_Double: return ActionData{ Double };
-				case ITM_SAVE_PLAN: return ActionData{ SAVE };
-				case ITM_EDITCOURSECODE: return ActionData{ EDIT_CRS };
-				case ITM_REORDER: return ActionData{ REORDER_CRS };
-				case ITM_IMPORT: return ActionData{ IMPORT };
-				case ITM_GPA: return ActionData{ CALC_GPA };
-				case ITM_MINOR: return ActionData{ MINOR_DEC };
-				case ITM_SEARCH: return ActionData{ SEARCH };
-				case ITM_STATUS: return ActionData{ STATUS };
+				case ITM_ADD: return ActionData{ ADD_CRS };				//Add course
+				case ITM_ADD_NOTES: return ActionData{ ADD_NOTES };		//Add notes
+				case ITM_DELETE: return ActionData{ DEL_CRS };			//Delete course or note
+				case ITM_Double: return ActionData{ Double };			//Asking for double major or concentration
+				case ITM_SAVE_PLAN: return ActionData{ SAVE };			//Action saving study plan
+				case ITM_EDITCOURSECODE: return ActionData{ EDIT_CRS }; //Edit code of an existing course
+				case ITM_REORDER: return ActionData{ REORDER_CRS };		//Reorder a course from semester to another
+				case ITM_IMPORT: return ActionData{ IMPORT };			//Import a studyplan
+				case ITM_GPA: return ActionData{ CALC_GPA };			//Calculate GPA
+				case ITM_MINOR: return ActionData{ MINOR_DEC };			//Add a minor
+				case ITM_SEARCH: return ActionData{ SEARCH };			
+				case ITM_STATUS: return ActionData{ STATUS };			
 				case ITM_ERROR: return ActionData{ ERRORR };
-				case ITM_EXIT: return ActionData{ EXIT };		//Exit
+				case ITM_EXIT: return ActionData{ EXIT };				//Exit The program
 
 				default: return ActionData{ MENU_BAR };	//A click on empty place in menu bar
 				}
@@ -400,46 +410,6 @@ ActionData GUI::GetUserAction(string msg) const
 	}//end while
 
 }
-
-
-
-/*Course* GUI::coursesloop(int x, int y, Registrar* pReg) {
-	Course* pointer = nullptr;
-	StudyPlan* pS = pReg->getStudyPlay();
-	vector<AcademicYear*>* pV = pS->getSPvector();
-	bool z = 0;
-	for (AcademicYear* year : *pV)
-	{
-		list<Course*>* pYear = year->getyearslist();
-		for (int sem = FALL; sem < SEM_CNT; sem++)
-		{
-			for (auto i = pYear[sem].begin(); i != pYear[sem].end(); i++)
-			{
-				int cx, cy;
-				cx = (*i)->getGfxInfo().x;
-				cy = (*i)->getGfxInfo().y;
-				if (x > cx && x<(cx + CRS_WIDTH) && y>cy && y < (cy + CRS_HEIGHT))
-				{
-					z = 1;
-					pointer = (*i)->getptr();
-					break;
-				}
-			}
-			if (z) break;
-		}
-		if (z) break;
-	}
-	if (z)
-	{
-		return pointer;
-	}
-	else
-	{
-		return nullptr;
-	}
-}*/
-
-
 
 
 

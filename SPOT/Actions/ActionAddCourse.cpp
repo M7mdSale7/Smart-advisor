@@ -55,11 +55,10 @@ bool ActionAddCourse::Execute()
 
 	//TODO: add input validation
 	CourseInfo* pCRINF = pReg->CatalogSearch(code, coursefound);
-	while (coursefound == 0)
+	if (coursefound == 0)
 	{
-		pGUI->PrintMsg("invalid course code: please re-enter a valid one");
-		code = pGUI->GetSrting();
-		pCRINF = pReg->CatalogSearch(code, coursefound);
+		pGUI->GetUserAction("invalid course code: please re-enter a valid one");
+		return 0;
 	}
 
 
