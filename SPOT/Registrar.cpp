@@ -310,6 +310,7 @@ void Registrar::Initialization() {
 		cout << "Not Found" << endl;*/
 	//cout << "checkConReq: " << pSPlan->checkConReq(&RegRules) << endl;
 	//pSPlan->displayStudentLevel();
+	pSPlan->checkSPPreNCo();
 	
 }
 

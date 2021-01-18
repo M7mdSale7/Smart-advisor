@@ -97,7 +97,6 @@ void StudyPlan::checkPlan() const
 	//and show message in case of each warning or error.
 }
 
-<<<<<<< HEAD
 Course* StudyPlan::searchStudyPlan(Course_Code code) const {
 	for (int i = 0; i < plan.size(); i++) {
 		if (plan[i]->searchAcademicYear(code))
@@ -106,10 +105,24 @@ Course* StudyPlan::searchStudyPlan(Course_Code code) const {
 	return nullptr;
 }
 
+Course* StudyPlan::searchYear(Course_Code code, int year) const {
+	if (plan[year - 1]->searchAcademicYear(code))
+		return plan[year - 1]->searchAcademicYear(code);
+	return nullptr;
+}
+
+Course* StudyPlan::searchSemester(Course_Code code, int year, SEMESTER semester) const {
+	if (plan[year - 1]->searchSemester(code, semester))
+		return plan[year - 1]->searchSemester(code, semester);
+	return nullptr;
+}
+
+
 bool StudyPlan::checkConReq(Rules* R) const {
+	vector <vector <Course_Code>> Error(2);
 	if (R->NofConcentrations == 0)
 		return true;
-	
+
 	for (int i = 0; i < R->NofConcentrations; i++) {
 		bool flag1 = true, flag2 = true;
 		for (auto code : R->ConCompulsory[i]) {
@@ -153,7 +166,51 @@ int StudyPlan::creditsOfDoneCourses() const {
 	}
 	return credits;
 }
-=======
+
+
+vector <vector <Course_Code>> StudyPlan::checkSPPreNCo() const {
+	vector <vector <Course_Code>> Error(2);
+	for (size_t i = 0; i < plan.size(); i++) {
+		list<Course*>* YearCourses = plan[i]->getyearslist();
+		for (size_t j = 0; j < SEM_CNT; j++) {
+			for (auto course : YearCourses[j]) {
+				for (auto preReq : course->getPreReq()) {
+					Course* C = searchStudyPlan(preReq);
+					if (C == nullptr) {
+						Error[0].push_back(preReq);
+						cout << "preReq: " << preReq << endl;
+						cout << "Error code: " << course->getCode() << endl;
+					}
+					else {
+						if (C->getyear() > course->getyear()) {
+							Error[0].push_back(preReq);
+							cout << "preReq: " << preReq << endl;
+							cout << "Error code: " << course->getCode() << endl;
+						}
+						else if (C->getyear() == course->getyear() && C->getsemester() >= course->getsemester()) {
+							Error[0].push_back(preReq);
+							cout << "preReq: " << preReq << endl;
+							cout << "Error code: " << course->getCode() << endl;
+						}
+					}
+				}
+				for (auto coReq : course->getCoReq()) {
+					Course* C = searchSemester(coReq, course->getyear(), course->getsemester());
+					if (C == nullptr) {
+						Error[1].push_back(coReq);
+						cout << "coReq: " << coReq << endl;
+						cout << "Error code: " << course->getCode() << endl;
+					}
+				}
+			}
+		}
+	}
+	return Error;
+}
+
+
+
+
 //Course* StudyPlan::coursesloop(Registrar* pReg)
 //{
 //	Course* pointer = nullptr;
@@ -197,4 +254,3 @@ int StudyPlan::creditsOfDoneCourses() const {
 void StudyPlan::checkoff() const
 {
 }
->>>>>>> 31196e21fec1d4fd00a0d7208fceeb20dee00807

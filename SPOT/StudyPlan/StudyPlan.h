@@ -26,17 +26,15 @@ public:
 	vector<AcademicYear*>* getSPvector();
 	vector<Notes*>* getNvector();
 	bool CreditsCheck(Rules*) const;
-<<<<<<< HEAD
 	void checkPlan() const;
 	bool checkConReq(Rules*) const;
-	bool checkSPPreNCo();
+	vector <vector <Course_Code>> checkSPPreNCo() const;
 	int creditsOfDoneCourses() const;
 	string StudentLevel() const;
 	Course* searchStudyPlan(Course_Code) const;
-=======
-	void checkPlan() const; 
+	Course* searchYear(Course_Code, int) const;
+	Course* searchSemester(Course_Code, int, SEMESTER) const;
 	//Course* coursesloop(Registrar* pReg);
 	void checkoff() const;
->>>>>>> 31196e21fec1d4fd00a0d7208fceeb20dee00807
 };
 

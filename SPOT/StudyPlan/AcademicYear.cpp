@@ -235,10 +235,20 @@ AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, Rules* R, string *
 //}
 Course* AcademicYear::searchAcademicYear(Course_Code code) const {
 	for (int i = 0; i < SEM_CNT; i++) {
-		for (auto course : YearCourses[i]) {
+		/*for (auto course : YearCourses[i]) {
 			if (course->getCode() == code)
 				return course;
-		}
+		}*/
+		if (searchSemester(code, (SEMESTER)i))
+			return searchSemester(code, (SEMESTER)i);
+	}
+	return nullptr;
+}
+
+Course* AcademicYear::searchSemester(Course_Code code, SEMESTER semester) const {
+	for (auto course : YearCourses[semester]) {
+		if (course->getCode() == code)
+			return course;
 	}
 	return nullptr;
 }
@@ -254,11 +264,10 @@ int AcademicYear::CrOfDoneCourses() const {
 	return credits;
 }
 
-bool AcademicYear::checkYearPReNCO() const {
-	for (int i = 0; i < SEM_CNT; i++) {
-		for (auto course : YearCourses[i]) {
-			
-		}
-	}
-	return true;//
-}
+//bool AcademicYear::checkYearPReNCO() const {
+//	for (int i = 0; i < SEM_CNT; i++) {
+//		for (auto course : YearCourses[i]) {
+//			
+//		}
+//	}
+//}

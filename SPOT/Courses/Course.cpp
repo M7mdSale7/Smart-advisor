@@ -185,3 +185,12 @@ string Course::getStatus() const {
 void Course::setDone(bool descision) {
 	this->Done = descision;
 }
+
+
+vector<Course_Code> Course::getPreReq() const {
+	return PreReq;
+}
+
+vector<Course_Code> Course::getCoReq() const {
+	return CoReq;
+}
