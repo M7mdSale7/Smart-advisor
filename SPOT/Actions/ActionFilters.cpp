@@ -73,7 +73,7 @@ bool ActionFilters::Execute()
 		else if (Filter == "Courses")
 		{
 			//you need to check which group of courses
-			pGUI->PrintMsg("Enter Courses Type (Minor - Univ Compulsory - Univ Elective - Track Compulsory)");
+			pGUI->PrintMsg("Enter Courses Type (Minor - DoubleMajor -Univ Compulsory - Univ Elective - Track Compulsory)");
 			string type = pGUI->GetSrting();
 
 			//set all other type false

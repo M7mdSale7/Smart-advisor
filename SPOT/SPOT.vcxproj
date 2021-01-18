@@ -135,9 +135,6 @@
     <ClCompile Include="Actions\ActionSavePlan.cpp" />
     <ClCompile Include="Actions\ActionShowCourseInfo.cpp" />
     <ClCompile Include="Actions\exit.cpp" />
-    <ClCompile Include="Courses\MajorCourse.cpp" />
-    <ClCompile Include="Courses\TrackCourse.cpp" />
-    <ClCompile Include="Courses\UnivCourse.cpp" />
     <ClCompile Include="functions.cpp" />
     <ClCompile Include="Courses\Course.cpp" />
     <ClCompile Include="GUI\CMUgraphicsLib\CMUgraphics.cpp" />
@@ -178,6 +175,7 @@
     <ClCompile Include="GUI\Drawable.cpp" />
     <ClCompile Include="GUI\GUI.cpp" />
     <ClCompile Include="ImportOffering.cpp" />
+    <ClCompile Include="ImportRequiements.cpp" />
     <ClCompile Include="ImportStudyPlan.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Notes.cpp" />
@@ -205,9 +203,6 @@
     <ClInclude Include="Actions\ActionShowCourseInfo.h" />
     <ClInclude Include="Actions\exit.h" />
     <ClInclude Include="Courses\Course.h" />
-    <ClInclude Include="Courses\MajorCourse.h" />
-    <ClInclude Include="Courses\TrackCourse.h" />
-    <ClInclude Include="Courses\UnivCourse.h" />
     <ClInclude Include="functions.h" />
     <ClInclude Include="GUI\CMUgraphicsLib\CMUgraphics.h" />
     <ClInclude Include="GUI\CMUgraphicsLib\colors.h" />
@@ -233,6 +228,7 @@
     <ClInclude Include="DEFs.h" />
     <ClInclude Include="ImportCatalog.h" />
     <ClInclude Include="ImportOffering.h" />
+    <ClInclude Include="ImportRequiements.h" />
     <ClInclude Include="ImportStudyPlan.h" />
     <ClInclude Include="Notes.h" />
     <ClInclude Include="Registrar.h" />

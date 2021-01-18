@@ -8,6 +8,7 @@
     <ClCompile Include="Actions\ActionCalculateGPA.cpp" />
     <ClCompile Include="Actions\ActionChangeCode.cpp" />
     <ClCompile Include="Actions\ActionDeleteCourse.cpp" />
+    <ClCompile Include="Actions\ActionErrors.cpp" />
     <ClCompile Include="Actions\ActionFilters.cpp" />
     <ClCompile Include="Actions\ActionImportStudyPlan.cpp" />
     <ClCompile Include="Actions\ActionMinorDec.cpp" />
@@ -15,9 +16,6 @@
     <ClCompile Include="Actions\ActionSavePlan.cpp" />
     <ClCompile Include="Actions\ActionShowCourseInfo.cpp" />
     <ClCompile Include="Actions\exit.cpp" />
-    <ClCompile Include="Courses\MajorCourse.cpp" />
-    <ClCompile Include="Courses\TrackCourse.cpp" />
-    <ClCompile Include="Courses\UnivCourse.cpp" />
     <ClCompile Include="functions.cpp" />
     <ClCompile Include="Courses\Course.cpp" />
     <ClCompile Include="GUI\CMUgraphicsLib\CMUgraphics.cpp" />
@@ -65,8 +63,12 @@
     <ClCompile Include="ImportCatalog.cpp" />
     <ClCompile Include="StudyPlan\AcademicYear.cpp" />
     <ClCompile Include="StudyPlan\StudyPlan.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="Actions\ActionErrors.cpp" />
     <ClCompile Include="ActionShowDependencies.cpp" />
+=======
+    <ClCompile Include="ImportRequiements.cpp" />
+>>>>>>> 27e548dab7d5b8b43e3b32c5c05052ae6cd3709f
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActionCourseStatus.h" />
@@ -77,6 +79,7 @@
     <ClInclude Include="Actions\ActionCalculateGPA.h" />
     <ClInclude Include="Actions\ActionChangeCode.h" />
     <ClInclude Include="Actions\ActionDeleteCourse.h" />
+    <ClInclude Include="Actions\ActionErrors.h" />
     <ClInclude Include="Actions\ActionFilters.h" />
     <ClInclude Include="Actions\ActionImportStudyPlan.h" />
     <ClInclude Include="Actions\ActionMinorDec.h" />
@@ -85,9 +88,6 @@
     <ClInclude Include="Actions\ActionShowCourseInfo.h" />
     <ClInclude Include="Actions\exit.h" />
     <ClInclude Include="Courses\Course.h" />
-    <ClInclude Include="Courses\MajorCourse.h" />
-    <ClInclude Include="Courses\TrackCourse.h" />
-    <ClInclude Include="Courses\UnivCourse.h" />
     <ClInclude Include="functions.h" />
     <ClInclude Include="GUI\CMUgraphicsLib\CMUgraphics.h" />
     <ClInclude Include="GUI\CMUgraphicsLib\colors.h" />
@@ -119,8 +119,12 @@
     <ClInclude Include="Rules.h" />
     <ClInclude Include="StudyPlan\AcademicYear.h" />
     <ClInclude Include="StudyPlan\StudyPlan.h" />
+<<<<<<< HEAD
     <ClInclude Include="Actions\ActionErrors.h" />
     <ClInclude Include="ActionShowDependencies.h" />
+=======
+    <ClInclude Include="ImportRequiements.h" />
+>>>>>>> 27e548dab7d5b8b43e3b32c5c05052ae6cd3709f
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

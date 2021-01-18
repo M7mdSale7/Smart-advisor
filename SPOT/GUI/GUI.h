@@ -80,7 +80,7 @@ public:
 	void UpdateInterface() const;
 	void DrawNotes(const Notes* pNotes); //Member function to Draw Notes on Screen
 	void DrawStudentLevel(const StudyPlan* pSPlan);
-	//void DeleteCourse(double x, double y);
+	void printError(string error, bool issue, int& Ylocation);
 	
 	//input functions
 	ActionData GUI::GetUserAction(string msg = "") const;

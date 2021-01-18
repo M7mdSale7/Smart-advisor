@@ -1,7 +1,6 @@
 #pragma once
 #include "..//Actions/Action.h"
 #include "..//Registrar.h"
-#include "..//Courses/UnivCourse.h"
 #include "..//GUI/GUI.h"
 //Class responsible for Deleting course 
 class ActionDeleteCourse :

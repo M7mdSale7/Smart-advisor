@@ -3,8 +3,8 @@
 #include "StudyPlan/AcademicYear.h"
 #include "StudyPlan/StudyPlan.h"
 #include "Registrar.h"
-class ImportStudyPlan
+class ImportRequiements
 {
 public:
-	void StudyPlanImport(ifstream& fin, Registrar* P);
+	void ImportReqs(ifstream& fin, GUI* pGUI, string Major, Rules* RegRules);
 };

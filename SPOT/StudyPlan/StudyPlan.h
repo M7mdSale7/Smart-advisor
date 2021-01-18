@@ -3,8 +3,9 @@
 #include "AcademicYear.h"
 #include "../GUI/Drawable.h"
 #include "../Notes.h"
-#include "../Rules.h"
-#include "../Rules.h"
+#include "../Registrar.h"
+
+class Registrar;
 //A full study plan for as student
 class StudyPlan:public Drawable
 {
@@ -13,6 +14,8 @@ class StudyPlan:public Drawable
 		TotalTrackCredits=0, TotalConcentrationCredits=0,
 		TotalMinorCredits=0;
 
+	int concentration;
+	int DoubleConcentration;
 	vector<AcademicYear*> plan;	//plan is a list of academic years
 	string PlanNotes; 
 	vector<Notes*> PlanNotees;
@@ -20,19 +23,46 @@ public:
 	StudyPlan();
 	bool AddCourse(Course*, int year, SEMESTER);
 	bool DeleteCourse(Course*);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 27e548dab7d5b8b43e3b32c5c05052ae6cd3709f
 	bool AddNote(Notes*);
 	void virtual DrawMe(GUI*) const;
-	virtual ~StudyPlan();
+	
+	void setConcentration(int);
+	int getConcentration() const;
+	int getConcentration2() const;
+	void setConcentration2(int);
 	vector<AcademicYear*>* getSPvector();
 	vector<Notes*>* getNvector();
+
 	vector<string> checkMinor(Rules*);
-	bool CreditsCheck(Rules*) const;
-	void checkPlan() const;
-	bool checkConReq(Rules*) const;
-	bool checkSPPreNCo();
+	void addeYearCredits(AcademicYear*);
+	
+	vector <vector <Course_Code>> checkConReq(Rules*) const;
+	vector <vector <Course_Code>> checkDoubleConReq(Rules*) const;
+	vector <vector <Course_Code>> checkPreCo() const;
+	vector <Course_Code> checkOfferings(Rules*) const;
+	
 	int creditsOfDoneCourses() const;
 	string StudentLevel() const;
 	Course* searchStudyPlan(Course_Code) const;
+<<<<<<< HEAD
+=======
+	Course* searchYear(Course_Code, int) const;
+	Course* searchSemester(Course_Code, int, SEMESTER) const;
+	bool searchOfferings(Rules*, Course_Code, int, SEMESTER) const;
+>>>>>>> 27e548dab7d5b8b43e3b32c5c05052ae6cd3709f
 	void checkoff() const;
+
+	vector<yearSemPair> CreditsCheck(Rules*) const;
+	vector<codeTypePair> ProgReqCheck(Rules*) const;
+	bool checkUnivElectiveCrd(Rules*) const;
+	bool checkMajorElectiveCrd(Rules*) const;
+
+	void checkPlan(Registrar* R) const;
+	
+	virtual ~StudyPlan();
 };
 

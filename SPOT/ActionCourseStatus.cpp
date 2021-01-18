@@ -23,12 +23,15 @@ bool ActionCourseStatus::Execute() {
 		Course* course = ActionDeleteCourse(pReg).coursesloop(x, y, pReg);
 
 		if (course) {
-			pGUI->PrintMsg("Current Course Status: " + course->getStatus() + ". Enter the Course Status (Done, In Progress, Pending)");
+			pGUI->PrintMsg("Current Course Status: " + course->getStatus() + 
+				". Enter Status (Done, In Progress, Pending, Replaced, Exempted, Transferred)");
 			string courseStatus = pGUI->GetSrting();
 			
-			if (courseStatus == "Done" || courseStatus == "In Progress" || courseStatus == "Pending") {
+			if (courseStatus == "Done" || courseStatus == "In Progress" || courseStatus == "Pending" || courseStatus == "Replaced" || 
+				courseStatus == "Exempted" || courseStatus == "Transferred") {
 				course->setStatus(courseStatus);
-				if (courseStatus == "Done")
+				if (courseStatus == "Done" || courseStatus == "Replaced" ||
+					courseStatus == "Exempted" || courseStatus == "Transferred")
 				{
 					course->setDone(true);
 					pGUI->PrintMsg("Enter Course Grade (A - A- - B+ ...)");

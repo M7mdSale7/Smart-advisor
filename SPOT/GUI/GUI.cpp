@@ -146,7 +146,6 @@ void GUI::UpdateInterface() const
 ////////////////////////    Drawing functions    ///////////////////
 void GUI::DrawCourse(const Course* pCrs)
 {
-	//graphicsInfo gInfo = pCrs->getGfxInfo();
 	if (pCrs->isSelected() && pCrs->getFilter() == 1)
 	{
 		pWind->SetPen(HiColor, 2);
@@ -167,30 +166,46 @@ void GUI::DrawCourse(const Course* pCrs)
 		pWind->DrawString(Code_x, Code_y + CRS_HEIGHT / 2, crd.str());
 
 	}
-	if (pCrs->getFilter() == 1 && pCrs->isSelected() == 0)
+	else if (pCrs->getFilter() == 1 && pCrs->isSelected() == 0)
 	{
 		if (pCrs->gettype() == "Univ Compulsory" || pCrs->gettype() == "Univ Elective")
 		{
-			pWind->SetPen(DARKRED, 2);
+			pWind->SetPen(YELLOWGREEN, 2);
 		}
 		else if (pCrs->gettype() == "Track Compulsory" || pCrs->gettype() == "Track Elective")
 		{
-			pWind->SetPen(RED, 2);
+			pWind->SetPen(BLUE, 2);
 		}
 		else if (pCrs->gettype() == "Major Compulsory" || pCrs->gettype() == "Major Elective")
 		{
-			pWind->SetPen(DARKGREEN, 2);
+			pWind->SetPen(ORANGE, 2);
 		}
 		else if (pCrs->gettype() == "Concentration Compulsory" || pCrs->gettype() == "Concentration Elective")
 		{
-			pWind->SetPen(VIOLET, 2);
+			pWind->SetPen(GREEN, 2);
 		}
 		else
 		{
-			pWind->SetPen(BLACK, 2);
+			pWind->SetPen(DARKRED, 2);
 		}
 		//pWind->SetPen(BLACK, 2);
 		pWind->SetBrush(LIGHTBLUE);
+		if (!(pCrs->getPreStatus()))
+		{
+			pWind->SetBrush(RED);
+		}
+		else if (!(pCrs->getCoStatus()))
+		{
+			pWind->SetBrush(YELLOW);
+		}
+		else if (pCrs->gettype() == "Minor")
+		{
+			pWind->SetBrush(LIGHTGREEN);
+		}
+		else if (pCrs->gettype() == "DoubleMajor")
+		{
+			pWind->SetBrush(PINK);
+		}
 		graphicsInfo gInfo = pCrs->getGfxInfo();
 		pWind->DrawRectangle(gInfo.x, gInfo.y, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT);
 		pWind->DrawLine(gInfo.x, gInfo.y + CRS_HEIGHT / 2, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT / 2);
@@ -198,7 +213,7 @@ void GUI::DrawCourse(const Course* pCrs)
 		//Write the course code and credit hours.
 		int Code_x = gInfo.x + CRS_WIDTH * 0.15;
 		int Code_y = gInfo.y + CRS_HEIGHT * 0.05;
-		pWind->SetFont(CRS_HEIGHT * 0.4, BOLD, BY_NAME, "Gramound");
+		pWind->SetFont(CRS_HEIGHT * 0.37, BOLD, BY_NAME, "Gramound");
 		pWind->SetPen(DARKRED);
 
 		ostringstream crd;
@@ -250,24 +265,10 @@ void GUI::DrawNotes(const Notes* pNotes)
 
 }
 
-//void GUI::DeleteCourse(double x, double y)
-//{
-//		pWind->SetPen(DrawColor, 2);
-////<<<<<<< HEAD
-//		pWind->SetBrush(RED);
-//		pWind->DrawRectangle(x, y, x+CRS_WIDTH, y+CRS_HEIGHT);
-////=======
-//		pWind->SetBrush(WHITE);
-//		/*pWind->DrawRectangle();*/
-//
-//
-////>>>>>>> 168c832663804dcd8f3721f5b2cdd46ed4a9029e
-//}
-
 void GUI::DrawStudentLevel(const StudyPlan* pSPlan) {
-	//graphicsInfo gInfo = pSPlan->getGfxInfo();
 
 	pWind->SetPen(BLACK, 2);
+	pWind->SetBrush(YELLOW);
 	pWind->DrawRectangle(1100, 10, 1200, 70);
 	pWind->SetFont(20, BOLD, BY_NAME, "Gramound");
 	pWind->SetPen(RED, 2);
@@ -280,6 +281,16 @@ void GUI::DrawStudentLevel(const StudyPlan* pSPlan) {
 		pWind->DrawString(1125, 30, "Junior");
 	else
 		pWind->DrawString(1125, 30, "Senior");
+}
+
+void GUI::printError(string error, bool issue, int &Ylocation)
+{
+	int XLocation = 910;
+	pWind->SetFont(15, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(RED, 2);
+	if(!issue) pWind->DrawString(XLocation, Ylocation, "Moderate Issue: " + error);
+	else pWind->DrawString(XLocation, Ylocation, "Critical Issue: " + error);
+	Ylocation += 20;
 }
 
 void GUI::DrawAcademicYear(const AcademicYear* pY) 
@@ -319,15 +330,9 @@ void GUI::DrawAcademicYear(const AcademicYear* pY)
 	}
 
 	//Writing the number of years
-//<<<<<<< HEAD
-//<<<<<<< HEAD
-	/*graphicsInfo gInfo2 = pY->getGfxInfo();
-	pWind->SetPen(BLACK, 2);*/
-//=======
-//=======
+
 	graphicsInfo gInfo2 = pY->getGfxInfo();
 	pWind->SetPen(BLACK, 2);
-//>>>>>>> 11532e52c9debeeaa8dfb99faff9ed04e9003c17
 	pWind->SetBrush(LIGHTGREEN);
 	pWind->DrawRectangle(gInfo.x - (35 + 35), gInfo.y, gInfo.x - 40, gInfo.y + 105);
 
@@ -339,24 +344,27 @@ void GUI::DrawAcademicYear(const AcademicYear* pY)
 	pWind->DrawInteger(gInfo.x - 65, 235, 4);
 	pWind->DrawInteger(gInfo.x - 65, 125, 5);
 
-	/*graphicsInfo gInfo2 = pY->getGfxInfo();
-	pWind->SetPen(LIGHTSEAGREEN, 2);
->>>>>>> f84ac742e620903a1dd3681bf6bce0b441526022
-	pWind->SetFont(CRS_HEIGHT * 0.4, BOLD, BY_NAME, "Gramound");
-	pWind->DrawString(gInfo2.x - 45, gInfo2.y + PLAN_YEAR_HEIGHT / 2.2, "YEAR");
-	pWind->SetPen(DrawColor, 2);
-	*Pyear--;
-	pWind->DrawInteger(gInfo2.x - 9, gInfo2.y + PLAN_YEAR_HEIGHT / 2.2, year);*/
-
+	//Drawing notes area
 	pWind->SetPen(BLACK, 2);
-	pWind->DrawLine(900, 88, 1200, 88, FRAME);
-	pWind->DrawLine(900, 88, 900, 310, FRAME);
-	pWind->DrawLine(1200, 88, 1200, 310, FRAME);
-	pWind->DrawLine(900, 310, 1200, 310, FRAME);
-	pWind->DrawLine(900, 120, 1200, 120, FRAME);
+	pWind->DrawLine(900,  88, 1250,  88, FRAME);
+	pWind->DrawLine(900,  88,  900, 310, FRAME);
+	pWind->DrawLine(1250, 88, 1250, 310, FRAME);
+	pWind->DrawLine(900, 310, 1250, 310, FRAME);
+	pWind->DrawLine(900, 120, 1250, 120, FRAME);
 	pWind->SetFont(20, BOLD, BY_NAME, "Gramound");
 	pWind->SetPen(RED, 2);
-	pWind->DrawString(950, 100, "ADD YOUR NOTES HERE");
+	pWind->DrawString(980, 100, "ADD YOUR NOTES HERE");
+
+	//Drawing errors area
+	pWind->SetPen(BLACK, 2);
+	pWind->DrawLine(900,  330, 1250, 330, FRAME);
+	pWind->DrawLine(900,  330,  900, 620, FRAME);
+	pWind->DrawLine(1250, 330, 1250, 620, FRAME);
+	pWind->DrawLine(900,  620, 1250, 620, FRAME);
+	pWind->DrawLine(900,  354, 1250, 354, FRAME);
+	pWind->SetFont(20, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(RED, 2);
+	pWind->DrawString(1035, 334, "Error list");
 
 }
 
@@ -403,6 +411,7 @@ ActionData GUI::GetUserAction(string msg) const
 
 				switch (ClickedItemOrder)
 				{
+<<<<<<< HEAD
 				case ITM_ADD: return ActionData{ ADD_CRS };	//Add course
 				case ITM_ADD_NOTES: return ActionData{ ADD_NOTES };
 				case ITM_DELETE: return ActionData{ DEL_CRS };
@@ -418,6 +427,22 @@ ActionData GUI::GetUserAction(string msg) const
 				case ITM_STATUS: return ActionData{ STATUS };
 				case ITM_SHOWDPND: return ActionData{ SHOW_DPND };
 				case ITM_EXIT: return ActionData{ EXIT };		//Exit
+=======
+				case ITM_ADD: return ActionData{ ADD_CRS };				//Add course
+				case ITM_ADD_NOTES: return ActionData{ ADD_NOTES };		//Add notes
+				case ITM_DELETE: return ActionData{ DEL_CRS };			//Delete course or note
+				case ITM_Double: return ActionData{ Double };			//Asking for double major or concentration
+				case ITM_SAVE_PLAN: return ActionData{ SAVE };			//Action saving study plan
+				case ITM_EDITCOURSECODE: return ActionData{ EDIT_CRS }; //Edit code of an existing course
+				case ITM_REORDER: return ActionData{ REORDER_CRS };		//Reorder a course from semester to another
+				case ITM_IMPORT: return ActionData{ IMPORT };			//Import a studyplan
+				case ITM_GPA: return ActionData{ CALC_GPA };			//Calculate GPA
+				case ITM_MINOR: return ActionData{ MINOR_DEC };			//Add a minor
+				case ITM_SEARCH: return ActionData{ SEARCH };			
+				case ITM_STATUS: return ActionData{ STATUS };			
+				case ITM_ERROR: return ActionData{ ERRORR };
+				case ITM_EXIT: return ActionData{ EXIT };				//Exit The program
+>>>>>>> 27e548dab7d5b8b43e3b32c5c05052ae6cd3709f
 
 				default: return ActionData{ MENU_BAR };	//A click on empty place in menu bar
 				}
@@ -435,46 +460,6 @@ ActionData GUI::GetUserAction(string msg) const
 	}//end while
 
 }
-
-
-
-/*Course* GUI::coursesloop(int x, int y, Registrar* pReg) {
-	Course* pointer = nullptr;
-	StudyPlan* pS = pReg->getStudyPlay();
-	vector<AcademicYear*>* pV = pS->getSPvector();
-	bool z = 0;
-	for (AcademicYear* year : *pV)
-	{
-		list<Course*>* pYear = year->getyearslist();
-		for (int sem = FALL; sem < SEM_CNT; sem++)
-		{
-			for (auto i = pYear[sem].begin(); i != pYear[sem].end(); i++)
-			{
-				int cx, cy;
-				cx = (*i)->getGfxInfo().x;
-				cy = (*i)->getGfxInfo().y;
-				if (x > cx && x<(cx + CRS_WIDTH) && y>cy && y < (cy + CRS_HEIGHT))
-				{
-					z = 1;
-					pointer = (*i)->getptr();
-					break;
-				}
-			}
-			if (z) break;
-		}
-		if (z) break;
-	}
-	if (z)
-	{
-		return pointer;
-	}
-	else
-	{
-		return nullptr;
-	}
-}*/
-
-
 
 
 

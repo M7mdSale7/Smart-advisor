@@ -13,7 +13,6 @@ AcademicYear::AcademicYear()
 	//TODO: make all necessary initializations
 }
 
-
 AcademicYear::~AcademicYear()
 {
 }
@@ -26,17 +25,85 @@ bool AcademicYear::AddCourse(Course* pC, SEMESTER sem)
 	YearCourses[sem].push_back(pC);
 	TotalCredits += pC->getCredits();
 	pC->setsemester(sem);
-	//TODO: acording to course type incremenet corrsponding toatl hours for that year
-
+	if (pC->getType() == "Univ Compulsory")
+	{
+		TotalUnivCredits += pC->getCredits();
+	}
+	else if(pC->getType() == "Univ Elective")
+	{
+		TotalUnivCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Track Compulsory")
+	{
+		TotalTrackCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Track Elective")
+	{
+		TotalTrackCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Major Compulsory")
+	{
+		TotalMajorCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Major Elective")
+	{
+		TotalMajorCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Concentration Compulsory")
+	{
+		TotalConcentrationCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Concentration Elective")
+	{
+		TotalConcentrationCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Minor")
+	{
+		TotalMinorCredits += pC->getCredits();
+	}
 
 	return true;
 }
 bool AcademicYear::DeleteCourse(Course* pC, SEMESTER sem)
 {
 	YearCourses[sem].remove(pC);
-	TotalCredits = pC->getCredits();
-
-
+	TotalCredits -= pC->getCredits();
+	if (pC->getType() == "Univ Compulsory")
+	{
+		TotalUnivCredits -= pC->getCredits();
+	}
+	else if (pC->getType() == "Univ Elective")
+	{
+		TotalUnivCredits -= pC->getCredits();
+	}
+	else if (pC->getType() == "Track Compulsory")
+	{
+		TotalTrackCredits -= pC->getCredits();
+	}
+	else if (pC->getType() == "Track Elective")
+	{
+		TotalTrackCredits -= pC->getCredits();
+	}
+	else if (pC->getType() == "Major Compulsory")
+	{
+		TotalMajorCredits -= pC->getCredits();
+	}
+	else if (pC->getType() == "Major Elective")
+	{
+		TotalMajorCredits -= pC->getCredits();
+	}
+	else if (pC->getType() == "Concentration Compulsory")
+	{
+		TotalConcentrationCredits -= pC->getCredits();
+	}
+	else if (pC->getType() == "Concentration Elective")
+	{
+		TotalConcentrationCredits -= pC->getCredits();
+	}
+	else if (pC->getType() == "Minor")
+	{
+		TotalMinorCredits -= pC->getCredits();
+	}
 
 	return true;
 }
@@ -75,9 +142,10 @@ void AcademicYear::saveAcademicYear(int year, ofstream& fout) const
 	 
 }
 
-bool AcademicYear::checkYearSemCredits(Rules* R) const
+vector<OverUnder> AcademicYear::checkYearSemCredits(Rules* R) const
 {
 	int semSum;
+	vector<OverUnder> notSatisfying;
 	for (int i = 0; i < SEM_CNT; i++)
 	{
 		semSum = 0;
@@ -85,9 +153,35 @@ bool AcademicYear::checkYearSemCredits(Rules* R) const
 		{
 			semSum += itr->getCredits();
 		}
-		if (semSum > R->SemMaxCredit || semSum < R->SemMinCredit) return false;
+		if (semSum > R->SemMaxCredit && i != 2)
+		{
+			string Case = "Overload";
+			OverUnder Issue;
+			Issue.Case = Case;
+			Issue.credits = semSum;
+			Issue.semester = i + 1;
+			notSatisfying.push_back(Issue);
+		}
+		else if (semSum < R->SemMinCredit && i != 2)
+		{
+			string Case = "Underload";
+			OverUnder Issue;
+			Issue.Case = Case;
+			Issue.credits = semSum;
+			Issue.semester = i + 1;
+			notSatisfying.push_back(Issue);
+		}
+		else if (semSum > R->SummerMaxCredit && i == 2)
+		{
+			string Case = "Overload";
+			OverUnder Issue;
+			Issue.Case = Case;
+			Issue.credits = semSum;
+			Issue.semester = i + 1;
+			notSatisfying.push_back(Issue);
+		}
 	}
-	return true;
+	return notSatisfying;
 }
 
 bool AcademicYear::checksemesteroff(Rules*) const
@@ -118,8 +212,8 @@ void AcademicYear::DrawMe(GUI* pGUI) const
 
 }
 
-AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, Rules* R, string *subline, stringstream& s_stream, int j) {
-	vector <CourseInfo>* Info = &R->CourseCatalog;
+AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, Registrar* R, string *subline, stringstream& s_stream, int j) {
+	vector <CourseInfo>* Info = &R->getRules()->CourseCatalog;
 	AcademicYear* year = new AcademicYear;
 	string line;
 	bool flag = false;
@@ -146,7 +240,7 @@ AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, Rules* R, string *
 							title = Info->at(k).Title;
 							Cr = Info->at(k).Credits;
 							Course* C = new Course(*subline, title, Cr);
-							C->FillData(R, k);
+							C->FillData(R->getRules(), k);
 							C->setyear(j+1);
 							year->AddCourse(C, FALL);
 							break;
@@ -170,7 +264,7 @@ AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, Rules* R, string *
 							title = Info->at(k).Title;
 							Cr = Info->at(k).Credits;
 							Course* C = new Course(*subline, title, Cr);
-							C->FillData(R, k);
+							C->FillData(R->getRules(), k);
 							C->setyear(j + 1);
 							year->AddCourse(C, SPRING);
 							break;
@@ -194,7 +288,7 @@ AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, Rules* R, string *
 							title = Info->at(k).Title;
 							Cr = Info->at(k).Credits;
 							Course* C = new Course(*subline, title, Cr);
-							C->FillData(R, k);
+							C->FillData(R->getRules(), k);
 							C->setyear(j + 1);
 							year->AddCourse(C, SUMMER);
 							break;
@@ -219,26 +313,24 @@ AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, Rules* R, string *
 	int x = 70;
 	graphicsInfo gInfo{ x , y };
 	year->setGfxInfo(gInfo);
+	R->getStudyPlay()->addeYearCredits(year);
 	return year;
 		
 }
 
-
-//bool AcademicYear::searchAcademicYear(Course_Code code) const {
-//	for (int i = 0; i < SEM_CNT; i++) {
-//		for (auto course : YearCourses[i]) {
-//			if (course->getCode() == code)
-//				return true;
-//		}
-//	}
-//	return false;
-//}
 Course* AcademicYear::searchAcademicYear(Course_Code code) const {
 	for (int i = 0; i < SEM_CNT; i++) {
-		for (auto course : YearCourses[i]) {
-			if (course->getCode() == code)
-				return course;
-		}
+		Course* course = searchSemester(code, (SEMESTER)i);
+		if (course)
+			return course;
+	}
+	return nullptr;
+}
+
+Course* AcademicYear::searchSemester(Course_Code code, SEMESTER semester) const {
+	for (auto course : YearCourses[semester]) {
+		if (course->getCode() == code)
+			return course;
 	}
 	return nullptr;
 }
@@ -252,13 +344,4 @@ int AcademicYear::CrOfDoneCourses() const {
 		}
 	}
 	return credits;
-}
-
-bool AcademicYear::checkYearPReNCO() const {
-	for (int i = 0; i < SEM_CNT; i++) {
-		for (auto course : YearCourses[i]) {
-			
-		}
-	}
-	return true;//
 }

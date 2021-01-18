@@ -15,12 +15,32 @@ Course::Course(Course_Code r_code, string r_title, int crd):code(r_code),Title(r
 	credits = crd;
 	Grade = "NA";
 	filter = true;
-	Status = "Pending";
+	Status = "Done";
 	Done = true;
 }
 
 Course::~Course()
 {
+}
+
+void Course::setPreStatus(bool pre)
+{
+	preReqstatisfied = pre;
+}
+
+void Course::setCoStatus(bool Co)
+{
+	coReqstatisfied = Co;
+}
+
+bool Course::getPreStatus() const
+{
+	return preReqstatisfied;
+}
+
+bool Course::getCoStatus() const
+{
+	return coReqstatisfied;
 }
 
 
@@ -94,7 +114,7 @@ void Course::FillData(Rules* R, int index)
 string Course::getPreq()
 {
 	string pre;
-	for (auto itr : PreReq)
+	for (auto &itr : PreReq)
 	{
 		pre += itr;
 		pre += " ";
@@ -193,4 +213,13 @@ string Course::getStatus() const {
 
 void Course::setDone(bool descision) {
 	this->Done = descision;
+}
+
+
+vector<Course_Code> Course::getPreReq() const {
+	return PreReq;
+}
+
+vector<Course_Code> Course::getCoReq() const {
+	return CoReq;
 }

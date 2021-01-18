@@ -15,7 +15,25 @@ typedef string Note;
 //	University,
 //	Track
 //};
+struct codeTypePair
+{
+	Course_Code code;
+	string type;
+};
 
+
+struct OverUnder
+{
+	int credits;
+	int semester;
+	string Case;
+};
+
+struct yearSemPair //ordered pair of year and semester to ease reporting the error in semesters for the user
+{
+	int Y;
+	OverUnder X;
+};
 //Semesters
 enum SEMESTER
 {
