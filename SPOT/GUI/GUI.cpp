@@ -170,26 +170,30 @@ void GUI::DrawCourse(const Course* pCrs)
 	{
 		if (pCrs->gettype() == "Univ Compulsory" || pCrs->gettype() == "Univ Elective")
 		{
-			pWind->SetPen(DARKRED, 2);
+			pWind->SetPen(YELLOWGREEN, 2);
 		}
 		else if (pCrs->gettype() == "Track Compulsory" || pCrs->gettype() == "Track Elective")
 		{
-			pWind->SetPen(RED, 2);
+			pWind->SetPen(BLUE, 2);
 		}
 		else if (pCrs->gettype() == "Major Compulsory" || pCrs->gettype() == "Major Elective")
 		{
-			pWind->SetPen(DARKGREEN, 2);
+			pWind->SetPen(ORANGE, 2);
 		}
 		else if (pCrs->gettype() == "Concentration Compulsory" || pCrs->gettype() == "Concentration Elective")
 		{
-			pWind->SetPen(VIOLET, 2);
+			pWind->SetPen(GREEN, 2);
 		}
 		else
 		{
-			pWind->SetPen(BLACK, 2);
+			pWind->SetPen(DARKRED, 2);
 		}
 		//pWind->SetPen(BLACK, 2);
 		pWind->SetBrush(LIGHTBLUE);
+		if (pCrs->gettype() == "Minor")
+		{
+			pWind->SetBrush(LIGHTGREEN);
+		}
 		graphicsInfo gInfo = pCrs->getGfxInfo();
 		pWind->DrawRectangle(gInfo.x, gInfo.y, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT);
 		pWind->DrawLine(gInfo.x, gInfo.y + CRS_HEIGHT / 2, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT / 2);

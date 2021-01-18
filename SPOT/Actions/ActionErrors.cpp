@@ -19,8 +19,16 @@ bool ActionErrors::Execute()
 	StudyPlan* pS = pReg->getStudyPlay();
 	Rules* R = pReg->getRules();
 	vector<string> Errors = pS->checkMinor(R);
-	GUI* pGUI = pReg->getGUI(); //Pointer to GUI
-	pGUI->GetUserAction(Errors.at(0));
+	ofstream file("CompleteCheckReport.txt");
+	file.clear();
+	//1- Minor Courses Were not Taken
+	file << "1- Minor Courses Errors: " << endl;
+	for (int i = 0; i < Errors.size(); i++)
+	{
+		file << Errors.at(i) <<"." <<endl;
+	}
+	GUI* pGUI = pReg->getGUI();
+	file.close();
 	return true;
 }
 
