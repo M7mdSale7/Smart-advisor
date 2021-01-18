@@ -31,6 +31,7 @@ CIE 427,Big Data Analytics,3,,Prereq: CIE 206; CIE 417
 CIE 430,Sensors and Instrumentation,3,,Prereq: CIE 212
 CIE 437,Digital and Wireless Communications,3,,Prereq: CIE 337
 CIE 438,RF and Microwave Engineering,3,,Prereq: CIE 338
+CIE 439,Computer Architecture and assemply language,3,,Prereq: CIE 239
 CIE 440,Digital Control Systems,3,,Prereq: CIE 318
 CIE 442,Digital Signal Processing,3,,Prereq: CIE 227
 CIE 447,Computer Networks,3,,Prereq: CIE 437
