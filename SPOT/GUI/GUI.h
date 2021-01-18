@@ -77,7 +77,7 @@ public:
 	void UpdateInterface() const;
 	void DrawNotes(const Notes* pNotes); //Member function to Draw Notes on Screen
 	void DrawStudentLevel(const StudyPlan* pSPlan);
-	void printError(string error, bool issue);
+	void printError(string error, bool issue, int& Ylocation);
 	
 	//input functions
 	ActionData GUI::GetUserAction(string msg = "") const;

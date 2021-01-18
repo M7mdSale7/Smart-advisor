@@ -1,6 +1,5 @@
 #include "ActionAddCourse.h"
 #include "..\Registrar.h"
-#include "../Courses/UnivCourse.h"
 #include <iostream>
 #include <string>
 #include <algorithm>
@@ -76,7 +75,6 @@ bool ActionAddCourse::Execute()
 		graphicsInfo gInfo{ x, y };
 
 
-		//For now, we will add any dummy values
 		if (pCRINF != nullptr)
 		{
 			StudyPlan* pS = pReg->getStudyPlay();

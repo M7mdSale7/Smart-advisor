@@ -23,6 +23,26 @@ Course::~Course()
 {
 }
 
+void Course::setPreStatus(bool pre)
+{
+	preReqstatisfied = pre;
+}
+
+void Course::setCoStatus(bool Co)
+{
+	coReqstatisfied = Co;
+}
+
+bool Course::getPreStatus() const
+{
+	return preReqstatisfied;
+}
+
+bool Course::getCoStatus() const
+{
+	return coReqstatisfied;
+}
+
 
 
 Course_Code Course::getCode() const

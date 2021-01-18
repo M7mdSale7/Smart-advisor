@@ -15,7 +15,6 @@ void ImportStudyPlan::StudyPlanImport(ifstream& fin, Registrar* P) {
 	StudyPlan* plan = P->getStudyPlay();
 	vector <AcademicYear*>* years = plan->getSPvector();
 	years->clear();
-	Rules* R = P->getRules();
 	//vector <CourseInfo>* Info = &R->CourseCatalog;
 	string line;
 	string subline;
@@ -26,9 +25,8 @@ void ImportStudyPlan::StudyPlanImport(ifstream& fin, Registrar* P) {
 	int j = 0;
 	while (!fin.eof()) {
 		AcademicYear* year = new AcademicYear;
-		years->push_back(year->ImportAcademicYear(fin, R, ptr, s_stream, j));
+		years->push_back(year->ImportAcademicYear(fin, P, ptr, s_stream, j));
 		j++;
-		plan->addeYearCredits(year);
 		delete year;
 	}
 }
