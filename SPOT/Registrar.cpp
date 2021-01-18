@@ -330,7 +330,7 @@ void Registrar::Run()
 		UpdateInterface();
 		/*Rules rules;
 		rules.CourseCatalog = ImportCatalog().readCatalog()*/
-		pSPlan->ProgReqCheck(&RegRules);
+		pSPlan->CreditsCheck(&RegRules);
 		Action* pAct = CreateRequiredAction();
 		if (pAct)	//if user doesn't cancel
 		{

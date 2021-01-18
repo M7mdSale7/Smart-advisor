@@ -121,7 +121,7 @@ vector<codeTypePair> StudyPlan::ProgReqCheck(Rules* R) const
 	codeTypePair* tempPair;
 	bool ExistsFlag;
 
-	for (auto &itr : R->UnivElective)
+	for (auto& itr : R->UnivElective)
 	{
 		ExistsFlag = false;
 		for (auto itrYear : plan)
@@ -148,7 +148,7 @@ vector<codeTypePair> StudyPlan::ProgReqCheck(Rules* R) const
 			delete tempPair;
 			tempPair = nullptr;
 		}
-		
+
 	}
 
 	for (auto& itr : R->UnivCompulsory)
@@ -207,7 +207,7 @@ vector<codeTypePair> StudyPlan::ProgReqCheck(Rules* R) const
 			delete tempPair;
 			tempPair = nullptr;
 		}
-		
+
 	}
 	for (auto& itr : R->TrackCompulsory)
 	{
@@ -353,8 +353,11 @@ vector<codeTypePair> StudyPlan::ProgReqCheck(Rules* R) const
 				delete tempPair;
 				tempPair = nullptr;
 			}
-			
+
 		}
+	}
+	return pairs;
+}
 
 vector<string> StudyPlan::checkMinor(Rules* R)
 {
@@ -388,15 +391,15 @@ vector<string> StudyPlan::checkMinor(Rules* R)
 	return VectorOfErrors;
 }
 
-bool StudyPlan::CreditsCheck(Rules* R) const
-{
-	for (auto itrY : plan)
-	{
-		if (!(itrY->checkYearSemCredits(R))) return false;
-	}
-
-	return pairs;
-}
+//bool StudyPlan::CreditsCheck(Rules* R) const
+//{
+//	for (auto itrY : plan)
+//	{
+//		if (!(itrY->checkYearSemCredits(R))) return false;
+//	}
+//
+//	return pairs;
+//}
 
 //vector<string> StudyPlan::ProgReqCheck(Rules*) const
 //{
