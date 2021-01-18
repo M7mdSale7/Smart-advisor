@@ -15,6 +15,11 @@ typedef string Note;
 //	University,
 //	Track
 //};
+struct codeTypePair
+{
+	Course_Code code;
+	string type;
+};
 
 struct yearSemPair //ordered pair of year and semester to ease reporting the error in semesters for the user
 {

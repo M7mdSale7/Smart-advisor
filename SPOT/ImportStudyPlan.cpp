@@ -27,6 +27,7 @@ void ImportStudyPlan::StudyPlanImport(ifstream& fin, Registrar* P) {
 		AcademicYear* year = new AcademicYear;
 		years->push_back(year->ImportAcademicYear(fin, R, ptr, s_stream, j));
 		j++;
+		plan->addeYearCredits(year);
 		delete year;
 	}
 }

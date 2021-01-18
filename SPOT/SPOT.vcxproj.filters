@@ -173,13 +173,10 @@
     <ClCompile Include="Actions\ActionFilters.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-<<<<<<< HEAD
     <ClCompile Include="Actions\exit.cpp">
+    <ClCompile Include="ActionCourseStatus.cpp" />
       <Filter>Actions</Filter>
     </ClCompile>
-=======
-    <ClCompile Include="ActionCourseStatus.cpp" />
->>>>>>> 8e0ed7a9ff6f3e4a1cbf3d7f9361666344e73bb8
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="functions.h" />
@@ -310,13 +307,10 @@
     <ClInclude Include="Actions\ActionFilters.h">
       <Filter>Actions</Filter>
     </ClInclude>
-<<<<<<< HEAD
     <ClInclude Include="Actions\exit.h">
+    <ClInclude Include="ActionCourseStatus.h" />
       <Filter>Actions</Filter>
     </ClInclude>
-=======
-    <ClInclude Include="ActionCourseStatus.h" />
->>>>>>> 8e0ed7a9ff6f3e4a1cbf3d7f9361666344e73bb8
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

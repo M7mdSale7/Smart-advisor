@@ -4,7 +4,6 @@
 #include "../GUI/GUI.h"
 
 
-
 StudyPlan::StudyPlan()
 {
 	////By default, the study plan starts with 5 years
@@ -82,6 +81,16 @@ vector<Notes*>* StudyPlan::getNvector()
 	return &PlanNotees;
 }
 
+void StudyPlan::addeYearCredits(AcademicYear* y)
+{
+	TotalCredits =+ y->TotalCredits;
+	TotalUnivCredits =+ y->TotalUnivCredits;
+	TotalMajorCredits =+ y->TotalMajorCredits;
+	TotalTrackCredits =+ y->TotalTrackCredits;
+	TotalConcentrationCredits =+ y->TotalConcentrationCredits;
+	TotalMinorCredits =+ y->TotalMinorCredits;
+}
+
 vector<yearSemPair> StudyPlan::CreditsCheck(Rules* R) const //If this vector is empty when returned, this implies that all semesters
 															//satisfy the maximum/minimum credits limits.
 {
@@ -106,13 +115,264 @@ vector<yearSemPair> StudyPlan::CreditsCheck(Rules* R) const //If this vector is 
 	return Allpairs; //returns true if no semester in any year exceeds the limit
 }
 
+vector<codeTypePair> StudyPlan::ProgReqCheck(Rules* R) const
+{
+	vector<codeTypePair> pairs;
+	codeTypePair* tempPair;
+	bool ExistsFlag;
+
+	for (auto &itr : R->UnivElective)
+	{
+		ExistsFlag = false;
+		for (auto itrYear : plan)
+		{
+			for (int i = 0; i < SEM_CNT; i++)
+			{
+				for (auto itrCourse : itrYear->getyearslist()[i])
+				{
+					if (itr == itrCourse->getCode())
+					{
+						ExistsFlag = true;
+						goto out1;
+					}
+				}
+			}
+		}
+	out1:
+		if (!ExistsFlag)
+		{
+			tempPair = new codeTypePair;
+			tempPair->code = itr;
+			tempPair->type = "Univ Elective";
+			pairs.push_back(*tempPair);
+			delete tempPair;
+			tempPair = nullptr;
+		}
+		
+	}
+
+	for (auto& itr : R->UnivCompulsory)
+	{
+		ExistsFlag = false;
+		for (auto itrYear : plan)
+		{
+			for (int i = 0; i < SEM_CNT; i++)
+			{
+				for (auto itrCourse : itrYear->getyearslist()[i])
+				{
+					if (itr == itrCourse->getCode())
+					{
+						ExistsFlag = true;
+						goto out2;
+					}
+				}
+			}
+		}
+	out2:
+		if (!ExistsFlag)
+		{
+			tempPair = new codeTypePair;
+			tempPair->code = itr;
+			tempPair->type = "Univ Compulsory";
+			pairs.push_back(*tempPair);
+			delete tempPair;
+			tempPair = nullptr;
+		}
+	}
+
+	for (auto& itr : R->TrackElective)
+	{
+		ExistsFlag = false;
+		for (auto itrYear : plan)
+		{
+			for (int i = 0; i < SEM_CNT; i++)
+			{
+				for (auto itrCourse : itrYear->getyearslist()[i])
+				{
+					if (itr == itrCourse->getCode())
+					{
+						ExistsFlag = true;
+						goto out3;
+					}
+				}
+			}
+		}
+	out3:
+		if (!ExistsFlag)
+		{
+			tempPair = new codeTypePair;
+			tempPair->code = itr;
+			tempPair->type = "Track Elective";
+			pairs.push_back(*tempPair);
+			delete tempPair;
+			tempPair = nullptr;
+		}
+		
+	}
+	for (auto& itr : R->TrackCompulsory)
+	{
+		ExistsFlag = false;
+		for (auto itrYear : plan)
+		{
+			for (int i = 0; i < SEM_CNT; i++)
+			{
+				for (auto itrCourse : itrYear->getyearslist()[i])
+				{
+					if (itr == itrCourse->getCode())
+					{
+						ExistsFlag = true;
+						goto out4;
+					}
+				}
+			}
+		}
+	out4:
+		if (!ExistsFlag)
+		{
+			tempPair = new codeTypePair;
+			tempPair->code = itr;
+			tempPair->type = "Track Compulsory";
+			pairs.push_back(*tempPair);
+			delete tempPair;
+			tempPair = nullptr;
+		}
+	}
+	for (auto& itr : R->MajorElective)
+	{
+		ExistsFlag = false;
+		for (auto itrYear : plan)
+		{
+			for (int i = 0; i < SEM_CNT; i++)
+			{
+				for (auto itrCourse : itrYear->getyearslist()[i])
+				{
+					if (itr == itrCourse->getCode())
+					{
+						ExistsFlag = true;
+						goto out5;
+					}
+				}
+			}
+		}
+	out5:
+		if (!ExistsFlag)
+		{
+			tempPair = new codeTypePair;
+			tempPair->code = itr;
+			tempPair->type = "Major Elective";
+			pairs.push_back(*tempPair);
+			delete tempPair;
+			tempPair = nullptr;
+		}
+	}
+	for (auto& itr : R->MajorCompulsory)
+	{
+		ExistsFlag = false;
+		for (auto itrYear : plan)
+		{
+			for (int i = 0; i < SEM_CNT; i++)
+			{
+				for (auto itrCourse : itrYear->getyearslist()[i])
+				{
+					if (itr == itrCourse->getCode())
+					{
+						ExistsFlag = true;
+						goto out6;
+					}
+				}
+			}
+		}
+	out6:
+		if (!ExistsFlag)
+		{
+			tempPair = new codeTypePair;
+			tempPair->code = itr;
+			tempPair->type = "Major Compulsory";
+			pairs.push_back(*tempPair);
+			delete tempPair;
+			tempPair = nullptr;
+		}
+	}
+	for (auto& itrV : R->ConCompulsory)
+	{
+		for (auto& itr : itrV)
+		{
+			ExistsFlag = false;
+			for (auto itrYear : plan)
+			{
+				for (int i = 0; i < SEM_CNT; i++)
+				{
+					for (auto itrCourse : itrYear->getyearslist()[i])
+					{
+						if (itr == itrCourse->getCode())
+						{
+							ExistsFlag = true;
+							goto out7;
+						}
+					}
+				}
+			}
+		out7:
+			if (!ExistsFlag)
+			{
+				tempPair = new codeTypePair;
+				tempPair->code = itr;
+				tempPair->type = "Concentration Compulsory";
+				pairs.push_back(*tempPair);
+				delete tempPair;
+				tempPair = nullptr;
+			}
+		}
+	}
+	for (auto& itrV : R->ConElective)
+	{
+		for (auto& itr : itrV)
+		{
+			ExistsFlag = false;
+			for (auto itrYear : plan)
+			{
+				for (int i = 0; i < SEM_CNT; i++)
+				{
+					for (auto itrCourse : itrYear->getyearslist()[i])
+					{
+						if (itr == itrCourse->getCode())
+						{
+							ExistsFlag = true;
+							goto out8;
+						}
+					}
+				}
+			}
+		out8:
+			if (!ExistsFlag)
+			{
+				tempPair = new codeTypePair;
+				tempPair->code = itr;
+				tempPair->type = "Concentration Elective";
+				pairs.push_back(*tempPair);
+				delete tempPair;
+				tempPair = nullptr;
+			}
+			
+		}
+
+	}
+
+	return pairs;
+}
+
+//vector<string> StudyPlan::ProgReqCheck(Rules*) const
+//{
+//	
+//}
+
 void StudyPlan::checkPlan() const
 {
 	//after building all checks functions, put here if else statements
 	//and show message in case of each warning or error.
 }
 
-<<<<<<< HEAD
+
 Course* StudyPlan::searchStudyPlan(Course_Code code) const {
 	for (int i = 0; i < plan.size(); i++) {
 		if (plan[i]->searchAcademicYear(code))
@@ -127,7 +387,7 @@ bool StudyPlan::checkConReq(Rules* R) const {
 	
 	for (int i = 0; i < R->NofConcentrations; i++) {
 		bool flag1 = true, flag2 = true;
-		for (auto code : R->ConCompulsory[i]) {
+		for (auto &code : R->ConCompulsory[i]) {
 			if (!searchStudyPlan(code)) {
 				flag1 = false;
 				break;
@@ -135,7 +395,7 @@ bool StudyPlan::checkConReq(Rules* R) const {
 		}
 
 		int NoOfConCredits = 0;
-		for (auto code : R->ConElective[i]) {
+		for (auto &code : R->ConElective[i]) {
 			Course* course = searchStudyPlan(code);
 			if (course) {
 				NoOfConCredits += course->getCredits();
@@ -168,7 +428,7 @@ int StudyPlan::creditsOfDoneCourses() const {
 	}
 	return credits;
 }
-=======
+
 //Course* StudyPlan::coursesloop(Registrar* pReg)
 //{
 //	Course* pointer = nullptr;
@@ -212,4 +472,4 @@ int StudyPlan::creditsOfDoneCourses() const {
 void StudyPlan::checkoff() const
 {
 }
->>>>>>> 31196e21fec1d4fd00a0d7208fceeb20dee00807
+

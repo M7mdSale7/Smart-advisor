@@ -326,13 +326,14 @@ void Registrar::Run()
 		UpdateInterface();
 		/*Rules rules;
 		rules.CourseCatalog = ImportCatalog().readCatalog()*/
-
+		pSPlan->ProgReqCheck(&RegRules);
 		Action* pAct = CreateRequiredAction();
 		if (pAct)	//if user doesn't cancel
 		{
 			if (ExecuteAction(pAct))	//if action is not cancelled
 				UpdateInterface();
 		}
+		
 	}
 	
 }

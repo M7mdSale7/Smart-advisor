@@ -205,24 +205,11 @@ void GUI::DrawNotes(const Notes* pNotes)
 
 }
 
-//void GUI::DeleteCourse(double x, double y)
-//{
-//		pWind->SetPen(DrawColor, 2);
-////<<<<<<< HEAD
-//		pWind->SetBrush(RED);
-//		pWind->DrawRectangle(x, y, x+CRS_WIDTH, y+CRS_HEIGHT);
-////=======
-//		pWind->SetBrush(WHITE);
-//		/*pWind->DrawRectangle();*/
-//
-//
-////>>>>>>> 168c832663804dcd8f3721f5b2cdd46ed4a9029e
-//}
-
 void GUI::DrawStudentLevel(const StudyPlan* pSPlan) {
 	//graphicsInfo gInfo = pSPlan->getGfxInfo();
 
 	pWind->SetPen(BLACK, 2);
+	pWind->SetBrush(LIGHTBLUE);
 	pWind->DrawRectangle(1100, 10, 1200, 70);
 	pWind->SetFont(20, BOLD, BY_NAME, "Gramound");
 	pWind->SetPen(RED, 2);
@@ -274,15 +261,9 @@ void GUI::DrawAcademicYear(const AcademicYear* pY)
 	}
 
 	//Writing the number of years
-//<<<<<<< HEAD
-//<<<<<<< HEAD
-	/*graphicsInfo gInfo2 = pY->getGfxInfo();
-	pWind->SetPen(BLACK, 2);*/
-//=======
-//=======
+
 	graphicsInfo gInfo2 = pY->getGfxInfo();
 	pWind->SetPen(BLACK, 2);
-//>>>>>>> 11532e52c9debeeaa8dfb99faff9ed04e9003c17
 	pWind->SetBrush(LIGHTGREEN);
 	pWind->DrawRectangle(gInfo.x - (35 + 35), gInfo.y, gInfo.x - 40, gInfo.y + 105);
 

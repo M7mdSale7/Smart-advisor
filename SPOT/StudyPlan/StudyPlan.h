@@ -4,11 +4,6 @@
 #include "../GUI/Drawable.h"
 #include "../Notes.h"
 #include "../Rules.h"
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 8e0ed7a9ff6f3e4a1cbf3d7f9361666344e73bb8
 //A full study plan for as student
 class StudyPlan:public Drawable
 {
@@ -27,26 +22,27 @@ public:
 	/*string changecode(Course*, string newcode);*/
 	bool AddNote(Notes*);
 	void virtual DrawMe(GUI*) const;
-	virtual ~StudyPlan();
+	
 	vector<AcademicYear*>* getSPvector();
 	vector<Notes*>* getNvector();
-<<<<<<< HEAD
-	vector<yearSemPair> CreditsCheck(Rules*) const;
-	bool ProgReqCheck(Rules*) const;
-=======
-	bool CreditsCheck(Rules*) const;
-<<<<<<< HEAD
->>>>>>> 8e0ed7a9ff6f3e4a1cbf3d7f9361666344e73bb8
-	void checkPlan() const;
+	void addeYearCredits(AcademicYear*);
+	
 	bool checkConReq(Rules*) const;
 	bool checkSPPreNCo();
 	int creditsOfDoneCourses() const;
 	string StudentLevel() const;
 	Course* searchStudyPlan(Course_Code) const;
-=======
-	void checkPlan() const; 
+
+	
 	//Course* coursesloop(Registrar* pReg);
 	void checkoff() const;
->>>>>>> 31196e21fec1d4fd00a0d7208fceeb20dee00807
+
+
+	vector<yearSemPair> CreditsCheck(Rules*) const;
+	vector<codeTypePair> ProgReqCheck(Rules*) const;
+
+	void checkPlan() const;
+	
+	virtual ~StudyPlan();
 };
 
