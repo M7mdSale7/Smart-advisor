@@ -454,7 +454,7 @@ int StudyPlan::creditsOfDoneCourses() const {
 
 
 vector <vector <Course_Code>> StudyPlan::checkPreCo() const {
-	vector <vector <Course_Code>> Error(2);
+	vector <vector <Course_Code>> Error(4);
 	for (size_t i = 0; i < plan.size(); i++) {
 		list<Course*>* YearCourses = plan[i]->getyearslist();
 		for (size_t j = 0; j < SEM_CNT; j++) {
@@ -463,20 +463,25 @@ vector <vector <Course_Code>> StudyPlan::checkPreCo() const {
 					Course* C = searchStudyPlan(preReq);
 					if (C == nullptr) {
 						Error[0].push_back(course->getCode());
+						Error[1].push_back(preReq);
 					}
 					else {
 						if (C->getyear() > course->getyear()) {
 							Error[0].push_back(course->getCode());
+							Error[1].push_back(preReq);
 						}
 						else if (C->getyear() == course->getyear() && C->getsemester() >= course->getsemester()) {
 							Error[0].push_back(course->getCode());
+							Error[1].push_back(preReq);
 						}
 					}
 				}
 				for (auto coReq : course->getCoReq()) {
 					Course* C = searchSemester(coReq, course->getyear(), course->getsemester());
 					if (C == nullptr) {
-						Error[1].push_back(course->getCode());
+						Error[2].push_back(course->getCode());
+						Error[3].push_back(coReq);
+
 					}
 				}
 			}
