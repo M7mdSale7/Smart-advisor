@@ -4,6 +4,7 @@
 #include "../GUI/Drawable.h"
 #include "../Notes.h"
 #include "../Rules.h"
+#include "../Rules.h"
 //A full study plan for as student
 class StudyPlan:public Drawable
 {
@@ -22,13 +23,15 @@ public:
 	/*string changecode(Course*, string newcode);*/
 	bool AddNote(Notes*);
 	void virtual DrawMe(GUI*) const;
-	virtual ~StudyPlan();
+	
 	vector<AcademicYear*>* getSPvector();
 	vector<Notes*>* getNvector();
-	bool CreditsCheck(Rules*) const;
-	void checkPlan() const;
+
+	vector<string> checkMinor(Rules*);
+	void addeYearCredits(AcademicYear*);
+	
 	bool checkConReq(Rules*) const;
-	vector <vector <Course_Code>> checkSPPreNCo() const;
+	vector <vector <Course_Code>> checkPreCo() const;
 	int creditsOfDoneCourses() const;
 	string StudentLevel() const;
 	Course* searchStudyPlan(Course_Code) const;
@@ -36,5 +39,12 @@ public:
 	Course* searchSemester(Course_Code, int, SEMESTER) const;
 	//Course* coursesloop(Registrar* pReg);
 	void checkoff() const;
+
+	vector<yearSemPair> CreditsCheck(Rules*) const;
+	vector<codeTypePair> ProgReqCheck(Rules*) const;
+
+	void checkPlan() const;
+	
+	virtual ~StudyPlan();
 };
 

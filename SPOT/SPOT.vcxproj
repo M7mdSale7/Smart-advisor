@@ -126,6 +126,7 @@
     <ClCompile Include="Actions\ActionCalculateGPA.cpp" />
     <ClCompile Include="Actions\ActionChangeCode.cpp" />
     <ClCompile Include="Actions\ActionDeleteCourse.cpp" />
+    <ClCompile Include="Actions\ActionErrors.cpp" />
     <ClCompile Include="Actions\ActionFilters.cpp" />
     <ClCompile Include="Actions\ActionImportStudyPlan.cpp" />
     <ClCompile Include="Actions\ActionMinorDec.cpp" />
@@ -176,6 +177,7 @@
     <ClCompile Include="GUI\Drawable.cpp" />
     <ClCompile Include="GUI\GUI.cpp" />
     <ClCompile Include="ImportOffering.cpp" />
+    <ClCompile Include="ImportRequiements.cpp" />
     <ClCompile Include="ImportStudyPlan.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Notes.cpp" />
@@ -193,6 +195,7 @@
     <ClInclude Include="Actions\ActionCalculateGPA.h" />
     <ClInclude Include="Actions\ActionChangeCode.h" />
     <ClInclude Include="Actions\ActionDeleteCourse.h" />
+    <ClInclude Include="Actions\ActionErrors.h" />
     <ClInclude Include="Actions\ActionFilters.h" />
     <ClInclude Include="Actions\ActionImportStudyPlan.h" />
     <ClInclude Include="Actions\ActionMinorDec.h" />
@@ -229,6 +232,7 @@
     <ClInclude Include="DEFs.h" />
     <ClInclude Include="ImportCatalog.h" />
     <ClInclude Include="ImportOffering.h" />
+    <ClInclude Include="ImportRequiements.h" />
     <ClInclude Include="ImportStudyPlan.h" />
     <ClInclude Include="Notes.h" />
     <ClInclude Include="Registrar.h" />

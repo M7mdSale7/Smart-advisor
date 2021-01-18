@@ -17,7 +17,7 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>CgABAIBAAAQQQAAAJAAAEAAAhBAIAAgGAABEFAgAgHA=</HashCode>
+      <HashCode>CgABAIBAAAQQQAAAJAAAEAAAhBAIQAgGAABEFAgAgHA=</HashCode>
       <FileName>GUI\GUI.h</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -67,7 +67,7 @@
       <Method Name="Execute" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AEAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <HashCode>AEAAACAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
       <FileName>Actions\ActionAddCourse.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -87,7 +87,7 @@
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>BQAAAUAAAAIAAgAGAAwQBEAABAEAAAAAABQAIAAIAAA=</HashCode>
+      <HashCode>BQAQAUAAEAIAAgAGAgwQBEAABAUAAAAAABRAIAAIgCA=</HashCode>
       <FileName>StudyPlan\StudyPlan.h</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -124,7 +124,7 @@
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AEAQAAAACEAAQAAAQAAAAAAAQAAAAAAABAAAABCIAAY=</HashCode>
+      <HashCode>gEAQAAAACEAAQAAAQAAAAAAAQAAQBAAABAAAQBCIAAY=</HashCode>
       <FileName>Registrar.h</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -156,7 +156,7 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>CIBEAQAAAAAAAECAgIAAACAEIAABAFAABABACIAAAAA=</HashCode>
+      <HashCode>CIBUIQAFAAAAAECAgIAAEDQUIRABBHEYRABACIEAAIA=</HashCode>
       <FileName>Courses\Course.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -170,7 +170,7 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>BAEAAwAAAAAAAgABAIQQJEAAJAABAAAQAAAAIAAAAAA=</HashCode>
+      <HashCode>BAEBAwAAAAAAEgABAIQQBEAAJAABAAAQAAABIAAAAAA=</HashCode>
       <FileName>StudyPlan\AcademicYear.h</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -200,7 +200,7 @@
       <Field Name="UnivElective" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AAgCBAACAIAAAAAABAxEAAABIAIQIAABAgIAIACAAAA=</HashCode>
+      <HashCode>AAgCBAACAIAAAAAABAxEAAABKAIQIAABAgIAIACAAAA=</HashCode>
       <FileName>Rules.h</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>

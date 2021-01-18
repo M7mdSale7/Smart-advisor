@@ -26,7 +26,42 @@ bool AcademicYear::AddCourse(Course* pC, SEMESTER sem)
 	YearCourses[sem].push_back(pC);
 	TotalCredits += pC->getCredits();
 	pC->setsemester(sem);
-	//TODO: acording to course type incremenet corrsponding toatl hours for that year
+	if (pC->getType() == "Univ Compulsory")
+	{
+		TotalUnivCredits += pC->getCredits();
+	}
+	else if(pC->getType() == "Univ Elective")
+	{
+		TotalUnivCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Track Compulsory")
+	{
+		TotalTrackCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Track Elective")
+	{
+		TotalTrackCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Major Compulsory")
+	{
+		TotalMajorCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Major Elective")
+	{
+		TotalMajorCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Concentration Compulsory")
+	{
+		TotalConcentrationCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Concentration Elective")
+	{
+		TotalConcentrationCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Minor")
+	{
+		TotalMinorCredits += pC->getCredits();
+	}
 
 
 	return true;
@@ -34,9 +69,45 @@ bool AcademicYear::AddCourse(Course* pC, SEMESTER sem)
 bool AcademicYear::DeleteCourse(Course* pC, SEMESTER sem)
 {
 	YearCourses[sem].remove(pC);
-	TotalCredits = pC->getCredits();
+	TotalCredits =- pC->getCredits();
+	if (pC->getType() == "Univ Compulsory")
+	{
+		TotalUnivCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Univ Elective")
+	{
+		TotalUnivCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Track Compulsory")
+	{
+		TotalTrackCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Track Elective")
+	{
+		TotalTrackCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Major Compulsory")
+	{
+		TotalMajorCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Major Elective")
+	{
+		TotalMajorCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Concentration Compulsory")
+	{
+		TotalConcentrationCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Concentration Elective")
+	{
+		TotalConcentrationCredits += pC->getCredits();
+	}
+	else if (pC->getType() == "Minor")
+	{
+		TotalMinorCredits += pC->getCredits();
+	}
 
-
+	/*delete pC;*/
 
 	return true;
 }
@@ -75,9 +146,10 @@ void AcademicYear::saveAcademicYear(int year, ofstream& fout) const
 	 
 }
 
-bool AcademicYear::checkYearSemCredits(Rules* R) const
+vector<OverUnder> AcademicYear::checkYearSemCredits(Rules* R) const
 {
 	int semSum;
+	vector<OverUnder> notSatisfying;
 	for (int i = 0; i < SEM_CNT; i++)
 	{
 		semSum = 0;
@@ -85,9 +157,35 @@ bool AcademicYear::checkYearSemCredits(Rules* R) const
 		{
 			semSum += itr->getCredits();
 		}
-		if (semSum > R->SemMaxCredit || semSum < R->SemMinCredit) return false;
+		if (semSum > R->SemMaxCredit && i != 2)
+		{
+			string Case = "Overload";
+			OverUnder Issue;
+			Issue.Case = Case;
+			Issue.credits = semSum;
+			Issue.semester = i + 1;
+			notSatisfying.push_back(Issue);
+		}
+		else if (semSum < R->SemMinCredit && i != 2)
+		{
+			string Case = "Underload";
+			OverUnder Issue;
+			Issue.Case = Case;
+			Issue.credits = semSum;
+			Issue.semester = i + 1;
+			notSatisfying.push_back(Issue);
+		}
+		else if (semSum > R->SummerMaxCredit && i == 2)
+		{
+			string Case = "Overload";
+			OverUnder Issue;
+			Issue.Case = Case;
+			Issue.credits = semSum;
+			Issue.semester = i + 1;
+			notSatisfying.push_back(Issue);
+		}
 	}
-	return true;
+	return notSatisfying;
 }
 
 bool AcademicYear::checksemesteroff(Rules*) const

@@ -1,47 +1,12 @@
 #include <iostream>
 #include "ActionCourseStatus.h"
+#include "../SPOT/Actions/ActionDeleteCourse.h"
 using namespace std;
 
 ActionCourseStatus::ActionCourseStatus(Registrar* p) : Action(p) {
 
 }
 
-Course* ActionCourseStatus::coursesloop(int x, int y, Registrar* pReg)
-{
-	Course* pointer = nullptr;
-	StudyPlan* pS = pReg->getStudyPlay();
-	vector<AcademicYear*>* pV = pS->getSPvector();
-	bool z = 0;
-	for (AcademicYear* year : *pV)
-	{
-		list<Course*>* pYear = year->getyearslist();
-		for (int sem = FALL; sem < SEM_CNT; sem++)
-		{
-			for (auto i = pYear[sem].begin(); i != pYear[sem].end(); i++)
-			{
-				int cx, cy;
-				cx = (*i)->getGfxInfo().x;
-				cy = (*i)->getGfxInfo().y;
-				if (x > cx && x<(cx + CRS_WIDTH) && y>cy && y < (cy + CRS_HEIGHT))
-				{
-					z = 1;
-					pointer = (*i)->getptr();
-					break;
-				}
-			}
-			if (z) break;
-		}
-		if (z) break;
-	}
-	if (z)
-	{
-		return pointer;
-	}
-	else
-	{
-		return nullptr;
-	}
-}
 
 bool ActionCourseStatus::Execute() {
 	GUI* pGUI = pReg->getGUI();
@@ -55,7 +20,7 @@ bool ActionCourseStatus::Execute() {
 		x = actionData.x;
 		y = actionData.y;
 
-		Course* course = coursesloop(x, y, pReg);
+		Course* course = ActionDeleteCourse(pReg).coursesloop(x, y, pReg);
 
 		if (course) {
 			pGUI->PrintMsg("Current Course Status: " + course->getStatus() + 
@@ -67,12 +32,20 @@ bool ActionCourseStatus::Execute() {
 				course->setStatus(courseStatus);
 				if (courseStatus == "Done" || courseStatus == "Replaced" ||
 					courseStatus == "Exempted" || courseStatus == "Transferred")
+				{
 					course->setDone(true);
+					pGUI->PrintMsg("Enter Course Grade (A - A- - B+ ...)");
+					string grade = pGUI->GetSrting();
+					if (grade == "A" || grade == "A-" || grade == "B+" || grade == "B" || grade == "B-" || grade == "C+" || grade == "C" || grade == "C-" || grade == "F")
+						course->setGrade(grade);
+					else
+						pGUI->PrintMsg("Invalid Grade Input");
+				}
 				else
 					course->setDone(false);
 			}
 			else {
-				pGUI->PrintMsg("Invalid syntax input");
+				pGUI->GetUserAction("Invalid syntax input");
 				//pGUI->GetSrting();
 			}
 		}

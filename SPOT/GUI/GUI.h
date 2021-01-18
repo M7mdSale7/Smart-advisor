@@ -36,6 +36,7 @@ class GUI
 		ITM_MINOR,
 		ITM_SEARCH,
 		ITM_STATUS,
+		ITM_ERROR,
 		ITM_EXIT,		//Exit item
 
 		ITM_CNT			//no. of menu items ==> This should be the last line in this enum
@@ -76,7 +77,7 @@ public:
 	void UpdateInterface() const;
 	void DrawNotes(const Notes* pNotes); //Member function to Draw Notes on Screen
 	void DrawStudentLevel(const StudyPlan* pSPlan);
-	//void DeleteCourse(double x, double y);
+	void printError(string error, bool issue);
 	
 	//input functions
 	ActionData GUI::GetUserAction(string msg = "") const;

@@ -24,6 +24,7 @@ class Course : public Drawable
 	double qPoints;
 	string Status;	//Done, In Progress, Pending
 	bool filter;
+	bool preReqstatisfied; // 1 for yes, 0 for no
 public:
 	Course();
 	Course(Course_Code r_code, string r_title, int c_crd, vector<Course_Code> r_CoReq, vector<Course_Code> r_PreReq);

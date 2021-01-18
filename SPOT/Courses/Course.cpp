@@ -8,13 +8,14 @@ Course::Course(Course_Code c_code, string c_title, int c_crd, vector<Course_Code
 	credits = c_crd;
 	CoReq = c_CoReq;
 	PreReq = c_PreReq;
+	filter = true;
 }
 Course::Course(Course_Code r_code, string r_title, int crd):code(r_code),Title(r_title)
 {
 	credits = crd;
 	Grade = "NA";
 	filter = true;
-	Status = "Done";
+	Status = "Pending";
 	Done = true;
 }
 
@@ -93,7 +94,7 @@ void Course::FillData(Rules* R, int index)
 string Course::getPreq()
 {
 	string pre;
-	for (auto itr : PreReq)
+	for (auto &itr : PreReq)
 	{
 		pre += itr;
 		pre += " ";

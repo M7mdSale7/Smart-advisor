@@ -15,6 +15,7 @@ class AcademicYear:public Drawable
 		TotalTrackCredits=0, TotalConcentrationCredits=0,
 		TotalMinorCredits=0;
 
+	friend class StudyPlan;
 	//Each year is an array of 3 lists of courses. Each list cossrsponds to a semester
 	//So YearCourses[FALL] is the list of FALL course in that year
 	//So YearCourses[SPRING] is the list of SPRING course in that year
@@ -30,7 +31,7 @@ public:
 	list<Course*>* getyearslist();
 	AcademicYear* ImportAcademicYear(ifstream& fin, Rules* R, string* subline, stringstream& s_stream, int j);
 	void saveAcademicYear(int year,ofstream&) const;
-	bool checkYearSemCredits(Rules*) const; //returns true only if each semester in the year is valid in terms of credits
+	vector<OverUnder> checkYearSemCredits(Rules*) const; //returns true only if each semester in the year is valid in terms of credits
 	bool checksemesteroff(Rules*) const;
 
 	Course* searchAcademicYear(Course_Code code) const;
