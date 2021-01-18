@@ -97,7 +97,6 @@ vector<yearSemPair> StudyPlan::CreditsCheck(Rules* R) const //If this vector is 
 	vector<yearSemPair> Allpairs;	//container for all the semesters not satisfying the max/min credits requirements
 								//Those semesters are written as a pair of the year number and semester number
 	yearSemPair* tempPair;
-	int x = 0;
 	for (int i = 0;i < plan.size(); i++)
 	{
 		
@@ -113,7 +112,6 @@ vector<yearSemPair> StudyPlan::CreditsCheck(Rules* R) const //If this vector is 
 				Allpairs.push_back(*tempPair);
 				delete tempPair;
 				tempPair = nullptr;
-				x++;
 			}
 		}
 	}
