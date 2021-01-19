@@ -18,6 +18,8 @@ public:
 
 	//getters
 	GUI* getGUI() const;
+
+	//getters
 	StudyPlan* getStudyPlay() const;
 	Rules* getRules();
 	Rules* getRules2();

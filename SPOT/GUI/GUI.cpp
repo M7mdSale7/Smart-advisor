@@ -64,9 +64,6 @@ void GUI::CreateMenu() const
 	MenuItemImages[ITM_EXIT] = "GUI\\Images\\Menu\\Menu_exitt.jpg";
 
 
-
-	//TODO: Prepare image for each menu item and add it to the list
-
 	//Draw menu items one image at a time
 	for (int i = 0; i<ITM_CNT; i++)
 		pWind->DrawImage(MenuItemImages[i], i*MenuItemWidth, 0, MenuItemWidth, MenuBarHeight);
@@ -285,18 +282,37 @@ void GUI::DrawStudentLevel(const StudyPlan* pSPlan) {
 
 void GUI::printError(string error, bool issue, int &Ylocation)
 {
+	//used to pring errors on screen after checking the study plan
+	//takes the starting Y location of a message by reference and iterates it
+	//so that the next message is under the perceeding one.
 	int XLocation = 910;
 	pWind->SetFont(15, BOLD, BY_NAME, "Gramound");
-	pWind->SetPen(RED, 2);
-	if(!issue) pWind->DrawString(XLocation, Ylocation, "Moderate Issue: " + error);
-	else pWind->DrawString(XLocation, Ylocation, "Critical Issue: " + error);
+	if (!issue)
+	{
+		pWind->SetPen(DARKORANGE, 2);
+		pWind->SetBrush(DARKORANGE);
+		pWind->DrawRectangle(XLocation, Ylocation, XLocation+91, Ylocation+15);
+		pWind->SetPen(WHITE, 2);
+		pWind->DrawString(XLocation, Ylocation, "Moderate Issue: ");
+		pWind->SetPen(BLACK, 2);
+		pWind->DrawString(XLocation + 93, Ylocation, error);
+	}
+	else
+	{
+		pWind->SetPen(RED, 2);
+		pWind->SetBrush(RED);
+		pWind->DrawRectangle(XLocation, Ylocation, XLocation + 77, Ylocation + 15);
+		pWind->SetPen(WHITE, 2);
+		pWind->DrawString(XLocation, Ylocation, "Critical Issue: ");
+		pWind->SetPen(BLACK, 2);
+		pWind->DrawString(XLocation + 80, Ylocation, error);
+	}
 	Ylocation += 20;
 }
 
 void GUI::DrawAcademicYear(const AcademicYear* pY) 
 {
 	//Drawing Big Rectenagle for each Academic Year
-	//int i;
 
 	//string filename = "year" + tostring(i) + ".jpg";
 	graphicsInfo gInfo = pY->getGfxInfo();

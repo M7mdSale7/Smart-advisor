@@ -7,7 +7,7 @@ typedef string Course_Code;
 typedef string Note;
 
 
-struct codeTypePair
+struct codeTypePair //ordered pair of course and its type
 {
 	Course_Code code;
 	string type;
@@ -44,20 +44,20 @@ enum ActionType
 	DEL_CRS,	//Delete a course from study plan
 	EDIT_CRS,   //CHANGE COURSE CODE
 	REORDER_CRS, //REORDER COURSE 
-	Double,
-	IMPORT,
-	SHOW_INFO,
+	Double,		//ask for double concentration or major
+	IMPORT,		//importing a study plan
+	SHOW_INFO,	//displaying course info
 	SAVE,		//Save a study plan to file
 	LOAD,		//Load a study plan from a file
 
 	UNDO,		//Undo the last Action preformed
 	REDO,		//Redo the last Action canceled
-	CALC_GPA,
-	MINOR_DEC,
-	SEARCH,
-	STATUS,
-	ERRORR,
-	SHOW_DPND,
+	CALC_GPA,	//calculate student GPA
+	MINOR_DEC,	//declare a minor
+	SEARCH,		//search for courses by applying filer
+	STATUS,		//display the course status
+	ERRORR,		//get a report of errors
+	SHOW_DPND,  //display courses dependencies
 	EXIT,		//Exit the application
 
 	STATUS_BAR,	//A click on the status bar
@@ -66,7 +66,6 @@ enum ActionType
 
 	CANCEL,		//ESC key is pressed
 
-	//TODO: Add more action types
 
 };
 

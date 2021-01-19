@@ -35,7 +35,6 @@ struct AcademicYearOfferings
 //It needs to be resolved somehow
 struct Rules	//contains all objects for registrations rules
 {
-	//TODO: add more fields if needed
 
 	vector<CourseInfo> CourseCatalog;	//List of ALL courses with full info
 	vector<AcademicYearOfferings> OffringsList;	//all offerings for all acedmic years

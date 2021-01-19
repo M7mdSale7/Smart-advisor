@@ -10,7 +10,7 @@
 
 AcademicYear::AcademicYear()
 {
-	//TODO: make all necessary initializations
+
 }
 
 AcademicYear::~AcademicYear()
@@ -27,8 +27,7 @@ AcademicYear::~AcademicYear()
 //Adds a course to this year in the spesified semester
 bool AcademicYear::AddCourse(Course* pC, SEMESTER sem)
 {
-	//TODO:
-	//This function still needs many checks to be compelete
+
 	YearCourses[sem].push_back(pC);
 	TotalCredits += pC->getCredits();
 	pC->setsemester(sem);

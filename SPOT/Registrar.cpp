@@ -31,12 +31,12 @@ GUI* Registrar::getGUI() const
 	return pGUI;
 }
 
-Rules* Registrar::getRules() const
+Rules* Registrar::getRules()
 {
-	return  &RegRules;
+	return &RegRules;
 }
 
-Rules* Registrar::getRules2() const
+Rules* Registrar::getRules2()
 {
 	return &RegRules2;
 }

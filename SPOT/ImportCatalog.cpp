@@ -59,6 +59,7 @@ void ImportCatalog::readCatalog(vector<CourseInfo>* catalog) {
 
 CourseInfo ImportCatalog::clearCourseInfo(CourseInfo &course)
 {
+	//clears info when called to a course
 	course.Title = "";
 	course.Code = "";
 	course.type = "";

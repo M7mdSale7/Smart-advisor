@@ -20,24 +20,18 @@ class GUI
 		//If you want to change the menu items order, just change the order here
 		ITM_ADD,	//Add a new course
 		ITM_DELETE,     //DELETE A COURSE 
-		ITM_ADD_NOTES,
-		ITM_EDITCOURSECODE,
-		ITM_REORDER,  //REORDER COURSE FROM SEMESTER TO ANOTHER
-		ITM_SAVE_PLAN,
-		ITM_Double,
-		//ITM_LOAD_PLAN,
-							//TODO: Add more items names here
-						//TODO: Add more items names here
-   /* ITM_IMPORT,
-	ITM_INFO,*/
-
-		ITM_IMPORT,
-		ITM_GPA,
-		ITM_MINOR,
-		ITM_SEARCH,
-		ITM_STATUS,
-		ITM_ERROR,
-		ITM_SHOWDPND,
+		ITM_ADD_NOTES,	//add notes to plan
+		ITM_EDITCOURSECODE,	//edit an existing course code
+		ITM_REORDER,	 //REORDER COURSE FROM SEMESTER TO ANOTHER
+		ITM_SAVE_PLAN,	//save current study plan
+		ITM_Double,		//declare double minor/major
+		ITM_IMPORT,		//import study plan
+		ITM_GPA,		//calculate student GPA
+		ITM_MINOR,		//declare a minor
+		ITM_SEARCH,		//search by applying filters
+		ITM_STATUS,		//display course current status
+		ITM_ERROR,		//get report of errors
+		ITM_SHOWDPND,	//show dependencies item
 		ITM_EXIT,		//Exit item
 
 		ITM_CNT			//no. of menu items ==> This should be the last line in this enum

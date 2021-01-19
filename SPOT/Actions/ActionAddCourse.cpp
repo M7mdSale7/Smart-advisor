@@ -50,9 +50,7 @@ bool ActionAddCourse::Execute()
 	Course_Code code = pGUI->GetSrting();
 	transform(code.begin(), code.end(), code.begin(), toupper);
 	Space(code);
-	/*convert(code);*/
 
-	//TODO: add input validation
 	CourseInfo* pCRINF = pReg->CatalogSearch(code, coursefound);
 	if (coursefound == 0)
 	{
@@ -62,7 +60,7 @@ bool ActionAddCourse::Execute()
 
 
 	ActionData actData = pGUI->GetUserAction("Select a year to add coures to.");
-	//TODO: add input validation
+
 
 	int x, y;
 	if (actData.actType == DRAW_AREA)	//user clicked inside drawing area
