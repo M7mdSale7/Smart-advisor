@@ -26,11 +26,12 @@ class AcademicYear:public Drawable
 	
 public:
 	AcademicYear();
-	virtual ~AcademicYear();
+	
+	list<Course*>* getyearslist();
 
 	bool AddCourse(Course*, SEMESTER );
 	bool DeleteCourse(Course*, SEMESTER);
-	list<Course*>* getyearslist();
+	
 	AcademicYear* ImportAcademicYear(ifstream& fin, Registrar* R, string* subline, stringstream& s_stream, int j);
 	void saveAcademicYear(int year,ofstream&) const;
 	vector<OverUnder> checkYearSemCredits(Rules*) const; //returns true only if each semester in the year is valid in terms of credits
@@ -41,5 +42,7 @@ public:
 	int CrOfDoneCourses() const;
 
 	void virtual DrawMe(GUI*) const;
+
+	virtual ~AcademicYear();
 };
 

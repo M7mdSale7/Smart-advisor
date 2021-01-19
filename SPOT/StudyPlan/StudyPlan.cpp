@@ -14,7 +14,6 @@ StudyPlan::StudyPlan()
 //year idetifies year number to add course to 1=first, 2 = 2nd,....
 bool StudyPlan::AddCourse(Course* pC, int year, SEMESTER sem)
 {
-	//TODO: add all requried checks to add the course 
 	pC->setyear(year);
 	plan[year - 1]->AddCourse(pC, sem);
 	TotalCredits += pC->getCredits();
@@ -338,11 +337,6 @@ vector<string> StudyPlan::checkMinor(Rules* R)
 	return VectorOfErrors;
 }
 
-
-//vector<string> StudyPlan::ProgReqCheck(Rules*) const
-//{
-//	
-//}
 
 void StudyPlan::checkPlan(Registrar* R) const
 {

@@ -12,7 +12,7 @@ class Notes : public Drawable
 		Notes(string Note);
 		void setNotes(string Note);
 		string getNotes() const;
-		void DrawMe(GUI*) const;
+		void DrawMe(GUI*) const; //draws note on screen
 		virtual ~Notes();
 };
 
