@@ -151,22 +151,21 @@ bool ActionErrors::Execute()
 			file << "Critical Issue:" <<"Course: " << Errors3.at(i).code << " Type: " << Errors3.at(i).type << " Is not taken , must added" << endl;
 		}
 		file << endl;
-		file << "b-Elective Courses" << endl;
-		file << "b-1- University elective Courses" << endl;
 	
 	}
 	//Elective Courses
 	//a- University
-	file << "b-3-University Elective Courses" << endl;
-	bool isOk = pS->checkUnivElectiveCrd(R);
-	if (isOk)
+	file << "b-Elective Courses" << endl;
+	file << "b-1- University elective Courses" << endl;
+	bool isOk2 = checkM2UnivElecCrd(pReg);
+	if (isOk2)
 		file << "No issues in university elective courses ! You have choosen all !" << endl;
 	else
 		file << "You havn't taken all university Univeristy elective credits yet !" << endl << endl;
 	//b- Major
-	file << "b-3-Major Elective Courses" << endl;
-	bool isOk2 = pS->checkMajorElectiveCrd(R);
-	if (isOk)
+	file << "b-2-Major Elective Courses" << endl;
+	bool isOk3 = checkM2MajElecCrd(pReg);
+	if (isOk3)
 		file << "No issues in Major elective courses ! You have choosen all !" << endl;
 	else
 		file << "You havn't taken all university Major elective credits yet !" << endl;
@@ -189,22 +188,25 @@ bool ActionErrors::Execute()
 			file << "Critical Issue:" << "Course: " << Errors4.at(i).code << " Type: " << Errors4.at(i).type << " Is not taken , must added" << endl;
 		}
 		file << endl;
-		//Elective Courses
-		//a- University
-		bool isOk = pS->checkUnivElectiveCrd(R2);
-		if (isOk)
-			file << "No issues in university elective courses ! You have choosen all !" << endl;
-		else
-			file << "You havn't taken all university Univeristy elective credits yet !" << endl << endl;
-		//b- Major
-		file << "b-2-Major Elective Courses" << endl;
-		bool isOk2 = pS->checkMajorElectiveCrd(R2);
-		if (isOk)
-			file << "No issues in Major elective courses ! You have choosen all !" << endl;
-		else
-			file << "You havn't taken all university Major elective credits yet !" << endl;
-		file << endl;
+
 	}
+	//Elective Courses
+	//a- University
+	file << "b-Elective Courses" << endl;
+	file << "b-1- University elective Courses" << endl;
+	bool isOk = pS->checkUnivElectiveCrd(R2);
+	if (isOk)
+		file << "No issues in university elective courses ! You have choosen all !" << endl;
+	else
+		file << "You havn't taken all university Univeristy elective credits yet !" << endl << endl;
+	//b- Major
+	file << "b-2-Major Elective Courses" << endl;
+	bool isOk4 = pS->checkMajorElectiveCrd(R2);
+	if (isOk4)
+		file << "No issues in Major elective courses ! You have choosen all !" << endl;
+	else
+		file << "You havn't taken all university Major elective credits yet !" << endl;
+	file << endl;
 	file << endl;
 
 	//5- Co and Pre Requisite check (7masa)
