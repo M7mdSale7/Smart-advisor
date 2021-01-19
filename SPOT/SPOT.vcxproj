@@ -135,7 +135,6 @@
     <ClCompile Include="Actions\ActionSavePlan.cpp" />
     <ClCompile Include="Actions\ActionShowCourseInfo.cpp" />
     <ClCompile Include="Actions\exit.cpp" />
-    <ClCompile Include="functions.cpp" />
     <ClCompile Include="Courses\Course.cpp" />
     <ClCompile Include="GUI\CMUgraphicsLib\CMUgraphics.cpp" />
     <ClCompile Include="GUI\CMUgraphicsLib\colors.cpp" />
@@ -203,7 +202,6 @@
     <ClInclude Include="Actions\ActionShowCourseInfo.h" />
     <ClInclude Include="Actions\exit.h" />
     <ClInclude Include="Courses\Course.h" />
-    <ClInclude Include="functions.h" />
     <ClInclude Include="GUI\CMUgraphicsLib\CMUgraphics.h" />
     <ClInclude Include="GUI\CMUgraphicsLib\colors.h" />
     <ClInclude Include="GUI\CMUgraphicsLib\error.h" />
