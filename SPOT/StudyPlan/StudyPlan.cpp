@@ -6,6 +6,7 @@
 
 StudyPlan::StudyPlan()
 {
+	DoubleConcentration = 0;
 }
 
 

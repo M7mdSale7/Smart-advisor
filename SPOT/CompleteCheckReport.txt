@@ -1,45 +1,47 @@
 1-No issues in minor since no minor was maken 
 
 2- Overload or underload petitions: 
-Moderate Issue: In year 2,Semester 1 Number of credits is: 11 And Underload Petition needed
-Moderate Issue: In year 2,Semester 2 Number of credits is: 3 And Underload Petition needed
-Moderate Issue: In year 3,Semester 1 Number of credits is: 8 And Underload Petition needed
-Moderate Issue: In year 3,Semester 2 Number of credits is: 3 And Underload Petition needed
-Moderate Issue: In year 4,Semester 1 Number of credits is: 0 And Underload Petition needed
-Moderate Issue: In year 4,Semester 2 Number of credits is: 2 And Underload Petition needed
-Moderate Issue: In year 5,Semester 1 Number of credits is: 0 And Underload Petition needed
-Moderate Issue: In year 5,Semester 2 Number of credits is: 0 And Underload Petition needed
+Moderate Issue: In year 3,Semester 1 Number of credits is: 20 And Overload Petition needed
+Moderate Issue: In year 3,Semester 2 Number of credits is: 20 And Overload Petition needed
 
 3- Program Requirments issues
 a- Compulsory Courses
-Critical Issue:Course: SCH 260 Type: Univ Compulsory Is not taken , must added
-Critical Issue:Course: SCH 261 Type: Univ Compulsory Is not taken , must added
-Critical Issue:Course: SCH 264 Type: Univ Compulsory Is not taken , must added
-Critical Issue:Course: NANENG 581 Type: Major Compulsory Is not taken , must added
-Critical Issue:Course: NANENG 582 Type: Major Compulsory Is not taken , must added
-Critical Issue:Course: NANENG 583 Type: Major Compulsory Is not taken , must added
-Critical Issue:Course: NANENG 584 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: BIOL 102 Type: Track Compulsory Is not taken , must added
+Critical Issue:Course: BIOL 112 Type: Track Compulsory Is not taken , must added
+Critical Issue:Course: BMS 399 Type: Track Compulsory Is not taken , must added
+Critical Issue:Course: CHEM 102 Type: Track Compulsory Is not taken , must added
+Critical Issue:Course: CHEM 112 Type: Track Compulsory Is not taken , must added
+Critical Issue:Course: MATH 101 Type: Track Compulsory Is not taken , must added
+Critical Issue:Course: BMS 201 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: BMS 202 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: BMS 203 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: BMS 204 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: BMS 211 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: BMS 212 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: BMS 213 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: BMS 214 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: BMS 303 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: BMS 304 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: BMS 404 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: BMS CHEM 201 Type: Major Compulsory Is not taken , must added
+Critical Issue:Course: CHEM 211 Type: Major Compulsory Is not taken , must added
 
 b-Elective Courses
 b-1- University elective Courses
 No issues in university elective courses ! You have choosen all !
+
 b-2-Major Elective Courses
 No issues in Major elective courses ! You have choosen all !
 
-4-No Double Majot to check for
-
-b-Elective Courses
-b-1- University elective Courses
-No issues in university elective courses ! You have choosen all !
-b-2-Major Elective Courses
-No issues in Major elective courses ! You have choosen all !
-
+4-No Double Major to check for
 
 5- Co requisite and Pre requisite check
 
 a- Prerequisite
 Criticial Issue: Course: MATH 102,Prerequites are: MATH 101.
 Criticial Issue: Course: PHYS 102,Prerequites are: MATH 101.
+Criticial Issue: Course: BMS 320,Prerequites are: BIOL 102.
+Criticial Issue: Course: BMS 322,Prerequites are: BIOL 102.
 
 b- Corequisite
 No Issues Found in Corequisite!
@@ -47,20 +49,36 @@ No Issues Found in Corequisite!
 6- Concentration Check (Compulsory and Elective)
 
 a- Concentration Compulsory
-Criticial Issue: Course: NANENG 513,Concentration Compulsory Course NANENG 513 Not Taken.
-Criticial Issue: Course: NANENG 515,Concentration Compulsory Course NANENG 515 Not Taken.
+Criticial Issue: Course: BMS 205,Concentration Compulsory Course BMS 205 Not Taken.
+Criticial Issue: Course: BMS 215,Concentration Compulsory Course BMS 215 Not Taken.
+Criticial Issue: Course: BMS 301,Concentration Compulsory Course BMS 301 Not Taken.
+Criticial Issue: Course: BMS 311,Concentration Compulsory Course BMS 311 Not Taken.
+Criticial Issue: Course: BMS 324,Concentration Compulsory Course BMS 324 Not Taken.
+Criticial Issue: Course: BMS 340,Concentration Compulsory Course BMS 340 Not Taken.
+Criticial Issue: Course: BMS 401,Concentration Compulsory Course BMS 401 Not Taken.
+Criticial Issue: Course: BMS 402,Concentration Compulsory Course BMS 402 Not Taken.
+Criticial Issue: Course: CHEM 202,Concentration Compulsory Course CHEM 202 Not Taken.
+Criticial Issue: Course: CHEM 211,Concentration Compulsory Course CHEM 211 Not Taken.
 
 b- Concentration Elective
-No Issues found in Elevtive Courses
+You have taken only 6 Credits Which is less than minimum requirments for the concentration elective
 
 
-7- Concentration Check (Compulsory and Elective)
+7- Concentration Check (For Double Concentration)
 
-a- Concentration Compulsory
-Criticial Issue: Course: NANENG 501,Concentration Compulsory Course NANENG 501 Not Taken.
-Criticial Issue: Course: NANENG 522,Concentration Compulsory Course NANENG 522 Not Taken.
+a- Concentration Compulsory (For Double Concentration)
+Criticial Issue: Course: BMS 321,Concentration Compulsory Course BMS 321 Not Taken.
+Criticial Issue: Course: BMS 331,Concentration Compulsory Course BMS 331 Not Taken.
+Criticial Issue: Course: BMS 401,Concentration Compulsory Course BMS 401 Not Taken.
+Criticial Issue: Course: BMS 402,Concentration Compulsory Course BMS 402 Not Taken.
+Criticial Issue: Course: BMS 422,Concentration Compulsory Course BMS 422 Not Taken.
+Criticial Issue: Course: BMS 426,Concentration Compulsory Course BMS 426 Not Taken.
+Criticial Issue: Course: BMS 473,Concentration Compulsory Course BMS 473 Not Taken.
+Criticial Issue: Course: BMS 474,Concentration Compulsory Course BMS 474 Not Taken.
+Criticial Issue: Course: CHEM 202,Concentration Compulsory Course CHEM 202 Not Taken.
+Criticial Issue: Course: CHEM 212,Concentration Compulsory Course CHEM 212 Not Taken.
 
-b- Concentration Elective
+b- Concentration Elective (For Double Concentration) (Compulsory and Elective)
 No Issues found in Elevtive Courses
 
 8- Course Offersings Check
@@ -78,55 +96,52 @@ Course ENGR 102 Is registered in a non offering time
 Course ENGR 221 Is registered in a non offering time
 Course PHYS 102 Is registered in a non offering time
 Course PHYS 112 Is registered in a non offering time
-Course CHEM 102 Is registered in a non offering time
-Course CHEM 112 Is registered in a non offering time
-Course ENGR 219 Is registered in a non offering time
+Course CIE 239 Is registered in a non offering time
+Course ENGR 210 Is registered in a non offering time
 Course MATH 201 Is registered in a non offering time
-Course MATSCI 201 Is registered in a non offering time
-Course NANENG 204 Is registered in a non offering time
+Course PEU 228 Is registered in a non offering time
 Course PHYS 201 Is registered in a non offering time
 Course PHYS 211 Is registered in a non offering time
-Course ENGR 218 Is registered in a non offering time
+Course CIE 205 Is registered in a non offering time
+Course CIE 206 Is registered in a non offering time
+Course CIE 212 Is registered in a non offering time
+Course CIE 227 Is registered in a non offering time
 Course MATH 202 Is registered in a non offering time
-Course MATH 203 Is registered in a non offering time
-Course MATSCI 255 Is registered in a non offering time
-Course NANENG 203 Is registered in a non offering time
-Course PHYS 202 Is registered in a non offering time
-Course PHYS 212 Is registered in a non offering time
-Course SCH XXX Is registered in a non offering time
+Course SCH 260 Is registered in a non offering time
+Course CIE 328 Is registered in a non offering time
+Course CIE 301 Is registered in a non offering time
+Course CIE 302 Is registered in a non offering time
+Course CIE 327 Is registered in a non offering time
 Course MATH 302 Is registered in a non offering time
-Course MATH 306 Is registered in a non offering time
-Course NANENG 305 Is registered in a non offering time
-Course NANENG 322 Is registered in a non offering time
-Course NANENG 331 Is registered in a non offering time
-Course SCH 263 Is registered in a non offering time
-Course MATH 301 Is registered in a non offering time
-Course NANENG 301 Is registered in a non offering time
-Course NANENG 307 Is registered in a non offering time
-Course NANENG 308 Is registered in a non offering time
-Course NANENG 312 Is registered in a non offering time
-Course NANENG 335 Is registered in a non offering time
-Course SCH XXX Is registered in a non offering time
-Course NANENG 401 Is registered in a non offering time
-Course NANENG 402 Is registered in a non offering time
-Course NANENG 421 Is registered in a non offering time
-Course NANENG 424 Is registered in a non offering time
-Course NANENG 433 Is registered in a non offering time
-Course SCH XXX Is registered in a non offering time
-Course NANENG 410 Is registered in a non offering time
-Course NANENG 422 Is registered in a non offering time
-Course NANENG 430 Is registered in a non offering time
-Course NANENG 461 Is registered in a non offering time
+Course SCH 261 Is registered in a non offering time
+Course BMS 320 Is registered in a non offering time
+Course CIE 318 Is registered in a non offering time
+Course CIE 320 Is registered in a non offering time
+Course CIE 337 Is registered in a non offering time
+Course CIE 338 Is registered in a non offering time
+Course MATH 308 Is registered in a non offering time
 Course SCH 262 Is registered in a non offering time
+Course BMS 322 Is registered in a non offering time
+Course CIE 439 Is registered in a non offering time
+Course CIE 417 Is registered in a non offering time
+Course CIE 425 Is registered in a non offering time
+Course CIE 437 Is registered in a non offering time
+Course CIE 442 Is registered in a non offering time
+Course SCH 263 Is registered in a non offering time
+Course CIE XXX Is registered in a non offering time
+Course CIE XXX Is registered in a non offering time
+Course CIE 405 Is registered in a non offering time
+Course CIE 447 Is registered in a non offering time
+Course CIE 408 Is registered in a non offering time
 Course ENGR 444 Is registered in a non offering time
-Course NANENG 512 Is registered in a non offering time
-Course NANENG 520 Is registered in a non offering time
-Course NANENG XXX Is registered in a non offering time
-Course NANENG XXX Is registered in a non offering time
-Course NANENG 598 Is registered in a non offering time
+Course CIE XXX Is registered in a non offering time
+Course CIE XXX Is registered in a non offering time
+Course CIE XXX Is registered in a non offering time
+Course CIE 598 Is registered in a non offering time
+Course SCH 264 Is registered in a non offering time
 Course SCH XXX Is registered in a non offering time
-Course NANENG XXX Is registered in a non offering time
-Course NANENG XXX Is registered in a non offering time
-Course NANENG 599 Is registered in a non offering time
+Course CIE XXX Is registered in a non offering time
+Course CIE XXX Is registered in a non offering time
+Course CIE 599 Is registered in a non offering time
 Course SCH XXX Is registered in a non offering time
 Course SCH XXX Is registered in a non offering time

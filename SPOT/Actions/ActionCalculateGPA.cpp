@@ -29,6 +29,13 @@ bool ActionCalculateGPA::Execute()
 				pGUI->PrintMsg("Enter Grade for the course " + itr->getCode() +" (A - A- - B+ - ...)");
 				string Grade = pGUI->GetSrting();
 				itr->setGrade(Grade);
+				while(itr->getGrad() == "NA")
+				{ 
+					pGUI->PrintMsg("Enter valid grade for the course " + itr->getCode());
+					string Grade = pGUI->GetSrting();
+					itr->setGrade(Grade);
+				}
+
 			}
 			Total += itr->getQpoints(); //sum of total Qp
 			TotalC += itr->getCredits(); //sum of total Cr

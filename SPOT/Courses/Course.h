@@ -48,7 +48,7 @@ public:
 	vector<Course_Code> getCoReq() const;
 	void FillData(Rules* R, int index); //fills the data of coReq, preReq, and type
 	void DrawMe(GUI*) const;
-	void setGrade(string Grade);
+	bool setGrade(string);
 	string getGrade();
 	double getQpoints();
 	void setStatus(string status);

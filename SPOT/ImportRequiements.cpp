@@ -33,7 +33,7 @@ void ImportRequiements::ImportReqs(ifstream& fin, GUI *pGUI, string Major, Rules
 			flag = false;
 		}
 		else if (Major == "BMS") {
-			infile.open("MajorsData.txt");
+			infile.open("majors requirements/BMS-Requirements.txt");
 			fin.open("BMS.txt");
 			flag = false;
 		}
