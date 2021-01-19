@@ -11,6 +11,7 @@
 using namespace std;
 
 int ActionMinorDec::Num = 0;
+int ActionMinorDec::Num1 = 0;
 //Minor Type
 string MinorType;
 vector<Course_Code> Minor;
@@ -27,7 +28,7 @@ bool ActionMinorDec::Execute()
 		pGUI->PrintMsg("Enter Your Minor Name (CIE or SPC ... )"); //Program of minor
 		MinorType = pGUI->GetSrting();
 	}
-	//Getting Elective courses to check and compulsory courses to fill
+	//Getting Requirment courses to check and compulsory courses to fill
 	StudyPlan* pS = pReg->getStudyPlay();
 	Rules* R = pReg->getRules();
 	vector<Course_Code>* MinorComp = &R->MinorCompulsory; //Getting the list of minor compulsory
@@ -42,7 +43,6 @@ bool ActionMinorDec::Execute()
 		ActionAddCourse(pReg).Space(code); //Make sure there is a space between letters and numbers
 
 		//Check if the course is in The current Study Plan
-		StudyPlan* pS = pReg->getStudyPlay();
 		vector<AcademicYear*>* Plan = pS->getSPvector(); //The whole study plan
 
 		bool flag = false; //Checking Flag for if the course is in the current study plan
@@ -62,6 +62,7 @@ bool ActionMinorDec::Execute()
 					if (Crs == code)
 					{
 						flag = true;
+						Num1++; //1 course can double count in both minor and major so we are using static variable
 						break;
 					}
 				}
@@ -76,6 +77,7 @@ bool ActionMinorDec::Execute()
 			{
 				flag4 = false;
 				break;
+				//Elective courses do not double count
 			}
 		}
 
@@ -109,43 +111,12 @@ bool ActionMinorDec::Execute()
 			}
 		}
 
-		if (flag2 && !flag && flag3 && flag4) //if there is no issue with adding the course
+		if (flag2 && (!flag||Num1==1) && flag3 && flag4) //if there is no issue with adding the course
 		{
 			R->MinorCompulsory.push_back(code); //Adding the course to the minor comp list in rules
-			pGUI->PrintMsg("Course Added To Minor , Press any key to continue");
-			pGUI->GetSrting(); //waiting for the user to press enter
+			pGUI->GetUserAction("Course Added To Minor , Press any key to continue");
 			Minor.push_back(code); //adding the course in the vector of minor , we need it to reach 5 to return the function
 			Num++; //increment the static variable num that the user can see how many courses he has added
-
-			//Drawing the course and adding it to the study plan of the user
-			string title;
-			int Cr = 0;
-			for (int k = 0; k < Info->size(); k++) { //finding course code
-				if (Info->at(k).Code == code) {
-					title = Info->at(k).Title;
-					Cr = Info->at(k).Credits;
-					break;
-				}
-			}
-			//pGUI->PrintMsg("Enter the year you want to add the course " + code + " in");
-			//string year = pGUI->GetSrting();
-			//int yearInt = stoi(year);
-			//pGUI->PrintMsg("Enter the semester you want to add the course " + code + " in");
-			//string semester = pGUI->GetSrting();
-			//SEMESTER s;
-			//if (semester == "Fall")
-			//{
-			//	s = (SEMESTER)0;
-			//}
-			//else if (semester == "Spring")
-			//{
-			//	s = (SEMESTER)1;
-			//}
-			//else
-			//	s = (SEMESTER)2;
-			//Course* C = new Course(code, title, Cr);
-			//C->setType("Minor");
-			//pS->AddCourse(C, yearInt, s);
 		}
 
 		//Error Cases Display
@@ -189,6 +160,7 @@ bool ActionMinorDec::Execute()
 
 	//Once the user enters the 5 courses , he has to add them in the study plan
 	//and choose the semester and the year for each course
+	//if he hadn't do so, issues will be formed at the complete check report
 
 		
 

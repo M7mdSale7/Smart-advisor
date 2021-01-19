@@ -124,9 +124,9 @@ bool ActionErrors::Execute()
 	//2- Overload or underload
 	file << "2- Overload or underload petitions: " << endl;
 	vector<yearSemPair> Errors2 = pS->CreditsCheck(R); //Making check for the credits of each semester of the current study plan
-	if (Errors2.size() == 0)
+	if (Errors2.size() == 0) //No Errors
 	{
-		file << "No any overload of underload petitions needed" << endl;
+		file << "No any overload of underload petitions needed" << endl; 
 	}
 	else 
 	{
@@ -188,26 +188,27 @@ bool ActionErrors::Execute()
 			file << "Critical Issue:" << "Course: " << Errors4.at(i).code << " Type: " << Errors4.at(i).type << " Is not taken , must added" << endl;
 		}
 		file << endl;
-		//Elective Courses
-		//a- University
-		file << "b-Elective Courses" << endl;
-		file << "b-1- University elective Courses" << endl;
-		bool isOk = pS->checkUnivElectiveCrd(R2);
-		if (isOk)
-			file << "No issues in university elective courses ! You have choosen all !" << endl;
-		else
-			file << "You havn't taken all university Univeristy elective credits yet !" << endl << endl;
-		//b- Major
-		file << "b-2-Major Elective Courses" << endl;
-		bool isOk4 = pS->checkMajorElectiveCrd(R2);
-		if (isOk4)
-			file << "No issues in Major elective courses ! You have choosen all !" << endl;
-		else
-			file << "You havn't taken all university Major elective credits yet !" << endl;
-		file << endl;
-		file << endl;
-
+		
 	}
+	//Elective Courses
+		//a- University
+	file << "b-Elective Courses" << endl;
+	file << "b-1- University elective Courses" << endl;
+	bool isOk = checkM2UnivElecCrd(pReg);
+	if (isOk)
+		file << "No issues in university elective courses ! You have choosen all !" << endl;
+	else
+		file << "You havn't taken all university Univeristy elective credits yet !" << endl << endl;
+	//b- Major
+	file << "b-2-Major Elective Courses" << endl;
+	bool isOk4 = checkM2MajElecCrd(pReg);
+	if (isOk4)
+		file << "No issues in Major elective courses ! You have choosen all !" << endl;
+	else
+		file << "You havn't taken all university Major elective credits yet !" << endl;
+	file << endl;
+	file << endl;
+
 	
 	//5- Co and Pre Requisite check (7masa)
 	file << "5- Co requisite and Pre requisite check" << endl << endl;

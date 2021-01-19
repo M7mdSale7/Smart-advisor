@@ -148,7 +148,7 @@ void Course::DrawMe(GUI* pG) const
 
 bool Course::setGrade(string Gradee)
 {
-	if (Gradee == "A" || Gradee == "A-" || Gradee == "B+" || Gradee == "B" || Gradee == "B-" || Gradee == "C+" || Gradee == "C" || Grade == "C-" || Grade == "F")
+	if (Gradee == "A" || Gradee == "A-" || Gradee == "B+" || Gradee == "B" || Gradee == "B-" || Gradee == "C+" || Gradee == "C" || Gradee == "C-" || Gradee == "F")
 	{
 		this->Grade = Gradee;
 		return true;
