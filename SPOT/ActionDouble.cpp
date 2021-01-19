@@ -31,11 +31,18 @@ bool ActionDouble::Execute()
 	}
 	if (choose == "CONCENTRATION")
 	{
+		StudyPlan* pS = pReg->getStudyPlay();
+		int conNo1 = pS->getConcentration();
+		if (conNo1 == 0)
+		{
+			pGUI->GetUserAction("This major has no concentrations to make a double!");
+			return false;
+		}
+
 		pGUI->PrintMsg("Please enter the concentration no.");
 		string con = pGUI->GetSrting();
 		int conNo = stoi(con);
-		StudyPlan* pS = pReg->getStudyPlay();
-		int conNo1 = pS->getConcentration();
+		
 		if (conNo == conNo1)
 		{
 			pGUI->GetUserAction("Error! you have taken this concentration already in your main choice");

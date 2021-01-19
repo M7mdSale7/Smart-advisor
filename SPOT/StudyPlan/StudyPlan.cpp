@@ -3,9 +3,11 @@
 #include "../GUI/GUI.h"
 #include "../Registrar.h"
 
+
 StudyPlan::StudyPlan()
 {
 }
+
 
 //adds a course to the study plan in certain year, semester
 //year idetifies year number to add course to 1=first, 2 = 2nd,....
@@ -555,5 +557,5 @@ int StudyPlan::getConcentration2() const
 
 void StudyPlan::setConcentration2(int DoubleConcentration)
 {
-	this->concentration = DoubleConcentration;
+	this->DoubleConcentration = DoubleConcentration;
 }

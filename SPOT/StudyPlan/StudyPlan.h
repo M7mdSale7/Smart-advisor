@@ -14,8 +14,8 @@ class StudyPlan:public Drawable
 		TotalTrackCredits=0, TotalConcentrationCredits=0,
 		TotalMinorCredits=0;
 
-	int concentration;
-	int DoubleConcentration;
+	int concentration=0;
+	int DoubleConcentration=0;
 	vector<AcademicYear*> plan;	//plan is a list of academic years
 	string PlanNotes; 
 	vector<Notes*> PlanNotees;
