@@ -43,7 +43,6 @@ bool ActionShowDependencies::Execute()
 							pGUI->Drawpre((*i), pC1);
 						}
 					}
-					int cox, coy;
 					for (int k = 0; k < pco.size(); k++)
 					{
 						Course* pC2 = pS->searchStudyPlan(pco[k]);
@@ -86,7 +85,6 @@ bool ActionShowDependencies::Execute()
 						pGUI->Drawpre(pC, pC1);
 					}
 				}
-				int cox, coy;
 				for (int i = 0; i < pco.size(); i++)
 				{
 					Course* pC2 = pS->searchStudyPlan(pco[i]);
