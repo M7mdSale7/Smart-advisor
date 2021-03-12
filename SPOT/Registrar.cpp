@@ -145,7 +145,6 @@ void Registrar::Initialization() {
 	ImportOffering().ImportOfferingFile(&RegRules.OffringsList);
 	pGUI->PrintMsg("Enter your Major: (CIE or SPC or NANENG or ENV or REE) Without .txt ");
 	string Major = pGUI->GetSrting();
-	string line;
 	bool flag = true;
 	ifstream infile;
 	ifstream fin;

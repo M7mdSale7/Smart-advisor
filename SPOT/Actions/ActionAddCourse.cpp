@@ -9,13 +9,6 @@ ActionAddCourse::ActionAddCourse(Registrar* p):Action(p)
 {
 }
 
-//void ActionAddCourse::convert(string& s)
-//{
-//	for (int i = 0; i < s.length(); i++)
-//	{
-//		s[i] = toupper(s[i]);
-//	}
-//}
 void ActionAddCourse::Space(Course_Code& code)
 {
 	if (!(code.find(" ") != string::npos)) {

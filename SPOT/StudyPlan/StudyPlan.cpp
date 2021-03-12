@@ -554,6 +554,11 @@ int StudyPlan::getConcentration2() const
 	return DoubleConcentration;
 }
 
+string StudyPlan::getMajor() const
+{
+	return major;
+}
+
 void StudyPlan::setConcentration2(int DoubleConcentration)
 {
 	this->DoubleConcentration = DoubleConcentration;
