@@ -79,6 +79,7 @@ public:
 	//input functions
 	ActionData GUI::GetUserAction(string msg = "") const;
 	string GetSrting() const;
+	window* getPwind();
 
 
 	

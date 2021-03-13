@@ -124,18 +124,23 @@ string GUI::GetSrting() const
 
 }
 
+window* GUI::getPwind()
+{
+	return pWind;
+}
+
 
 //////////////////////////////////////////////////////////////////////////
 void GUI::UpdateInterface() const
 {
 	
-	pWind->SetBuffering(true);
+	/*pWind->SetBuffering(true);*/
 	//Redraw everything
 	CreateMenu(); 
 	ClearStatusBar();
 	ClearDrawingArea();
-	pWind->UpdateBuffer();
-	pWind->SetBuffering(false);
+	//pWind->UpdateBuffer();
+	//pWind->SetBuffering(false);
 
 }
 

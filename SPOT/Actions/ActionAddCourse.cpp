@@ -129,7 +129,6 @@ bool ActionAddCourse::Execute()
 			}
 			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(520 + 35) && y>(520)) 
 			{
-				pC->setType("Minor");
 				pC->setyear(1);
 				pC->setsemester(SUMMER);
 				pS->AddCourse(pC, 1, SUMMER);
