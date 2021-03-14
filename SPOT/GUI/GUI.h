@@ -31,14 +31,19 @@ class GUI
    /* ITM_IMPORT,
 	ITM_INFO,*/
 
-		ITM_IMPORT,
-		ITM_GPA,
-		ITM_MINOR,
-		ITM_SEARCH,
-		ITM_STATUS,
-		ITM_ERROR,
-		ITM_SHOWDPND,
-		ITM_CHANGE_PLAN,
+		ITM_CHANGE_PLAN,//change plan from the application
+		ITM_ADD_NOTES,	//add notes to plan
+		ITM_EDITCOURSECODE,	//edit an existing course code
+		ITM_REORDER,	 //REORDER COURSE FROM SEMESTER TO ANOTHER
+		ITM_SAVE_PLAN,	//save current study plan
+		ITM_Double,		//declare double minor/major
+		ITM_IMPORT,		//import study plan
+		ITM_GPA,		//calculate student GPA
+		ITM_MINOR,		//declare a minor
+		ITM_SEARCH,		//search by applying filters
+		ITM_STATUS,		//display course current status
+		ITM_ERROR,		//get report of errors
+		ITM_SHOWDPND,	//show dependencies item
 		ITM_EXIT,		//Exit item
 
 		ITM_CNT			//no. of menu items ==> This should be the last line in this enum
@@ -86,6 +91,7 @@ public:
 	//input functions
 	ActionData GUI::GetUserAction(string msg = "") const;
 	string GetSrting() const;
+	window* getPwind();
 
 
 	

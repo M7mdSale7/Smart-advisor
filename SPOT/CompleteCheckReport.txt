@@ -1,9 +1,16 @@
 1-No issues in minor since no minor was maken 
 
 2- Overload or underload petitions: 
-Moderate Issue: In year 2,Semester 1 Number of credits is: 21 And Overload Petition needed
+Moderate Issue: In year 1,Semester 2 Number of credits is: 19 And Overload Petition needed
 
-3-a Compulsory requirments are fullfilled !
+3- Program Requirments issues
+a- Compulsory Courses
+Critical Issue:Course: ENG 152 Type: Univ Compulsory Is not taken , must added
+Critical Issue:Course: CSCI 101 Type: Track Compulsory Is not taken , must added
+Critical Issue:Course: ENGR 102 Type: Track Compulsory Is not taken , must added
+Critical Issue:Course: ENGR 221 Type: Track Compulsory Is not taken , must added
+Critical Issue:Course: PHYS 102 Type: Track Compulsory Is not taken , must added
+Critical Issue:Course: PHYS 111 Type: Track Compulsory Is not taken , must added
 
 b-Elective Courses
 b-1- University elective Courses
@@ -14,13 +21,29 @@ No issues in Major elective courses ! You have choosen all !
 
 4-No Double Major to check for
 
+b-Elective Courses
+b-1- University elective Courses
+No issues in university elective courses ! You have choosen all !
+b-2-Major Elective Courses
+No issues in Major elective courses ! You have choosen all !
+
+
 5- Co requisite and Pre requisite check
 
 a- Prerequisite
-No Issues Found in Prerequisite !
+Criticial Issue: Course: MATH 102,Prerequites are: MATH 101.
+Criticial Issue: Course: CIE 202,Prerequites are: CSCI 101.
+Criticial Issue: Course: MATH 302,Prerequites are: MATH 202.
+Criticial Issue: Course: MATH 308,Prerequites are: CSCI 101.
+Criticial Issue: Course: CIE 202,Prerequites are: CSCI 101.
+Criticial Issue: Course: CIE 202,Prerequites are: CSCI 101.
+Criticial Issue: Course: ENGR 210,Prerequites are: PHYS 102.
+Criticial Issue: Course: PHYS 201,Prerequites are: PHYS 102.
+Criticial Issue: Course: CIE 202,Prerequites are: CSCI 101.
 
 b- Corequisite
-Criticial Issue:  Course: PHYS 102,Corequisites are: PHYS 112.
+Criticial Issue:  Course: PHYS 101,Corequisites are: PHYS 111.
+Criticial Issue:  Course: PHYS 112,Corequisites are: PHYS 102.
 
 6- Concentration Check (Compulsory and Elective)
 
@@ -36,65 +59,15 @@ No Issues found in Elevtive Courses
 No Double concentration was made to check for it
 
 8- Course Offersings Check
-Course BIOL 101 Is registered in a non offering time
-Course BIOL 111 Is registered in a non offering time
-Course CHEM 101 Is registered in a non offering time
-Course CHEM 111 Is registered in a non offering time
-Course ENG 151 Is registered in a non offering time
-Course PHYS 101 Is registered in a non offering time
-Course PHYS 111 Is registered in a non offering time
-Course CSCI 101 Is registered in a non offering time
-Course ENG 152 Is registered in a non offering time
-Course ENGR 102 Is registered in a non offering time
-Course ENGR 221 Is registered in a non offering time
-Course PHYS 102 Is registered in a non offering time
-Course PHYS 112 Is registered in a non offering time
-Course PHYS 112 Is registered in a non offering time
-Course CIE 239 Is registered in a non offering time
-Course ENGR 210 Is registered in a non offering time
-Course MATH 201 Is registered in a non offering time
-Course PEU 228 Is registered in a non offering time
-Course PHYS 201 Is registered in a non offering time
-Course PHYS 211 Is registered in a non offering time
-Course PHYS 102 Is registered in a non offering time
-Course CIE 205 Is registered in a non offering time
-Course CIE 206 Is registered in a non offering time
-Course CIE 212 Is registered in a non offering time
-Course CIE 227 Is registered in a non offering time
-Course MATH 202 Is registered in a non offering time
-Course SCH 260 Is registered in a non offering time
-Course CIE 328 Is registered in a non offering time
-Course CIE 301 Is registered in a non offering time
-Course CIE 302 Is registered in a non offering time
-Course CIE 327 Is registered in a non offering time
+Course CIE 202 Is registered in a non offering time
 Course MATH 302 Is registered in a non offering time
+Course MATH 101 Is registered in a non offering time
+Course CIE 202 Is registered in a non offering time
 Course SCH 261 Is registered in a non offering time
-Course CIE 318 Is registered in a non offering time
-Course CIE 320 Is registered in a non offering time
-Course CIE 337 Is registered in a non offering time
-Course CIE 338 Is registered in a non offering time
-Course MATH 308 Is registered in a non offering time
 Course SCH 262 Is registered in a non offering time
 Course CIE 439 Is registered in a non offering time
-Course CIE 417 Is registered in a non offering time
-Course CIE 425 Is registered in a non offering time
-Course CIE 437 Is registered in a non offering time
-Course CIE 442 Is registered in a non offering time
 Course SCH 263 Is registered in a non offering time
-Course CIE XXX Is registered in a non offering time
-Course CIE XXX Is registered in a non offering time
-Course CIE 405 Is registered in a non offering time
-Course CIE 447 Is registered in a non offering time
 Course CIE 408 Is registered in a non offering time
-Course ENGR 444 Is registered in a non offering time
-Course CIE XXX Is registered in a non offering time
-Course CIE XXX Is registered in a non offering time
-Course CIE XXX Is registered in a non offering time
-Course CIE 598 Is registered in a non offering time
-Course SCH 264 Is registered in a non offering time
+Course CIE 202 Is registered in a non offering time
 Course SCH XXX Is registered in a non offering time
-Course CIE XXX Is registered in a non offering time
-Course CIE XXX Is registered in a non offering time
-Course CIE 599 Is registered in a non offering time
-Course SCH XXX Is registered in a non offering time
-Course SCH XXX Is registered in a non offering time
+Course MATH 101 Is registered in a non offering time

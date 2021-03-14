@@ -111,7 +111,7 @@ void Course::FillData(Rules* R, int index)
 }
 
 
-string Course::getPreq()
+string Course::getPreq() const
 {
 	string pre;
 	for (auto &itr : PreReq)
@@ -122,7 +122,7 @@ string Course::getPreq()
 	return pre;
 }
 
-string Course::getCoreq()
+string Course::getCoreq() const
 {
 	string co;
 	for (auto &itr : CoReq)
@@ -148,7 +148,7 @@ void Course::DrawMe(GUI* pG) const
 
 bool Course::setGrade(string Gradee)
 {
-	if (Gradee == "A" || Gradee == "A-" || Gradee == "B+" || Gradee == "B" || Gradee == "B-" || Gradee == "C+" || Gradee == "C" || Grade == "C-" || Grade == "F")
+	if (Gradee == "A" || Gradee == "A-" || Gradee == "B+" || Gradee == "B" || Gradee == "B-" || Gradee == "C+" || Gradee == "C" || Gradee == "C-" || Gradee == "F")
 	{
 		this->Grade = Gradee;
 		return true;
@@ -159,7 +159,7 @@ bool Course::setGrade(string Gradee)
 	}
 }
 
-string Course::getGrade()
+string Course::getGrade() const
 {
 	return Grade;
 }
@@ -206,7 +206,7 @@ string Course::getGrad() const
 	return this->Grade;
 }
 
-string Course::getType()
+string Course::getType() const
 {
 	return type;
 }

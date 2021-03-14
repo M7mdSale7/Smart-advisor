@@ -31,37 +31,53 @@ public:
 	Course(Course_Code r_code, string r_title, int c_crd, vector<Course_Code> r_CoReq, vector<Course_Code> r_PreReq);
 	Course(Course_Code r_code,string r_title, int crd);
 
+	//getters
 	string getTitle() const;
 	string getCode() const;
 	int getCredits() const;
 	int getyear() const;
+	string gettype() const;
+	SEMESTER getsemester() const;
+	string getGrade() const;
+	string getGrad() const;
+	bool getFilter() const;
+	string getType() const;
+	bool getPreStatus() const;
+	bool getCoStatus() const;
+	Course* getptr();
+	string getPreq() const;
+	string getCoreq() const;
+	string getStatus() const;
+	vector<Course_Code> getCoReq() const;
+	vector<Course_Code> getPreReq() const;
+
+	//setters
+	void setFiler(bool filter);
+	void setType(string type);
 	void setyear(int y);
 	void setsemester(SEMESTER s);
 	void settype(string newtype);
-	string gettype() const;
-	SEMESTER getsemester() const;
-	void saveCourse(ofstream& ) const;
-	Course* getptr();
-	string getPreq();
-	string getCoreq();
-	vector<Course_Code> getPreReq() const;
-	vector<Course_Code> getCoReq() const;
-	void FillData(Rules* R, int index); //fills the data of coReq, preReq, and type
-	void DrawMe(GUI*) const;
 	bool setGrade(string);
-	string getGrade();
-	double getQpoints();
 	void setStatus(string status);
-	string getStatus() const;
-	void setDone(bool descision);
-	bool getFilter() const;
-	void setFiler(bool filter);
-	void setType(string type);
-	string getGrad() const;
-	string getType();
 	void setPreStatus(bool pre);
 	void setCoStatus(bool Co);
-	bool getPreStatus() const;
-	bool getCoStatus() const;
+
+
+
+
+
+
+	void saveCourse(ofstream& ) const; //saves the course into a file
+	double getQpoints(); //gets points corresponding to the grade
+
+	void FillData(Rules* R, int index); //fills the data of coReq, preReq, and type
+	void DrawMe(GUI*) const; //draws the course
+
+
+
+	void setDone(bool descision); //sets the course as done
+
+
+
 	virtual ~Course();
 };

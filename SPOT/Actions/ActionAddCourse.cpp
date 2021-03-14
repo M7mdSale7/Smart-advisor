@@ -9,13 +9,6 @@ ActionAddCourse::ActionAddCourse(Registrar* p):Action(p)
 {
 }
 
-//void ActionAddCourse::convert(string& s)
-//{
-//	for (int i = 0; i < s.length(); i++)
-//	{
-//		s[i] = toupper(s[i]);
-//	}
-//}
 void ActionAddCourse::Space(Course_Code& code)
 {
 	if (!(code.find(" ") != string::npos)) {
@@ -50,9 +43,7 @@ bool ActionAddCourse::Execute()
 	Course_Code code = pGUI->GetSrting();
 	transform(code.begin(), code.end(), code.begin(), toupper);
 	Space(code);
-	/*convert(code);*/
 
-	//TODO: add input validation
 	CourseInfo* pCRINF = pReg->CatalogSearch(code, coursefound);
 	if (coursefound == 0)
 	{
@@ -62,7 +53,7 @@ bool ActionAddCourse::Execute()
 
 
 	ActionData actData = pGUI->GetUserAction("Select a year to add coures to.");
-	//TODO: add input validation
+
 
 	int x, y;
 	if (actData.actType == DRAW_AREA)	//user clicked inside drawing area
@@ -138,7 +129,6 @@ bool ActionAddCourse::Execute()
 			}
 			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(520 + 35) && y>(520)) 
 			{
-				pC->setType("Minor");
 				pC->setyear(1);
 				pC->setsemester(SUMMER);
 				pS->AddCourse(pC, 1, SUMMER);

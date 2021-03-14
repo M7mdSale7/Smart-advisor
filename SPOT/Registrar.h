@@ -15,19 +15,26 @@ class Registrar
 
 public:
 	Registrar();
+
+	//getters
 	GUI* getGUI() const;
+
+	//getters
+	StudyPlan* getStudyPlay() const;
 	Rules* getRules();
 	Rules* getRules2();
-	Action* CreateRequiredAction();
-	CourseInfo* CatalogSearch(string code, bool& coursefound);
-	bool ExecuteAction(Action*);
-	void UpdateInterface();
-	StudyPlan* getStudyPlay() const;
-	void Initialization();
-	void freePlanRules();
-	//add in import to call for it at the start of the application
-	void Run();
-	void fillCoursesType();
+
+
+	Action* CreateRequiredAction(); //creates the action the user wants
+	CourseInfo* CatalogSearch(string code, bool& coursefound); //searches if a certain course in the catalog has the input course code
+
+	bool ExecuteAction(Action*); //executes user action
+
+	void UpdateInterface(); //updates user interface with the available data whenever called
+	void Initialization(); //Initializes the program by doing all necressary imports
+	void freePlanRules();//resets the rules data fields
+	void Run(); //runs the whole program
+	void fillCoursesType(); //fills courses types in the courseCatalog vector in rules
 
 	~Registrar();
 };

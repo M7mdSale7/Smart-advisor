@@ -14,7 +14,6 @@ StudyPlan::StudyPlan()
 //year idetifies year number to add course to 1=first, 2 = 2nd,....
 bool StudyPlan::AddCourse(Course* pC, int year, SEMESTER sem)
 {
-	//TODO: add all requried checks to add the course 
 	pC->setyear(year);
 	plan[year - 1]->AddCourse(pC, sem);
 	TotalCredits += pC->getCredits();
@@ -160,7 +159,7 @@ vector<yearSemPair> StudyPlan::CreditsCheck(Rules* R) const //If this vector is 
 															//satisfy the maximum/minimum credits limits.
 {
 	vector<yearSemPair> Allpairs;	//container for all the semesters not satisfying the max/min credits requirements
-								//Those semesters are written as a pair of the year number and semester number
+									//Those semesters are written as a pair of the integer year number and semester number(Y,S)
 	yearSemPair* tempPair;
 	for (int i = 0;i < plan.size(); i++)
 	{
@@ -180,11 +179,13 @@ vector<yearSemPair> StudyPlan::CreditsCheck(Rules* R) const //If this vector is 
 			}
 		}
 	}
-	return Allpairs; //returns true if no semester in any year exceeds the limit
+	return Allpairs; //returned empty if no semester in any year exceeds the limit
 }
 
 vector<codeTypePair> StudyPlan::ProgReqCheck(Rules* R) const
 {
+	//checks if the plan satisfies the program requirements or not by iterating over every required course in
+	//progam rquirements vectors written in rules and checking it with the study plan
 	vector<codeTypePair> pairs;
 	codeTypePair* tempPair;
 	bool ExistsFlag;
@@ -201,13 +202,13 @@ vector<codeTypePair> StudyPlan::ProgReqCheck(Rules* R) const
 					if (itr == itrCourse->getCode())
 					{
 						ExistsFlag = true;
-						goto out2;
+						goto out2; //g out of loop if the course exists after setting the exists flag to try
 					}
 				}
 			}
 		}
 	out2:
-		if (!ExistsFlag)
+		if (!ExistsFlag)//The course is add to the missing courses list if it does not exist
 		{
 			tempPair = new codeTypePair;
 			tempPair->code = itr;
@@ -339,15 +340,10 @@ vector<string> StudyPlan::checkMinor(Rules* R)
 }
 
 
-//vector<string> StudyPlan::ProgReqCheck(Rules*) const
-//{
-//	
-//}
-
 void StudyPlan::checkPlan(Registrar* R) const
 {
-	//after building all checks functions, put here if else statements
-	//and show message in case of each warning or error.
+	//checks if any errors from the checks functions is triggered.
+	//specific concise live message for each triggered error
 	int Ylocation = 364;
 	if (!(CreditsCheck(R->getRules()).empty()))
 	{
@@ -535,13 +531,15 @@ vector <Course_Code> StudyPlan::checkOfferings(Rules* R) const {
 
 bool StudyPlan::checkUnivElectiveCrd(Rules* R) const
 {
+	//returns true if the Total university credits is satisfied in the plan and false otherwise
 	if (TotalUnivCredits < (R->ElectiveUnivCredits + R->ReqUnivCredits)) return false;
 	else return true;
 }
 
 bool StudyPlan::checkMajorElectiveCrd(Rules* R) const
 {
-	if (TotalUnivCredits < (R->ReqMajorCredits + R->ElectiveMajorCredits)) return false;
+	//returns true if the Total university credits is satisfied in the plan and false otherwise
+	if (TotalMajorCredits < (R->ReqMajorCredits + R->ElectiveMajorCredits)) return false;
 	else return true;
 }
 
@@ -556,6 +554,11 @@ int StudyPlan::getConcentration() const {
 int StudyPlan::getConcentration2() const
 {
 	return DoubleConcentration;
+}
+
+string StudyPlan::getMajor() const
+{
+	return major;
 }
 
 void StudyPlan::setConcentration2(int DoubleConcentration)
