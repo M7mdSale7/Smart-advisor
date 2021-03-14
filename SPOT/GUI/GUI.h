@@ -38,6 +38,7 @@ class GUI
 		ITM_STATUS,
 		ITM_ERROR,
 		ITM_SHOWDPND,
+		ITM_CHANGE_PLAN,
 		ITM_EXIT,		//Exit item
 
 		ITM_CNT			//no. of menu items ==> This should be the last line in this enum

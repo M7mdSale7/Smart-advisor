@@ -13,6 +13,7 @@
 #include "../SPOT/Actions/ActionFilters.h"
 #include "../SPOT/Actions/ActionErrors.h"
 #include "ActionCourseStatus.h"
+#include "ActionChangePlan.h"
 #include "ImportStudyPlan.h"
 #include "Actions/exit.h"
 #include "ActionDouble.h"
@@ -102,7 +103,9 @@ Action* Registrar::CreateRequiredAction()
 	case ERRORR:
 		RequiredAction = new ActionErrors(this);
 		break;
-	
+	case CHANGE_PLAN:
+		RequiredAction = new ActionChangePlan(this);
+		break;
 	}
 	return RequiredAction;
 }
@@ -275,6 +278,37 @@ void Registrar::fillCoursesType()
 
 }
 
+void Registrar::freePlanRules() {
+	
+	RegRules.SemMinCredit = 12;
+	RegRules.SemMaxCredit = 18;
+	RegRules.SummerMaxCredit = 6;
+	RegRules.ReqUnivCredits = 0;//
+	RegRules.ElectiveUnivCredits = 0;//
+	RegRules.ReqTrackCredits = 0;//
+	RegRules.ReqMajorCredits = 0;//
+	RegRules.ElectiveMajorCredits = 0;//
+	RegRules.TotalMajorCredits = 0;//
+	RegRules.NofConcentrations = 0;//
+	
+
+	RegRules.UnivCompulsory.clear();	//Univ Compulsory courses//
+	RegRules.UnivElective.clear();	//Univ Elective courses//
+
+	RegRules.MinorCompulsory.clear(); //And this should add a list of compulsory courses
+
+	RegRules.TrackCompulsory.clear();//Track Compulsory courses//
+	RegRules.TrackElective.clear();	//Track Elective courses (added for future)
+
+	RegRules.MajorCompulsory.clear();//Major Compulsory courses//
+	RegRules.MajorElective.clear();	//Major Elective courses//
+
+	RegRules.ConCompulsoryCr.clear();	//Concentration Compulsory credits//
+	RegRules.ConElectiveCr.clear();		//Concentration Elective credits//
+
+	RegRules.ConCompulsory.clear();		//concentrations compulsory courses//
+	RegRules.ConElective.clear();		//concentrations Elective courses//
+}
 
 void Registrar::UpdateInterface()
 {

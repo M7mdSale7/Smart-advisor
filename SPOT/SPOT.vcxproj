@@ -119,6 +119,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ActionChangePlan.cpp" />
     <ClCompile Include="ActionCourseStatus.cpp" />
     <ClCompile Include="ActionDouble.cpp" />
     <ClCompile Include="ActionShowDependencies.cpp" />
@@ -184,6 +185,7 @@
     <ClCompile Include="StudyPlan\StudyPlan.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ActionChangePlan.h" />
     <ClInclude Include="ActionCourseStatus.h" />
     <ClInclude Include="ActionDouble.h" />
     <ClInclude Include="ActionShowDependencies.h" />

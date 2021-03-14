@@ -1,30 +1,9 @@
 1-No issues in minor since no minor was maken 
 
 2- Overload or underload petitions: 
-Moderate Issue: In year 3,Semester 1 Number of credits is: 20 And Overload Petition needed
-Moderate Issue: In year 3,Semester 2 Number of credits is: 20 And Overload Petition needed
+Moderate Issue: In year 2,Semester 1 Number of credits is: 21 And Overload Petition needed
 
-3- Program Requirments issues
-a- Compulsory Courses
-Critical Issue:Course: BIOL 102 Type: Track Compulsory Is not taken , must added
-Critical Issue:Course: BIOL 112 Type: Track Compulsory Is not taken , must added
-Critical Issue:Course: BMS 399 Type: Track Compulsory Is not taken , must added
-Critical Issue:Course: CHEM 102 Type: Track Compulsory Is not taken , must added
-Critical Issue:Course: CHEM 112 Type: Track Compulsory Is not taken , must added
-Critical Issue:Course: MATH 101 Type: Track Compulsory Is not taken , must added
-Critical Issue:Course: BMS 201 Type: Major Compulsory Is not taken , must added
-Critical Issue:Course: BMS 202 Type: Major Compulsory Is not taken , must added
-Critical Issue:Course: BMS 203 Type: Major Compulsory Is not taken , must added
-Critical Issue:Course: BMS 204 Type: Major Compulsory Is not taken , must added
-Critical Issue:Course: BMS 211 Type: Major Compulsory Is not taken , must added
-Critical Issue:Course: BMS 212 Type: Major Compulsory Is not taken , must added
-Critical Issue:Course: BMS 213 Type: Major Compulsory Is not taken , must added
-Critical Issue:Course: BMS 214 Type: Major Compulsory Is not taken , must added
-Critical Issue:Course: BMS 303 Type: Major Compulsory Is not taken , must added
-Critical Issue:Course: BMS 304 Type: Major Compulsory Is not taken , must added
-Critical Issue:Course: BMS 404 Type: Major Compulsory Is not taken , must added
-Critical Issue:Course: BMS CHEM 201 Type: Major Compulsory Is not taken , must added
-Critical Issue:Course: CHEM 211 Type: Major Compulsory Is not taken , must added
+3-a Compulsory requirments are fullfilled !
 
 b-Elective Courses
 b-1- University elective Courses
@@ -38,48 +17,23 @@ No issues in Major elective courses ! You have choosen all !
 5- Co requisite and Pre requisite check
 
 a- Prerequisite
-Criticial Issue: Course: MATH 102,Prerequites are: MATH 101.
-Criticial Issue: Course: PHYS 102,Prerequites are: MATH 101.
-Criticial Issue: Course: BMS 320,Prerequites are: BIOL 102.
-Criticial Issue: Course: BMS 322,Prerequites are: BIOL 102.
+No Issues Found in Prerequisite !
 
 b- Corequisite
-No Issues Found in Corequisite!
+Criticial Issue:  Course: PHYS 102,Corequisites are: PHYS 112.
 
 6- Concentration Check (Compulsory and Elective)
 
 a- Concentration Compulsory
-Criticial Issue: Course: BMS 205,Concentration Compulsory Course BMS 205 Not Taken.
-Criticial Issue: Course: BMS 215,Concentration Compulsory Course BMS 215 Not Taken.
-Criticial Issue: Course: BMS 301,Concentration Compulsory Course BMS 301 Not Taken.
-Criticial Issue: Course: BMS 311,Concentration Compulsory Course BMS 311 Not Taken.
-Criticial Issue: Course: BMS 324,Concentration Compulsory Course BMS 324 Not Taken.
-Criticial Issue: Course: BMS 340,Concentration Compulsory Course BMS 340 Not Taken.
-Criticial Issue: Course: BMS 401,Concentration Compulsory Course BMS 401 Not Taken.
-Criticial Issue: Course: BMS 402,Concentration Compulsory Course BMS 402 Not Taken.
-Criticial Issue: Course: CHEM 202,Concentration Compulsory Course CHEM 202 Not Taken.
-Criticial Issue: Course: CHEM 211,Concentration Compulsory Course CHEM 211 Not Taken.
+No Issues Found in the compulsory courses of concentration!
 
 b- Concentration Elective
-You have taken only 6 Credits Which is less than minimum requirments for the concentration elective
+No Issues found in Elevtive Courses
 
 
 7- Concentration Check (For Double Concentration)
 
-a- Concentration Compulsory (For Double Concentration)
-Criticial Issue: Course: BMS 321,Concentration Compulsory Course BMS 321 Not Taken.
-Criticial Issue: Course: BMS 331,Concentration Compulsory Course BMS 331 Not Taken.
-Criticial Issue: Course: BMS 401,Concentration Compulsory Course BMS 401 Not Taken.
-Criticial Issue: Course: BMS 402,Concentration Compulsory Course BMS 402 Not Taken.
-Criticial Issue: Course: BMS 422,Concentration Compulsory Course BMS 422 Not Taken.
-Criticial Issue: Course: BMS 426,Concentration Compulsory Course BMS 426 Not Taken.
-Criticial Issue: Course: BMS 473,Concentration Compulsory Course BMS 473 Not Taken.
-Criticial Issue: Course: BMS 474,Concentration Compulsory Course BMS 474 Not Taken.
-Criticial Issue: Course: CHEM 202,Concentration Compulsory Course CHEM 202 Not Taken.
-Criticial Issue: Course: CHEM 212,Concentration Compulsory Course CHEM 212 Not Taken.
-
-b- Concentration Elective (For Double Concentration) (Compulsory and Elective)
-No Issues found in Elevtive Courses
+No Double concentration was made to check for it
 
 8- Course Offersings Check
 Course BIOL 101 Is registered in a non offering time
@@ -87,7 +41,6 @@ Course BIOL 111 Is registered in a non offering time
 Course CHEM 101 Is registered in a non offering time
 Course CHEM 111 Is registered in a non offering time
 Course ENG 151 Is registered in a non offering time
-Course Math 101 Is registered in a non offering time
 Course PHYS 101 Is registered in a non offering time
 Course PHYS 111 Is registered in a non offering time
 Course CSCI 101 Is registered in a non offering time
@@ -96,12 +49,14 @@ Course ENGR 102 Is registered in a non offering time
 Course ENGR 221 Is registered in a non offering time
 Course PHYS 102 Is registered in a non offering time
 Course PHYS 112 Is registered in a non offering time
+Course PHYS 112 Is registered in a non offering time
 Course CIE 239 Is registered in a non offering time
 Course ENGR 210 Is registered in a non offering time
 Course MATH 201 Is registered in a non offering time
 Course PEU 228 Is registered in a non offering time
 Course PHYS 201 Is registered in a non offering time
 Course PHYS 211 Is registered in a non offering time
+Course PHYS 102 Is registered in a non offering time
 Course CIE 205 Is registered in a non offering time
 Course CIE 206 Is registered in a non offering time
 Course CIE 212 Is registered in a non offering time
@@ -114,14 +69,12 @@ Course CIE 302 Is registered in a non offering time
 Course CIE 327 Is registered in a non offering time
 Course MATH 302 Is registered in a non offering time
 Course SCH 261 Is registered in a non offering time
-Course BMS 320 Is registered in a non offering time
 Course CIE 318 Is registered in a non offering time
 Course CIE 320 Is registered in a non offering time
 Course CIE 337 Is registered in a non offering time
 Course CIE 338 Is registered in a non offering time
 Course MATH 308 Is registered in a non offering time
 Course SCH 262 Is registered in a non offering time
-Course BMS 322 Is registered in a non offering time
 Course CIE 439 Is registered in a non offering time
 Course CIE 417 Is registered in a non offering time
 Course CIE 425 Is registered in a non offering time

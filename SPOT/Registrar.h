@@ -9,7 +9,7 @@
 class Registrar
 {
 	GUI *pGUI;			//pointer to GUI 
-	Rules RegRules;		//Registration rules
+	Rules RegRules;		 //Registration rules
 	Rules RegRules2;	//Registration rules for second major
 	StudyPlan *pSPlan;
 
@@ -24,6 +24,7 @@ public:
 	void UpdateInterface();
 	StudyPlan* getStudyPlay() const;
 	void Initialization();
+	void freePlanRules();
 	//add in import to call for it at the start of the application
 	void Run();
 	void fillCoursesType();

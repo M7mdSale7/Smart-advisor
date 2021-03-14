@@ -58,6 +58,7 @@ enum ActionType
 	STATUS,
 	ERRORR,
 	SHOW_DPND,
+	CHANGE_PLAN,
 	EXIT,		//Exit the application
 
 	STATUS_BAR,	//A click on the status bar

@@ -61,6 +61,7 @@ void GUI::CreateMenu() const
 	MenuItemImages[ITM_STATUS] = "GUI\\Images\\Menu\\status.jpg";
 	MenuItemImages[ITM_ERROR] = "GUI\\Images\\Menu\\Error.jpg";
 	MenuItemImages[ITM_SHOWDPND] = "GUI\\Images\\Menu\\Menu_D.jpg";
+	MenuItemImages[ITM_CHANGE_PLAN] = "GUI\\Images\\Menu\\CHANGE_PLAN.jpg";
 	MenuItemImages[ITM_EXIT] = "GUI\\Images\\Menu\\Menu_exitt.jpg";
 
 
@@ -269,18 +270,18 @@ void GUI::DrawStudentLevel(const StudyPlan* pSPlan) {
 
 	pWind->SetPen(BLACK, 2);
 	pWind->SetBrush(YELLOW);
-	pWind->DrawRectangle(1100, 10, 1200, 70);
+	pWind->DrawRectangle(1150, 10, 1250, 70);
 	pWind->SetFont(20, BOLD, BY_NAME, "Gramound");
 	pWind->SetPen(RED, 2);
 	string StudentLevel = pSPlan->StudentLevel();
 	if (StudentLevel == "Freshman")
-		pWind->DrawString(1110, 30, "Freshman");
+		pWind->DrawString(1160, 30, "Freshman");
 	else if (StudentLevel == "Sophomore")
-		pWind->DrawString(1105, 30, "Sophomore");
+		pWind->DrawString(1155, 30, "Sophomore");
 	else if (StudentLevel == "Junior")
-		pWind->DrawString(1125, 30, "Junior");
+		pWind->DrawString(1175, 30, "Junior");
 	else
-		pWind->DrawString(1125, 30, "Senior");
+		pWind->DrawString(1175, 30, "Senior");
 }
 
 void GUI::printError(string error, bool issue, int &Ylocation)
@@ -425,6 +426,7 @@ ActionData GUI::GetUserAction(string msg) const
 				case ITM_STATUS: return ActionData{ STATUS };			
 				case ITM_ERROR: return ActionData{ ERRORR };
 				case ITM_SHOWDPND: return ActionData{ SHOW_DPND };
+				case ITM_CHANGE_PLAN: return ActionData{ CHANGE_PLAN };
 				case ITM_EXIT: return ActionData{ EXIT };				//Exit The program
 				default: return ActionData{ MENU_BAR };	//A click on empty place in menu bar
 				}
