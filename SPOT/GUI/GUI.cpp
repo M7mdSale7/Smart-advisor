@@ -51,7 +51,6 @@ void GUI::CreateMenu() const
 	MenuItemImages[ITM_DELETE] = "GUI\\Images\\Menu\\Menu_DeleteCourse.jpg";
 	MenuItemImages[ITM_ADD_NOTES] = "GUI\\Images\\Menu\\Menu_AddNotes.jpg";
 	MenuItemImages[ITM_EDITCOURSECODE]= "GUI\\Images\\Menu\\Menu_EditCourseCode.jpg";
-	MenuItemImages[ITM_REORDER] = "GUI\\Images\\Menu\\Menu_Reorder.jpg";
 	MenuItemImages[ITM_Double] = "GUI\\Images\\Menu\\Menu_Double.jpg";
 	MenuItemImages[ITM_SAVE_PLAN] = "GUI\\Images\\Menu\\Menu_Save_Plan.jpg";
 	MenuItemImages[ITM_IMPORT] = "GUI\\Images\\Menu\\Menu_Import.jpg";
@@ -316,6 +315,31 @@ void GUI::printError(string error, bool issue, int &Ylocation)
 	Ylocation += 20;
 }
 
+const int GUI::getWindWidth()
+{
+	return WindWidth;
+}
+
+const int GUI::getWindHeight()
+{
+	return WindHeight;
+}
+
+const int GUI::getStatusBarHeight()
+{
+	return StatusBarHeight;
+}
+
+const int GUI::getMenuBarHeight()
+{
+	return MenuBarHeight;
+}
+
+const int GUI::getMenuItemWidth()
+{
+	return MenuItemWidth;
+}
+
 void GUI::DrawAcademicYear(const AcademicYear* pY) 
 {
 	//Drawing Big Rectenagle for each Academic Year
@@ -439,7 +463,6 @@ ActionData GUI::GetUserAction(string msg) const
 				case ITM_Double: return ActionData{ Double };			//Asking for double major or concentration
 				case ITM_SAVE_PLAN: return ActionData{ SAVE };			//Action saving study plan
 				case ITM_EDITCOURSECODE: return ActionData{ EDIT_CRS }; //Edit code of an existing course
-				case ITM_REORDER: return ActionData{ REORDER_CRS };		//Reorder a course from semester to another
 				case ITM_IMPORT: return ActionData{ IMPORT };			//Import a studyplan
 				case ITM_GPA: return ActionData{ CALC_GPA };			//Calculate GPA
 				case ITM_MINOR: return ActionData{ MINOR_DEC };			//Add a minor
@@ -465,6 +488,74 @@ ActionData GUI::GetUserAction(string msg) const
 	}//end while
 
 }
+
+ActionData GUI::GetUserActionNoFlush(string msg) const
+{
+	keytype ktInput;
+	clicktype ctInput;
+	char cKeyData;
+
+
+
+	PrintMsg(msg);
+
+	while (true)
+	{
+		int x, y;
+		ctInput = pWind->GetMouseClick(x, y);	//Get the coordinates of the user click
+		ktInput = pWind->GetKeyPress(cKeyData);
+
+		if (ktInput == ESCAPE)	//if ESC is pressed,return CANCEL action
+		{
+			return ActionData{ CANCEL };
+		}
+
+
+		if (ctInput == LEFT_CLICK)	//mouse left click
+		{
+			//[1] If user clicks on the Menu bar
+			if (y >= 0 && y < MenuBarHeight)
+			{
+				//Check whick Menu item was clicked
+				//==> This assumes that menu items are lined up horizontally <==
+				int ClickedItemOrder = (x / MenuItemWidth);
+				//Divide x coord of the point clicked by the menu item width (int division)
+				//if division result is 0 ==> first item is clicked, if 1 ==> 2nd item and so on
+
+				switch (ClickedItemOrder)
+				{
+				case ITM_ADD: return ActionData{ ADD_CRS };				//Add course
+				case ITM_ADD_NOTES: return ActionData{ ADD_NOTES };		//Add notes
+				case ITM_DELETE: return ActionData{ DEL_CRS };			//Delete course or note
+				case ITM_Double: return ActionData{ Double };			//Asking for double major or concentration
+				case ITM_SAVE_PLAN: return ActionData{ SAVE };			//Action saving study plan
+				case ITM_EDITCOURSECODE: return ActionData{ EDIT_CRS }; //Edit code of an existing course
+				case ITM_IMPORT: return ActionData{ IMPORT };			//Import a studyplan
+				case ITM_GPA: return ActionData{ CALC_GPA };			//Calculate GPA
+				case ITM_MINOR: return ActionData{ MINOR_DEC };			//Add a minor
+				case ITM_SEARCH: return ActionData{ SEARCH };
+				case ITM_STATUS: return ActionData{ STATUS };
+				case ITM_ERROR: return ActionData{ ERRORR };
+				case ITM_SHOWDPND: return ActionData{ SHOW_DPND };
+				case ITM_CHANGE_PLAN: return ActionData{ CHANGE_PLAN };
+				case ITM_EXIT: return ActionData{ EXIT };				//Exit The program
+				default: return ActionData{ MENU_BAR };	//A click on empty place in menu bar
+				}
+			}
+
+			//[2] User clicks on the drawing area
+			if (y >= MenuBarHeight && y < WindHeight - StatusBarHeight)
+			{
+				return ActionData{ DRAW_AREA,x,y };	//user want clicks inside drawing area
+			}
+
+			//[3] User clicks on the status bar
+			return ActionData{ STATUS_BAR };
+		}
+	}//end while
+}
+
+
 
 
 

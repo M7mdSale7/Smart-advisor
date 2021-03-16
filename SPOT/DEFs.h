@@ -2,6 +2,9 @@
 
 //This header file contains some defenitions to be used all over the application
 #include <string>
+#define BKGRNDCLR WHITE 
+
+
 using namespace std;
 typedef string Course_Code;
 typedef string Note;

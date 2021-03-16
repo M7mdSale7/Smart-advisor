@@ -35,8 +35,8 @@ bool ActionReorder::Execute()
 			StudyPlan* pS = pReg->getStudyPlay();
 			image im;
 			graphicsInfo gInfo = pC->getGfxInfo();
-			windptr->SetPen(WHITE);
-			windptr->SetBrush(WHITE);
+			windptr->SetPen(BKGRNDCLR);
+			windptr->SetBrush(BKGRNDCLR);
 			windptr->DrawRectangle(gInfo.x, gInfo.y, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT);
 			windptr->StoreImage(im, 0, 0, windptr->GetWidth(), windptr->GetHeight());
 

@@ -1,6 +1,6 @@
-BIOL 101,Biology I,3,Coreq: BIOL 111,
-BIOL 111,Biology I Lab,1,Coreq: BIOL 101,
-CHEM 101,Chemistry I,3,Coreq: CHEM 111,
+BIOL 101,Biology I,3,3,,Coreq: BIOL 111,
+BIOL 111,Biology I Lab,1,,3,Coreq: BIOL 101,
+CHEM 101,Chemistry I,3,3,,Coreq: CHEM 111,
 CHEM 102,Chemistry II,3,Coreq: CHEM 112,Prereq: CHEM 101
 CHEM 111,Chemistry I Lab,1,Coreq: CHEM 101,
 CHEM 112,Chemistry II Lab,1,Coreq: CHEM 102,
