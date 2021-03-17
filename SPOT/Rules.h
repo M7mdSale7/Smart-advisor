@@ -15,6 +15,8 @@ struct CourseInfo
 	vector<Course_Code> PreReqList;	//Pre-requesite list of courses codes
 	vector<Course_Code> CoReqList;	//Co-requesite list of courses codes
 	int Credits;
+	int lHrs;
+	int pHrs;
 	string type;	//Univ, track, major course
 };
 

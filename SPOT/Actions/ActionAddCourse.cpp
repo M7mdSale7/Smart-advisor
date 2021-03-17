@@ -4,6 +4,7 @@
 #include <string>
 #include <algorithm>
 #include "../Rules.h"
+#include "ActionShowCourseInfo.h"
 
 ActionAddCourse::ActionAddCourse(Registrar* p):Action(p)
 {
@@ -47,12 +48,12 @@ bool ActionAddCourse::Execute()
 	CourseInfo* pCRINF = pReg->CatalogSearch(code, coursefound);
 	if (coursefound == 0)
 	{
-		pGUI->GetUserAction("invalid course code: please re-enter a valid one");
+		pGUI->GetUserAction("invalid course code: press anywhere to ESC");
 		return 0;
 	}
 
 
-	ActionData actData = pGUI->GetUserAction("Select a year to add coures to.");
+	ActionData actData = pGUI->GetUserAction("PRESS in the semester you want and to show course info then PRESS anywhere to add and finish. ");
 
 
 	int x, y;
@@ -117,19 +118,30 @@ bool ActionAddCourse::Execute()
 
 			if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y < (520 + 105) && y>(520 + 70)) 
 			{
+				if (pS->searchSemester(code, 1, FALL)) {
+					pGUI->GetUserAction("Course already added in this semester.");
+					return false;
+				}
 				pS->AddCourse(pC, 1, FALL);
 				pC->setyear(1);
 				pC->setsemester(FALL);
 			}
 			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(520 + 70) && y>(520 + 35)) 
 			{
+				if (pS->searchSemester(code, 1, SPRING)) {
+					pGUI->GetUserAction("Course already added in this semester.");
+					return false;
+				}
 				pS->AddCourse(pC, 1, SPRING);
 				pC->setyear(1);
 				pC->setsemester(SPRING);
 			}
 			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(520 + 35) && y>(520)) 
 			{
-				pC->setType("Minor");
+				if (pS->searchSemester(code, 1, SUMMER)) {
+					pGUI->GetUserAction("Course already added in this semester.");
+					return false;
+				}
 				pC->setyear(1);
 				pC->setsemester(SUMMER);
 				pS->AddCourse(pC, 1, SUMMER);
@@ -137,86 +149,143 @@ bool ActionAddCourse::Execute()
 			}
 			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(412 + 105) && y>(412 + 70)) 
 			{
+				if (pS->searchSemester(code, 2, FALL)) {
+					pGUI->GetUserAction("Course already added in this semester.");
+					return false;
+				}
 				pS->AddCourse(pC, 2, FALL);
 				pC->setyear(2);
 				pC->setsemester(FALL);
 			}
 			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(412 + 70) && y>(412 + 35)) 
 			{
+				if (pS->searchSemester(code, 2, SPRING)) {
+					pGUI->GetUserAction("Course already added in this semester.");
+					return false;
+				}
 				pS->AddCourse(pC, 2, SPRING);
 				pC->setyear(2);
 				pC->setsemester(SPRING);
 			}
 			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(412 + 35) && y>(412)) 
 			{
+				if (pS->searchSemester(code, 2, SUMMER)) {
+					pGUI->GetUserAction("Course already added in this semester.");
+					return false;
+				}
 				pS->AddCourse(pC, 2, SUMMER);
 				pC->setyear(2);
 				pC->setsemester(SUMMER);
 			}
 			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(304 + 105) && y>(307 + 70)) 
 			{
+				if (pS->searchSemester(code, 3, FALL)) {
+					pGUI->GetUserAction("Course already added in this semester.");
+					return false;
+				}
 				pS->AddCourse(pC, 3, FALL);
 				pC->setyear(3);
 				pC->setsemester(FALL);
 			}
 			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(304 + 70) && y>(304 + 35))
 			{
+				if (pS->searchSemester(code, 3, SPRING)) {
+					pGUI->GetUserAction("Course already added in this semester.");
+					return false;
+				}
 				pS->AddCourse(pC, 3, SPRING);
 				pC->setyear(3);
 				pC->setsemester(SPRING);
 			}
 			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(304 + 35) && y>(304)) 
 			{
+				if (pS->searchSemester(code, 3, SUMMER)) {
+					pGUI->GetUserAction("Course already added in this semester.");
+					return false;
+				}
 				pS->AddCourse(pC, 3, SUMMER);
 				pC->setyear(3);
 				pC->setsemester(SUMMER);
 			}
 			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(196 + 105) && y>(196 + 70))
 			{
+				if (pS->searchSemester(code, 4, FALL)) {
+					pGUI->GetUserAction("Course already added in this semester.");
+					return false;
+				}
 				pS->AddCourse(pC, 4, FALL);
 				pC->setyear(4);
 				pC->setsemester(FALL);
 			}
 			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(196 + 70) && y>(196 + 35))
 			{
+				if (pS->searchSemester(code, 4, SPRING)) {
+					pGUI->GetUserAction("Course already added in this semester.");
+					return false;
+				}
 				pS->AddCourse(pC, 4, SPRING);
 				pC->setyear(4);
 				pC->setsemester(SPRING);
 			}
 			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(196 + 35) && y>(196)) 
 			{
+				if (pS->searchSemester(code, 4, SUMMER)) {
+					pGUI->GetUserAction("Course already added in this semester.");
+					return false;
+				}
 				pS->AddCourse(pC, 4, SUMMER);
 				pC->setyear(4);
 				pC->setsemester(SUMMER);
 			}
 			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(88 + 105) && y>(88 + 70))
 			{
+				if (pS->searchSemester(code, 5, FALL)) {
+					//window* pW = pGUI->getPwind();
+					//pGUI->PrintMsg("Blaaa");
+					pGUI->GetUserAction("Course already added in this semester.");
+					/*int x, y;
+					pW->WaitMouseClick(x, y);*/
+					return false;
+				}
 				pS->AddCourse(pC, 5, FALL);
 				pC->setyear(5);
 				pC->setsemester(FALL);
 			}
 			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(88 + 70) && y>(88 + 35)) 
 			{
+				if (pS->searchSemester(code, 5, SPRING)) {
+					pGUI->GetUserAction("Course already added in this semester.");
+					return false;
+				}
 				pS->AddCourse(pC, 5, SPRING);
 				pC->setyear(5);
 				pC->setsemester(SPRING);
 			}
 			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(88 + 35) && y>(88)) 
 			{
+				if (pS->searchSemester(code, 5, SUMMER)) {
+					pGUI->GetUserAction("Course already added in this semester.");
+					return false;
+				}
 				pS->AddCourse(pC, 5, SUMMER);
 				pC->setyear(5);
 				pC->setsemester(SUMMER);
 			}
 			else
+			{
 				pGUI->PrintMsg("Error: Please press in semester area.");
-
+			}
+			ActionShowCourseInfo(pReg, pC->getGfxInfo().x, pC->getGfxInfo().y).Execute();
+			//pReg->getGUI()->GetUserAction("Title: " + pC->getTitle()
+				//+ "| Credits: " + to_string(pC->getCredits())
+				//+ "| Type: " + pC->getType() + "| Prerequisite: " + pC->getPreq() + "| Corequisite " + pC->getCoreq() );
 
 		}
 	}
 		
-	
+	//ActionShowCourseInfo(pReg, p, y).Execute();
 
-	
+	//pReg->getGUI()->GetUserAction("Now press anywhere please.");
 	
 	
 

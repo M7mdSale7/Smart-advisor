@@ -13,6 +13,7 @@
 #include "../SPOT/Actions/ActionFilters.h"
 #include "../SPOT/Actions/ActionErrors.h"
 #include "ActionCourseStatus.h"
+#include "ActionChangePlan.h"
 #include "ImportStudyPlan.h"
 #include "Actions/exit.h"
 #include "ActionDouble.h"
@@ -49,62 +50,103 @@ StudyPlan* Registrar::getStudyPlay() const
 
 Action* Registrar::CreateRequiredAction() 
 {	
-	ActionData actData = pGUI->GetUserAction("Pick and action...");
+	int Cx, Cy;
 	Action* RequiredAction = nullptr;
-
-	switch (actData.actType)
+	pGUI->getPwind()->GetMouseCoord(Cx, Cy);
+	cout << "X = " << Cx << "Y = " << Cy << endl;
+	while(Cy <= pGUI->getMenuBarHeight())
 	{
-	case ADD_CRS:	//add_course action
-		RequiredAction = new ActionAddCourse(this);
-		break;
-	case ADD_NOTES: // add_notes action
-		RequiredAction = new ActionAddNotes(this);
-		break;
-	case DEL_CRS: // delete_course action
-		RequiredAction = new ActionDeleteCourse(this);
-		break;
-	case EDIT_CRS: //edit_course action
-		RequiredAction = new ActionChangeCode(this);
-		break;
-    case REORDER_CRS: //reorder_course action
-		RequiredAction = new ActionReorder(this);
-		break;
-	case DRAW_AREA:
-		RequiredAction = new ActionShowCourseInfo(this , actData.x , actData.y);
-		break;
-	case IMPORT: //import_study_plan action
-		RequiredAction = new ActionImportStudyPlan(this);
-		break;
-	case SAVE: //save_study_plan action
-		RequiredAction = new ActionSavePlan(this);
-		break;
-	case CALC_GPA:
-		RequiredAction = new ActionCalculateGPA(this);
-		break;
-	case MINOR_DEC:
-		RequiredAction = new ActionMinorDec(this);
-		break;
-	case SEARCH:
-		RequiredAction = new ActionFilters(this);
-		break;
-	case STATUS:
-		RequiredAction = new ActionCourseStatus(this);
-		break;
-	case EXIT:
-		RequiredAction = new ActionExit(this);
-		break;
-	case Double:
-		RequiredAction = new ActionDouble(this);
-		break;
-	case SHOW_DPND: //reorder_course action
-		RequiredAction = new ActionShowDependencies(this);
-		break;
-	case ERRORR:
-		RequiredAction = new ActionErrors(this);
-		break;
-	
+		cout << "In menu\n";
+		if (pGUI->getPwind()->GetButtonState(LEFT_BUTTON, Cx, Cy) == BUTTON_DOWN)
+		{
+			ActionData actData = pGUI->GetUserActionNoFlush("Pick and action...");
+			switch (actData.actType)
+			{
+			case ADD_CRS:	//add_course action
+				RequiredAction = new ActionAddCourse(this);
+				return RequiredAction;
+				break;
+			case ADD_NOTES: // add_notes action
+				RequiredAction = new ActionAddNotes(this);
+				return RequiredAction;
+				break;
+			case DEL_CRS: // delete_course action
+				RequiredAction = new ActionDeleteCourse(this);
+				return RequiredAction;
+				break;
+			case EDIT_CRS: //edit_course action
+				RequiredAction = new ActionChangeCode(this);
+				return RequiredAction;
+				break;
+			case REORDER_CRS: //reorder_course action
+				RequiredAction = new ActionReorder(this);
+				return RequiredAction;
+				break;
+			case IMPORT: //import_study_plan action
+				RequiredAction = new ActionImportStudyPlan(this);
+				return RequiredAction;
+				break;
+			case SAVE: //save_study_plan action
+				RequiredAction = new ActionSavePlan(this);
+				return RequiredAction;
+				break;
+			case CALC_GPA:
+				RequiredAction = new ActionCalculateGPA(this);
+				return RequiredAction;
+				break;
+			case MINOR_DEC:
+				RequiredAction = new ActionMinorDec(this);
+				return RequiredAction;
+				break;
+			case SEARCH:
+				RequiredAction = new ActionFilters(this);
+				return RequiredAction;
+				break;
+			case STATUS:
+				RequiredAction = new ActionCourseStatus(this);
+				return RequiredAction;
+				break;
+			case EXIT:
+				RequiredAction = new ActionExit(this);
+				return RequiredAction;
+				break;
+			case Double:
+				RequiredAction = new ActionDouble(this);
+				return RequiredAction;
+				break;
+			case SHOW_DPND:
+				RequiredAction = new ActionShowDependencies(this);
+				return RequiredAction;
+				break;
+			case ERRORR:
+				RequiredAction = new ActionErrors(this);
+				return RequiredAction;
+				break;
+			case CHANGE_PLAN:
+				RequiredAction = new ActionChangePlan(this);
+				return RequiredAction;
+				break;
+			}
+		
+		}
+		else
+		{
+
+		}
+	}
+	while(Cy > pGUI->getMenuBarHeight())
+	{
+		cout << "In Draw Area\n";
+		pGUI->getPwind()->GetMouseCoord(Cx, Cy);
+		if (pGUI->getPwind()->GetButtonState(LEFT_BUTTON, Cx, Cy) == BUTTON_DOWN)
+		{
+			RequiredAction = new ActionShowCourseInfo(this, Cx, Cy);
+			return RequiredAction;
+		}
+			
 	}
 	return RequiredAction;
+	
 }
 
 CourseInfo* Registrar::CatalogSearch(string code, bool& coursefound)
@@ -160,16 +202,14 @@ void Registrar::Initialization() {
 
 void Registrar::Run()
 {
-	UpdateInterface();
+	
 	Initialization();
-
+	UpdateInterface();
 	while (true)
 	{
 		
-		//update interface here as CMU Lib doesn't refresh itself
-		//when window is minimized then restored
-		
 		UpdateInterface();
+		
 		
 		Action* pAct = CreateRequiredAction();
 		if (pAct)	//if user doesn't cancel
@@ -274,12 +314,46 @@ void Registrar::fillCoursesType()
 
 }
 
+void Registrar::freePlanRules() {
+	
+	RegRules.SemMinCredit = 12;
+	RegRules.SemMaxCredit = 18;
+	RegRules.SummerMaxCredit = 6;
+	RegRules.ReqUnivCredits = 0;//
+	RegRules.ElectiveUnivCredits = 0;//
+	RegRules.ReqTrackCredits = 0;//
+	RegRules.ReqMajorCredits = 0;//
+	RegRules.ElectiveMajorCredits = 0;//
+	RegRules.TotalMajorCredits = 0;//
+	RegRules.NofConcentrations = 0;//
+	
+
+	RegRules.UnivCompulsory.clear();	//Univ Compulsory courses//
+	RegRules.UnivElective.clear();	//Univ Elective courses//
+
+	RegRules.MinorCompulsory.clear(); //And this should add a list of compulsory courses
+
+	RegRules.TrackCompulsory.clear();//Track Compulsory courses//
+	RegRules.TrackElective.clear();	//Track Elective courses (added for future)
+
+	RegRules.MajorCompulsory.clear();//Major Compulsory courses//
+	RegRules.MajorElective.clear();	//Major Elective courses//
+
+	RegRules.ConCompulsoryCr.clear();	//Concentration Compulsory credits//
+	RegRules.ConElectiveCr.clear();		//Concentration Elective credits//
+
+	RegRules.ConCompulsory.clear();		//concentrations compulsory courses//
+	RegRules.ConElective.clear();		//concentrations Elective courses//
+}
 
 void Registrar::UpdateInterface()
 {
+	pGUI->getPwind()->SetBuffering(true);
 	pGUI->UpdateInterface();	//update interface items
-	pSPlan->checkPlan(this);
+	pSPlan->checkPlan(this);	//perform plan checks
 	pSPlan->DrawMe(pGUI);		//make study plan draw itself
+	pGUI->getPwind()->UpdateBuffer();
+	pGUI->getPwind()->SetBuffering(false);
 }
 
 

@@ -21,8 +21,8 @@ class GUI
 		ITM_ADD,	//Add a new course
 		ITM_DELETE,     //DELETE A COURSE 
 		ITM_ADD_NOTES,	//add notes to plan
+		ITM_CHANGE_PLAN,//change plan from the application
 		ITM_EDITCOURSECODE,	//edit an existing course code
-		ITM_REORDER,	 //REORDER COURSE FROM SEMESTER TO ANOTHER
 		ITM_SAVE_PLAN,	//save current study plan
 		ITM_Double,		//declare double minor/major
 		ITM_IMPORT,		//import study plan
@@ -52,8 +52,8 @@ class GUI
 	color HiColor = RED;			//Highlighting color
 	color ConnColor = GREEN;		//Connector color
 	color MsgColor = BLUE;			//Messages color
-	color BkGrndColor = WHITE;	//Background color
-	color StatusBarColor = WHITE;//statusbar color
+	color BkGrndColor = BKGRNDCLR;		//Background color
+	color StatusBarColor = WHITE;	//statusbar color
 	string WindTitle = "Study-Plan Organizational Tool (SPOT)";
 
 	window* pWind;
@@ -76,13 +76,18 @@ public:
 	void DrawStudentLevel(const StudyPlan* pSPlan);
 	void printError(string error, bool issue, int& Ylocation);
 	
+	//getters
+	const int getWindWidth();
+	const int getWindHeight();
+	const int getStatusBarHeight();
+	const int getMenuBarHeight();
+	const int getMenuItemWidth();
+
 	//input functions
 	ActionData GUI::GetUserAction(string msg = "") const;
+	ActionData GUI::GetUserActionNoFlush(string msg) const;
 	string GetSrting() const;
-
-
-	
-	//Course* coursesloop(int x, int y, Registrar*);
+	window* getPwind();
 
 	~GUI();
 };

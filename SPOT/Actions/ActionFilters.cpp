@@ -52,8 +52,25 @@ bool ActionFilters::Execute()
 	StudyPlan* pS = pReg->getStudyPlay();
 	vector<AcademicYear*>* Plan = pS->getSPvector(); //getting study plan
 	//Check If the user want to display a certain year or a certain semester or group of courses
-	pGUI->PrintMsg("Enter the filer, (Year Or Semester Or Courses or Defualt Or Tree)");
-	string Filter = pGUI->GetSrting();
+	pGUI->PrintMsg("Enter the filer, 1) Year Or 2) Semester Or 3) Courses or 4) Defualt Or 5) Tree Or 6) Course Status)");
+	string FilterNum = pGUI->GetSrting();
+	string Filter;
+	if (FilterNum != "1" && FilterNum != "2" && FilterNum != "3" && FilterNum != "4" && FilterNum != "5" && FilterNum != "6")
+	{
+		pGUI->PrintMsg("Invalid Input");
+		return false;
+	}
+	int Num = stoi(FilterNum);
+	if (Num == 1)
+	{
+		Filter = "Year";
+	}
+	else if (Num == 2) Filter = "Semester";
+	else if (Num == 3) Filter = "Courses";
+	else if (Num == 4) Filter = "Default";
+	else if (Num == 5) Filter = "Tree";
+	else if (Num == 6) Filter = "Status";
+
 	if (Filter == "Year")//Go check which year
 	{
 		pGUI->PrintMsg("Enter year number (1 - 2 - 3 - 4 - 5)");
@@ -82,19 +99,26 @@ bool ActionFilters::Execute()
 		pGUI->PrintMsg("Enter Year number (1 - 2 - 3 - 4 - 5)");
 		string year = pGUI->GetSrting();
 		int yearNum = stoi(year);
-		pGUI->PrintMsg("Enter Semester (Fall - Spring - Summer)");
+		pGUI->PrintMsg("Enter Semester (Fall(F) - Spring(Sp) - Summer(S))");
 		string semester = pGUI->GetSrting();
 		SEMESTER s;
-		if (semester == "Fall")
+		if (semester == "F")
 		{
 			s = (SEMESTER)0;
 		}
-		else if (semester == "Spring")
+		else if (semester == "Sp")
 		{
 			s = (SEMESTER)1;
 		}
-		else
+		else if (semester == "S")
+		{
 			s = (SEMESTER)2;
+		}
+		else
+		{
+			pGUI->PrintMsg("Invalid Semester");
+			return false;
+		}
 		//Now Make all other courses false
 		for (int i = 0; i < Plan->size(); i++)
 		{
@@ -114,9 +138,28 @@ bool ActionFilters::Execute()
 	else if (Filter == "Courses")
 	{
 		//you need to check which group of courses
-		pGUI->PrintMsg("Enter Courses Type (Minor - DoubleMajor -Univ Compulsory - Univ Elective - Track Compulsory)");
-		string type = pGUI->GetSrting();
+		pGUI->PrintMsg("Enter Courses Type 1) Minor - 2) DoubleMajor -3) Univ Compulsory - 4) Univ Elective - 5) Track Compulsory)");
+		string typeNum = pGUI->GetSrting();
+		if (typeNum != "1" && typeNum != "2" && typeNum != "3" && typeNum != "4" && typeNum != "5")
+		{
+			pGUI->PrintMsg("Invalid Input");
+			return false;
+		}
 
+		string type;
+		if (typeNum == "1")
+		{
+			type = "Minor";
+		}
+		else if (typeNum == "2") type = "DoubleMajor";
+		else if (typeNum == "3") type = "Univ Compulsory";
+		else if (typeNum == "4") type = "Univ Elective";
+		else if (typeNum == "5") type = "Track Compulsory";
+		else
+		{
+			pGUI->PrintMsg("Invalid Input");
+			return false;
+		}
 		//set all other type false
 		for (int i = 0; i < Plan->size(); i++)
 		{
@@ -182,7 +225,7 @@ bool ActionFilters::Execute()
 						}
 					}
 				}
-
+				pC->setFiler(true);
 				for (int i = 0; i < pq.size(); i++)
 				{
 					DrawTree(pq.at(i));
@@ -259,6 +302,37 @@ bool ActionFilters::Execute()
 			}
 		}
 	}
+		else if (Filter == "Status")
+		{
+		pGUI->PrintMsg("Enter Status 1) Done 2) Not Done");
+		string s = pGUI->GetSrting();
+		if (s != "1" && s != "2")
+		{
+			pGUI->PrintMsg("Invalid Input");
+			return false;
+		}
+		int N = stoi(s);
+		string status;
+		if (N == 1)
+		{
+			status = "Done";
+		}
+		else status = "Not Done";
+		for (int i = 0; i < Plan->size(); i++)
+		{
+			list<Course*>* Courses = Plan->at(i)->getyearslist();
+			for (int j = 0; j < 3; j++)
+			{
+				for (auto itr : *(Courses + j))
+				{
+					if (itr->getStatus() != status)
+						itr->setFiler(false);
+					else if (itr->getStatus() == status)
+						itr->setFiler(true);
+				}
+			}
+		}
+		}
 	return true;
 }
 

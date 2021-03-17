@@ -2,6 +2,9 @@
 
 //This header file contains some defenitions to be used all over the application
 #include <string>
+#define BKGRNDCLR WHITE 
+
+
 using namespace std;
 typedef string Course_Code;
 typedef string Note;
@@ -52,6 +55,7 @@ enum ActionType
 
 	UNDO,		//Undo the last Action preformed
 	REDO,		//Redo the last Action canceled
+	CHANGE_PLAN,//change the plan inside the application
 	CALC_GPA,	//calculate student GPA
 	MINOR_DEC,	//declare a minor
 	SEARCH,		//search for courses by applying filer

@@ -344,7 +344,7 @@ void StudyPlan::checkPlan(Registrar* R) const
 {
 	//checks if any errors from the checks functions is triggered.
 	//specific concise live message for each triggered error
-	int Ylocation = 364;
+	int Ylocation = 305;
 	if (!(CreditsCheck(R->getRules()).empty()))
 	{
 		R->getGUI()->printError("Semester credit limits violated!", 0, Ylocation);
@@ -365,7 +365,6 @@ void StudyPlan::checkPlan(Registrar* R) const
 	{
 		R->getGUI()->printError("Courses offerings violated!", 0, Ylocation);
 	}
-	
 }
 
 Course* StudyPlan::searchStudyPlan(Course_Code code) const {
@@ -499,8 +498,10 @@ vector <vector <Course_Code>> StudyPlan::checkPreCo() const {
 					}
 				}
 				for (auto &coReq : course->getCoReq()) {
-					Course* C = searchSemester(coReq, course->getyear(), course->getsemester());
-					if (C == nullptr) {
+					//Course* C = searchSemester(coReq, course->getyear(), course->getsemester());
+					Course* C = searchStudyPlan(coReq);
+					if (C == nullptr || C->getyear() > course->getyear() || 
+						(C->getyear() == course->getyear() && C->getsemester() > course->getsemester())) {
 						Error[2].push_back(course->getCode());
 						Error[3].push_back(coReq);
 						course->setCoStatus(0);
