@@ -208,7 +208,7 @@ void Registrar::Run()
 	while (true)
 	{
 		
-		
+		UpdateInterface();
 		
 		
 		Action* pAct = CreateRequiredAction();
