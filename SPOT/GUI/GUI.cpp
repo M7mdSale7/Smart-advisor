@@ -133,15 +133,9 @@ window* GUI::getPwind()
 //////////////////////////////////////////////////////////////////////////
 void GUI::UpdateInterface() const
 {
-	
-	/*pWind->SetBuffering(true);*/
-	//Redraw everything
 	CreateMenu(); 
 	ClearStatusBar();
 	ClearDrawingArea();
-	//pWind->UpdateBuffer();
-	//pWind->SetBuffering(false);
-
 }
 
 
@@ -157,13 +151,14 @@ void GUI::DrawCourse(const Course* pCrs)
 		pWind->DrawLine(gInfo.x, gInfo.y + CRS_HEIGHT / 2, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT / 2);
 
 		//Write the course code and credit hours.
-		int Code_x = gInfo.x + CRS_WIDTH * 0.15;
+		int Code_x = gInfo.x + CRS_WIDTH * 0.08;
 		int Code_y = gInfo.y + CRS_HEIGHT * 0.05;
 		pWind->SetFont(CRS_HEIGHT * 0.4, BOLD, BY_NAME, "Gramound");
 		pWind->SetPen(DARKRED);
 
 		ostringstream crd;
-		crd << "crd:" << pCrs->getCredits();
+		crd << "crd:" << pCrs->getCredits() << "(" << pCrs->getLHrs() << "+" << pCrs->getPHrs() << ")"
+			<< "  " << pCrs->getGrade();
 		pWind->DrawString(Code_x, Code_y, pCrs->getCode());
 		pWind->DrawString(Code_x, Code_y + CRS_HEIGHT / 2, crd.str());
 
@@ -213,13 +208,14 @@ void GUI::DrawCourse(const Course* pCrs)
 		pWind->DrawLine(gInfo.x, gInfo.y + CRS_HEIGHT / 2, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT / 2);
 
 		//Write the course code and credit hours.
-		int Code_x = gInfo.x + CRS_WIDTH * 0.15;
+		int Code_x = gInfo.x + CRS_WIDTH * 0.08;
 		int Code_y = gInfo.y + CRS_HEIGHT * 0.05;
 		pWind->SetFont(CRS_HEIGHT * 0.37, BOLD, BY_NAME, "Gramound");
 		pWind->SetPen(DARKRED);
 
 		ostringstream crd;
-		crd << "crd:" << pCrs->getCredits();
+		crd << "crd:" << pCrs->getCredits() << "(" << pCrs->getLHrs() << "+" << pCrs->getPHrs() << ")"
+			<< "  " << pCrs->getGrade();
 		pWind->DrawString(Code_x, Code_y, pCrs->getCode());
 		pWind->DrawString(Code_x, Code_y + CRS_HEIGHT / 2, crd.str());
 	}

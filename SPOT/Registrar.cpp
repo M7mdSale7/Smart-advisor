@@ -82,10 +82,6 @@ Action* Registrar::CreateRequiredAction()
 				RequiredAction = new ActionReorder(this);
 				return RequiredAction;
 				break;
-				//case DRAW_AREA:
-				//	RequiredAction = new ActionShowCourseInfo(this, actData.x, actData.y);
-				//  return RequiredAction;
-				//	break;
 			case IMPORT: //import_study_plan action
 				RequiredAction = new ActionImportStudyPlan(this);
 				return RequiredAction;
@@ -132,6 +128,10 @@ Action* Registrar::CreateRequiredAction()
 				break;
 			}
 		
+		}
+		else
+		{
+
 		}
 	}
 	while(Cy > pGUI->getMenuBarHeight())

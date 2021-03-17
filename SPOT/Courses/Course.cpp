@@ -108,6 +108,8 @@ void Course::FillData(Rules* R, int index)
 	PreReq = R->CourseCatalog.at(index).PreReqList;
 	CoReq = R->CourseCatalog.at(index).CoReqList;
 	type = R->CourseCatalog.at(index).type;
+	lHrs = R->CourseCatalog.at(index).lHrs;
+	pHrs = R->CourseCatalog.at(index).pHrs;
 }
 
 
@@ -162,6 +164,16 @@ bool Course::setGrade(string Gradee)
 string Course::getGrade() const
 {
 	return Grade;
+}
+
+int Course::getLHrs() const
+{
+	return lHrs;
+}
+
+int Course::getPHrs() const
+{
+	return pHrs;
 }
 
 double Course::getQpoints()
