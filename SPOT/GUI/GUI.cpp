@@ -286,11 +286,11 @@ void GUI::DrawStudentLevel(const StudyPlan* pSPlan) {
 	if (StudentLevel == "Freshman")
 		pWind->DrawString(1160, 30, "Freshman");
 	else if (StudentLevel == "Sophomore")
-		pWind->DrawString(1155, 30, "Sophomore");
+		pWind->DrawString(1160, 30, "Sophomore");
 	else if (StudentLevel == "Junior")
-		pWind->DrawString(1175, 30, "Junior");
+		pWind->DrawString(1160, 30, "Junior");
 	else
-		pWind->DrawString(1175, 30, "Senior");
+		pWind->DrawString(1120, 30, "Senior");
 }
 
 void GUI::printError(string error, bool issue, int &Ylocation)
