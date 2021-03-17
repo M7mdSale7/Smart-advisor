@@ -20,19 +20,8 @@ class GUI
 		//If you want to change the menu items order, just change the order here
 		ITM_ADD,	//Add a new course
 		ITM_DELETE,     //DELETE A COURSE 
-		ITM_ADD_NOTES,
-		ITM_EDITCOURSECODE,
-		ITM_REORDER,  //REORDER COURSE FROM SEMESTER TO ANOTHER
-		ITM_SAVE_PLAN,
-		ITM_Double,
-		//ITM_LOAD_PLAN,
-							//TODO: Add more items names here
-						//TODO: Add more items names here
-   /* ITM_IMPORT,
-	ITM_INFO,*/
-
-		ITM_CHANGE_PLAN,//change plan from the application
 		ITM_ADD_NOTES,	//add notes to plan
+		ITM_CHANGE_PLAN,//change plan from the application
 		ITM_EDITCOURSECODE,	//edit an existing course code
 		ITM_REORDER,	 //REORDER COURSE FROM SEMESTER TO ANOTHER
 		ITM_SAVE_PLAN,	//save current study plan
