@@ -3,9 +3,7 @@
 2- Overload or underload petitions: 
 No any overload of underload petitions needed
 
-3- Program Requirments issues
-a- Compulsory Courses
-Critical Issue:Course: Math 101 Type: Track Compulsory Is not taken , must added
+3-a Compulsory requirments are fullfilled !
 
 b-Elective Courses
 b-1- University elective Courses

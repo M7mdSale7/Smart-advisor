@@ -4,6 +4,7 @@
 #include <string>
 #include <algorithm>
 #include "../Rules.h"
+#include "ActionShowCourseInfo.h"
 
 ActionAddCourse::ActionAddCourse(Registrar* p):Action(p)
 {
@@ -54,12 +55,12 @@ bool ActionAddCourse::Execute()
 	CourseInfo* pCRINF = pReg->CatalogSearch(code, coursefound);
 	if (coursefound == 0)
 	{
-		pGUI->GetUserAction("invalid course code: please re-enter a valid one");
+		pGUI->GetUserAction("invalid course code: press anywhere to ESC");
 		return 0;
 	}
 
 
-	ActionData actData = pGUI->GetUserAction("Select a year to add coures to.");
+	ActionData actData = pGUI->GetUserAction("PRESS in the semester you want and to show course info then PRESS anywhere to add and finish. ");
 
 
 	int x, y;
@@ -215,15 +216,20 @@ bool ActionAddCourse::Execute()
 				pC->setsemester(SUMMER);
 			}
 			else
+			{
 				pGUI->PrintMsg("Error: Please press in semester area.");
-
+			}
+			ActionShowCourseInfo(pReg, pC->getGfxInfo().x, pC->getGfxInfo().y).Execute();
+			//pReg->getGUI()->GetUserAction("Title: " + pC->getTitle()
+				//+ "| Credits: " + to_string(pC->getCredits())
+				//+ "| Type: " + pC->getType() + "| Prerequisite: " + pC->getPreq() + "| Corequisite " + pC->getCoreq() );
 
 		}
 	}
 		
-	
+	//ActionShowCourseInfo(pReg, p, y).Execute();
 
-	
+	//pReg->getGUI()->GetUserAction("Now press anywhere please.");
 	
 	
 
