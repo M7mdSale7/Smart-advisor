@@ -55,18 +55,17 @@ bool ActionChangeCode::Execute()
 			ADDSpace(newcode);
 			nx = pC->getGfxInfo().x;
 			ny = pC->getGfxInfo().y;
-			pS->DeleteCourse(pC);
 			graphicsInfo gInfo{ nx, ny };
 			bool coursefound;
 			CourseInfo* pCRINF = pReg->CatalogSearch(newcode, coursefound);
-			while (coursefound == 0)
+			if (coursefound == 0)
 			{
-				pGUI->PrintMsg("invalid course code: please re-enter a valid one");
-				newcode = pGUI->GetSrting();
-				pCRINF = pReg->CatalogSearch(newcode, coursefound);
+				pGUI->GetUserAction("invalid course code: press anywhere to ESC");
+				return 0;
 			}
 			if (pCRINF != nullptr)
 			{
+				pS->DeleteCourse(pC);
 				StudyPlan* pS = pReg->getStudyPlay();
 				int credit = pCRINF->Credits;
 				vector<Course_Code>  CoReq = pCRINF->CoReqList;
