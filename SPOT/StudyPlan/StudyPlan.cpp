@@ -499,8 +499,10 @@ vector <vector <Course_Code>> StudyPlan::checkPreCo() const {
 					}
 				}
 				for (auto &coReq : course->getCoReq()) {
-					Course* C = searchSemester(coReq, course->getyear(), course->getsemester());
-					if (C == nullptr) {
+					//Course* C = searchSemester(coReq, course->getyear(), course->getsemester());
+					Course* C = searchStudyPlan(coReq);
+					if (C == nullptr || C->getyear() > course->getyear() || 
+						(C->getyear() == course->getyear() && C->getsemester() > course->getsemester())) {
 						Error[2].push_back(course->getCode());
 						Error[3].push_back(coReq);
 						course->setCoStatus(0);
@@ -552,6 +554,11 @@ int StudyPlan::getConcentration() const {
 int StudyPlan::getConcentration2() const
 {
 	return DoubleConcentration;
+}
+
+string StudyPlan::getMajor() const
+{
+	return major;
 }
 
 void StudyPlan::setConcentration2(int DoubleConcentration)

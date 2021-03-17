@@ -10,13 +10,6 @@ ActionAddCourse::ActionAddCourse(Registrar* p):Action(p)
 {
 }
 
-//void ActionAddCourse::convert(string& s)
-//{
-//	for (int i = 0; i < s.length(); i++)
-//	{
-//		s[i] = toupper(s[i]);
-//	}
-//}
 void ActionAddCourse::Space(Course_Code& code)
 {
 	if (!(code.find(" ") != string::npos)) {
@@ -137,7 +130,6 @@ bool ActionAddCourse::Execute()
 			}
 			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(520 + 35) && y>(520)) 
 			{
-				pC->setType("Minor");
 				pC->setyear(1);
 				pC->setsemester(SUMMER);
 				pS->AddCourse(pC, 1, SUMMER);

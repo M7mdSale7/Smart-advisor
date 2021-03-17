@@ -9,7 +9,7 @@
 class Registrar
 {
 	GUI *pGUI;			//pointer to GUI 
-	Rules RegRules;		//Registration rules
+	Rules RegRules;		 //Registration rules
 	Rules RegRules2;	//Registration rules for second major
 	StudyPlan *pSPlan;
 
@@ -32,6 +32,7 @@ public:
 
 	void UpdateInterface(); //updates user interface with the available data whenever called
 	void Initialization(); //Initializes the program by doing all necressary imports
+	void freePlanRules();//resets the rules data fields
 	void Run(); //runs the whole program
 	void fillCoursesType(); //fills courses types in the courseCatalog vector in rules
 
