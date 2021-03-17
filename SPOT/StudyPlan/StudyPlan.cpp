@@ -365,7 +365,6 @@ void StudyPlan::checkPlan(Registrar* R) const
 	{
 		R->getGUI()->printError("Courses offerings violated!", 0, Ylocation);
 	}
-	
 }
 
 Course* StudyPlan::searchStudyPlan(Course_Code code) const {
