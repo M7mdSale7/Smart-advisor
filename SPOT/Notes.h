@@ -11,6 +11,7 @@ class Notes : public Drawable
 	public:
 		Notes(string Note);
 		void setNotes(string Note);
+		Notes* getptr();
 		string getNotes() const;
 		void DrawMe(GUI*) const; //draws note on screen
 		virtual ~Notes();

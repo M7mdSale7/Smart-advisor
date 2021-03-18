@@ -12,6 +12,11 @@ void Notes::setNotes(string Note)
 	this->Note = Note;
 }
 
+Notes* Notes::getptr()
+{
+	return this;
+}
+
 string Notes::getNotes() const
 {
 	return Note;
