@@ -52,6 +52,7 @@ Action* Registrar::CreateRequiredAction()
 {	
 	int Cx, Cy;
 	Action* RequiredAction = nullptr;
+	string currentMsg;
 	pGUI->getPwind()->GetMouseCoord(Cx, Cy);
 	cout << "X = " << Cx << "Y = " << Cy << endl;
 	while(Cy <= pGUI->getMenuBarHeight())
@@ -59,7 +60,7 @@ Action* Registrar::CreateRequiredAction()
 		cout << "In menu\n";
 		if (pGUI->getPwind()->GetButtonState(LEFT_BUTTON, Cx, Cy) == BUTTON_DOWN)
 		{
-			ActionData actData = pGUI->GetUserActionNoFlush("Pick and action...");
+			ActionData actData = pGUI->GetUserActionNoFlush();
 			switch (actData.actType)
 			{
 			case ADD_CRS:	//add_course action
@@ -78,10 +79,10 @@ Action* Registrar::CreateRequiredAction()
 				RequiredAction = new ActionChangeCode(this);
 				return RequiredAction;
 				break;
-			case REORDER_CRS: //reorder_course action
-				RequiredAction = new ActionReorder(this);
-				return RequiredAction;
-				break;
+			//case REORDER_CRS: //reorder_course action
+			//	RequiredAction = new ActionReorder(this);
+			//	return RequiredAction;
+			//	break;
 			case IMPORT: //import_study_plan action
 				RequiredAction = new ActionImportStudyPlan(this);
 				return RequiredAction;
@@ -131,12 +132,126 @@ Action* Registrar::CreateRequiredAction()
 		}
 		else
 		{
-
+			ActionData actData = pGUI->mapMenuLocation(Cx);
+			switch (actData.actType)
+			{
+			case ADD_CRS:
+				if (currentMsg != "Add course")
+				{
+					currentMsg = "Add course";
+					pGUI->PrintMsg(currentMsg);
+				}
+				break;
+			case ADD_NOTES:
+				if (currentMsg != "Add notes")
+				{
+					currentMsg = "Add notes";
+					pGUI->PrintMsg(currentMsg);
+				}
+				break;
+			case DEL_CRS: 
+				if (currentMsg != "Delete course")
+				{
+					currentMsg = "Delete course";
+					pGUI->PrintMsg(currentMsg);
+				}
+				break;
+			case EDIT_CRS: 
+				if (currentMsg != "Edit course code")
+				{
+					currentMsg = "Edit course code";
+					pGUI->PrintMsg(currentMsg);
+				}
+				break;
+			//case REORDER_CRS:
+			//	if (currentMsg != "Re course")
+			//	{
+			//		currentMsg = "Add course";
+			//		pGUI->PrintMsg(currentMsg);
+			//	}				break;
+			case IMPORT: 
+				if (currentMsg != "Import plan")
+				{
+					currentMsg = "Import plan";
+					pGUI->PrintMsg(currentMsg);
+				}
+				break;
+			case SAVE:
+				if (currentMsg != "Save plan")
+				{
+					currentMsg = "Save plan";
+					pGUI->PrintMsg(currentMsg);
+				}				break;
+			case CALC_GPA:
+				if (currentMsg != "Calculate GPA")
+				{
+					currentMsg = "Calculate GPA";
+					pGUI->PrintMsg(currentMsg);
+				}
+				break;
+			case MINOR_DEC:
+				if (currentMsg != "Declare a minor")
+				{
+					currentMsg = "Declare a minor";
+					pGUI->PrintMsg(currentMsg);
+				}
+				break;
+			case SEARCH:
+				if (currentMsg != "Filter")
+				{
+					currentMsg = "Filter";
+					pGUI->PrintMsg(currentMsg);
+				}
+				break;
+			case STATUS:
+				if (currentMsg != "Get course status")
+				{
+					currentMsg = "Get course status";
+					pGUI->PrintMsg(currentMsg);
+				}
+				break;
+			case EXIT:
+				if (currentMsg != "Exit program")
+				{
+					currentMsg = "Exit program";
+					pGUI->PrintMsg(currentMsg);
+				}
+				break;
+			case Double:
+				if (currentMsg != "Declare double minor/concentration")
+				{
+					currentMsg = "Declare double minor/concentration";
+					pGUI->PrintMsg(currentMsg);
+				}
+				break;
+			case SHOW_DPND:
+				if (currentMsg != "Show dependencies")
+				{
+					currentMsg = "Show dependencies";
+					pGUI->PrintMsg(currentMsg);
+				}
+				break;
+			case ERRORR:
+				if (currentMsg != "Get check report")
+				{
+					currentMsg = "Get check report";
+					pGUI->PrintMsg(currentMsg);
+				}
+				break;
+			case CHANGE_PLAN:
+				if (currentMsg != "Change major")
+				{
+					currentMsg = "Change major";
+					pGUI->PrintMsg(currentMsg);
+				}
+				break;
+			}
 		}
 	}
 	while(Cy > pGUI->getMenuBarHeight())
 	{
 		cout << "In Draw Area\n";
+		pGUI->ClearStatusBar();
 		pGUI->getPwind()->GetMouseCoord(Cx, Cy);
 		if (pGUI->getPwind()->GetButtonState(LEFT_BUTTON, Cx, Cy) == BUTTON_DOWN)
 		{

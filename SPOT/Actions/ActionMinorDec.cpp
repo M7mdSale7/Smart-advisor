@@ -111,7 +111,7 @@ bool ActionMinorDec::Execute()
 			}
 		}
 
-		if (flag2 && (!flag||Num1==1) && flag3 && flag4) //if there is no issue with adding the course
+		if (flag2 && (!flag||Num1==1||Num1==2) && flag3 && flag4) //if there is no issue with adding the course
 		{
 			R->MinorCompulsory.push_back(code); //Adding the course to the minor comp list in rules
 			pGUI->GetUserAction("Course Added To Minor , Press any key to continue");
