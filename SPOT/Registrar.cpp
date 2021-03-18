@@ -429,6 +429,10 @@ void Registrar::fillCoursesType()
 
 }
 
+void Registrar::DrawNotes()
+{
+}
+
 void Registrar::freePlanRules() {
 	
 	RegRules.SemMinCredit = 12;
