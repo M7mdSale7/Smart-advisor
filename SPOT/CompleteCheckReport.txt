@@ -1,24 +1,10 @@
-1-No issues in minor since no minor was maken 
 
 2- Overload or underload petitions: 
 No any overload of underload petitions needed
 
 3-a Compulsory requirments are fullfilled !
 
-b-Elective Courses
-b-1- University elective Courses
-No issues in university elective courses ! You have choosen all !
 
-b-2-Major Elective Courses
-No issues in Major elective courses ! You have choosen all !
-
-4-No Double Major to check for
-
-b-Elective Courses
-b-1- University elective Courses
-No issues in university elective courses ! You have choosen all !
-b-2-Major Elective Courses
-No issues in Major elective courses ! You have choosen all !
 
 
 5- Co requisite and Pre requisite check
@@ -40,7 +26,6 @@ No Issues found in Elevtive Courses
 
 7- Concentration Check (For Double Concentration)
 
-No Double concentration was made to check for it
 
 8- Course Offersings Check
 Course MATH 101 Is registered in a non offering time

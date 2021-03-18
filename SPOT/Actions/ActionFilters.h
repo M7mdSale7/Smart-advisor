@@ -9,6 +9,8 @@ class ActionFilters : public Action
 public:
 	ActionFilters(Registrar*);
 	bool virtual Execute();
+	bool DrawTree(Course_Code);
+	Course* GetCourse(Course_Code);
 	virtual ~ActionFilters();
 	
 };
