@@ -15,7 +15,7 @@ bool ActionShowDependencies::Execute()
 {
 	GUI* pGUI = pReg->getGUI();
 
-	pGUI->PrintMsg("Show Course Dependencies: Do you want 1)Specific course 2)All courses)");
+	pGUI->PrintMsg("Show Course Dependencies: Do you want 1)Specific course 2)All courses");
 	string choose= pGUI->GetSrting();
 	transform(choose.begin(), choose.end(), choose.begin(), toupper);
 	if (choose == "2")

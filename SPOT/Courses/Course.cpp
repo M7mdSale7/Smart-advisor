@@ -33,6 +33,16 @@ void Course::setCoStatus(bool Co)
 	coReqstatisfied = Co;
 }
 
+void Course::setLHrs(int l)
+{
+	lHrs = l;
+}
+
+void Course::setPHrs(int p)
+{
+	pHrs = p;
+}
+
 bool Course::getPreStatus() const
 {
 	return preReqstatisfied;

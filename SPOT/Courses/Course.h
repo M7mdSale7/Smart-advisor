@@ -22,7 +22,7 @@ class Course : public Drawable
 	bool Done;		//Done or not yet?
 	vector<Course_Code> PreReq;	//vector of prerequisites
 	vector<Course_Code> CoReq;	//vector of corequisites
-	string Grade;
+	string Grade = "NA";
 	double qPoints;
 	string Status;	//Done, In Progress, Pending
 	bool filter;
@@ -65,6 +65,8 @@ public:
 	void setStatus(string status);
 	void setPreStatus(bool pre);
 	void setCoStatus(bool Co);
+	void setLHrs(int l);
+	void setPHrs(int p);
 
 
 

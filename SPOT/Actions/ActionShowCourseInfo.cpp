@@ -31,12 +31,8 @@ bool ActionShowCourseInfo::Execute()
 
 			pReg->UpdateInterface();
 			
-			//7amasa's logic should be added her
+
 			showInfo(windptr, pC);
-			
-			//pGUI->PrintMsg("Title: " + pC->getTitle()
-			//	+ " , Credits: " + to_string(pC->getCredits())
-			//	+" Type: " + pC->getType() +" Prerequisite: " + pC->getPreq() + " Corequisite " + pC->getCoreq());
 
 
 
@@ -242,19 +238,13 @@ bool ActionShowCourseInfo::Execute()
 			}
 			
 			pReg->UpdateInterface();
-
-			//BASED ON 7AMASA'S FEATURE
-			//test
-			//image im;
-			//pWind->StoreImage(im, 0, 0, pWind->GetWidth(), pWind->GetHeight());
+\
 
 
 			//end test
 			showInfo(windptr, pC);
 			pGUI->GetUserAction("Press anywhere to deselect");
-			//pReg->getGUI()->GetUserAction("Title: " + pC->getTitle()
-			//	+ " , Credits: " + to_string(pC->getCredits())
-			//	+ " Type: " + pC->getType() + " Prerequisite: " + pC->getPreq() + " Corequisite " + pC->getCoreq());
+
 			
 			pC->setSelected(false);
 			return true;
@@ -274,40 +264,40 @@ void ActionShowCourseInfo::showInfo(window* windptr, Course* pC)
 	windptr->DrawLine(1250, 88, 1250, 310, FRAME);
 	windptr->DrawLine(900, 310, 1250, 310, FRAME);
 	windptr->DrawLine(900, 120, 1250, 120, FRAME);
-	windptr->SetFont(20, BOLD, BY_NAME, "Gramound");
-	windptr->SetPen(RED, 2);
-	windptr->DrawString(1025, 100, "Course Info");
+	windptr->SetFont(25, BOLD, BY_NAME, "Gramound");
+	windptr->SetPen(DODGERBLUE, 2);
+	windptr->DrawString(1025, 95, "Course Info");
 
 	windptr->SetFont(17, BOLD, BY_NAME, "Gramound");
-	windptr->SetPen(RED, 2);
+	windptr->SetPen(DODGERBLUE, 2);
 	windptr->DrawString(910, 125, "Title: ");
 	windptr->SetPen(BLACK, 2);
 	windptr->DrawString(945, 125, pC->getTitle());
-	windptr->SetPen(RED, 2);
+	windptr->SetPen(DODGERBLUE, 2);
 	windptr->DrawString(910, 149, "Course Code: ");
 	windptr->SetPen(BLACK, 2);
 	windptr->DrawString(1008, 149, pC->getCode());
-	windptr->SetPen(RED, 2);
+	windptr->SetPen(DODGERBLUE, 2);
 	windptr->DrawString(910, 173, "# of Credits: ");
 	windptr->SetPen(BLACK, 2);
 	windptr->DrawString(998, 173, to_string(pC->getCredits()));
-	windptr->SetPen(RED, 2);
+	windptr->SetPen(DODGERBLUE, 2);
 	windptr->DrawString(910, 197, "Course Type: ");
 	windptr->SetPen(BLACK, 2);
 	windptr->DrawString(1005, 197, pC->getType());
-	windptr->SetPen(RED, 2);
+	windptr->SetPen(DODGERBLUE, 2);
 	windptr->DrawString(910, 221, "Prerequisites: ");
 	windptr->SetPen(BLACK, 2);
 	windptr->DrawString(1010, 221, pC->getPreq());
-	windptr->SetPen(RED, 2);
+	windptr->SetPen(DODGERBLUE, 2);
 	windptr->DrawString(910, 245, "CoRequisites: ");
 	windptr->SetPen(BLACK, 2);
 	windptr->DrawString(1010, 245, pC->getCoreq());
-	windptr->SetPen(RED, 2);
+	windptr->SetPen(DODGERBLUE, 2);
 	windptr->DrawString(910, 268, "Status: ");
 	windptr->SetPen(BLACK, 2);
 	windptr->DrawString(960, 268, pC->getStatus());
-	windptr->SetPen(RED, 2);
+	windptr->SetPen(DODGERBLUE, 2);
 	windptr->DrawString(910, 289, "Grade: ");
 	windptr->SetPen(BLACK, 2);
 	windptr->DrawString(960, 289, pC->getGrade());

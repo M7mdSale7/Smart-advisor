@@ -10,6 +10,6 @@ class ActionShowCourseInfo :
 public:
 	ActionShowCourseInfo(Registrar* , int x , int y);
 	bool virtual Execute();
-	void showInfo(window* windptr, Course* pC);
+	static void showInfo(window* windptr, Course* pC);
 	virtual ~ActionShowCourseInfo();
 };

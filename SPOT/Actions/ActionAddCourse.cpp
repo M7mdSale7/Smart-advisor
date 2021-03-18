@@ -53,7 +53,7 @@ bool ActionAddCourse::Execute()
 	}
 
 
-	ActionData actData = pGUI->GetUserAction("PRESS in the semester you want and to show course info then PRESS anywhere to add and finish. ");
+	ActionData actData = pGUI->GetUserAction("Press in the semester you want. ");
 
 
 	int x, y;
@@ -80,6 +80,9 @@ bool ActionAddCourse::Execute()
 			vector<Course_Code>* MinorComp = &R->MinorCompulsory;
 			pC->setGfxInfo(gInfo);
 			pC->settype(pCRINF->type);
+			pC->setLHrs(pCRINF->lHrs);
+			pC->setPHrs(pCRINF->pHrs);
+			
 			for (int i = 0; i < MinorComp->size(); i++) //Setting type to Minor in case of minor
 			{
 				if (code == MinorComp->at(i))
@@ -275,10 +278,14 @@ bool ActionAddCourse::Execute()
 			{
 				pGUI->PrintMsg("Error: Please press in semester area.");
 			}
-			ActionShowCourseInfo(pReg, pC->getGfxInfo().x, pC->getGfxInfo().y).Execute();
-			//pReg->getGUI()->GetUserAction("Title: " + pC->getTitle()
-				//+ "| Credits: " + to_string(pC->getCredits())
-				//+ "| Type: " + pC->getType() + "| Prerequisite: " + pC->getPreq() + "| Corequisite " + pC->getCoreq() );
+			//ActionShowCourseInfo(pReg, pC->getGfxInfo().x, pC->getGfxInfo().y).Execute();
+			window* pW = pGUI->getPwind();
+			pC->setSelected(true);
+			pReg->UpdateInterface();
+			ActionShowCourseInfo::showInfo(pW ,pC);
+			
+			pGUI->GetUserAction("press any where to dismiss");
+			pC->setSelected(false);
 
 		}
 	}

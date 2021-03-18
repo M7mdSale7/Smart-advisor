@@ -74,6 +74,7 @@ void GUI::CreateMenu() const
 //Prints a message on the status bar
 void GUI::PrintMsg(string msg) const
 {
+
 	ClearStatusBar();	//Clear Status bar to print message on it
 						// Set the Message offset from the Status Bar
 	int MsgX = 25;
@@ -83,6 +84,7 @@ void GUI::PrintMsg(string msg) const
 	pWind->SetFont(20, BOLD , BY_NAME, "Arial");
 	pWind->SetPen(MsgColor);
 	pWind->DrawString(MsgX, WindHeight - MsgY, msg);
+
 }
 
 string GUI::GetSrting() const
@@ -158,7 +160,7 @@ void GUI::DrawCourse(const Course* pCrs)
 
 		ostringstream crd;
 		crd << "crd:" << pCrs->getCredits() << "(" << pCrs->getLHrs() << "+" << pCrs->getPHrs() << ")"
-			<< "  " << pCrs->getGrade();
+			<< " " << pCrs->getGrade();
 		pWind->DrawString(Code_x, Code_y, pCrs->getCode());
 		pWind->DrawString(Code_x, Code_y + CRS_HEIGHT / 2, crd.str());
 
@@ -227,7 +229,7 @@ void GUI::DrawCourse(const Course* pCrs)
 		pWind->SetPen(BLACK);
 		ostringstream crd;
 		crd << "crd:" << pCrs->getCredits() << "(" << pCrs->getLHrs() << "+" << pCrs->getPHrs() << ")"
-			<< "  " << pCrs->getGrade();
+			<< " " << pCrs->getGrade();
 		pWind->DrawString(Code_x, Code_y, pCrs->getCode());
 		pWind->DrawString(Code_x, Code_y + CRS_HEIGHT / 2, crd.str());
 	}
@@ -284,11 +286,11 @@ void GUI::DrawStudentLevel(const StudyPlan* pSPlan) {
 	pWind->SetPen(BLACK, 2.5);
 	string StudentLevel = pSPlan->StudentLevel();
 	if (StudentLevel == "Freshman")
-		pWind->DrawString(1160, 30, "Freshman");
+		pWind->DrawString(1120, 30, "Freshman");
 	else if (StudentLevel == "Sophomore")
-		pWind->DrawString(1160, 30, "Sophomore");
+		pWind->DrawString(1120, 30, "Sophomore");
 	else if (StudentLevel == "Junior")
-		pWind->DrawString(1160, 30, "Junior");
+		pWind->DrawString(1120, 30, "Junior");
 	else
 		pWind->DrawString(1120, 30, "Senior");
 }
@@ -404,58 +406,64 @@ void GUI::DrawAcademicYear(const AcademicYear* pY)
 	//Drawing notes area
 	pWind->SetPen(BLACK, 2);
 	pWind->DrawLine(900,  88, 1250,  88, FRAME);
-	pWind->DrawLine(900,  88,  900, 250, FRAME);
-	pWind->DrawLine(1250, 88, 1250, 250, FRAME);
-	pWind->DrawLine(900, 250, 1250, 250, FRAME);
+	pWind->DrawLine(900,  88,  900, 310, FRAME);
+	pWind->DrawLine(1250, 88, 1250, 310, FRAME);
+	pWind->DrawLine(900, 310, 1250, 310, FRAME);
 	pWind->DrawLine(900, 120, 1250, 120, FRAME);
 	pWind->SetFont(20, BOLD, BY_NAME, "Gramound");
-	pWind->SetPen(RED, 2);
-	pWind->DrawString(980, 100, "ADD YOUR NOTES HERE");
+	pWind->SetPen(DODGERBLUE, 2);
+	pWind->DrawString(980, 95, "ADD YOUR NOTES HERE");
 
 	//Drawing errors area
 	pWind->SetPen(BLACK, 2);
-	pWind->DrawLine(900,  270, 1250, 270, FRAME);
-	pWind->DrawLine(900,  270,  900, 450, FRAME);
-	pWind->DrawLine(1250, 270, 1250, 450, FRAME);
-	pWind->DrawLine(900,  450, 1250, 450, FRAME);
-	pWind->DrawLine(900,  295, 1250, 295, FRAME);
+	pWind->DrawLine(900,  320, 1250, 320, FRAME);
+	pWind->DrawLine(900,  320,  900, 495, FRAME);
+	pWind->DrawLine(1250, 320, 1250, 495, FRAME);
+	pWind->DrawLine(900,  495, 1250, 495, FRAME);
+	pWind->DrawLine(900,  345, 1250, 345, FRAME);
 	pWind->SetFont(20, BOLD, BY_NAME, "Gramound");
 	pWind->SetPen(RED, 2);
-	pWind->DrawString(1035, 274, "Error list");
+	pWind->DrawString(1035, 324, "Error list");
 	
 
 	//Drawing color code area
 	pWind->SetPen(BLACK, 0.3);
 	pWind->SetFont(15, UNDERLINED, BY_NAME, "Gramound");
-	pWind->DrawString(930, 455, "UNIV");
-	pWind->DrawString(930, 473, "TRACK");
-	pWind->DrawString(930, 491, "MAJOR");
-	pWind->DrawString(930, 509, "CONCENTRATION");
-	pWind->DrawString(930, 527, "ElECTIVE");
-	pWind->DrawString(930, 545, "SELECTED");
-	pWind->DrawString(930, 563, "CoReqError");
-	pWind->DrawString(930, 581, "CoReqError");
+	pWind->DrawString(1025, 506, "UNIV");
+	pWind->DrawString(1120, 506, "TRACK");
+	pWind->DrawString(930, 506, "MAJOR");
+	pWind->DrawString(930, 524, "CONCENTRATION");
+	pWind->DrawString(930, 542, "ElECTIVE");
+	pWind->DrawString(930, 560, "SELECTED");
+	pWind->DrawString(930, 578, "CoReqError");
+	pWind->DrawString(930, 596, "PreReqError");
+	pWind->DrawString(1120, 524, "CoReq");
+	pWind->DrawString(1120, 542, "PreReq");
 	//pWind->SetBrush(YELLOW);
 	pWind->SetPen(RED, 2.5);
-	pWind->DrawRectangle(900, 455, 920, 470, FRAME);
+	pWind->DrawRectangle(995, 506, 1015, 521, FRAME);
 	pWind->SetPen(BLUE, 2.5);
-	pWind->DrawRectangle(900, 473, 920, 488, FRAME);
+	pWind->DrawRectangle(1090, 506, 1110, 521, FRAME);
 	pWind->SetPen(BLACK, 2.5);
-	pWind->DrawRectangle(900, 491, 920, 506, FRAME);
+	pWind->DrawRectangle(900, 506, 920, 521, FRAME);
 	pWind->SetPen(ORANGE, 2.5);
-	pWind->DrawRectangle(900, 509, 920, 524, FRAME);
+	pWind->DrawRectangle(900, 524, 920, 539, FRAME);
 	pWind->SetBrush(LIGHTBLUE);
 	pWind->SetPen(LIGHTBLUE, 2.5);
-	pWind->DrawRectangle(900, 527, 920, 542, FILLED);
+	pWind->DrawRectangle(900, 542, 920, 557, FILLED);
 	pWind->SetBrush(LIGHTGREEN);
 	pWind->SetPen(LIGHTGREEN, 2.5);
-	pWind->DrawRectangle(900, 545, 920, 560, FILLED);
+	pWind->DrawRectangle(900, 560, 920, 575, FILLED);
 	pWind->SetBrush(YELLOW);
 	pWind->SetPen(YELLOW, 2.5);
-	pWind->DrawRectangle(900, 563, 920, 578, FILLED);
+	pWind->DrawRectangle(900, 578, 920, 593, FILLED);
 	pWind->SetBrush(SALMON);
 	pWind->SetPen(SALMON, 2.5);
-	pWind->DrawRectangle(900, 581, 920, 596, FILLED);
+	pWind->DrawRectangle(900, 596, 920, 611, FILLED);
+	pWind->SetPen(BLACK, 2);
+	pWind->DrawLine(1090, 530, 1110, 530);
+	pWind->SetPen(ORANGE, 2);
+	pWind->DrawLine(1090, 548, 1110, 548);
 }
 
 
@@ -532,6 +540,31 @@ ActionData GUI::GetUserAction(string msg) const
 		}
 	}//end while
 
+}
+
+ActionData GUI::mapMenuLocation(int x)
+{
+	int ClickedItemOrder = (x / MenuItemWidth);
+
+	switch (ClickedItemOrder)
+	{
+	case ITM_ADD: return ActionData{ ADD_CRS };				//Add course
+	case ITM_ADD_NOTES: return ActionData{ ADD_NOTES };		//Add notes
+	case ITM_DELETE: return ActionData{ DEL_CRS };			//Delete course or note
+	case ITM_Double: return ActionData{ Double };			//Asking for double major or concentration
+	case ITM_SAVE_PLAN: return ActionData{ SAVE };			//Action saving study plan
+	case ITM_EDITCOURSECODE: return ActionData{ EDIT_CRS }; //Edit code of an existing course
+	case ITM_IMPORT: return ActionData{ IMPORT };			//Import a studyplan
+	case ITM_GPA: return ActionData{ CALC_GPA };			//Calculate GPA
+	case ITM_MINOR: return ActionData{ MINOR_DEC };			//Add a minor
+	case ITM_SEARCH: return ActionData{ SEARCH };
+	case ITM_STATUS: return ActionData{ STATUS };
+	case ITM_ERROR: return ActionData{ ERRORR };
+	case ITM_SHOWDPND: return ActionData{ SHOW_DPND };
+	case ITM_CHANGE_PLAN: return ActionData{ CHANGE_PLAN };
+	case ITM_EXIT: return ActionData{ EXIT };				//Exit The program
+	default: return ActionData{ MENU_BAR };	//A click on empty place in menu bar
+	}
 }
 
 ActionData GUI::GetUserActionNoFlush(string msg) const
