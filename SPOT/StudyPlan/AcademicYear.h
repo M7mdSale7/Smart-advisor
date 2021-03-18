@@ -23,11 +23,14 @@ class AcademicYear:public Drawable
 	//So YearCourses[SPRING] is the list of SPRING course in that year
 	//So YearCourses[SUMMER] is the list of SUMMER course in that year
 	list<Course*> YearCourses[SEM_CNT];
-	
+	vector <bool>* overloadedSem;
 public:
 	AcademicYear();
 	
 	list<Course*>* getyearslist();
+
+	vector <bool>* getOverloadSemesters() const;
+	void setOverloadedSemesters(SEMESTER);
 
 	bool AddCourse(Course*, SEMESTER );
 	bool DeleteCourse(Course*, SEMESTER);

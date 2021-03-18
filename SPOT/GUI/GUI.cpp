@@ -62,6 +62,7 @@ void GUI::CreateMenu() const
 	MenuItemImages[ITM_ERROR] = "GUI\\Images\\Menu\\Error.jpg";
 	MenuItemImages[ITM_SHOWDPND] = "GUI\\Images\\Menu\\Menu_D.jpg";
 	MenuItemImages[ITM_CHANGE_PLAN] = "GUI\\Images\\Menu\\CHANGE_PLAN.jpg";
+	MenuItemImages[ITM_ADD_PETITION] = "GUI\\Images\\Menu\\Menu_AddCourse.jpg";
 	MenuItemImages[ITM_EXIT] = "GUI\\Images\\Menu\\Menu_exitt.jpg";
 
 
@@ -497,6 +498,7 @@ ActionData GUI::GetUserAction(string msg) const
 				case ITM_ERROR: return ActionData{ ERRORR };
 				case ITM_SHOWDPND: return ActionData{ SHOW_DPND };
 				case ITM_CHANGE_PLAN: return ActionData{ CHANGE_PLAN };
+				case ITM_ADD_PETITION: return ActionData{ ADD_PETITION };
 				case ITM_EXIT: return ActionData{ EXIT };				//Exit The program
 				default: return ActionData{ MENU_BAR };	//A click on empty place in menu bar
 				}

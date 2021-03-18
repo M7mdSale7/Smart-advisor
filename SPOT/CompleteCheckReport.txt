@@ -44,11 +44,13 @@ No Double concentration was made to check for it
 
 8- Course Offersings Check
 Course MATH 101 Is registered in a non offering time
+Course CIE 205 Is registered in a non offering time
 Course MATH 302 Is registered in a non offering time
 Course SCH 261 Is registered in a non offering time
 Course SCH 262 Is registered in a non offering time
 Course CIE 439 Is registered in a non offering time
 Course SCH 263 Is registered in a non offering time
 Course CIE 408 Is registered in a non offering time
+Course SCH XXX Is registered in a non offering time
 Course SCH XXX Is registered in a non offering time
 Course SCH XXX Is registered in a non offering time

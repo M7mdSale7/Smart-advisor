@@ -223,18 +223,27 @@ bool ActionErrors::Execute()
 	{
 		for (int i = 0; i < Errors5.at(0).size(); i++)
 		{
-			file << "Criticial Issue: " << "Course: " << Errors5.at(0).at(i) << "," << "Prerequites are: ";
+			//EDIR for Add Petition
 
-			for (int j = 0; j < Errors5.at(1).size(); j++)
-			{
-				if (i == j)
+			/*Course* pC = pS->searchStudyPlan(Errors5.at(0).at(i));
+			Petition* petition = pC->getPetition();
+
+			if (!petition->hasPetition()) {
+				cout << "Blaaaa" << endl;*/
+				//End of Edit
+
+				file << "Criticial Issue: " << "Course: " << Errors5.at(0).at(i) << "," << "Prerequites are: ";
+
+				for (int j = 0; j < Errors5.at(1).size(); j++)
 				{
-					file << Errors5.at(1).at(j) << ".";
+					if (i == j)
+					{
+						file << Errors5.at(1).at(j) << ".";
+					}
 				}
+				file << endl;
 			}
 			file << endl;
-		}
-		file << endl;
 	}
 	//b- Corequisites
 	file << "b- Corequisite" << endl;

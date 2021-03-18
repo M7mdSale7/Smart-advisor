@@ -1,3 +1,4 @@
+#include <iostream>
 #include "StudyPlan.h"
 #include "../Notes.h"
 #include "../GUI/GUI.h"
@@ -486,14 +487,18 @@ vector <vector <Course_Code>> StudyPlan::checkPreCo() const {
 					}
 					else {
 						if (C->getyear() > course->getyear()) {
-							Error[0].push_back(course->getCode());
-							Error[1].push_back(preReq);
-							course->setPreStatus(0);
+							if (!course->hasPetition()) {
+								Error[0].push_back(course->getCode());
+								Error[1].push_back(preReq);
+								course->setPreStatus(0);
+							}
 						}
 						else if (C->getyear() == course->getyear() && C->getsemester() >= course->getsemester()) {
-							Error[0].push_back(course->getCode());
-							Error[1].push_back(preReq);
-							course->setPreStatus(0);
+							if (!course->hasPetition()) {
+								Error[0].push_back(course->getCode());
+								Error[1].push_back(preReq);
+								course->setPreStatus(0);
+							}
 						}
 					}
 				}
@@ -502,9 +507,11 @@ vector <vector <Course_Code>> StudyPlan::checkPreCo() const {
 					Course* C = searchStudyPlan(coReq);
 					if (C == nullptr || C->getyear() > course->getyear() || 
 						(C->getyear() == course->getyear() && C->getsemester() > course->getsemester())) {
-						Error[2].push_back(course->getCode());
-						Error[3].push_back(coReq);
-						course->setCoStatus(0);
+						if (!course->hasPetition()) {
+							Error[2].push_back(course->getCode());
+							Error[3].push_back(coReq);
+							course->setCoStatus(0);
+						}
 					}
 				}
 			}

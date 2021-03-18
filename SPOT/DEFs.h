@@ -53,6 +53,7 @@ enum ActionType
 	UNDO,		//Undo the last Action preformed
 	REDO,		//Redo the last Action canceled
 	CHANGE_PLAN,//change the plan inside the application
+	ADD_PETITION,
 	CALC_GPA,	//calculate student GPA
 	MINOR_DEC,	//declare a minor
 	SEARCH,		//search for courses by applying filer

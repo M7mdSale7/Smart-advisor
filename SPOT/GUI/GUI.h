@@ -22,6 +22,7 @@ class GUI
 		ITM_DELETE,     //DELETE A COURSE 
 		ITM_ADD_NOTES,	//add notes to plan
 		ITM_CHANGE_PLAN,//change plan from the application
+		ITM_ADD_PETITION,
 		ITM_EDITCOURSECODE,	//edit an existing course code
 		ITM_REORDER,	 //REORDER COURSE FROM SEMESTER TO ANOTHER
 		ITM_SAVE_PLAN,	//save current study plan

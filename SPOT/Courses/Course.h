@@ -8,6 +8,23 @@ using namespace std;
 #include "../GUI/Drawable.h"
 
 //Base class for all types of courses
+
+/*struct Petition {
+	//friend class ActionAddPetition;
+	vector<Course_Code> petitioncourses;
+
+	Petition() {
+		
+	}
+
+
+	bool hasPetition() const {
+		if (petitioncourses.empty())
+			return false;
+		return true;
+	}
+};*/
+
 class Course : public Drawable
 {
 	const Course_Code code;	//course code: e.g. "CIE 202". This is the course ID
@@ -26,12 +43,18 @@ class Course : public Drawable
 	bool filter;
 	bool preReqstatisfied = 1; // 1 for yes, 0 for no
 	bool coReqstatisfied = 1; // 1 for yes, 0 for no
+
+	//Petition* petition;
+	bool petition;
 public:
 	Course();
 	Course(Course_Code r_code, string r_title, int c_crd, vector<Course_Code> r_CoReq, vector<Course_Code> r_PreReq);
 	Course(Course_Code r_code,string r_title, int crd);
-
 	//getters
+	/*Petition* getPetition() {
+		return petition;
+	}*/
+	bool hasPetition() const;
 	string getTitle() const;
 	string getCode() const;
 	int getCredits() const;
@@ -52,6 +75,7 @@ public:
 	vector<Course_Code> getPreReq() const;
 
 	//setters
+	void setPetition(bool petition);
 	void setFiler(bool filter);
 	void setType(string type);
 	void setyear(int y);
