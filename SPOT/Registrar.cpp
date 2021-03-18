@@ -12,6 +12,7 @@
 #include "../SPOT/Actions/ActionMinorDec.h"
 #include "../SPOT/Actions/ActionFilters.h"
 #include "../SPOT/Actions/ActionErrors.h"
+#include "ActionAddPetition.h"
 #include "ActionCourseStatus.h"
 #include "ActionChangePlan.h"
 #include "ImportStudyPlan.h"
@@ -136,6 +137,9 @@ Action* Registrar::CreateRequiredAction()
 			case CHANGE_PLAN:
 				RequiredAction = new ActionChangePlan(this);
 				return RequiredAction;
+				break;
+			case ADD_PETITION:
+				RequiredAction = new ActionAddPetition(this);
 				break;
 			}
 		
@@ -437,6 +441,10 @@ void Registrar::fillCoursesType()
 		}
 	}
 
+}
+
+void Registrar::DrawNotes()
+{
 }
 
 void Registrar::freePlanRules() {

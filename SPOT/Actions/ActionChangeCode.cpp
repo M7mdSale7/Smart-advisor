@@ -5,6 +5,7 @@
 #include "ActionChangeCode.h"
 #include <algorithm>
 #include "ActionShowCourseInfo.h"
+#include "ActionAddNotes.h"
 
 ActionChangeCode::ActionChangeCode(Registrar* p) : Action(p)
 {
@@ -44,7 +45,16 @@ bool ActionChangeCode::Execute()
 		Course* pC = ActionDeleteCourse(pReg).coursesloop(x, y, pReg);
 		if (pC == nullptr)
 		{
-			pGUI->PrintMsg("no course selected.");
+			Notes* pN = ActionDeleteCourse(pReg).notesloop(x, y, pReg);
+			if (pN != nullptr)
+			{
+				StudyPlan* pS = pReg->getStudyPlay();
+				pGUI->PrintMsg("Please enter the new Note.");
+				string newNote = pGUI->GetSrting();
+				pN->EditNotes(newNote);
+			}
+			else
+			pGUI->PrintMsg("No Course Or Notes Selected");
 		}
 		else
 		{

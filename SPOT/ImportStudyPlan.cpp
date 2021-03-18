@@ -28,4 +28,17 @@ void ImportStudyPlan::StudyPlanImport(ifstream& fin, Registrar* P) {
 		j++;
 		delete year;
 	}
+
+	int x = 905;
+	int y = 128;
+	vector<Notes*>* pN = plan->getNvector();
+	graphicsInfo gInfo;
+	for (int i = 0; i < pN->size(); i++)
+	{
+		gInfo.x = x;
+		gInfo.y = y;
+		pN->at(i)->setGfxInfo(gInfo);
+		pN->at(i)->DrawMe(P->getGUI());
+		y += NOTES_HEIGHT;
+	}
 }

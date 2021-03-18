@@ -1,3 +1,4 @@
+#include <iostream>
 #include "StudyPlan.h"
 #include "../Notes.h"
 #include "../GUI/GUI.h"
@@ -99,6 +100,19 @@ bool StudyPlan::DeleteCourse(Course* pC)
 	}
 	return true;
 	delete pC;
+}
+
+bool StudyPlan::DeleteNotes(Notes* N)
+{
+	for (int i = 0; i < PlanNotees.size(); i++)
+	{
+		if (PlanNotees.at(i)->getptr() == N)
+		{
+			PlanNotees.erase(PlanNotees.begin() + i);
+			return true;
+		}
+	}
+	return false;
 }
 
 bool StudyPlan::AddNote(Notes* Note)
@@ -486,14 +500,18 @@ vector <vector <Course_Code>> StudyPlan::checkPreCo() const {
 					}
 					else {
 						if (C->getyear() > course->getyear()) {
-							Error[0].push_back(course->getCode());
-							Error[1].push_back(preReq);
-							course->setPreStatus(0);
+							if (!course->hasPetition()) {
+								Error[0].push_back(course->getCode());
+								Error[1].push_back(preReq);
+								course->setPreStatus(0);
+							}
 						}
 						else if (C->getyear() == course->getyear() && C->getsemester() >= course->getsemester()) {
-							Error[0].push_back(course->getCode());
-							Error[1].push_back(preReq);
-							course->setPreStatus(0);
+							if (!course->hasPetition()) {
+								Error[0].push_back(course->getCode());
+								Error[1].push_back(preReq);
+								course->setPreStatus(0);
+							}
 						}
 					}
 				}
@@ -502,9 +520,11 @@ vector <vector <Course_Code>> StudyPlan::checkPreCo() const {
 					Course* C = searchStudyPlan(coReq);
 					if (C == nullptr || C->getyear() > course->getyear() || 
 						(C->getyear() == course->getyear() && C->getsemester() > course->getsemester())) {
-						Error[2].push_back(course->getCode());
-						Error[3].push_back(coReq);
-						course->setCoStatus(0);
+						if (!course->hasPetition()) {
+							Error[2].push_back(course->getCode());
+							Error[3].push_back(coReq);
+							course->setCoStatus(0);
+						}
 					}
 				}
 			}
