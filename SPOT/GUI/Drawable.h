@@ -19,7 +19,7 @@ enum
 enum
 {
 	NOTES_HEIGHT = 40,
-	NOTES_WIDTH = 80,
+	NOTES_WIDTH = 160,
 };
 
 //Base class for all drawable classes

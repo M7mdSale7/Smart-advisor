@@ -40,7 +40,7 @@ public:
 	bool AddNote(Notes*);
 
 	bool DeleteCourse(Course*);
-
+	bool DeleteNotes(Notes*);
 
 	void virtual DrawMe(GUI*) const;
 
