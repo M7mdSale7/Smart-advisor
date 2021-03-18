@@ -16,20 +16,38 @@ bool ActionDouble::Execute()
 	ifstream fin; //to read file
 	GUI* pGUI = pReg->getGUI();
 	Rules* RegRules = pReg->getRules2();
-	pGUI->PrintMsg("Doubling: do you want to double major or concentration?");
+	pGUI->PrintMsg("Doubling: do you want to double 1)major 2)concentration ?");
 	string choose = pGUI->GetSrting();
 	transform(choose.begin(), choose.end(), choose.begin(), toupper);
-	if (choose == "MAJOR")
+	if (choose == "1")
 	{
-		pGUI->PrintMsg("Please enter the Major (CIE , SPC , NANENG , ENV , REE).");
+		pGUI->PrintMsg("Please Enter The Major Number: 1)CIE  2)SPC  3)ENV  4)REE  5)NANENG ");
 		string maj = pGUI->GetSrting();
 		transform(maj.begin(), maj.end(), maj.begin(), toupper); //Making letters capital
 		ImportRequiements().ImportReqs(fin, pGUI, maj, RegRules); //Importing the requirments for the second major
 		//Error checking for invalid input are implemented ubsude the function importReqs
-		pGUI->GetUserAction("You have added the second major (Double Major) as : " + maj);
-		cout << "m";
+		if (maj == "1")
+		{
+			pGUI->GetUserAction("You have added the second major (Double Major) as CIE, Press anywhere to dismiss");
+		}
+		if (maj == "2")
+		{
+			pGUI->GetUserAction("You have added the second major (Double Major) as SPC, Press anywhere to dismiss");
+		}
+		if (maj == "3")
+		{
+			pGUI->GetUserAction("You have added the second major (Double Major) as ENV, Press anywhere to dismiss");
+		}
+		if (maj == "4")
+		{
+			pGUI->GetUserAction("You have added the second major (Double Major) as REE, Press anywhere to dismiss");
+		}
+		if (maj == "5")
+		{
+			pGUI->GetUserAction("You have added the second major (Double Major) as NANENG, Press anywhere to dismiss");
+		}
 	}
-	if (choose == "CONCENTRATION")
+	else if (choose == "2")
 	{
 		StudyPlan* pS = pReg->getStudyPlay();
 		int conNo1 = pS->getConcentration();
@@ -52,6 +70,10 @@ bool ActionDouble::Execute()
 			pS->setConcentration2(conNo);
 			pGUI->GetUserAction("Second concentration added ! Please add their courses manually using add course");
 		}
+	}
+	else
+	{
+		pGUI->GetUserAction("invalid number: press anywhere to dismiss");
 	}
 	return true;
 }

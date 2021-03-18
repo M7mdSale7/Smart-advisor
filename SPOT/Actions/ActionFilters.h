@@ -8,7 +8,10 @@ class ActionFilters : public Action
 {
 public:
 	ActionFilters(Registrar*);
+	//Course* loopSP(Registrar* pReg, string code);
 	bool virtual Execute();
+	bool DrawTree(Course_Code);
+	Course* GetCourse(Course_Code);
 	virtual ~ActionFilters();
 	
 };

@@ -4,6 +4,8 @@
 #include "..//GUI/GUI.h"
 #include "ActionChangeCode.h"
 #include <algorithm>
+#include "ActionShowCourseInfo.h"
+#include "ActionAddNotes.h"
 
 ActionChangeCode::ActionChangeCode(Registrar* p) : Action(p)
 {
@@ -43,7 +45,16 @@ bool ActionChangeCode::Execute()
 		Course* pC = ActionDeleteCourse(pReg).coursesloop(x, y, pReg);
 		if (pC == nullptr)
 		{
-			pGUI->PrintMsg("no course selected.");
+			Notes* pN = ActionDeleteCourse(pReg).notesloop(x, y, pReg);
+			if (pN != nullptr)
+			{
+				StudyPlan* pS = pReg->getStudyPlay();
+				pGUI->PrintMsg("Please enter the new Note.");
+				string newNote = pGUI->GetSrting();
+				pN->EditNotes(newNote);
+			}
+			else
+			pGUI->PrintMsg("No Course Or Notes Selected");
 		}
 		else
 		{
@@ -74,6 +85,8 @@ bool ActionChangeCode::Execute()
 				Course* pC = new Course(newcode, CourseTitle, credit, CoReq, PreReq);
 				pC->setGfxInfo(gInfo);
 				pC->settype(pCRINF->type);
+				pC->setLHrs(pCRINF->lHrs);
+				pC->setPHrs(pCRINF->pHrs);
 				if (nx < (PLAN_YEAR_WIDTH) && nx>70 && ny < (520 + 105) && ny>(520 + 70))
 				{
 					pS->AddCourse(pC, 1, FALL);
@@ -151,7 +164,16 @@ bool ActionChangeCode::Execute()
 					pC->setsemester(SUMMER);
 				}
 				else
+				{
 					pGUI->PrintMsg("Error: Please press in semester area.");
+				}
+				window* pW = pGUI->getPwind();
+				pC->setSelected(true);
+				pReg->UpdateInterface();
+				ActionShowCourseInfo::showInfo(pW, pC);
+
+				pGUI->GetUserAction("press any where to dismiss");
+				pC->setSelected(false);
 			}
 		}
 

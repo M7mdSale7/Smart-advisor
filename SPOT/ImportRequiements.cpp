@@ -7,27 +7,27 @@ void ImportRequiements::ImportReqs(ifstream& fin, GUI *pGUI, string Major, Rules
 	string line;
 	bool flag = true;
 	while (flag) {
-		if (Major == "CIE") {
+		if (Major == "1") {
 			infile.open("majors requirements/CIE-Requirements.txt");//MajorsData.txt is a trial file for testing because no files for majors' rules has been shared with us
 			fin.open("CIE.txt");
 			flag = false;
 		}
-		else if (Major == "SPC") {
+		else if (Major == "2") {
 			infile.open("majors requirements/SPC-Requirements.txt");
 			fin.open("SPC.txt");
 			flag = false;
 		}
-		else if (Major == "ENV") {
+		else if (Major == "3") {
 			infile.open("majors requirements/ENV-Requirements.txt");
 			fin.open("ENV.txt");
 			flag = false;
 		}
-		else if (Major == "REE") {
+		else if (Major == "4") {
 			infile.open("majors requirements/REE-Requirements.txt");
 			fin.open("REE.txt");
 			flag = false;
 		}
-		else if (Major == "NANENG") {
+		else if (Major == "5") {
 			infile.open("majors requirements/NANENG-Requirements.txt");
 			fin.open("NANENG.txt");
 			flag = false;
@@ -53,7 +53,7 @@ void ImportRequiements::ImportReqs(ifstream& fin, GUI *pGUI, string Major, Rules
 			flag = false;
 		}
 		else {
-			pGUI->PrintMsg("Invalid Major Name");
+			pGUI->PrintMsg("Invalid Major Number: Please enter a valid one 1)CIE  2)SPC  3)ENV  4)REE  5)NANENG.");
 			Major = pGUI->GetSrting();
 		}
 	}

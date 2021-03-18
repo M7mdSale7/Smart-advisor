@@ -30,6 +30,8 @@ class Course : public Drawable
 	const Course_Code code;	//course code: e.g. "CIE 202". This is the course ID
 	const string Title;		//course title: e.g. "Fundamentals of Computer Programming"
 	int credits;	//no. of course credits
+	int lHrs;
+	int pHrs;
 	int year;
 	//Type type;
 	SEMESTER semester;
@@ -37,7 +39,7 @@ class Course : public Drawable
 	bool Done;		//Done or not yet?
 	vector<Course_Code> PreReq;	//vector of prerequisites
 	vector<Course_Code> CoReq;	//vector of corequisites
-	string Grade;
+	string Grade = "NA";
 	double qPoints;
 	string Status;	//Done, In Progress, Pending
 	bool filter;
@@ -58,6 +60,8 @@ public:
 	string getTitle() const;
 	string getCode() const;
 	int getCredits() const;
+	int getLHrs() const;
+	int getPHrs() const;
 	int getyear() const;
 	string gettype() const;
 	SEMESTER getsemester() const;
@@ -85,6 +89,8 @@ public:
 	void setStatus(string status);
 	void setPreStatus(bool pre);
 	void setCoStatus(bool Co);
+	void setLHrs(int l);
+	void setPHrs(int p);
 
 
 

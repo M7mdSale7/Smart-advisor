@@ -102,6 +102,19 @@ bool StudyPlan::DeleteCourse(Course* pC)
 	delete pC;
 }
 
+bool StudyPlan::DeleteNotes(Notes* N)
+{
+	for (int i = 0; i < PlanNotees.size(); i++)
+	{
+		if (PlanNotees.at(i)->getptr() == N)
+		{
+			PlanNotees.erase(PlanNotees.begin() + i);
+			return true;
+		}
+	}
+	return false;
+}
+
 bool StudyPlan::AddNote(Notes* Note)
 {
 	PlanNotees.push_back(Note);
@@ -345,7 +358,7 @@ void StudyPlan::checkPlan(Registrar* R) const
 {
 	//checks if any errors from the checks functions is triggered.
 	//specific concise live message for each triggered error
-	int Ylocation = 305;
+	int Ylocation = 355;
 	if (!(CreditsCheck(R->getRules()).empty()))
 	{
 		R->getGUI()->printError("Semester credit limits violated!", 0, Ylocation);

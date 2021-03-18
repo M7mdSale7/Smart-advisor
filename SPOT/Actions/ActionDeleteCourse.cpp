@@ -2,6 +2,7 @@
 #include "ActionDeleteCourse.h"
 #include "..//Registrar.h"
 #include "..//GUI/GUI.h"
+#include "..//Notes.h"
 
 
 ActionDeleteCourse::ActionDeleteCourse(Registrar* p) : Action(p)
@@ -43,10 +44,31 @@ Course* ActionDeleteCourse::coursesloop(int x, int y, Registrar* pReg)
 		return nullptr;
 	}
 }
+
+Notes* ActionDeleteCourse::notesloop(int x, int y, Registrar* pReg)
+{
+	Notes* Note = nullptr;
+	StudyPlan* pS = pReg->getStudyPlay();
+	vector<Notes*>* pV = pS->getNvector();
+	bool z = 0;
+
+	for (int i = 0; i < pV->size(); i++)
+	{
+		int cx, cy;
+		cx = pV->at(i)->getGfxInfo().x;
+		cy = pV->at(i)->getGfxInfo().y;
+		if (x > cx && x<(cx + NOTES_WIDTH) && y>cy && y < (cy + NOTES_HEIGHT))
+		{
+			z = 1;
+			Note = pV->at(i)->getptr();
+			return Note;
+		}
+	}
+}
 bool ActionDeleteCourse::Execute()
 {
 	GUI* pGUI = pReg->getGUI();
-	ActionData actData = pGUI->GetUserAction("press on the course you want to delete.");
+	ActionData actData = pGUI->GetUserAction("press on the course or note you want to delete.");
 
 	int x, y;
 	if (actData.actType == DRAW_AREA)	
@@ -56,13 +78,21 @@ bool ActionDeleteCourse::Execute()
 		Course* pC = coursesloop(x, y, pReg);
 		if (pC == nullptr)
 		{
-			pGUI->PrintMsg("no course selected.");
+			StudyPlan* pS = pReg->getStudyPlay();
+			Notes* pN = notesloop(x, y, pReg);
+			if (pN != nullptr)
+			{
+				pS->DeleteNotes(pN);
+				return true;
+			}
+			else
+			pGUI->PrintMsg("no course or note selected.");
 		}
 		else
 		{
 			StudyPlan* pS = pReg->getStudyPlay();
 			pS->DeleteCourse(pC);
-			pGUI->PrintMsg("course is deleted.");
+			pGUI->GetUserAction("course is deleted.");
 
 		}
 	}
