@@ -74,6 +74,8 @@ bool ActionChangeCode::Execute()
 				Course* pC = new Course(newcode, CourseTitle, credit, CoReq, PreReq);
 				pC->setGfxInfo(gInfo);
 				pC->settype(pCRINF->type);
+				pC->setLHrs(pCRINF->lHrs);
+				pC->setPHrs(pCRINF->pHrs);
 				if (nx < (PLAN_YEAR_WIDTH) && nx>70 && ny < (520 + 105) && ny>(520 + 70))
 				{
 					pS->AddCourse(pC, 1, FALL);

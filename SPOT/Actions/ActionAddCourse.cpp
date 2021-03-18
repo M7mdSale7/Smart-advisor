@@ -80,6 +80,9 @@ bool ActionAddCourse::Execute()
 			vector<Course_Code>* MinorComp = &R->MinorCompulsory;
 			pC->setGfxInfo(gInfo);
 			pC->settype(pCRINF->type);
+			pC->setLHrs(pCRINF->lHrs);
+			pC->setPHrs(pCRINF->pHrs);
+			
 			for (int i = 0; i < MinorComp->size(); i++) //Setting type to Minor in case of minor
 			{
 				if (code == MinorComp->at(i))
@@ -279,8 +282,12 @@ bool ActionAddCourse::Execute()
 			//pReg->getGUI()->GetUserAction("Title: " + pC->getTitle()
 				//+ "| Credits: " + to_string(pC->getCredits())
 				//+ "| Type: " + pC->getType() + "| Prerequisite: " + pC->getPreq() + "| Corequisite " + pC->getCoreq() );
-
 		}
+		return true;
+	}
+	else
+	{
+		return false;
 	}
 		
 	//ActionShowCourseInfo(pReg, p, y).Execute();

@@ -31,12 +31,8 @@ bool ActionShowCourseInfo::Execute()
 
 			pReg->UpdateInterface();
 			
-			//7amasa's logic should be added her
+
 			showInfo(windptr, pC);
-			
-			//pGUI->PrintMsg("Title: " + pC->getTitle()
-			//	+ " , Credits: " + to_string(pC->getCredits())
-			//	+" Type: " + pC->getType() +" Prerequisite: " + pC->getPreq() + " Corequisite " + pC->getCoreq());
 
 
 
@@ -242,19 +238,13 @@ bool ActionShowCourseInfo::Execute()
 			}
 			
 			pReg->UpdateInterface();
-
-			//BASED ON 7AMASA'S FEATURE
-			//test
-			//image im;
-			//pWind->StoreImage(im, 0, 0, pWind->GetWidth(), pWind->GetHeight());
+\
 
 
 			//end test
 			showInfo(windptr, pC);
 			pGUI->GetUserAction("Press anywhere to deselect");
-			//pReg->getGUI()->GetUserAction("Title: " + pC->getTitle()
-			//	+ " , Credits: " + to_string(pC->getCredits())
-			//	+ " Type: " + pC->getType() + " Prerequisite: " + pC->getPreq() + " Corequisite " + pC->getCoreq());
+
 			
 			pC->setSelected(false);
 			return true;
