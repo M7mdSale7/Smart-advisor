@@ -13,6 +13,8 @@ class Course : public Drawable
 	const Course_Code code;	//course code: e.g. "CIE 202". This is the course ID
 	const string Title;		//course title: e.g. "Fundamentals of Computer Programming"
 	int credits;	//no. of course credits
+	int lHrs;
+	int pHrs;
 	int year;
 	//Type type;
 	SEMESTER semester;
@@ -35,6 +37,8 @@ public:
 	string getTitle() const;
 	string getCode() const;
 	int getCredits() const;
+	int getLHrs() const;
+	int getPHrs() const;
 	int getyear() const;
 	string gettype() const;
 	SEMESTER getsemester() const;

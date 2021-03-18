@@ -16,6 +16,10 @@ void ImportCatalog::readCatalog(vector<CourseInfo>* catalog) {
 		getline(sstream, token, ',');
 		c.Credits = stoi(token);
 		getline(sstream, token, ',');
+		c.lHrs = stoi(token);
+		getline(sstream, token, ',');
+		c.pHrs = stoi(token);
+		getline(sstream, token, ',');
 
 		if (token[0] == 'C') { //remember to check the input file if the C in Coreq is capital or small
 			sstream2.str(token);

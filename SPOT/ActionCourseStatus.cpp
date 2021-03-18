@@ -12,7 +12,7 @@ bool ActionCourseStatus::Execute() {
 	GUI* pGUI = pReg->getGUI();
 	//cout << "Blaa" << endl;
 	//pGUI->PrintMsg("Enter the Course Status (Done, In Progress, Pending)");
-	ActionData actionData = pGUI->GetUserAction("Press on a course.");
+	ActionData actionData = pGUI->GetUserAction("Course Status: Press on the course.");
 	//string courseStatus = pGUI->GetSrting();
 	int x, y;
 
@@ -22,16 +22,18 @@ bool ActionCourseStatus::Execute() {
 
 		Course* course = ActionDeleteCourse(pReg).coursesloop(x, y, pReg);
 
-		if (course) {
+		if (course) 
+		{
 			pGUI->PrintMsg("Current Course Status: " + course->getStatus() + 
-				". Enter Status (Done, In Progress, Pending, Replaced, Exempted, Transferred)");
+				". Enter Status Number 1)Done 2)In Progress 3)Pending 4)Replaced 5)Exempted 6)Transferred");
 			string courseStatus = pGUI->GetSrting();
 			
-			if (courseStatus == "Done" || courseStatus == "In Progress" || courseStatus == "Pending" || courseStatus == "Replaced" || 
-				courseStatus == "Exempted" || courseStatus == "Transferred") {
+			if (courseStatus == "1" || courseStatus == "2" || courseStatus == "3" || courseStatus == "4" || 
+				courseStatus == "5" || courseStatus == "6") 
+			{
 				course->setStatus(courseStatus);
-				if (courseStatus == "Done" || courseStatus == "Replaced" ||
-					courseStatus == "Exempted" || courseStatus == "Transferred")
+				if (courseStatus == "1" || courseStatus == "4" ||
+					courseStatus == "5" || courseStatus == "6")
 				{
 					course->setDone(true);
 					pGUI->PrintMsg("Enter Course Grade (A - A- - B+ ...)");
@@ -39,7 +41,7 @@ bool ActionCourseStatus::Execute() {
 					if (grade == "A" || grade == "A-" || grade == "B+" || grade == "B" || grade == "B-" || grade == "C+" || grade == "C" || grade == "C-" || grade == "F")
 						course->setGrade(grade);
 					else
-						pGUI->PrintMsg("Invalid Grade Input");
+						pGUI->PrintMsg("Invalid Grade Input:");
 				}
 				else
 					course->setDone(false);

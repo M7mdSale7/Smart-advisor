@@ -344,7 +344,7 @@ void StudyPlan::checkPlan(Registrar* R) const
 {
 	//checks if any errors from the checks functions is triggered.
 	//specific concise live message for each triggered error
-	int Ylocation = 305;
+	int Ylocation = 355;
 	if (!(CreditsCheck(R->getRules()).empty()))
 	{
 		R->getGUI()->printError("Semester credit limits violated!", 0, Ylocation);
@@ -365,7 +365,6 @@ void StudyPlan::checkPlan(Registrar* R) const
 	{
 		R->getGUI()->printError("Courses offerings violated!", 0, Ylocation);
 	}
-	
 }
 
 Course* StudyPlan::searchStudyPlan(Course_Code code) const {

@@ -4,6 +4,7 @@
 #include "..//GUI/GUI.h"
 #include "ActionChangeCode.h"
 #include <algorithm>
+#include "ActionShowCourseInfo.h"
 
 ActionChangeCode::ActionChangeCode(Registrar* p) : Action(p)
 {
@@ -151,7 +152,16 @@ bool ActionChangeCode::Execute()
 					pC->setsemester(SUMMER);
 				}
 				else
+				{
 					pGUI->PrintMsg("Error: Please press in semester area.");
+				}
+				window* pW = pGUI->getPwind();
+				pC->setSelected(true);
+				pReg->UpdateInterface();
+				ActionShowCourseInfo::showInfo(pW, pC);
+
+				pGUI->GetUserAction("press any where to dismiss");
+				pC->setSelected(false);
 			}
 		}
 
