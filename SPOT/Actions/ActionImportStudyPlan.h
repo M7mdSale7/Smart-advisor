@@ -8,5 +8,7 @@ class ActionImportStudyPlan : public Action
 public:
 	ActionImportStudyPlan(Registrar*);
 	bool virtual Execute();
+	void importCoursesInfo(ifstream& fin);
+	void importNotes(ifstream& fin);
 	virtual ~ActionImportStudyPlan ();
 };

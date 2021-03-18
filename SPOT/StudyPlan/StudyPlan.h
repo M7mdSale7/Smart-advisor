@@ -16,7 +16,6 @@ class StudyPlan:public Drawable
 
 	int concentration=0;
 	int DoubleConcentration=0;
-	string major; //stores the major of the student
 	vector<AcademicYear*> plan;	//plan is a list of academic years
 	string PlanNotes; 
 	vector<Notes*> PlanNotees;
@@ -28,7 +27,6 @@ public:
 	vector<Notes*>* getNvector();
 	int getConcentration() const;
 	int getConcentration2() const;
-	string getMajor() const;
 
 	//setters
 	void setConcentration(int);

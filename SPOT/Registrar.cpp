@@ -42,6 +42,16 @@ Rules* Registrar::getRules2()
 	return &RegRules2;
 }
 
+void Registrar::setMajor(string m)
+{
+	major = m;
+}
+
+string Registrar::getMajor() const
+{
+	return major;
+}
+
 //returns the study plan
 StudyPlan* Registrar::getStudyPlay() const
 {
@@ -305,7 +315,7 @@ void Registrar::Initialization() {
 	bool flag = true;
 	ifstream infile;
 	ifstream fin;
-	ImportRequiements().ImportReqs(fin, pGUI, Major, &RegRules);
+	setMajor(ImportRequiements().ImportReqs(fin, pGUI, Major, &RegRules));
 	if (RegRules.NofConcentrations != 0) {
 		pGUI->PrintMsg("Enter your Concentration number: ");
 		string Concentration = pGUI->GetSrting();

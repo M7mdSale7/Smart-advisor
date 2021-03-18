@@ -6,5 +6,5 @@
 class ImportRequiements
 {
 public:
-	void ImportReqs(ifstream& fin, GUI* pGUI, string Major, Rules* RegRules);
+	string ImportReqs(ifstream& fin, GUI* pGUI, string Major, Rules* RegRules);
 };

@@ -1,55 +1,65 @@
 #include "ImportRequiements.h"
 #include <sstream>
 
-void ImportRequiements::ImportReqs(ifstream& fin, GUI *pGUI, string Major, Rules* RegRules)
+string ImportRequiements::ImportReqs(ifstream& fin, GUI *pGUI, string Major, Rules* RegRules)
 {
 	ifstream infile;
 	string line;
 	bool flag = true;
+	string majorName;
 	while (flag) {
 		if (Major == "1") {
 			infile.open("majors requirements/CIE-Requirements.txt");//MajorsData.txt is a trial file for testing because no files for majors' rules has been shared with us
 			fin.open("CIE.txt");
+			majorName = "CIE";
 			flag = false;
 		}
 		else if (Major == "2") {
 			infile.open("majors requirements/SPC-Requirements.txt");
 			fin.open("SPC.txt");
+			majorName = "SPC";
 			flag = false;
 		}
 		else if (Major == "3") {
 			infile.open("majors requirements/ENV-Requirements.txt");
 			fin.open("ENV.txt");
+			majorName = "ENV";
 			flag = false;
 		}
 		else if (Major == "4") {
 			infile.open("majors requirements/REE-Requirements.txt");
 			fin.open("REE.txt");
+			majorName = "REE";
 			flag = false;
 		}
 		else if (Major == "5") {
 			infile.open("majors requirements/NANENG-Requirements.txt");
 			fin.open("NANENG.txt");
+			majorName = "NANENG";
 			flag = false;
 		}
 		else if (Major == "BMS") {
 			infile.open("majors requirements/BMS-Requirements.txt");
 			fin.open("BMS.txt");
+			majorName = "BMS";
 			flag = false;
 		}
 		else if (Major == "MATSCI") {
 			infile.open("MajorsData.txt");
 			fin.open("MATSCI.txt");
+			majorName = "MATSCI";
 			flag = false;
 		}
 		else if (Major == "NANSCI") {
 			infile.open("MajorsData.txt");
 			fin.open("NANSCI.txt");
+			majorName = "NANSCI";
 			flag = false;
 		}
 		else if (Major == "PEU") {
 			infile.open("MajorsData.txt");
 			fin.open("PEU.txt");
+			majorName = "PEU";
 			flag = false;
 		}
 		else {
@@ -149,4 +159,5 @@ void ImportRequiements::ImportReqs(ifstream& fin, GUI *pGUI, string Major, Rules
 			}
 		}
 	}
+	return majorName;
 }

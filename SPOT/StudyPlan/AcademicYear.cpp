@@ -225,7 +225,7 @@ AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, Registrar* R, stri
 	bool flag = false;
 	string yearName = *subline;
 	size_t k;
-	for (size_t s = 0; s < 4; s++) {
+	for (size_t s = 0; s < SEM_CNT + 1; s++) {
 		if (fin.eof()) break;
 		if (flag) {
 			getline(fin, line);
