@@ -17,7 +17,7 @@ bool ActionChangePlan::Execute()
 	StudyPlan* pSPlan = pReg->getStudyPlay();
 	//ImportCatalog().readCatalog(&pRules->CourseCatalog);
 
-	pGUI->PrintMsg("Enter your Major Number: 1)CIE  2)SPC  3)NANENG  4)ENV  5)REE ");
+	pGUI->PrintMsg("Enter your Major Number: 1)CIE  2)SPC  3)ENV  4)REE  5)NANENG ");
 	string Major = pGUI->GetSrting();
 	string line;
 	//bool flag = true;

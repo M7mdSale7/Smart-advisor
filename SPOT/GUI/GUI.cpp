@@ -352,6 +352,7 @@ const int GUI::getMenuItemWidth()
 
 void GUI::DrawAcademicYear(const AcademicYear* pY) 
 {
+	//drawing credit hours
 	//Drawing Big Rectenagle for each Academic Year
 
 	//string filename = "year" + tostring(i) + ".jpg";
@@ -402,6 +403,7 @@ void GUI::DrawAcademicYear(const AcademicYear* pY)
 	pWind->DrawInteger(gInfo.x - 65, 340, 3);
 	pWind->DrawInteger(gInfo.x - 65, 235, 4);
 	pWind->DrawInteger(gInfo.x - 65, 125, 5);
+
 
 	//Drawing notes area
 	pWind->SetPen(BLACK, 2);

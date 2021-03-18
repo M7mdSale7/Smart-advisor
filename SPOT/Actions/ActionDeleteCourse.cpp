@@ -62,7 +62,7 @@ bool ActionDeleteCourse::Execute()
 		{
 			StudyPlan* pS = pReg->getStudyPlay();
 			pS->DeleteCourse(pC);
-			pGUI->PrintMsg("course is deleted.");
+			pGUI->GetUserAction("course is deleted.");
 
 		}
 	}
