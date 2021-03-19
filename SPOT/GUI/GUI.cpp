@@ -566,6 +566,7 @@ ActionData GUI::mapMenuLocation(int x)
 	case ITM_ERROR: return ActionData{ ERRORR };
 	case ITM_SHOWDPND: return ActionData{ SHOW_DPND };
 	case ITM_CHANGE_PLAN: return ActionData{ CHANGE_PLAN };
+	case ITM_ADD_PETITION: return ActionData{ ADD_PETITION };
 	case ITM_EXIT: return ActionData{ EXIT };				//Exit The program
 	default: return ActionData{ MENU_BAR };	//A click on empty place in menu bar
 	}
@@ -620,6 +621,7 @@ ActionData GUI::GetUserActionNoFlush(string msg) const
 				case ITM_ERROR: return ActionData{ ERRORR };
 				case ITM_SHOWDPND: return ActionData{ SHOW_DPND };
 				case ITM_CHANGE_PLAN: return ActionData{ CHANGE_PLAN };
+				case ITM_ADD_PETITION: return ActionData{ ADD_PETITION };
 				case ITM_EXIT: return ActionData{ EXIT };				//Exit The program
 				default: return ActionData{ MENU_BAR };	//A click on empty place in menu bar
 				}
