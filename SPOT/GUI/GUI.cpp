@@ -61,7 +61,7 @@ void GUI::CreateMenu() const
 	MenuItemImages[ITM_ERROR] = "GUI\\Images\\Menu\\Error.jpg";
 	MenuItemImages[ITM_SHOWDPND] = "GUI\\Images\\Menu\\Menu_D.jpg";
 	MenuItemImages[ITM_CHANGE_PLAN] = "GUI\\Images\\Menu\\CHANGE_PLAN.jpg";
-	MenuItemImages[ITM_ADD_PETITION] = "GUI\\Images\\Menu\\Menu_AddCourse.jpg";
+	MenuItemImages[ITM_ADD_PETITION] = "GUI\\Images\\Menu\\Menu_AddPetition.jpg";
 	MenuItemImages[ITM_EXIT] = "GUI\\Images\\Menu\\Menu_exitt.jpg";
 
 
