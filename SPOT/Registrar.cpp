@@ -43,6 +43,16 @@ Rules* Registrar::getRules2()
 	return &RegRules2;
 }
 
+void Registrar::setMajor(string m)
+{
+	major = m;
+}
+
+string Registrar::getMajor() const
+{
+	return major;
+}
+
 //returns the study plan
 StudyPlan* Registrar::getStudyPlay() const
 {
@@ -80,10 +90,6 @@ Action* Registrar::CreateRequiredAction()
 				RequiredAction = new ActionChangeCode(this);
 				return RequiredAction;
 				break;
-			//case REORDER_CRS: //reorder_course action
-			//	RequiredAction = new ActionReorder(this);
-			//	return RequiredAction;
-			//	break;
 			case IMPORT: //import_study_plan action
 				RequiredAction = new ActionImportStudyPlan(this);
 				return RequiredAction;
@@ -141,50 +147,44 @@ Action* Registrar::CreateRequiredAction()
 			switch (actData.actType)
 			{
 			case ADD_CRS:
-				if (currentMsg != "Add course")
+				if (currentMsg != "Add Course")
 				{
-					currentMsg = "Add course";
+					currentMsg = "Add Course";
 					pGUI->PrintMsg(currentMsg);
 				}
 				break;
 			case ADD_NOTES:
-				if (currentMsg != "Add notes")
+				if (currentMsg != "Add Note")
 				{
-					currentMsg = "Add notes";
+					currentMsg = "Add Note";
 					pGUI->PrintMsg(currentMsg);
 				}
 				break;
 			case DEL_CRS: 
-				if (currentMsg != "Delete course")
+				if (currentMsg != "Delete course/Note")
 				{
-					currentMsg = "Delete course";
+					currentMsg = "Delete course/Note";
 					pGUI->PrintMsg(currentMsg);
 				}
 				break;
 			case EDIT_CRS: 
-				if (currentMsg != "Edit course code")
+				if (currentMsg != "Edit Course Code/Note")
 				{
-					currentMsg = "Edit course code";
+					currentMsg = "Edit Course Code/Note";
 					pGUI->PrintMsg(currentMsg);
 				}
 				break;
-			//case REORDER_CRS:
-			//	if (currentMsg != "Re course")
-			//	{
-			//		currentMsg = "Add course";
-			//		pGUI->PrintMsg(currentMsg);
-			//	}				break;
 			case IMPORT: 
-				if (currentMsg != "Import plan")
+				if (currentMsg != "Import Study Plan")
 				{
-					currentMsg = "Import plan";
+					currentMsg = "Import Study Plan";
 					pGUI->PrintMsg(currentMsg);
 				}
 				break;
 			case SAVE:
-				if (currentMsg != "Save plan")
+				if (currentMsg != "Save Study Plan")
 				{
-					currentMsg = "Save plan";
+					currentMsg = "Save Study Plan";
 					pGUI->PrintMsg(currentMsg);
 				}				break;
 			case CALC_GPA:
@@ -195,9 +195,9 @@ Action* Registrar::CreateRequiredAction()
 				}
 				break;
 			case MINOR_DEC:
-				if (currentMsg != "Declare a minor")
+				if (currentMsg != "Declare Minor")
 				{
-					currentMsg = "Declare a minor";
+					currentMsg = "Declare Minor";
 					pGUI->PrintMsg(currentMsg);
 				}
 				break;
@@ -209,16 +209,16 @@ Action* Registrar::CreateRequiredAction()
 				}
 				break;
 			case STATUS:
-				if (currentMsg != "Get course status")
+				if (currentMsg != "Get Course Status")
 				{
-					currentMsg = "Get course status";
+					currentMsg = "Get Course Status";
 					pGUI->PrintMsg(currentMsg);
 				}
 				break;
 			case EXIT:
-				if (currentMsg != "Exit program")
+				if (currentMsg != "Exit Program")
 				{
-					currentMsg = "Exit program";
+					currentMsg = "Exit Program";
 					pGUI->PrintMsg(currentMsg);
 				}
 				break;
@@ -237,16 +237,23 @@ Action* Registrar::CreateRequiredAction()
 				}
 				break;
 			case ERRORR:
-				if (currentMsg != "Get check report")
+				if (currentMsg != "Get Check Report")
 				{
-					currentMsg = "Get check report";
+					currentMsg = "Get Check Report";
 					pGUI->PrintMsg(currentMsg);
 				}
 				break;
 			case CHANGE_PLAN:
-				if (currentMsg != "Change major")
+				if (currentMsg != "Change Major")
 				{
-					currentMsg = "Change major";
+					currentMsg = "Change Major";
+					pGUI->PrintMsg(currentMsg);
+				}
+				break;
+			case ADD_PETITION:
+				if (currentMsg != "Add Petition")
+				{
+					currentMsg = "Add Petition";
 					pGUI->PrintMsg(currentMsg);
 				}
 				break;
@@ -310,7 +317,7 @@ void Registrar::Initialization() {
 	bool flag = true;
 	ifstream infile;
 	ifstream fin;
-	ImportRequiements().ImportReqs(fin, pGUI, Major, &RegRules);
+	setMajor(ImportRequiements().ImportReqs(fin, pGUI, Major, &RegRules));
 	if (RegRules.NofConcentrations != 0) {
 		pGUI->PrintMsg("Enter your Concentration number: ");
 		string Concentration = pGUI->GetSrting();
