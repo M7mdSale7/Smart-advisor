@@ -10,15 +10,14 @@ class Registrar;
 class StudyPlan:public Drawable
 {
 	int TotalCredits=0;		//total no. of credit hours for courses registred in this year
-	int TotalUnivCredits=0, TotalMajorCredits=0,
+	int ElecUnivCredits = 0, ReqUnivCredits = 0,
+		ReqMajorCredits = 0, ElecMajorCredits = 0,
 		TotalTrackCredits=0, TotalConcentrationCredits=0,
 		TotalMinorCredits=0;
 
 	int concentration=0;
 	int DoubleConcentration=0;
-	string major; //stores the major of the student
 	vector<AcademicYear*> plan;	//plan is a list of academic years
-	string PlanNotes; 
 	vector<Notes*> PlanNotees;
 public:
 	StudyPlan();

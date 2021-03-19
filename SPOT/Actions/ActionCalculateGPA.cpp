@@ -6,12 +6,21 @@ ActionCalculateGPA::ActionCalculateGPA(Registrar* p ) : Action(p)
 
 bool ActionCalculateGPA::Execute()
 {
+
+
+
+
+
 	//Variables
 	double Total = 0.0; //Total quality points
 	double TotalC = 0.0; //Total credits
+	string choice;
 	GUI* pGUI = pReg->getGUI(); //pointer to GUI
 	StudyPlan* pS = pReg->getStudyPlay(); //Getting study plan to get courses of GPA
 	vector<AcademicYear*>* Plan = pS->getSPvector(); //Years
+
+	//pGUI->printMsg("Choose: 1)Calculate GPA  2)Enter grades");
+	//int year = pGUI->getRangeInput(1, 5, "Enter the Year you want to calculate the GPA for (Example : 1)");
 	pGUI->PrintMsg("Enter the Year you want to calculate the GPA for (Example: 1) , if you want CGPA , Enter CGPA");
 	string year = pGUI->GetSrting();
 	//Any Year

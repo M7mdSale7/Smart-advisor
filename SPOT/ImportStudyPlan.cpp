@@ -22,14 +22,14 @@ void ImportStudyPlan::StudyPlanImport(ifstream& fin, Registrar* P) {
 	stringstream s_stream(line);
 	getline(s_stream, subline, ',');
 	int j = 0;
-	while (!fin.eof()) {
+	while (!fin.eof() && !subline.empty()) {
 		AcademicYear* year = nullptr;
 		years->push_back(year->ImportAcademicYear(fin, P, ptr, s_stream, j));
 		j++;
 		delete year;
 	}
 
-	int x = 905;
+	/*int x = 905;
 	int y = 128;
 	vector<Notes*>* pN = plan->getNvector();
 	graphicsInfo gInfo;
@@ -40,5 +40,5 @@ void ImportStudyPlan::StudyPlanImport(ifstream& fin, Registrar* P) {
 		pN->at(i)->setGfxInfo(gInfo);
 		pN->at(i)->DrawMe(P->getGUI());
 		y += NOTES_HEIGHT;
-	}
+	}*/
 }

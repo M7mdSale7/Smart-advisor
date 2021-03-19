@@ -61,7 +61,7 @@ void GUI::CreateMenu() const
 	MenuItemImages[ITM_ERROR] = "GUI\\Images\\Menu\\Error.jpg";
 	MenuItemImages[ITM_SHOWDPND] = "GUI\\Images\\Menu\\Menu_D.jpg";
 	MenuItemImages[ITM_CHANGE_PLAN] = "GUI\\Images\\Menu\\CHANGE_PLAN.jpg";
-	MenuItemImages[ITM_ADD_PETITION] = "GUI\\Images\\Menu\\Menu_AddCourse.jpg";
+	MenuItemImages[ITM_ADD_PETITION] = "GUI\\Images\\Menu\\Menu_AddPetition.jpg";
 	MenuItemImages[ITM_EXIT] = "GUI\\Images\\Menu\\Menu_exitt.jpg";
 
 
@@ -107,7 +107,7 @@ string GUI::GetSrting() const
 		{
 		case 27: //ESCAPE key is pressed
 			PrintMsg("");
-			return ""; //returns nothing as user has cancelled the input
+			return "ESC"; //returns nothing as user has cancelled the input
 
 		case 13:		//ENTER key is pressed
 			return userInput;
@@ -130,6 +130,32 @@ string GUI::GetSrting() const
 window* GUI::getPwind()
 {
 	return pWind;
+}
+
+int GUI::getRangeInput(int low, int high, string msg)
+{
+	do
+	{
+		string input;
+		PrintMsg(msg);
+		input = GetSrting();
+		if (input == "ESC")
+		{
+			return 0;
+		}
+		else if (low <= atoi(input.c_str()) && atoi(input.c_str()) <= high)
+		{
+			return atoi(input.c_str());
+		}
+		else
+		{
+			PrintMsg("Invalid input! Try again or press ESC to cancel.");
+			Sleep(1750);
+			PrintMsg(msg);
+		}
+	} while (true);
+	
+
 }
 
 
@@ -505,32 +531,13 @@ ActionData GUI::GetUserAction(string msg) const
 			//[1] If user clicks on the Menu bar
 			if (y >= 0 && y < MenuBarHeight)
 			{
+				
 				//Check whick Menu item was clicked
 				//==> This assumes that menu items are lined up horizontally <==
-				int ClickedItemOrder = (x / MenuItemWidth);
 				//Divide x coord of the point clicked by the menu item width (int division)
 				//if division result is 0 ==> first item is clicked, if 1 ==> 2nd item and so on
-
-				switch (ClickedItemOrder)
-				{
-				case ITM_ADD: return ActionData{ ADD_CRS };				//Add course
-				case ITM_ADD_NOTES: return ActionData{ ADD_NOTES };		//Add notes
-				case ITM_DELETE: return ActionData{ DEL_CRS };			//Delete course or note
-				case ITM_Double: return ActionData{ Double };			//Asking for double major or concentration
-				case ITM_SAVE_PLAN: return ActionData{ SAVE };			//Action saving study plan
-				case ITM_EDITCOURSECODE: return ActionData{ EDIT_CRS }; //Edit code of an existing course
-				case ITM_IMPORT: return ActionData{ IMPORT };			//Import a studyplan
-				case ITM_GPA: return ActionData{ CALC_GPA };			//Calculate GPA
-				case ITM_MINOR: return ActionData{ MINOR_DEC };			//Add a minor
-				case ITM_SEARCH: return ActionData{ SEARCH };			
-				case ITM_STATUS: return ActionData{ STATUS };			
-				case ITM_ERROR: return ActionData{ ERRORR };
-				case ITM_SHOWDPND: return ActionData{ SHOW_DPND };
-				case ITM_CHANGE_PLAN: return ActionData{ CHANGE_PLAN };
-				case ITM_ADD_PETITION: return ActionData{ ADD_PETITION };
-				case ITM_EXIT: return ActionData{ EXIT };				//Exit The program
-				default: return ActionData{ MENU_BAR };	//A click on empty place in menu bar
-				}
+				return mapMenuLocation(x);
+				
 			}
 
 			//[2] User clicks on the drawing area
@@ -546,7 +553,7 @@ ActionData GUI::GetUserAction(string msg) const
 
 }
 
-ActionData GUI::mapMenuLocation(int x)
+ActionData GUI::mapMenuLocation(int x) const
 {
 	int ClickedItemOrder = (x / MenuItemWidth);
 
@@ -601,30 +608,9 @@ ActionData GUI::GetUserActionNoFlush(string msg) const
 			{
 				//Check whick Menu item was clicked
 				//==> This assumes that menu items are lined up horizontally <==
-				int ClickedItemOrder = (x / MenuItemWidth);
 				//Divide x coord of the point clicked by the menu item width (int division)
 				//if division result is 0 ==> first item is clicked, if 1 ==> 2nd item and so on
-
-				switch (ClickedItemOrder)
-				{
-				case ITM_ADD: return ActionData{ ADD_CRS };				//Add course
-				case ITM_ADD_NOTES: return ActionData{ ADD_NOTES };		//Add notes
-				case ITM_DELETE: return ActionData{ DEL_CRS };			//Delete course or note
-				case ITM_Double: return ActionData{ Double };			//Asking for double major or concentration
-				case ITM_SAVE_PLAN: return ActionData{ SAVE };			//Action saving study plan
-				case ITM_EDITCOURSECODE: return ActionData{ EDIT_CRS }; //Edit code of an existing course
-				case ITM_IMPORT: return ActionData{ IMPORT };			//Import a studyplan
-				case ITM_GPA: return ActionData{ CALC_GPA };			//Calculate GPA
-				case ITM_MINOR: return ActionData{ MINOR_DEC };			//Add a minor
-				case ITM_SEARCH: return ActionData{ SEARCH };
-				case ITM_STATUS: return ActionData{ STATUS };
-				case ITM_ERROR: return ActionData{ ERRORR };
-				case ITM_SHOWDPND: return ActionData{ SHOW_DPND };
-				case ITM_CHANGE_PLAN: return ActionData{ CHANGE_PLAN };
-				case ITM_ADD_PETITION: return ActionData{ ADD_PETITION };
-				case ITM_EXIT: return ActionData{ EXIT };				//Exit The program
-				default: return ActionData{ MENU_BAR };	//A click on empty place in menu bar
-				}
+				return mapMenuLocation(x);
 			}
 
 			//[2] User clicks on the drawing area

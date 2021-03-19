@@ -13,7 +13,8 @@ class Registrar;
 class AcademicYear:public Drawable
 {
 	int TotalCredits=0;		//total no. of credit hours for courses registred in this year
-	int TotalUnivCredits=0, TotalMajorCredits=0,
+	int ReqUnivCredits = 0, ElecUnivCredits = 0,
+		ReqMajorCredits = 0, ElecMajorCredits = 0,
 		TotalTrackCredits=0, TotalConcentrationCredits=0,
 		TotalMinorCredits=0;
 
