@@ -49,109 +49,109 @@
       <Filter>Actions</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\jpeg\jcomapi.c">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\jpeg\jcparam.c">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\jpeg\jdapimin.c">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\jpeg\jdapistd.c">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\jpeg\jdatasrc.c">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\jpeg\jdcoefct.c">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\jpeg\jdcolor.c">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\jpeg\jddctmgr.c">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\jpeg\jdhuff.c">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\jpeg\jdinput.c">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\jpeg\jdmainct.c">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\jpeg\jdmarker.c">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\jpeg\jdmaster.c">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\jpeg\jdmerge.c">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\jpeg\jdphuff.c">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\jpeg\jdpostct.c">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\jpeg\jdsample.c">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\jpeg\jdtrans.c">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\jpeg\jerror.c">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\jpeg\jidctflt.c">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\jpeg\jidctfst.c">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\jpeg\jidctint.c">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\jpeg\jidctred.c">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\jpeg\jmemmgr.c">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\jpeg\jmemnobs.c">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\jpegload.c">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\jpeg\jquant1.c">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\jpeg\jquant2.c">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\jpeg\jutils.c">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\keyqueue.cpp">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\CMUgraphics.cpp">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\mousequeue.cpp">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\windowinput.cpp">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\image.cpp">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\colors.cpp">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="Actions\exit.cpp">
       <Filter>Actions</Filter>
@@ -169,10 +169,10 @@
       <Filter>Imports</Filter>
     </ClCompile>
     <ClCompile Include="GUI\Drawable.cpp">
-      <Filter>Actions\GUI</Filter>
+      <Filter>GUI</Filter>
     </ClCompile>
     <ClCompile Include="GUI\GUI.cpp">
-      <Filter>Actions\GUI</Filter>
+      <Filter>GUI</Filter>
     </ClCompile>
     <ClCompile Include="StudyPlan\AcademicYear.cpp">
       <Filter>Study plan</Filter>
@@ -249,61 +249,61 @@
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="GUI\CMUgraphicsLib\jpeg\jconfig.h">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClInclude>
     <ClInclude Include="GUI\CMUgraphicsLib\jpeg\jdct.h">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClInclude>
     <ClInclude Include="GUI\CMUgraphicsLib\jpeg\jdhuff.h">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClInclude>
     <ClInclude Include="GUI\CMUgraphicsLib\jpeg\jerror.h">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClInclude>
     <ClInclude Include="GUI\CMUgraphicsLib\jpeg\jinclude.h">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClInclude>
     <ClInclude Include="GUI\CMUgraphicsLib\jpeg\jmemsys.h">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClInclude>
     <ClInclude Include="GUI\CMUgraphicsLib\jpeg\jmorecfg.h">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClInclude>
     <ClInclude Include="GUI\CMUgraphicsLib\jpeg\jpegint.h">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClInclude>
     <ClInclude Include="GUI\CMUgraphicsLib\jpeg\jpeglib.h">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClInclude>
     <ClInclude Include="GUI\CMUgraphicsLib\jpegload.h">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClInclude>
     <ClInclude Include="GUI\CMUgraphicsLib\jpeg\jversion.h">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClInclude>
     <ClInclude Include="GUI\CMUgraphicsLib\keyqueue.h">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClInclude>
     <ClInclude Include="GUI\CMUgraphicsLib\CMUgraphics.h">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClInclude>
     <ClInclude Include="GUI\CMUgraphicsLib\mousequeue.h">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClInclude>
     <ClInclude Include="GUI\CMUgraphicsLib\windowinput.h">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClInclude>
     <ClInclude Include="GUI\CMUgraphicsLib\version.h">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClInclude>
     <ClInclude Include="GUI\CMUgraphicsLib\error.h">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClInclude>
     <ClInclude Include="GUI\CMUgraphicsLib\image.h">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClInclude>
     <ClInclude Include="GUI\CMUgraphicsLib\colors.h">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </ClInclude>
     <ClInclude Include="Actions\exit.h">
       <Filter>Actions</Filter>
@@ -321,10 +321,10 @@
       <Filter>Imports</Filter>
     </ClInclude>
     <ClInclude Include="GUI\GUI.h">
-      <Filter>Actions\GUI</Filter>
+      <Filter>GUI</Filter>
     </ClInclude>
     <ClInclude Include="GUI\Drawable.h">
-      <Filter>Actions\GUI</Filter>
+      <Filter>GUI</Filter>
     </ClInclude>
     <ClInclude Include="StudyPlan\AcademicYear.h">
       <Filter>Study plan</Filter>
@@ -350,10 +350,10 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="GUI\CMUgraphicsLib\Manual.txt">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </Text>
     <Text Include="GUI\CMUgraphicsLib\Readme.txt">
-      <Filter>Actions\GUI\CMU</Filter>
+      <Filter>GUI\CMU</Filter>
     </Text>
   </ItemGroup>
   <ItemGroup>
@@ -366,10 +366,10 @@
     <Filter Include="Study plan">
       <UniqueIdentifier>{b94c2238-ef71-4241-8b14-ede158c38f7c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Actions\GUI">
+    <Filter Include="GUI">
       <UniqueIdentifier>{bf529869-a928-46e6-a114-de830aa1da6e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Actions\GUI\CMU">
+    <Filter Include="GUI\CMU">
       <UniqueIdentifier>{a7899a3f-aad5-483b-8992-7637e007ece4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>

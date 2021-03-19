@@ -39,7 +39,10 @@ public:
 	AcademicYear* ImportAcademicYear(ifstream& fin, Registrar* R, string* subline, stringstream& s_stream, int j);
 	void saveAcademicYear(int year,ofstream&) const;
 	vector<OverUnder> checkYearSemCredits(Rules*) const; //returns true only if each semester in the year is valid in terms of credits
-	bool checksemesteroff(Rules*) const;
+
+	int getSemesterCredits(SEMESTER sem) const;
+	int getSemesterLHrs(SEMESTER sem) const;
+	int getSemesterPHrs(SEMESTER sem) const;
 
 	Course* searchAcademicYear(Course_Code code) const;
 	Course* searchSemester(Course_Code code, SEMESTER semester) const;

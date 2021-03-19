@@ -42,6 +42,10 @@ public:
 
 	void virtual DrawMe(GUI*) const;
 
+	int getSemesterCredits(int year, SEMESTER sem) const;
+	int getSemesterLHrs(int year, SEMESTER sem) const;
+	int getSemesterPHrs(int year, SEMESTER sem) const;
+
 	int creditsOfDoneCourses() const;
 	string StudentLevel() const;
 	Course* searchStudyPlan(Course_Code) const;

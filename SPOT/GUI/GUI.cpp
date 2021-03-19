@@ -403,16 +403,29 @@ void GUI::DrawAcademicYear(const AcademicYear* pY)
 		pWind->SetBrush(LIGHTGREY);
 		pWind->SetPen(BLACK, 2);
 		pWind->DrawRectangle(gInfo.x - 40, gInfo.y +(((SEM_CNT * 35) / SEM_CNT) * i), gInfo.x + 34, gInfo.y + ((SEM_CNT * 35) / SEM_CNT) * (i + 1));
+		SEMESTER sem;
 		if (i == 2)
+		{
 			Semester = "FALL";
+			sem = FALL;
+		}
 		else if (i == 1)
+		{
 			Semester = "SPRING";
+			sem = SPRING;
+		}
 		else if (i == 0)
+		{
 			Semester = "SUMMER";
-		pWind->SetFont(35 * 0.5, BOLD, BY_NAME, "Gramound");
+			sem = SUMMER;
+		}
+		pWind->SetFont(35 * 0.4, BOLD, BY_NAME, "Gramound");
 		//pWind->SetPen(DARKRED);
 		pWind->SetPen(BLACK, 2);
-		pWind->DrawString(gInfo.x - 35, gInfo.y + 10 +(35*SEM_CNT) / SEM_CNT * i, Semester);
+		pWind->DrawString(gInfo.x - 35, gInfo.y + 2 +(35*SEM_CNT) / SEM_CNT * i, Semester);
+		pWind->DrawString(gInfo.x - 35, gInfo.y + 15 + (35 * SEM_CNT) / SEM_CNT * i,
+			"Cr " + to_string(pY->getSemesterCredits(sem)) + "(" + to_string(pY->getSemesterLHrs(sem))
+			+ "+" + to_string(pY->getSemesterPHrs(sem)) + ")");
 	}
 
 	//Writing the number of years
