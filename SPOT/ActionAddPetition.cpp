@@ -8,13 +8,13 @@
 using namespace std;
 
 ActionAddPetition::ActionAddPetition(Registrar* P) : Action(P) {
-	preRequisitePetition = new vector<vector<Course_Code>>(2);
+	
 }
 
 
 bool ActionAddPetition::Execute() {
 	GUI* pGUI = pReg->getGUI();
-	pGUI->PrintMsg("1) Course Petition. 2) Overload Petition.");
+	pGUI->PrintMsg("1) Course Petition. 2) Overload Petition. 3) Show Petitions.");
 	string choice = pGUI->GetSrting();
 
 	if (choice == "1") {
@@ -28,7 +28,7 @@ bool ActionAddPetition::Execute() {
 			Course* pC = ActionDeleteCourse(pReg).coursesloop(x, y, pReg);
 			if (pC == nullptr)
 			{
-				pGUI->PrintMsg("No Course is selected.");//see its reaction on the GUI
+				pGUI->GetUserAction("No Course is selected.");
 			}
 			else
 			{
@@ -60,6 +60,23 @@ bool ActionAddPetition::Execute() {
 		}
 		if (!check)
 			pGUI->GetUserAction("Invalid Click.");
+	}
+	else if (choice == "3") {
+		StudyPlan* pSPlan = pReg->getStudyPlay();
+		vector<AcademicYear*>* plan = pSPlan->getSPvector();
+		vector <Course*> PetitionCourses = pSPlan->getPetitionCourses();
+
+		for (auto course : PetitionCourses) {//show Petition Courses
+			course->setSelected(true);
+		}
+		pReg->UpdateInterface();
+
+		pSPlan->selectOverloadedSemesters(pGUI);//show Petition Semesters
+		pGUI->GetUserAction("Press anywhere to deselect");
+
+		for (auto course : PetitionCourses) {
+			course->setSelected(false);
+		}
 	}
 
 	return true;

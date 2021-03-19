@@ -14,6 +14,7 @@
 #include "../SPOT/Actions/ActionErrors.h"
 #include "ActionAddPetition.h"
 #include "ActionCourseStatus.h"
+//#include "ActionGrade.h"
 #include "ActionChangePlan.h"
 #include "ImportStudyPlan.h"
 #include "Actions/exit.h"
@@ -138,8 +139,11 @@ Action* Registrar::CreateRequiredAction()
 				RequiredAction = new ActionAddPetition(this);
 				return RequiredAction;
 				break;
+			/*case ADD_GRADE:
+				RequiredAction = new ActionGrade(this);
+				return RequiredAction;
+				break;*/
 			}
-		
 		}
 		else
 		{

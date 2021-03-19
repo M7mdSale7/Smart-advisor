@@ -195,6 +195,7 @@
     <ClCompile Include="ActionAddPetition.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="ActionGrade.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DEFs.h" />
@@ -344,6 +345,7 @@
     <ClInclude Include="ActionAddPetition.h">
       <Filter>Actions</Filter>
     </ClInclude>
+    <ClInclude Include="ActionGrade.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
@@ -359,6 +361,12 @@
   <ItemGroup>
     <Filter Include="Actions">
       <UniqueIdentifier>{58bb8afe-9bb0-47d0-9894-b4367a537f95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI">
+      <UniqueIdentifier>{bf529869-a928-46e6-a114-de830aa1da6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\CMU">
+      <UniqueIdentifier>{a7899a3f-aad5-483b-8992-7637e007ece4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Imports">
       <UniqueIdentifier>{58462f99-20e8-4608-8c17-e9e74730686e}</UniqueIdentifier>

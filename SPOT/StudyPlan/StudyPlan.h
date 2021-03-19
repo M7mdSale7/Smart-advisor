@@ -27,6 +27,8 @@ public:
 	vector<Notes*>* getNvector();
 	int getConcentration() const;
 	int getConcentration2() const;
+	string getMajor() const;
+	vector<Course*> getPetitionCourses() const;
 
 	//setters
 	void setConcentration(int);
@@ -51,6 +53,7 @@ public:
 	Course* searchStudyPlan(Course_Code) const;
 	Course* searchYear(Course_Code, int) const;
 	Course* searchSemester(Course_Code, int, SEMESTER) const;
+	Course* searchSelectedCourse() const;
 	
 	//checks on the study plan
 	vector<string> checkMinor(Rules*);
@@ -65,6 +68,8 @@ public:
 	vector <Course_Code> checkOfferings(Rules*) const;
 
 	void checkPlan(Registrar* R) const; //exploits checks to show live messages of issues
+
+	void selectOverloadedSemesters(GUI*) const;
 	
 	virtual ~StudyPlan();
 };

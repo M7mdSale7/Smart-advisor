@@ -7,7 +7,6 @@
 class ActionAddPetition :
     public Action
 {
-	vector <vector<Course_Code>>* preRequisitePetition;
 public:
 	ActionAddPetition(Registrar*);
 	bool virtual Execute();

@@ -3,7 +3,6 @@
 #include <fstream>
 
 Course::Course(){
-	//petition = new Petition;
 	petition = false;
 }
 Course::Course(Course_Code c_code, string c_title, int c_crd, vector<Course_Code> c_CoReq, vector<Course_Code> c_PreReq):code(c_code),Title(c_title)
@@ -12,8 +11,9 @@ Course::Course(Course_Code c_code, string c_title, int c_crd, vector<Course_Code
 	CoReq = c_CoReq;
 	PreReq = c_PreReq;
 	filter = true;
+	Status = "Done";
+	Done = true;
 	petition = false;
-	//petition = new Petition;
 }
 Course::Course(Course_Code r_code, string r_title, int crd):code(r_code),Title(r_title)
 {
@@ -23,7 +23,6 @@ Course::Course(Course_Code r_code, string r_title, int crd):code(r_code),Title(r
 	Status = "Done";
 	Done = true;
 	petition = false;
-	//petition = new Petition;
 }
 
 Course::~Course()
@@ -165,11 +164,13 @@ void Course::DrawMe(GUI* pG) const
 	pG->DrawCourse(this);
 }
 
-bool Course::setGrade(string Gradee)
+bool Course::setGrade(string grade)
 {
-	if (Gradee == "A" || Gradee == "A-" || Gradee == "B+" || Gradee == "B" || Gradee == "B-" || Gradee == "C+" || Gradee == "C" || Gradee == "C-" || Gradee == "F")
+	if (grade == "A" || grade == "A-" || grade == "B+" || grade == "B" || grade == "B-" ||
+		grade == "C+" || grade == "C" || grade == "C-" || grade == "F" || grade == "P" ||
+		grade == "I" || grade == "W" || grade == "WP" || grade == "WF" || grade == "IP")
 	{
-		this->Grade = Gradee;
+		this->Grade = grade;
 		return true;
 	}
 	else
@@ -257,5 +258,6 @@ bool Course::hasPetition() const {
 }
 
 void Course::setPetition(bool petition) {
+
 	this->petition = petition;
 }
