@@ -57,7 +57,6 @@ void GUI::CreateMenu() const
 	MenuItemImages[ITM_GPA] = "GUI\\Images\\Menu\\Menu_GPA.jpg";
 	MenuItemImages[ITM_MINOR] = "GUI\\Images\\Menu\\MinorDec.jpg";
 	MenuItemImages[ITM_SEARCH] = "GUI\\Images\\Menu\\Search.jpg";
-	MenuItemImages[ITM_STATUS] = "GUI\\Images\\Menu\\status.jpg";
 	MenuItemImages[ITM_ERROR] = "GUI\\Images\\Menu\\Error.jpg";
 	MenuItemImages[ITM_SHOWDPND] = "GUI\\Images\\Menu\\Menu_D.jpg";
 	MenuItemImages[ITM_CHANGE_PLAN] = "GUI\\Images\\Menu\\CHANGE_PLAN.jpg";
@@ -246,7 +245,7 @@ void GUI::DrawCourse(const Course* pCrs)
 		}
 		graphicsInfo gInfo = pCrs->getGfxInfo();
 		pWind->DrawRectangle(gInfo.x, gInfo.y, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT);
-		pWind->DrawLine(gInfo.x, gInfo.y + CRS_HEIGHT / 2, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT / 2);
+		pWind->DrawLine(gInfo.x, gInfo.y + CRS_HEIGHT / 2, gInfo.x + CRS_WIDTH-2, gInfo.y + CRS_HEIGHT / 2);
 
 		//Write the course code and credit hours.
 		int Code_x = gInfo.x + CRS_WIDTH * 0.08;
@@ -403,16 +402,29 @@ void GUI::DrawAcademicYear(const AcademicYear* pY)
 		pWind->SetBrush(LIGHTGREY);
 		pWind->SetPen(BLACK, 2);
 		pWind->DrawRectangle(gInfo.x - 40, gInfo.y +(((SEM_CNT * 35) / SEM_CNT) * i), gInfo.x + 34, gInfo.y + ((SEM_CNT * 35) / SEM_CNT) * (i + 1));
+		SEMESTER sem;
 		if (i == 2)
+		{
 			Semester = "FALL";
+			sem = FALL;
+		}
 		else if (i == 1)
+		{
 			Semester = "SPRING";
+			sem = SPRING;
+		}
 		else if (i == 0)
+		{
 			Semester = "SUMMER";
-		pWind->SetFont(35 * 0.5, BOLD, BY_NAME, "Gramound");
+			sem = SUMMER;
+		}
+		pWind->SetFont(35 * 0.4, BOLD, BY_NAME, "Gramound");
 		//pWind->SetPen(DARKRED);
 		pWind->SetPen(BLACK, 2);
-		pWind->DrawString(gInfo.x - 35, gInfo.y + 10 +(35*SEM_CNT) / SEM_CNT * i, Semester);
+		pWind->DrawString(gInfo.x - 35, gInfo.y + 2 +(35*SEM_CNT) / SEM_CNT * i, Semester);
+		pWind->DrawString(gInfo.x - 35, gInfo.y + 15 + (35 * SEM_CNT) / SEM_CNT * i,
+			"Cr " + to_string(pY->getSemesterCredits(sem)) + "(" + to_string(pY->getSemesterLHrs(sem))
+			+ "+" + to_string(pY->getSemesterPHrs(sem)) + ")");
 	}
 
 	//Writing the number of years
@@ -569,7 +581,6 @@ ActionData GUI::mapMenuLocation(int x) const
 	case ITM_GPA: return ActionData{ CALC_GPA };			//Calculate GPA
 	case ITM_MINOR: return ActionData{ MINOR_DEC };			//Add a minor
 	case ITM_SEARCH: return ActionData{ SEARCH };
-	case ITM_STATUS: return ActionData{ STATUS };
 	case ITM_ERROR: return ActionData{ ERRORR };
 	case ITM_SHOWDPND: return ActionData{ SHOW_DPND };
 	case ITM_CHANGE_PLAN: return ActionData{ CHANGE_PLAN };

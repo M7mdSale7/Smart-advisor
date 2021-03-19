@@ -30,7 +30,6 @@ class GUI
 		ITM_GPA,		//calculate student GPA
 		ITM_MINOR,		//declare a minor
 		ITM_SEARCH,		//search by applying filters
-		ITM_STATUS,		//display course current status
 		ITM_ERROR,		//get report of errors
 		ITM_SHOWDPND,	//show dependencies item
 		ITM_EXIT,		//Exit item

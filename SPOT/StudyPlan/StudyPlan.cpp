@@ -454,6 +454,42 @@ string StudyPlan::StudentLevel() const {
 		return string("Senior");
 }
 
+int StudyPlan::getSemesterCredits(int year, SEMESTER sem) const
+{
+	if (plan.size() < year || year < 1)
+	{
+		return 0;
+	}
+	else
+	{
+		return plan.at(year - 1)->getSemesterCredits(sem);
+	}
+}
+
+int StudyPlan::getSemesterLHrs(int year, SEMESTER sem) const
+{
+	if (plan.size() < year || year < 1)
+	{
+		return 0;
+	}
+	else
+	{
+		return plan.at(year - 1)->getSemesterLHrs(sem);
+	}
+}
+
+int StudyPlan::getSemesterPHrs(int year, SEMESTER sem) const
+{
+	if (plan.size() < year || year < 1)
+	{
+		return 0;
+	}
+	else
+	{
+		return plan.at(year - 1)->getSemesterPHrs(sem);
+	}
+}
+
 int StudyPlan::creditsOfDoneCourses() const {
 	int credits = 0;
 	for (int i = 0; i < plan.size(); i++) {

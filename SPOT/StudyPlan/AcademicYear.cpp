@@ -27,6 +27,26 @@ AcademicYear::~AcademicYear()
 	}
 }
 
+int AcademicYear::getSemesterLHrs(SEMESTER sem) const
+{
+	int semesterLHrs = 0;
+	for (auto itrCourse : YearCourses[sem])
+	{
+		semesterLHrs += itrCourse->getLHrs();
+	}
+	return semesterLHrs;
+}
+
+int AcademicYear::getSemesterPHrs(SEMESTER sem) const
+{
+		int semesterPHrs = 0;
+		for (auto itrCourse : YearCourses[sem])
+		{
+			semesterPHrs += itrCourse->getPHrs();
+		}
+		return semesterPHrs;
+}
+
 //Adds a course to this year in the spesified semester
 bool AcademicYear::AddCourse(Course* pC, SEMESTER sem)
 {
@@ -197,10 +217,6 @@ vector<OverUnder> AcademicYear::checkYearSemCredits(Rules* R) const
 	return notSatisfying;
 }
 
-bool AcademicYear::checksemesteroff(Rules*) const
-{
-	return false;
-}
 
 void AcademicYear::DrawMe(GUI* pGUI) const
 {
@@ -223,6 +239,16 @@ void AcademicYear::DrawMe(GUI* pGUI) const
 		}
 	}
 
+}
+
+int AcademicYear::getSemesterCredits(SEMESTER sem) const
+{
+	int semesterCredits = 0;
+	for (auto itrCourse : YearCourses[sem])
+	{
+		semesterCredits += itrCourse->getCredits();
+	}
+	return semesterCredits;
 }
 
 AcademicYear* AcademicYear::ImportAcademicYear(ifstream& fin, Registrar* R, string *subline, stringstream& s_stream, int j) {
