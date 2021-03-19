@@ -3,16 +3,25 @@
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Registrar.cpp" />
+    <ClCompile Include="StudyPlan\AcademicYear.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
     <ClCompile Include="Actions\ActionAddCourse.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
     <ClCompile Include="Actions\ActionAddNotes.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="ActionAddPetition.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
     <ClCompile Include="Actions\ActionCalculateGPA.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
     <ClCompile Include="Actions\ActionChangeCode.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="ActionChangePlan.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
     <ClCompile Include="ActionCourseStatus.cpp">
@@ -28,6 +37,9 @@
       <Filter>Actions</Filter>
     </ClCompile>
     <ClCompile Include="Actions\ActionFilters.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="ActionGrade.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
     <ClCompile Include="Actions\ActionImportStudyPlan.cpp">
@@ -47,6 +59,36 @@
     </ClCompile>
     <ClCompile Include="ActionShowDependencies.cpp">
       <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI\CMUgraphicsLib\CMUgraphics.cpp">
+      <Filter>GUI\CMU</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI\CMUgraphicsLib\colors.cpp">
+      <Filter>GUI\CMU</Filter>
+    </ClCompile>
+    <ClCompile Include="Courses\Course.cpp">
+      <Filter>study plan</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\exit.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI\GUI.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI\CMUgraphicsLib\image.cpp">
+      <Filter>GUI\CMU</Filter>
+    </ClCompile>
+    <ClCompile Include="ImportCatalog.cpp">
+      <Filter>Imports</Filter>
+    </ClCompile>
+    <ClCompile Include="ImportOffering.cpp">
+      <Filter>Imports</Filter>
+    </ClCompile>
+    <ClCompile Include="ImportRequiements.cpp">
+      <Filter>Imports</Filter>
+    </ClCompile>
+    <ClCompile Include="ImportStudyPlan.cpp">
+      <Filter>Imports</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\jpeg\jcomapi.c">
       <Filter>GUI\CMU</Filter>
@@ -138,69 +180,32 @@
     <ClCompile Include="GUI\CMUgraphicsLib\keyqueue.cpp">
       <Filter>GUI\CMU</Filter>
     </ClCompile>
-    <ClCompile Include="GUI\CMUgraphicsLib\CMUgraphics.cpp">
+    <ClCompile Include="GUI\CMUgraphicsLib\mousequeue.cpp">
       <Filter>GUI\CMU</Filter>
     </ClCompile>
-    <ClCompile Include="GUI\CMUgraphicsLib\mousequeue.cpp">
+    <ClCompile Include="StudyPlan\StudyPlan.cpp">
+      <Filter>study plan</Filter>
+    </ClCompile>
+    <ClCompile Include="Notes.cpp">
+      <Filter>study plan</Filter>
+    </ClCompile>
+    <ClCompile Include="Source.cpp">
       <Filter>GUI\CMU</Filter>
     </ClCompile>
     <ClCompile Include="GUI\CMUgraphicsLib\windowinput.cpp">
       <Filter>GUI\CMU</Filter>
     </ClCompile>
-    <ClCompile Include="GUI\CMUgraphicsLib\image.cpp">
-      <Filter>GUI\CMU</Filter>
-    </ClCompile>
-    <ClCompile Include="GUI\CMUgraphicsLib\colors.cpp">
-      <Filter>GUI\CMU</Filter>
-    </ClCompile>
-    <ClCompile Include="Actions\exit.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="ImportCatalog.cpp">
-      <Filter>Imports</Filter>
-    </ClCompile>
-    <ClCompile Include="ImportOffering.cpp">
-      <Filter>Imports</Filter>
-    </ClCompile>
-    <ClCompile Include="ImportRequiements.cpp">
-      <Filter>Imports</Filter>
-    </ClCompile>
-    <ClCompile Include="ImportStudyPlan.cpp">
-      <Filter>Imports</Filter>
-    </ClCompile>
     <ClCompile Include="GUI\Drawable.cpp">
       <Filter>GUI</Filter>
     </ClCompile>
-    <ClCompile Include="GUI\GUI.cpp">
-      <Filter>GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="StudyPlan\AcademicYear.cpp">
-      <Filter>Study plan</Filter>
-    </ClCompile>
-    <ClCompile Include="Courses\Course.cpp">
-      <Filter>Study plan</Filter>
-    </ClCompile>
-    <ClCompile Include="Notes.cpp">
-      <Filter>Study plan</Filter>
-    </ClCompile>
-    <ClCompile Include="StudyPlan\StudyPlan.cpp">
-      <Filter>Study plan</Filter>
-    </ClCompile>
-    <ClCompile Include="ActionChangePlan.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="Source.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="ActionAddPetition.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="ActionGrade.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DEFs.h" />
     <ClInclude Include="Registrar.h" />
     <ClInclude Include="Rules.h" />
+    <ClInclude Include="StudyPlan\AcademicYear.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
     <ClInclude Include="Actions\Action.h">
       <Filter>Actions</Filter>
     </ClInclude>
@@ -210,10 +215,16 @@
     <ClInclude Include="Actions\ActionAddNotes.h">
       <Filter>Actions</Filter>
     </ClInclude>
+    <ClInclude Include="ActionAddPetition.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
     <ClInclude Include="Actions\ActionCalculateGPA.h">
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="Actions\ActionChangeCode.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionChangePlan.h">
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="ActionCourseStatus.h">
@@ -229,6 +240,9 @@
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="Actions\ActionFilters.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionGrade.h">
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="Actions\ActionImportStudyPlan.h">
@@ -248,6 +262,39 @@
     </ClInclude>
     <ClInclude Include="ActionShowDependencies.h">
       <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI\CMUgraphicsLib\CMUgraphics.h">
+      <Filter>GUI\CMU</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI\CMUgraphicsLib\colors.h">
+      <Filter>GUI\CMU</Filter>
+    </ClInclude>
+    <ClInclude Include="Courses\Course.h">
+      <Filter>study plan</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI\CMUgraphicsLib\error.h">
+      <Filter>GUI\CMU</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\exit.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI\GUI.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI\CMUgraphicsLib\image.h">
+      <Filter>GUI\CMU</Filter>
+    </ClInclude>
+    <ClInclude Include="ImportCatalog.h">
+      <Filter>Imports</Filter>
+    </ClInclude>
+    <ClInclude Include="ImportOffering.h">
+      <Filter>Imports</Filter>
+    </ClInclude>
+    <ClInclude Include="ImportRequiements.h">
+      <Filter>Imports</Filter>
+    </ClInclude>
+    <ClInclude Include="ImportStudyPlan.h">
+      <Filter>Imports</Filter>
     </ClInclude>
     <ClInclude Include="GUI\CMUgraphicsLib\jpeg\jconfig.h">
       <Filter>GUI\CMU</Filter>
@@ -285,67 +332,24 @@
     <ClInclude Include="GUI\CMUgraphicsLib\keyqueue.h">
       <Filter>GUI\CMU</Filter>
     </ClInclude>
-    <ClInclude Include="GUI\CMUgraphicsLib\CMUgraphics.h">
+    <ClInclude Include="GUI\CMUgraphicsLib\mousequeue.h">
       <Filter>GUI\CMU</Filter>
     </ClInclude>
-    <ClInclude Include="GUI\CMUgraphicsLib\mousequeue.h">
+    <ClInclude Include="StudyPlan\StudyPlan.h">
+      <Filter>study plan</Filter>
+    </ClInclude>
+    <ClInclude Include="Notes.h">
+      <Filter>study plan</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI\CMUgraphicsLib\version.h">
       <Filter>GUI\CMU</Filter>
     </ClInclude>
     <ClInclude Include="GUI\CMUgraphicsLib\windowinput.h">
       <Filter>GUI\CMU</Filter>
     </ClInclude>
-    <ClInclude Include="GUI\CMUgraphicsLib\version.h">
-      <Filter>GUI\CMU</Filter>
-    </ClInclude>
-    <ClInclude Include="GUI\CMUgraphicsLib\error.h">
-      <Filter>GUI\CMU</Filter>
-    </ClInclude>
-    <ClInclude Include="GUI\CMUgraphicsLib\image.h">
-      <Filter>GUI\CMU</Filter>
-    </ClInclude>
-    <ClInclude Include="GUI\CMUgraphicsLib\colors.h">
-      <Filter>GUI\CMU</Filter>
-    </ClInclude>
-    <ClInclude Include="Actions\exit.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="ImportCatalog.h">
-      <Filter>Imports</Filter>
-    </ClInclude>
-    <ClInclude Include="ImportOffering.h">
-      <Filter>Imports</Filter>
-    </ClInclude>
-    <ClInclude Include="ImportRequiements.h">
-      <Filter>Imports</Filter>
-    </ClInclude>
-    <ClInclude Include="ImportStudyPlan.h">
-      <Filter>Imports</Filter>
-    </ClInclude>
-    <ClInclude Include="GUI\GUI.h">
-      <Filter>GUI</Filter>
-    </ClInclude>
     <ClInclude Include="GUI\Drawable.h">
       <Filter>GUI</Filter>
     </ClInclude>
-    <ClInclude Include="StudyPlan\AcademicYear.h">
-      <Filter>Study plan</Filter>
-    </ClInclude>
-    <ClInclude Include="Courses\Course.h">
-      <Filter>Study plan</Filter>
-    </ClInclude>
-    <ClInclude Include="Notes.h">
-      <Filter>Study plan</Filter>
-    </ClInclude>
-    <ClInclude Include="StudyPlan\StudyPlan.h">
-      <Filter>Study plan</Filter>
-    </ClInclude>
-    <ClInclude Include="ActionChangePlan.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="ActionAddPetition.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="ActionGrade.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
@@ -360,25 +364,19 @@
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Actions">
-      <UniqueIdentifier>{58bb8afe-9bb0-47d0-9894-b4367a537f95}</UniqueIdentifier>
+      <UniqueIdentifier>{bf5c04a2-d029-4357-91f7-2a5f3ca336ac}</UniqueIdentifier>
     </Filter>
     <Filter Include="GUI">
-      <UniqueIdentifier>{bf529869-a928-46e6-a114-de830aa1da6e}</UniqueIdentifier>
+      <UniqueIdentifier>{903dbd75-a948-41fb-bab4-abb2121afc4c}</UniqueIdentifier>
     </Filter>
     <Filter Include="GUI\CMU">
-      <UniqueIdentifier>{a7899a3f-aad5-483b-8992-7637e007ece4}</UniqueIdentifier>
+      <UniqueIdentifier>{cf401671-8ac0-422d-b2fb-db14c9d6b394}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="study plan">
+      <UniqueIdentifier>{1ebb6a90-7994-4c3d-a7d9-ce51cc333834}</UniqueIdentifier>
     </Filter>
     <Filter Include="Imports">
-      <UniqueIdentifier>{58462f99-20e8-4608-8c17-e9e74730686e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Study plan">
-      <UniqueIdentifier>{b94c2238-ef71-4241-8b14-ede158c38f7c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GUI">
-      <UniqueIdentifier>{bf529869-a928-46e6-a114-de830aa1da6e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GUI\CMU">
-      <UniqueIdentifier>{a7899a3f-aad5-483b-8992-7637e007ece4}</UniqueIdentifier>
+      <UniqueIdentifier>{fa313acc-4481-4e42-88ee-134bd963cb6a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

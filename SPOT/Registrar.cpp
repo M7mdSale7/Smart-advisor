@@ -111,10 +111,6 @@ Action* Registrar::CreateRequiredAction()
 				RequiredAction = new ActionFilters(this);
 				return RequiredAction;
 				break;
-			case STATUS:
-				RequiredAction = new ActionCourseStatus(this);
-				return RequiredAction;
-				break;
 			case EXIT:
 				RequiredAction = new ActionExit(this);
 				return RequiredAction;
@@ -209,13 +205,6 @@ Action* Registrar::CreateRequiredAction()
 				if (currentMsg != "Filter")
 				{
 					currentMsg = "Filter";
-					pGUI->PrintMsg(currentMsg);
-				}
-				break;
-			case STATUS:
-				if (currentMsg != "Get Course Status")
-				{
-					currentMsg = "Get Course Status";
 					pGUI->PrintMsg(currentMsg);
 				}
 				break;

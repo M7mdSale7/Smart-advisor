@@ -57,7 +57,6 @@ void GUI::CreateMenu() const
 	MenuItemImages[ITM_GPA] = "GUI\\Images\\Menu\\Menu_GPA.jpg";
 	MenuItemImages[ITM_MINOR] = "GUI\\Images\\Menu\\MinorDec.jpg";
 	MenuItemImages[ITM_SEARCH] = "GUI\\Images\\Menu\\Search.jpg";
-	MenuItemImages[ITM_STATUS] = "GUI\\Images\\Menu\\status.jpg";
 	MenuItemImages[ITM_ERROR] = "GUI\\Images\\Menu\\Error.jpg";
 	MenuItemImages[ITM_SHOWDPND] = "GUI\\Images\\Menu\\Menu_D.jpg";
 	MenuItemImages[ITM_CHANGE_PLAN] = "GUI\\Images\\Menu\\CHANGE_PLAN.jpg";
@@ -246,7 +245,7 @@ void GUI::DrawCourse(const Course* pCrs)
 		}
 		graphicsInfo gInfo = pCrs->getGfxInfo();
 		pWind->DrawRectangle(gInfo.x, gInfo.y, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT);
-		pWind->DrawLine(gInfo.x, gInfo.y + CRS_HEIGHT / 2, gInfo.x + CRS_WIDTH, gInfo.y + CRS_HEIGHT / 2);
+		pWind->DrawLine(gInfo.x, gInfo.y + CRS_HEIGHT / 2, gInfo.x + CRS_WIDTH-2, gInfo.y + CRS_HEIGHT / 2);
 
 		//Write the course code and credit hours.
 		int Code_x = gInfo.x + CRS_WIDTH * 0.08;
@@ -582,7 +581,6 @@ ActionData GUI::mapMenuLocation(int x) const
 	case ITM_GPA: return ActionData{ CALC_GPA };			//Calculate GPA
 	case ITM_MINOR: return ActionData{ MINOR_DEC };			//Add a minor
 	case ITM_SEARCH: return ActionData{ SEARCH };
-	case ITM_STATUS: return ActionData{ STATUS };
 	case ITM_ERROR: return ActionData{ ERRORR };
 	case ITM_SHOWDPND: return ActionData{ SHOW_DPND };
 	case ITM_CHANGE_PLAN: return ActionData{ CHANGE_PLAN };
