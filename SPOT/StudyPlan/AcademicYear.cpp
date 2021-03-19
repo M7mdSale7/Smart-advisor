@@ -380,7 +380,7 @@ int AcademicYear::CrOfDoneCourses() const {
 		for (auto course : YearCourses[i]) {
 			string grade = course->getGrade();
 			if (grade == "A" || grade == "A-" || grade == "B+" || grade == "B" || grade == "B-" ||
-				grade == "C+" || grade == "C" || grade == "C-")
+				grade == "C+" || grade == "C" || grade == "C-" || grade == "D+" || grade == "D")
 
 				credits += course->getCredits();
 		}
