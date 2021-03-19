@@ -119,6 +119,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ActionAddPetition.cpp" />
     <ClCompile Include="ActionChangePlan.cpp" />
     <ClCompile Include="ActionCourseStatus.cpp" />
     <ClCompile Include="ActionDouble.cpp" />
@@ -181,10 +182,12 @@
     <ClCompile Include="Notes.cpp" />
     <ClCompile Include="Registrar.cpp" />
     <ClCompile Include="ImportCatalog.cpp" />
+    <ClCompile Include="Source.cpp" />
     <ClCompile Include="StudyPlan\AcademicYear.cpp" />
     <ClCompile Include="StudyPlan\StudyPlan.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ActionAddPetition.h" />
     <ClInclude Include="ActionChangePlan.h" />
     <ClInclude Include="ActionCourseStatus.h" />
     <ClInclude Include="ActionDouble.h" />

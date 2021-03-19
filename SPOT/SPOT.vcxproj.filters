@@ -186,7 +186,15 @@
     <ClCompile Include="StudyPlan\StudyPlan.cpp">
       <Filter>Study plan</Filter>
     </ClCompile>
-    <ClCompile Include="ActionChangePlan.cpp" />
+    <ClCompile Include="ActionChangePlan.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Source.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="ActionAddPetition.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DEFs.h" />
@@ -330,7 +338,12 @@
     <ClInclude Include="StudyPlan\StudyPlan.h">
       <Filter>Study plan</Filter>
     </ClInclude>
-    <ClInclude Include="ActionChangePlan.h" />
+    <ClInclude Include="ActionChangePlan.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionAddPetition.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

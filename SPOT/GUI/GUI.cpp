@@ -61,6 +61,7 @@ void GUI::CreateMenu() const
 	MenuItemImages[ITM_ERROR] = "GUI\\Images\\Menu\\Error.jpg";
 	MenuItemImages[ITM_SHOWDPND] = "GUI\\Images\\Menu\\Menu_D.jpg";
 	MenuItemImages[ITM_CHANGE_PLAN] = "GUI\\Images\\Menu\\CHANGE_PLAN.jpg";
+	MenuItemImages[ITM_ADD_PETITION] = "GUI\\Images\\Menu\\Menu_AddCourse.jpg";
 	MenuItemImages[ITM_EXIT] = "GUI\\Images\\Menu\\Menu_exitt.jpg";
 
 
@@ -266,7 +267,7 @@ void GUI::DrawNotes(const Notes* pNotes)
 		pWind->SetPen(BLACK, 2);
 		pWind->SetBrush(GREY);
 		graphicsInfo gInfo = pNotes->getGfxInfo();
-		pWind->DrawRectangle(gInfo.x, gInfo.y, gInfo.x + NOTES_WIDTH, gInfo.y + NOTES_HEIGHT);
+		/*pWind->DrawRectangle(gInfo.x, gInfo.y, gInfo.x + NOTES_WIDTH, gInfo.y + NOTES_HEIGHT);*/
 		int Notes_x = gInfo.x + NOTES_WIDTH * 0.15;
 		int Notes_y = gInfo.y + NOTES_HEIGHT * 0.05;
 		pWind->SetFont(NOTES_HEIGHT * 0.4, BOLD, BY_NAME, "Gramound");
@@ -526,6 +527,7 @@ ActionData GUI::GetUserAction(string msg) const
 				case ITM_ERROR: return ActionData{ ERRORR };
 				case ITM_SHOWDPND: return ActionData{ SHOW_DPND };
 				case ITM_CHANGE_PLAN: return ActionData{ CHANGE_PLAN };
+				case ITM_ADD_PETITION: return ActionData{ ADD_PETITION };
 				case ITM_EXIT: return ActionData{ EXIT };				//Exit The program
 				default: return ActionData{ MENU_BAR };	//A click on empty place in menu bar
 				}

@@ -10,7 +10,10 @@
 
 AcademicYear::AcademicYear()
 {
-
+	overloadedSem = new vector<bool>(SEM_CNT);
+	for (size_t i = 0; i < overloadedSem->size(); i++) {
+		overloadedSem->at(i) = false;
+	}
 }
 
 AcademicYear::~AcademicYear()
@@ -161,12 +164,14 @@ vector<OverUnder> AcademicYear::checkYearSemCredits(Rules* R) const
 		}
 		if (semSum > R->SemMaxCredit && i != 2)
 		{
-			string Case = "Overload";
-			OverUnder Issue;
-			Issue.Case = Case;
-			Issue.credits = semSum;
-			Issue.semester = i + 1;
-			notSatisfying.push_back(Issue);
+			if (!overloadedSem->at(i)) {//
+				string Case = "Overload";
+				OverUnder Issue;
+				Issue.Case = Case;
+				Issue.credits = semSum;
+				Issue.semester = i + 1;
+				notSatisfying.push_back(Issue);
+			}
 		}
 		else if (semSum < R->SemMinCredit && i != 2)
 		{
@@ -179,12 +184,14 @@ vector<OverUnder> AcademicYear::checkYearSemCredits(Rules* R) const
 		}
 		else if (semSum > R->SummerMaxCredit && i == 2)
 		{
-			string Case = "Overload";
-			OverUnder Issue;
-			Issue.Case = Case;
-			Issue.credits = semSum;
-			Issue.semester = i + 1;
-			notSatisfying.push_back(Issue);
+			if (!overloadedSem->at(i)) {
+				string Case = "Overload";
+				OverUnder Issue;
+				Issue.Case = Case;
+				Issue.credits = semSum;
+				Issue.semester = i + 1;
+				notSatisfying.push_back(Issue);
+			}
 		}
 	}
 	return notSatisfying;
@@ -350,4 +357,11 @@ int AcademicYear::CrOfDoneCourses() const {
 		}
 	}
 	return credits;
+}
+
+vector <bool>* AcademicYear::getOverloadSemesters() const {
+	return overloadedSem;
+}
+void AcademicYear::setOverloadedSemesters(SEMESTER sem) {
+	overloadedSem->at(sem) = true;
 }
