@@ -120,302 +120,52 @@ bool ActionAddCourse::Execute()
 			}
 			bool flagci = false;
 
-			if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>30 && y < (520 + 105) && y>(520 + 70))
+			
+			vector<AcademicYear*>* plan = pS->getSPvector();
+			for (size_t i = 0; i < plan->size(); i++) {//Instead of the 15 if statements
+				AcademicYear* year = plan->at(i);
+				graphicsInfo gInfo = year->getGfxInfo();
+				int xInfo = gInfo.x;
+				int yInfo = gInfo.y;
+				for(size_t j = 0; j < SEM_CNT; j++){
+					if ((x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x > 30) && 
+						((y > gInfo.y + (35 * (2 - j))) && (y < gInfo.y + (35 * ((2 - j) + 1))))) {
+						
+						Course* pCR = pS->searchSemester(code, i + 1, (SEMESTER)j);
+						if (pCR) {
+							window* pW = pGUI->getPwind();
+							pCR->setSelected(true);
+							pReg->UpdateInterface();
+							ActionShowCourseInfo::showInfo(pW, pC);
+							pGUI->GetUserAction("Course already added in this semester. press anywhere to dismiss");
+
+							pCR->setSelected(false);
+							return false;
+						}
+						pS->AddCourse(pC, i + 1, (SEMESTER)j);
+						flagci = true;
+						pC->setyear(i + 1);
+						pC->setsemester((SEMESTER)j);
+					}
+				}
+			}
+
+			if (flagci)
 			{
-				if (pS->searchSemester(code, 1, FALL)) {
+				window* pW = pGUI->getPwind();
+				pC->setSelected(true);
+				pReg->UpdateInterface();
+				ActionShowCourseInfo::showInfo(pW, pC);
 
-					window* pW = pGUI->getPwind();
-					Course* pCR = pS->searchStudyPlan(pC->getCode());
-					pCR->setSelected(true);
-					pReg->UpdateInterface();
-					ActionShowCourseInfo::showInfo(pW, pC);
-					pGUI->GetUserAction("Course already added in this semester. press anywhere to dismiss");
-
-					pCR->setSelected(false);
-					return false;
-				}
-				pS->AddCourse(pC, 1, FALL);
-				flagci = true;
-				pC->setyear(1);
-				pC->setsemester(FALL);
+				pGUI->GetUserAction("press any where to dismiss");
+				pC->setSelected(false);
 			}
-			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>30 && y<(520 + 70) && y>(520 + 35))
-			{
-				if (pS->searchSemester(code, 1, SPRING)) {
-					window* pW = pGUI->getPwind();
-					Course* pCR = pS->searchStudyPlan(pC->getCode());
-					pCR->setSelected(true);
-					pReg->UpdateInterface();
-					ActionShowCourseInfo::showInfo(pW, pC);
-					pGUI->GetUserAction("Course already added in this semester. press anywhere to dismiss");
-
-					pCR->setSelected(false);
-					return false;
-				}
-				pS->AddCourse(pC, 1, SPRING);
-				flagci = true;
-				pC->setyear(1);
-				pC->setsemester(SPRING);
+			else {
+				pGUI->GetUserAction("Error: out of area range. press anywhere to dismiss");
+				return false;
 			}
-			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>30 && y<(520 + 35) && y>(520))
-			{
-				if (pS->searchSemester(code, 1, SUMMER)) {
-					window* pW = pGUI->getPwind();
-					Course* pCR = pS->searchStudyPlan(pC->getCode());
-					pCR->setSelected(true);
-					pReg->UpdateInterface();
-					ActionShowCourseInfo::showInfo(pW, pC);
-					pGUI->GetUserAction("Course already added in this semester. press anywhere to dismiss");
-
-					pCR->setSelected(false);
-					return false;
-				}
-				pC->setyear(1);
-				pC->setsemester(SUMMER);
-				pS->AddCourse(pC, 1, SUMMER);
-				flagci = true;
-
-			}
-			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>30 && y<(412 + 105) && y>(412 + 70))
-			{
-				if (pS->searchSemester(code, 2, FALL)) {
-					window* pW = pGUI->getPwind();
-					Course* pCR = pS->searchStudyPlan(pC->getCode());
-					pCR->setSelected(true);
-					pReg->UpdateInterface();
-					ActionShowCourseInfo::showInfo(pW, pC);
-					pGUI->GetUserAction("Course already added in this semester. press anywhere to dismiss");
-
-					pCR->setSelected(false);
-					return false;
-				}
-					pS->AddCourse(pC, 2, FALL);
-					flagci = true;
-					pC->setyear(2);
-					pC->setsemester(FALL);
-			}
-			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>30 && y<(412 + 70) && y>(412 + 35))
-				{
-				if (pS->searchSemester(code, 2, SPRING)) {
-					window* pW = pGUI->getPwind();
-					Course* pCR = pS->searchStudyPlan(pC->getCode());
-					pCR->setSelected(true);
-					pReg->UpdateInterface();
-					ActionShowCourseInfo::showInfo(pW, pC);
-					pGUI->GetUserAction("Course already added in this semester. press anywhere to dismiss");
-
-					pCR->setSelected(false);
-					return false;
-				}
-					pS->AddCourse(pC, 2, SPRING);
-					flagci = true;
-					pC->setyear(2);
-					pC->setsemester(SPRING);
-			}
-			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>30 && y<(412 + 35) && y>(412))
-			{
-				if (pS->searchSemester(code, 2, SUMMER)) {
-					window* pW = pGUI->getPwind();
-					Course* pCR = pS->searchStudyPlan(pC->getCode());
-					pCR->setSelected(true);
-					pReg->UpdateInterface();
-					ActionShowCourseInfo::showInfo(pW, pC);
-					pGUI->GetUserAction("Course already added in this semester. press anywhere to dismiss");
-
-					pCR->setSelected(false);
-					return false;
-				}
-					pS->AddCourse(pC, 2, SUMMER);
-					flagci = true;
-					pC->setyear(2);
-					pC->setsemester(SUMMER);
-			}
-			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>30 && y<(304 + 105) && y>(307 + 70))
-			{
-				if (pS->searchSemester(code, 3, FALL)) {
-					window* pW = pGUI->getPwind();
-					Course* pCR = pS->searchStudyPlan(pC->getCode());
-					pCR->setSelected(true);
-					pReg->UpdateInterface();
-					ActionShowCourseInfo::showInfo(pW, pC);				
-					pGUI->GetUserAction("Course already added in this semester. press anywhere to dismiss");
-
-					pCR->setSelected(false);
-					return false;
-				}
-					pS->AddCourse(pC, 3, FALL);
-					flagci = true;
-					pC->setyear(3);
-					pC->setsemester(FALL);
-			}
-				else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>30 && y<(304 + 70) && y>(304 + 35))
-				{
-					if (pS->searchSemester(code, 3, SPRING)) {
-						window* pW = pGUI->getPwind();
-						Course* pCR = pS->searchStudyPlan(pC->getCode());
-						pCR->setSelected(true);
-						pReg->UpdateInterface();
-						ActionShowCourseInfo::showInfo(pW, pC);
-						pGUI->GetUserAction("Course already added in this semester. press anywhere to dismiss");
-
-						pCR->setSelected(false);
-						return false;
-					}
-					pS->AddCourse(pC, 3, SPRING);
-					flagci = true;
-					pC->setyear(3);
-					pC->setsemester(SPRING);
-				}
-				else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>30 && y<(304 + 35) && y>(304))
-				{
-					if (pS->searchSemester(code, 3, SUMMER)) {
-						window* pW = pGUI->getPwind();
-						Course* pCR = pS->searchStudyPlan(pC->getCode());
-						pCR->setSelected(true);
-						pReg->UpdateInterface();
-						ActionShowCourseInfo::showInfo(pW, pC);
-						pGUI->GetUserAction("Course already added in this semester. press anywhere to dismiss");
-
-						pCR->setSelected(false);
-						return false;
-					}
-					pS->AddCourse(pC, 3, SUMMER);
-					flagci = true;
-					pC->setyear(3);
-					pC->setsemester(SUMMER);
-				}
-				else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>30 && y<(196 + 105) && y>(196 + 70))
-				{
-					if (pS->searchSemester(code, 4, FALL)) {
-						window* pW = pGUI->getPwind();
-						Course* pCR = pS->searchStudyPlan(pC->getCode());
-						pCR->setSelected(true);
-						pReg->UpdateInterface();
-						ActionShowCourseInfo::showInfo(pW, pC);
-						pGUI->GetUserAction("Course already added in this semester. press anywhere to dismiss");
-
-						pCR->setSelected(false);
-						return false;
-					}
-					pS->AddCourse(pC, 4, FALL);
-					flagci = true;
-					pC->setyear(4);
-					pC->setsemester(FALL);
-				}
-				else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>30 && y<(196 + 70) && y>(196 + 35))
-				{
-					if (pS->searchSemester(code, 4, SPRING)) {
-						window* pW = pGUI->getPwind();
-						Course* pCR = pS->searchStudyPlan(pC->getCode());
-						pCR->setSelected(true);
-						pReg->UpdateInterface();
-						ActionShowCourseInfo::showInfo(pW, pC);
-						pGUI->GetUserAction("Course already added in this semester. press anywhere to dismiss");
-
-						pCR->setSelected(false);
-						return false;
-					}
-					pS->AddCourse(pC, 4, SPRING);
-					flagci = true;
-					pC->setyear(4);
-					pC->setsemester(SPRING);
-				}
-				else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>30 && y<(196 + 35) && y>(196))
-				{
-					if (pS->searchSemester(code, 4, SUMMER)) {
-						window* pW = pGUI->getPwind();
-						Course* pCR = pS->searchStudyPlan(pC->getCode());
-						pCR->setSelected(true);
-						pReg->UpdateInterface();
-						ActionShowCourseInfo::showInfo(pW, pC);
-						pGUI->GetUserAction("Course already added in this semester. press anywhere to dismiss");
-
-						pCR->setSelected(false);
-						return false;
-					}
-					pS->AddCourse(pC, 4, SUMMER);
-					flagci = true;
-					pC->setyear(4);
-					pC->setsemester(SUMMER);
-				}
-				else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>30 && y<(88 + 105) && y>(88 + 70))
-				{
-					if (pS->searchSemester(code, 5, FALL)) {
-						window* pW = pGUI->getPwind();
-						Course* pCR = pS->searchStudyPlan(pC->getCode());
-						pCR->setSelected(true);
-						pReg->UpdateInterface();
-						ActionShowCourseInfo::showInfo(pW, pC);
-						pGUI->GetUserAction("Course already added in this semester. press anywhere to dismiss");
-
-						pCR->setSelected(false);
-						return false;
-					}
-					pS->AddCourse(pC, 5, FALL);
-					flagci = true;
-					pC->setyear(5);
-					pC->setsemester(FALL);
-				}
-				else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>30 && y<(88 + 70) && y>(88 + 35))
-				{
-					if (pS->searchSemester(code, 5, SPRING)) {
-						window* pW = pGUI->getPwind();
-						Course* pCR = pS->searchStudyPlan(pC->getCode());
-						pCR->setSelected(true);
-						pReg->UpdateInterface();
-						ActionShowCourseInfo::showInfo(pW, pC);
-						pGUI->GetUserAction("Course already added in this semester. press anywhere to dismiss");
-
-						pCR->setSelected(false);
-						return false;
-					}
-					pS->AddCourse(pC, 5, SPRING);
-					flagci = true;
-					pC->setyear(5);
-					pC->setsemester(SPRING);
-				}
-				else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>30 && y<(88 + 35) && y>(88))
-				{
-					if (pS->searchSemester(code, 5, SUMMER)) {
-						window* pW = pGUI->getPwind();
-						Course* pCR = pS->searchStudyPlan(pC->getCode());
-						pCR->setSelected(true);
-						pReg->UpdateInterface();
-						ActionShowCourseInfo::showInfo(pW, pC);
-						pGUI->GetUserAction("Course already added in this semester. press anywhere to dismiss");
-
-						pCR->setSelected(false);
-						return false;
-					}
-					pS->AddCourse(pC, 5, SUMMER);
-					flagci = true;
-					pC->setyear(5);
-					pC->setsemester(SUMMER);
-				}
-				else
-				{
-					pGUI->GetUserAction("Error: out of area range. press anywhere to dismiss");
-					return false;
-				}
-				//ActionShowCourseInfo(pReg, pC->getGfxInfo().x, pC->getGfxInfo().y).Execute();
-				if (flagci == true)
-				{
-					window* pW = pGUI->getPwind();
-					pC->setSelected(true);
-					pReg->UpdateInterface();
-					ActionShowCourseInfo::showInfo(pW, pC);
-
-					pGUI->GetUserAction("press any where to dismiss");
-					pC->setSelected(false);
-				}
 		}
 	}
-
-		//ActionShowCourseInfo(pReg, p, y).Execute();
-
-		//pReg->getGUI()->GetUserAction("Now press anywhere please.");
-
-	
 
 	return true;
 }
