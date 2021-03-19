@@ -130,6 +130,7 @@ Action* Registrar::CreateRequiredAction()
 				break;
 			case ADD_PETITION:
 				RequiredAction = new ActionAddPetition(this);
+				return RequiredAction;
 				break;
 			}
 		
