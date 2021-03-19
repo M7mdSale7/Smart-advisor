@@ -90,6 +90,7 @@ public:
 	ActionData GUI::GetUserActionNoFlush(string msg = "") const;
 	string GetSrting() const;
 	window* getPwind();
+	int getRangeInput(int low, int high, string msg);
 
 	~GUI();
 };

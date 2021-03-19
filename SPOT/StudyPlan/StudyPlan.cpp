@@ -20,11 +20,11 @@ bool StudyPlan::AddCourse(Course* pC, int year, SEMESTER sem)
 	TotalCredits += pC->getCredits();
 	if (pC->getType() == "Univ Compulsory")
 	{
-		TotalUnivCredits += pC->getCredits();
+		ReqUnivCredits += pC->getCredits();
 	}
 	else if (pC->getType() == "Univ Elective")
 	{
-		TotalUnivCredits += pC->getCredits();
+		ElecUnivCredits += pC->getCredits();
 	}
 	else if (pC->getType() == "Track Compulsory")
 	{
@@ -36,11 +36,11 @@ bool StudyPlan::AddCourse(Course* pC, int year, SEMESTER sem)
 	}
 	else if (pC->getType() == "Major Compulsory")
 	{
-		TotalMajorCredits += pC->getCredits();
+		ReqMajorCredits += pC->getCredits();
 	}
 	else if (pC->getType() == "Major Elective")
 	{
-		TotalMajorCredits += pC->getCredits();
+		ElecMajorCredits += pC->getCredits();
 	}
 	else if (pC->getType() == "Concentration Compulsory")
 	{
@@ -64,11 +64,11 @@ bool StudyPlan::DeleteCourse(Course* pC)
 	TotalCredits -= pC->getCredits();
 	if (pC->getType() == "Univ Compulsory")
 	{
-		TotalUnivCredits -= pC->getCredits();
+		ReqUnivCredits -= pC->getCredits();
 	}
 	else if (pC->getType() == "Univ Elective")
 	{
-		TotalUnivCredits -= pC->getCredits();
+		ElecUnivCredits -= pC->getCredits();
 	}
 	else if (pC->getType() == "Track Compulsory")
 	{
@@ -80,11 +80,11 @@ bool StudyPlan::DeleteCourse(Course* pC)
 	}
 	else if (pC->getType() == "Major Compulsory")
 	{
-		TotalMajorCredits -= pC->getCredits();
+		ReqMajorCredits -= pC->getCredits();
 	}
 	else if (pC->getType() == "Major Elective")
 	{
-		TotalMajorCredits -= pC->getCredits();
+		ElecMajorCredits -= pC->getCredits();
 	}
 	else if (pC->getType() == "Concentration Compulsory")
 	{
@@ -162,9 +162,18 @@ vector<Notes*>* StudyPlan::getNvector()
 void StudyPlan::addeYearCredits(AcademicYear* y)
 {
 	TotalCredits += y->TotalCredits;
-	TotalUnivCredits += y->TotalUnivCredits;
-	TotalMajorCredits += y->TotalMajorCredits;
+
+
+	ReqUnivCredits += y->ReqUnivCredits;
+	ElecUnivCredits += y->ElecUnivCredits;
+
+
+	ReqMajorCredits += y->ReqMajorCredits;
+	ElecMajorCredits += y->ElecMajorCredits;
+
 	TotalTrackCredits += y->TotalTrackCredits;
+	
+
 	TotalConcentrationCredits += y->TotalConcentrationCredits;
 	TotalMinorCredits += y->TotalMinorCredits;
 }
@@ -233,35 +242,6 @@ vector<codeTypePair> StudyPlan::ProgReqCheck(Rules* R) const
 		}
 	}
 
-	for (auto& itr : R->TrackElective)
-	{
-		ExistsFlag = false;
-		for (auto itrYear : plan)
-		{
-			for (int i = 0; i < SEM_CNT; i++)
-			{
-				for (auto itrCourse : itrYear->getyearslist()[i])
-				{
-					if (itr == itrCourse->getCode())
-					{
-						ExistsFlag = true;
-						goto out3;
-					}
-				}
-			}
-		}
-	out3:
-		if (!ExistsFlag)
-		{
-			tempPair = new codeTypePair;
-			tempPair->code = itr;
-			tempPair->type = "Track Elective";
-			pairs.push_back(*tempPair);
-			delete tempPair;
-			tempPair = nullptr;
-		}
-
-	}
 	for (auto& itr : R->TrackCompulsory)
 	{
 		ExistsFlag = false;
@@ -551,14 +531,14 @@ vector <Course_Code> StudyPlan::checkOfferings(Rules* R) const {
 bool StudyPlan::checkUnivElectiveCrd(Rules* R) const
 {
 	//returns true if the Total university credits is satisfied in the plan and false otherwise
-	if (TotalUnivCredits < (R->ElectiveUnivCredits + R->ReqUnivCredits)) return false;
+	if (ElecUnivCredits < R->ElectiveUnivCredits) return false;
 	else return true;
 }
 
 bool StudyPlan::checkMajorElectiveCrd(Rules* R) const
 {
 	//returns true if the Total university credits is satisfied in the plan and false otherwise
-	if (TotalMajorCredits < (R->ReqMajorCredits + R->ElectiveMajorCredits)) return false;
+	if ( ElecMajorCredits < R->ElectiveMajorCredits) return false;
 	else return true;
 }
 

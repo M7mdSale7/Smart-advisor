@@ -107,7 +107,7 @@ string GUI::GetSrting() const
 		{
 		case 27: //ESCAPE key is pressed
 			PrintMsg("");
-			return ""; //returns nothing as user has cancelled the input
+			return "ESC"; //returns nothing as user has cancelled the input
 
 		case 13:		//ENTER key is pressed
 			return userInput;
@@ -130,6 +130,32 @@ string GUI::GetSrting() const
 window* GUI::getPwind()
 {
 	return pWind;
+}
+
+int GUI::getRangeInput(int low, int high, string msg)
+{
+	do
+	{
+		string input;
+		PrintMsg(msg);
+		input = GetSrting();
+		if (input == "ESC")
+		{
+			return 0;
+		}
+		else if (low <= atoi(input.c_str()) && atoi(input.c_str()) <= high)
+		{
+			return atoi(input.c_str());
+		}
+		else
+		{
+			PrintMsg("Invalid input! Try again or press ESC to cancel.");
+			Sleep(1750);
+			PrintMsg(msg);
+		}
+	} while (true);
+	
+
 }
 
 

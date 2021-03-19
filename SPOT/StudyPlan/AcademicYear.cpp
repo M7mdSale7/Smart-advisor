@@ -36,11 +36,11 @@ bool AcademicYear::AddCourse(Course* pC, SEMESTER sem)
 	pC->setsemester(sem);
 	if (pC->getType() == "Univ Compulsory")
 	{
-		TotalUnivCredits += pC->getCredits();
+		ReqUnivCredits += pC->getCredits();
 	}
 	else if(pC->getType() == "Univ Elective")
 	{
-		TotalUnivCredits += pC->getCredits();
+		ElecUnivCredits += pC->getCredits();
 	}
 	else if (pC->getType() == "Track Compulsory")
 	{
@@ -52,11 +52,11 @@ bool AcademicYear::AddCourse(Course* pC, SEMESTER sem)
 	}
 	else if (pC->getType() == "Major Compulsory")
 	{
-		TotalMajorCredits += pC->getCredits();
+		ReqMajorCredits += pC->getCredits();
 	}
 	else if (pC->getType() == "Major Elective")
 	{
-		TotalMajorCredits += pC->getCredits();
+		ElecMajorCredits += pC->getCredits();
 	}
 	else if (pC->getType() == "Concentration Compulsory")
 	{
@@ -79,11 +79,11 @@ bool AcademicYear::DeleteCourse(Course* pC, SEMESTER sem)
 	TotalCredits -= pC->getCredits();
 	if (pC->getType() == "Univ Compulsory")
 	{
-		TotalUnivCredits -= pC->getCredits();
+		ReqUnivCredits -= pC->getCredits();
 	}
 	else if (pC->getType() == "Univ Elective")
 	{
-		TotalUnivCredits -= pC->getCredits();
+		ElecUnivCredits -= pC->getCredits();
 	}
 	else if (pC->getType() == "Track Compulsory")
 	{
@@ -95,11 +95,11 @@ bool AcademicYear::DeleteCourse(Course* pC, SEMESTER sem)
 	}
 	else if (pC->getType() == "Major Compulsory")
 	{
-		TotalMajorCredits -= pC->getCredits();
+		ReqMajorCredits -= pC->getCredits();
 	}
 	else if (pC->getType() == "Major Elective")
 	{
-		TotalMajorCredits -= pC->getCredits();
+		ElecMajorCredits -= pC->getCredits();
 	}
 	else if (pC->getType() == "Concentration Compulsory")
 	{

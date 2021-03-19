@@ -29,7 +29,7 @@ void ImportStudyPlan::StudyPlanImport(ifstream& fin, Registrar* P) {
 		delete year;
 	}
 
-	int x = 905;
+	/*int x = 905;
 	int y = 128;
 	vector<Notes*>* pN = plan->getNvector();
 	graphicsInfo gInfo;
@@ -40,5 +40,5 @@ void ImportStudyPlan::StudyPlanImport(ifstream& fin, Registrar* P) {
 		pN->at(i)->setGfxInfo(gInfo);
 		pN->at(i)->DrawMe(P->getGUI());
 		y += NOTES_HEIGHT;
-	}
+	}*/
 }
