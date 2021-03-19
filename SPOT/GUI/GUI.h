@@ -86,7 +86,7 @@ public:
 
 	//input functions
 	ActionData GUI::GetUserAction(string msg = "") const;
-	ActionData mapMenuLocation(int x);
+	ActionData mapMenuLocation(int x) const;
 	ActionData GUI::GetUserActionNoFlush(string msg = "") const;
 	string GetSrting() const;
 	window* getPwind();
