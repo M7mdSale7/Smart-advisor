@@ -313,6 +313,7 @@ void Registrar::Initialization() {
 	ImportCatalog().readCatalog(&RegRules.CourseCatalog);
 	ImportOffering().ImportOfferingFile(&RegRules.OffringsList);
 	pGUI->PrintMsg("Enter your Major Number: 1)CIE  2)SPC  3)ENV  4)REE  5)NANENG ");
+	/*pGUI->getRangeInput(1, 5, "Enter your Major Number: 1)CIE  2)SPC  3)ENV  4)REE  5)NANENG ");*/
 	string Major = pGUI->GetSrting();
 	bool flag = true;
 	ifstream infile;

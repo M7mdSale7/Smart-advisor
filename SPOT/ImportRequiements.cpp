@@ -7,6 +7,7 @@ string ImportRequiements::ImportReqs(ifstream& fin, GUI *pGUI, string Major, Rul
 	string line;
 	bool flag = true;
 	string majorName;
+	//pGUI->getRangeInput(1,5,)
 	while (flag) {
 		if (Major == "1") {
 			infile.open("majors requirements/CIE-Requirements.txt");//MajorsData.txt is a trial file for testing because no files for majors' rules has been shared with us
