@@ -352,7 +352,10 @@ int AcademicYear::CrOfDoneCourses() const {
 	int credits = 0;
 	for (int i = 0; i < SEM_CNT; i++) {
 		for (auto course : YearCourses[i]) {
-			if (course->getStatus() == "Done")
+			string grade = course->getGrade();
+			if (grade == "A" || grade == "A-" || grade == "B+" || grade == "B" || grade == "B-" ||
+				grade == "C+" || grade == "C" || grade == "C-")
+
 				credits += course->getCredits();
 		}
 	}

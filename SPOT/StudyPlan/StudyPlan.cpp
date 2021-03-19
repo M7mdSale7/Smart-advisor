@@ -584,3 +584,62 @@ void StudyPlan::setConcentration2(int DoubleConcentration)
 {
 	this->DoubleConcentration = DoubleConcentration;
 }
+
+Course* StudyPlan::searchSelectedCourse() const {
+	for (int i = 0; i < plan.size(); i++) {
+		list<Course*>* year = plan[i]->getyearslist();
+		for (int j = 0; j < SEM_CNT; j++) {
+			for (auto course : year[j]) {
+				if (course->isSelected())
+					return course;
+			}
+		}
+	}
+	return nullptr;
+}
+
+vector<Course*> StudyPlan::getPetitionCourses() const {
+	vector<Course*> PetitionCourses;
+
+	for (int i = 0; i < plan.size(); i++) {
+		list<Course*>* year = plan[i]->getyearslist();
+		for (int j = 0; j < SEM_CNT; j++) {
+			for (auto course : year[j]) {
+				if (course->hasPetition())
+					PetitionCourses.push_back(course);
+			}
+		}
+	}
+	return PetitionCourses;
+}
+
+void StudyPlan::selectOverloadedSemesters(GUI* pGUI) const {
+	for (size_t i = 0; i < plan.size(); i++) {
+		AcademicYear* year = plan[i];
+		graphicsInfo gInfo = year->getGfxInfo();
+		int x = gInfo.x;
+		int y = gInfo.y;
+		vector <bool>* overloadedSem = year->getOverloadSemesters();
+		window* pWind = pGUI->getPwind();
+		for (size_t j = 0; j < SEM_CNT; j++) {
+			if (overloadedSem->at(j)) {
+				pWind->SetBrush(DARKCYAN);
+				pWind->SetPen(BLACK, 2);
+				pWind->DrawRectangle(gInfo.x - 40, gInfo.y + (35 * (2 - j)),
+					gInfo.x + 34, gInfo.y + (35 * ((2 - j) + 1)));
+
+				string Semester;
+				if (j == 0)
+					Semester = "FALL";
+				else if (j == 1)
+					Semester = "SPRING";
+				else if (j == 2)
+					Semester = "SUMMER";
+
+				pWind->SetFont(35 * 0.5, BOLD, BY_NAME, "WHITE");
+				pWind->SetPen(BLACK, 2);
+				pWind->DrawString(gInfo.x - 35, gInfo.y + 10 + (35 * (2 - j)), Semester);
+			}
+		}
+	}
+}
