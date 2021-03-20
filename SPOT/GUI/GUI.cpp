@@ -160,7 +160,7 @@ int GUI::getRangeInput(int low, int high, string msg)
 		else
 		{
 			PrintMsg("Invalid input! Try again or press ESC to cancel.");
-			Sleep(1750);
+			Sleep(2000);
 			PrintMsg(msg);
 		}
 	} while (true);
@@ -303,11 +303,13 @@ void GUI::DrawNotes(const Notes* pNotes)
 		pWind->SetPen(BLACK, 2);
 		pWind->SetBrush(GREY);
 		graphicsInfo gInfo = pNotes->getGfxInfo();
-		pWind->DrawRectangle(gInfo.x, gInfo.y, gInfo.x + NOTES_WIDTH, gInfo.y + NOTES_HEIGHT);
+		/*pWind->DrawRectangle(gInfo.x, gInfo.y, gInfo.x + NOTES_WIDTH, gInfo.y + NOTES_HEIGHT);*/
 		int Notes_x = gInfo.x + NOTES_WIDTH * 0.15;
 		int Notes_y = gInfo.y + NOTES_HEIGHT * 0.05;
 		pWind->SetFont(NOTES_HEIGHT * 0.4, BOLD, BY_NAME, "Gramound");
 		pWind->DrawString(Notes_x, Notes_y, pNotes->getNotes());
+
+		
 	}
 
 }
@@ -574,6 +576,61 @@ ActionData GUI::GetUserAction(string msg) const
 		}
 	}//end while
 
+}
+
+ActionData GUI::GetUserActionOrEnterKey(string msg) const
+{
+	keytype ktInput;
+	clicktype ctInput;
+	char cKeyData;
+
+
+	// Flush out the input queues before beginning
+	pWind->FlushMouseQueue();
+	pWind->FlushKeyQueue();
+
+	PrintMsg(msg);
+
+	while (true)
+	{
+		int x, y;
+		ctInput = pWind->GetMouseClick(x, y);	//Get the coordinates of the user click
+		ktInput = pWind->GetKeyPress(cKeyData);
+
+		if (ktInput == ESCAPE)	//if ESC is pressed,return CANCEL action
+		{
+			return ActionData{ CANCEL };
+		}
+		else if (ktInput == ASCII && cKeyData == '\r')
+		{
+			return ActionData{ ENTERKEY };
+		}
+
+
+		if (ctInput == LEFT_CLICK)	//mouse left click
+		{
+			//[1] If user clicks on the Menu bar
+			if (y >= 0 && y < MenuBarHeight)
+			{
+
+				//Check whick Menu item was clicked
+				//==> This assumes that menu items are lined up horizontally <==
+				//Divide x coord of the point clicked by the menu item width (int division)
+				//if division result is 0 ==> first item is clicked, if 1 ==> 2nd item and so on
+				return mapMenuLocation(x);
+
+			}
+
+			//[2] User clicks on the drawing area
+			if (y >= MenuBarHeight && y < WindHeight - StatusBarHeight)
+			{
+				return ActionData{ DRAW_AREA,x,y };	//user want clicks inside drawing area
+			}
+
+			//[3] User clicks on the status bar
+			return ActionData{ STATUS_BAR };
+		}
+	}//end while
 }
 
 ActionData GUI::mapMenuLocation(int x) const

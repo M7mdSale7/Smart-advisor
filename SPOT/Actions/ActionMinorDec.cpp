@@ -146,7 +146,7 @@ bool ActionMinorDec::Execute()
 			if (flag2 && (!flag || Num1 == 1 || Num1 == 2) && flag3 && flag4) //if there is no issue with adding the course
 			{
 				R->MinorCompulsory.push_back(code); //Adding the course to the minor comp list in rules
-				pGUI->GetUserAction("Course Added To Minor , Press any key to continue");
+				pGUI->GetUserAction("Course Added To Minor , Press anywhere th press Enter to continue");
 				Minor.push_back(code); //adding the course in the vector of minor , we need it to reach 5 to return the function
 				Num++; //increment the static variable num that the user can see how many courses he has added
 			}
@@ -182,7 +182,8 @@ bool ActionMinorDec::Execute()
 			//asking the user if he wants to continue adding courses regardless he has filled the 5 courses or not
 			pGUI->PrintMsg("Do You Want To continue adding other courses to your minor? (if Yes enter Yes (case sensitave))");
 			string will = pGUI->GetSrting(); //waiting for the users input
-			if (will == "Yes" && Minor.size() != 5)
+			transform(will.begin(), will.end(), will.begin(), toupper);
+			if (will == "YES" && Minor.size() != 5)
 			{
 				continue; //continue in your loob
 			}
