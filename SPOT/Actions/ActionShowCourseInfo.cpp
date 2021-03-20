@@ -3,6 +3,7 @@
 #include "../ActionCourseStatus.h"
 #include "..//ActionGrade.h"
 #include <math.h>
+#include <algorithm>
 int nx;
 int ny;
 ActionShowCourseInfo::ActionShowCourseInfo(Registrar* p , int x , int y) : Action(p)
