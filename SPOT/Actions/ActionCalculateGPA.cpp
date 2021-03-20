@@ -130,7 +130,10 @@ bool ActionCalculateGPA::Execute()
 				}
 				else
 				{
+					pC->setSelected(true);
 					pC->setGrade(grade);
+					pReg->UpdateInterface();
+					pC->setSelected(false);
 					Num--;
 					n++;
 				}
