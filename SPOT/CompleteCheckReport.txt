@@ -1,6 +1,4 @@
 Petitions: 
-Course: CIE 202 Has a petition to be taken without it's prerequisite
-Year 2Semester Fall Has an overload petition
 
 2- Overload or underload petitions: 
 Moderate Issue: In year 4,Semester 2 Number of credits is: 9 And Underload Petition needed
@@ -13,7 +11,6 @@ Moderate Issue: In year 5,Semester 2 Number of credits is: 3 And Underload Petit
 
 8- Course Offersings Check
 Course MATH 101 Is registered in a non offering time
-Course CSCI 101 Is registered in a non offering time
 Course MATH 302 Is registered in a non offering time
 Course SCH 261 Is registered in a non offering time
 Course SCH 262 Is registered in a non offering time
