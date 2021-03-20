@@ -98,6 +98,50 @@ bool ActionErrors::Execute()
 	MinorComp = R->MinorCompulsory;
 	ofstream file("CompleteCheckReport.txt");
 	file.clear();
+	//0- Petitions
+	GUI* pGUI = pReg->getGUI(); //getting GUI
+	vector<AcademicYear*>* Plan = pS->getSPvector(); //getting study plan
+	for (int i = 0; i < Plan->size(); i++)
+	{
+		list<Course*>* Courses = Plan->at(i)->getyearslist();
+		for (int j = 0; j < 3; j++)
+		{
+			for (auto itr : *(Courses + j))
+			{
+				if (itr->hasPetition())
+				{
+					file << "Petitions: " << endl;
+					file << "Course: " << itr->getCode() << " Has a petition to be taken without it's prerequisite" << endl;
+				}
+			}
+		}
+	}
+	for (int i = 0; i < Plan->size(); i++)
+	{
+		vector<bool>* b = Plan->at(i)->getOverloadSemesters();
+		for (int j = 0; j < b->size(); j++)
+		{
+			if (b->at(j))
+			{
+				if (j == 0)
+				{
+					file << "Year " << i+1 << "Semester Fall Has an overload petition" << endl;
+				}
+				else if (j == 1) {
+					{
+						file << "Year " << i+1 << "Semester Fall Has an overload petition" << endl;
+					}
+				}
+				else if (j == 2) {
+					{
+						file << "Year " << i+1 << "Semester Fall Has an overload petition" << endl;
+					}
+				}
+			}
+		}
+	}
+	file << endl;
+
 	//1- Minor Courses Were not Taken
 	if (MinorComp.size() != 0 && MinorComp.size() < 5) //if the minor courses are less than 5 (no minor)
 	{
@@ -336,7 +380,6 @@ bool ActionErrors::Execute()
 	
 
 	file.close();
-	GUI* pGUI = pReg->getGUI();
 	pGUI->GetUserAction("Report was save in a complete check report txt file");
 	return true;
 }
