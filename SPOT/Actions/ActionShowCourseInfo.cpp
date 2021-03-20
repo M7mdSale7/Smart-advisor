@@ -356,8 +356,10 @@ bool ActionShowCourseInfo::Execute()
 						string grade = pGUI->GetSrting();
 
 						if (grade == "A" || grade == "A-" || grade == "B+" || grade == "B" || grade == "B-" ||
-							grade == "C+" || grade == "C" || grade == "C-" || grade == "F" || grade == "P" ||
-							grade == "I" || grade == "W" || grade == "WP" || grade == "WF" || grade == "IP")
+							grade == "C+" || grade == "C" || grade == "C-" || grade == "D+" || grade == "D" || 
+							grade == "F" || grade == "P" || grade == "I" || grade == "W" || grade == "WP" || 
+							grade == "WF" || grade == "IP")
+
 							pC->setGrade(grade);
 						else
 							pGUI->PrintMsg("Invalid Grade Input:");
