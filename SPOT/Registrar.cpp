@@ -143,10 +143,6 @@ Action* Registrar::CreateRequiredAction()
 				RequiredAction = new ActionAddPetition(this);
 				return RequiredAction;
 				break;
-			/*case ADD_GRADE:
-				RequiredAction = new ActionGrade(this);
-				return RequiredAction;
-				break;*/
 			}
 		}
 		else
