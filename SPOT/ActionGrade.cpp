@@ -20,7 +20,7 @@ bool ActionGrade::Execute(Course* course) {
 		pGUI->PrintMsg("Invalid Grade Input:");
 
 	pReg->UpdateInterface();
-	graphicsInfo info = course->getGfxInfo();
+	graphicsInfo info = course->getGfxInfo();	
 	int x = info.x;
 	int y = info.y;
 	window* windptr = pGUI->getPwind();
