@@ -1,6 +1,7 @@
 #include "ActionCalculateGPA.h"
 #include "ActionDeleteCourse.h"
 #include <algorithm>
+#include "../DEFs.h"
 
 ActionCalculateGPA::ActionCalculateGPA(Registrar* p ) : Action(p)
 {
@@ -90,13 +91,15 @@ bool ActionCalculateGPA::Execute()
 	else if (choice0 == "2")
 	{
 		string grade = "NA";
+		vector<Course*> pVc;
 		while (grade == "NA")
 		{
+			ActionData actData = pGUI->GetUserActionOrEnterKey("Please press on the course or Enter to enter Grade");
+			int x, y;
 			char cKeyData;
 			window* pWind = pGUI->getPwind();
 			keytype ktInput = pWind->GetKeyPress(cKeyData);
-			vector<Course*> pVc;
-			if (ktInput == ASCII && cKeyData == '\r')
+			if (actData.actType == ENTERKEY)
 			{
 				pGUI->PrintMsg("Enter Grade for the Courses");
 				grade = pGUI->GetSrting();
@@ -120,15 +123,8 @@ bool ActionCalculateGPA::Execute()
 						break;
 					}
 				}
-				for (int i = 0; i < pVc.size(); i++)
-				{
-					pVc.at(i)->setGrade(grade);
-					pVc.at(i)->setSelected(false);
-				}
 			}
-			ActionData actData = pGUI->GetUserAction("Please press on the course or Enter to enter Grade");
-			int x, y;
-			if (actData.actType == DRAW_AREA)
+			else if (actData.actType == DRAW_AREA)
 			{
 				x = actData.x;
 				y = actData.y;
@@ -144,6 +140,11 @@ bool ActionCalculateGPA::Execute()
 					pReg->UpdateInterface();
 				}
 			}
+		}
+		for (int i = 0; i < pVc.size(); i++)
+		{
+			pVc.at(i)->setGrade(grade);
+			pVc.at(i)->setSelected(false);
 		}
 	}
 	else

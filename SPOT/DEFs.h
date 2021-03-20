@@ -69,7 +69,6 @@ enum ActionType
 
 	CANCEL,		//ESC key is pressed
 
-
 };
 
 //to sotre data related to the last action
