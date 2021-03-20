@@ -136,6 +136,7 @@ bool ActionAddCourse::Execute()
 							window* pW = pGUI->getPwind();
 							pCR->setSelected(true);
 							pReg->UpdateInterface();
+							/*ActionShowCourseInf::Excute()*/
 							ActionShowCourseInfo::showInfo(pW, pC);
 							pGUI->GetUserAction("Course already added in this semester. press anywhere to dismiss");
 
@@ -157,7 +158,7 @@ bool ActionAddCourse::Execute()
 				pReg->UpdateInterface();
 				ActionShowCourseInfo::showInfo(pW, pC);
 
-				pGUI->GetUserAction("press any where to dismiss");
+				pGUI->GetUserAction("press anywhere to dismiss");
 				pC->setSelected(false);
 			}
 			else {
