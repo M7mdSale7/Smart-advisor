@@ -25,7 +25,7 @@ bool ActionSavePlan::Execute()
 	}
 
 	//printing *COURSES_INFO* in the form:
-	//code,status,grade
+	//code,status,grade,petition
 	if (years->size() != 0)
 	{
 		fout << endl;
@@ -62,7 +62,7 @@ bool ActionSavePlan::Execute()
 	{
 		fout << endl;
 		fout << "*MAJOR*\n";
-		fout << pReg->getMajor();
+		fout << pReg->getMajor() << endl;
 	}
 	
 
@@ -76,6 +76,7 @@ bool ActionSavePlan::Execute()
 		{
 			fout << "," << plan->getConcentration2();
 		}
+		fout << endl;
 	}
 
 	//printing *MINOR* info
@@ -107,13 +108,17 @@ bool ActionSavePlan::Execute()
 			}
 		}
 	}
-	if (petitionFlag == true)
-	{
-		fout << endl;
-	}
+	if (petitionFlag) fout << endl;
 	
-	//printing *DOUBLE_MAJOR* info
-	//printing *REPLACEMENTS* info
+
+
+	//printing *DOUBLE_MAJOR* name
+	if (!(pReg->getSecondMajor().empty()))
+	{
+		fout << "\n*DOUBLE_MAJOR*\n";
+		fout << pReg->getSecondMajor();
+	}
+
 	
 	
 

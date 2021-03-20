@@ -438,7 +438,7 @@ vector <vector <Course_Code>> StudyPlan::checkConReq(Rules* R) const {
 vector<vector<Course_Code>> StudyPlan::checkDoubleConReq(Rules* R) const
 {
 	vector <vector <Course_Code>> Error(2);
-	if (R->NofConcentrations == 1 || R->NofConcentrations == 0)
+	if (R->NofConcentrations == 1 || R->NofConcentrations == 0 || DoubleConcentration == 0)
 		return Error;
 
 	for (auto& code : R->ConCompulsory[DoubleConcentration - 1]) {
