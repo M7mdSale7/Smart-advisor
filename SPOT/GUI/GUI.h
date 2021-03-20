@@ -85,6 +85,7 @@ public:
 
 	//input functions
 	ActionData GUI::GetUserAction(string msg = "") const;
+	ActionData GUI::GetUserActionOrEnterKey(string msg = "") const;
 	ActionData mapMenuLocation(int x) const;
 	ActionData GUI::GetUserActionNoFlush(string msg = "") const;
 	string GetSrting() const;

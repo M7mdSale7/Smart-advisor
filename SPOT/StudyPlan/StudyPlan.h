@@ -62,7 +62,7 @@ public:
 	Course* searchSelectedCourse() const;
 	
 	//checks on the study plan
-	vector<string> checkMinor(Rules*);
+	vector<string> checkMinor(Rules*) const;
 	vector<yearSemPair> CreditsCheck(Rules*) const;
 	vector<codeTypePair> ProgReqCheck(Rules*) const;
 	bool checkUnivElectiveCrd(Rules*) const;
@@ -72,6 +72,8 @@ public:
 	vector <vector <Course_Code>> checkDoubleConReq(Rules*) const;
 	vector <vector <Course_Code>> checkPreCo() const;
 	vector <Course_Code> checkOfferings(Rules*) const;
+	bool checkM2MajElecCrd(Registrar* R) const;
+	bool checkM2UnivElecCrd(Registrar* R) const;
 
 	void checkPlan(Registrar* R) const; //exploits checks to show live messages of issues
 
