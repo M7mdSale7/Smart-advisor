@@ -30,6 +30,9 @@ public:
 	void setMajor(string m);
 	string getMajor() const;
 
+	void setSecondMajor(string m);
+	string getSecondMajor() const;
+
 	Action* CreateRequiredAction(); //creates the action the user wants
 	CourseInfo* CatalogSearch(string code, bool& coursefound); //searches if a certain course in the catalog has the input course code
 
@@ -37,7 +40,7 @@ public:
 
 	void UpdateInterface(); //updates user interface with the available data whenever called
 	void Initialization(); //Initializes the program by doing all necressary imports
-	void freePlanRules();//resets the rules data fields
+	void freePlanRules(Rules* rules);//resets the rules data fields
 	void Run(); //runs the whole program
 	void fillCoursesType(); //fills courses types in the courseCatalog vector in rules
 	void DrawNotes();

@@ -16,38 +16,82 @@ bool ActionDouble::Execute()
 	ifstream fin; //to read file
 	GUI* pGUI = pReg->getGUI();
 	Rules* RegRules = pReg->getRules2();
-	pGUI->PrintMsg("Doubling: do you want to double 1)major 2)concentration ?");
-	string choose = pGUI->GetSrting();
-	transform(choose.begin(), choose.end(), choose.begin(), toupper);
-	if (choose == "1")
+	pReg->freePlanRules(RegRules);
+	int choose = pGUI->getRangeInput(1,2, "Doubling: do you want to double 1)major 2)concentration ?");
+	if (choose == 1)
 	{
-		pGUI->PrintMsg("Please Enter The Major Number: 1)CIE  2)SPC  3)ENV  4)REE  5)NANENG ");
-		string maj = pGUI->GetSrting();
-		transform(maj.begin(), maj.end(), maj.begin(), toupper); //Making letters capital
-		ImportRequiements().ImportReqs(fin, pGUI, maj, RegRules); //Importing the requirments for the second major
+
+		int maj = pGUI->getRangeInput(1, 5, "Please Enter The Major Number: 1)CIE  2)SPC  3)ENV  4)REE  5)NANENG");
+		 //Importing the requirments for the second major
 		//Error checking for invalid input are implemented ubsude the function importReqs
-		if (maj == "1")
+		if (maj == 1)
 		{
-			pGUI->GetUserAction("You have added the second major (Double Major) as CIE, Press anywhere to dismiss");
+			if (pReg->getMajor() == "CIE")
+			{
+				pGUI->GetUserAction("Error! You are already a CIE Major. Press anywhere to dismiss");
+				return false;
+			}
+			else
+			{
+				ImportRequiements().ImportReqs(fin, pGUI, to_string(maj), RegRules);
+				pGUI->GetUserAction("You have added the second major (Double Major) as CIE, Press anywhere to dismiss");
+			}
+			
 		}
-		if (maj == "2")
+		if (maj == 2)
 		{
-			pGUI->GetUserAction("You have added the second major (Double Major) as SPC, Press anywhere to dismiss");
+			if (pReg->getMajor() == "SPC")
+			{
+				pGUI->GetUserAction("Error! You are already a SPC Major. Press anywhere to dismiss");
+				return false;
+			}
+			else
+			{
+				ImportRequiements().ImportReqs(fin, pGUI, to_string(maj), RegRules);
+				pGUI->GetUserAction("You have added the second major (Double Major) as SPC, Press anywhere to dismiss");
+			}
 		}
-		if (maj == "3")
+		if (maj == 3)
 		{
-			pGUI->GetUserAction("You have added the second major (Double Major) as ENV, Press anywhere to dismiss");
+			if (pReg->getMajor() == "ENV")
+			{
+				pGUI->GetUserAction("Error! You are already a ENV Major. Press anywhere to dismiss");
+				return false;
+			}
+			else
+			{
+				ImportRequiements().ImportReqs(fin, pGUI, to_string(maj), RegRules);
+				pGUI->GetUserAction("You have added the second major (Double Major) as ENV, Press anywhere to dismiss");
+			}
 		}
-		if (maj == "4")
+		if (maj == 4)
 		{
-			pGUI->GetUserAction("You have added the second major (Double Major) as REE, Press anywhere to dismiss");
+			if (pReg->getMajor() == "REE")
+			{
+				pGUI->GetUserAction("Error! You are already a REE Major. Press anywhere to dismiss");
+				return false;
+			}
+			else
+			{
+				ImportRequiements().ImportReqs(fin, pGUI, to_string(maj), RegRules);
+				pGUI->GetUserAction("You have added the second major (Double Major) as REE, Press anywhere to dismiss");
+			}
 		}
-		if (maj == "5")
+		if (maj == 5)
 		{
-			pGUI->GetUserAction("You have added the second major (Double Major) as NANENG, Press anywhere to dismiss");
+			if (pReg->getMajor() == "NANENG")
+			{
+				pGUI->GetUserAction("Error! You are already a NANENG Major. Press anywhere to dismiss");
+				return false;
+			}
+			else
+			{
+				ImportRequiements().ImportReqs(fin, pGUI, to_string(maj), RegRules);
+				pGUI->GetUserAction("You have added the second major (Double Major) as NANENG, Press anywhere to dismiss");
+			}
 		}
 	}
-	else if (choose == "2")
+	else if (choose == 2)
 	{
 		StudyPlan* pS = pReg->getStudyPlay();
 		int conNo1 = pS->getConcentration();
