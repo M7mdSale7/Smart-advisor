@@ -370,6 +370,10 @@ void StudyPlan::checkPlan(Registrar* R) const
 	{
 		R->getGUI()->printError("Minor Requirements violated!", 1, Ylocation);
 	}
+	if (!(ProgReqCheck(R->getRules2()).empty()) || !(checkM2MajElecCrd(R)) || !(checkM2UnivElecCrd(R)) )
+	{
+		R->getGUI()->printError("Program requirements violated!", 1, Ylocation);
+	}
 
 	
 }
@@ -606,6 +610,95 @@ vector <Course_Code> StudyPlan::checkOfferings(Rules* R) const {
 		}
 	}
 	return Error;
+}
+
+bool StudyPlan::checkM2MajElecCrd(Registrar* R) const
+{
+	int inPlanMajElecCred = 0;
+	Rules* RulesM1 = R->getRules();
+	Rules* RulesM2 = R->getRules2();
+	StudyPlan* plan = R->getStudyPlay();
+	int doubleCount = 0;
+
+	for (auto& itr2 : RulesM2->MajorElective)
+	{
+		for (auto& itrYear : *plan->getSPvector())
+		{
+			for (int i = 0; i < SEM_CNT; i++)
+			{
+				for (auto itrCourse : itrYear->getyearslist()[i])
+				{
+					if (itr2 == itrCourse->getCode())
+					{
+						for (auto& itr1 : RulesM1->MajorElective)
+						{
+							if (itr2 == itr1)
+							{
+								if (doubleCount < 2)
+								{
+									doubleCount++;
+								}
+								else
+								{
+									goto out2;
+								}
+							}
+						}
+						inPlanMajElecCred += itrCourse->getCredits();
+						goto out2;
+					}
+				}
+			}
+		}
+	out2:;
+	}
+	if (inPlanMajElecCred < RulesM2->ElectiveUnivCredits) return false;
+	else return true;
+}
+
+bool StudyPlan::checkM2UnivElecCrd(Registrar* R) const
+{
+	int inPlanUnivElecCred = 0;
+	Rules* RulesM1 = R->getRules();
+	Rules* RulesM2 = R->getRules2();
+	StudyPlan* plan = R->getStudyPlay();
+	int doubleCount = 0;
+
+	for (auto& itr2 : RulesM2->UnivElective)
+	{
+		for (auto& itrYear : *plan->getSPvector())
+		{
+			for (int i = 0; i < SEM_CNT; i++)
+			{
+				for (auto itrCourse : itrYear->getyearslist()[i])
+				{
+					if (itr2 == itrCourse->getCode())
+					{
+						for (auto& itr1 : RulesM1->UnivElective)
+						{
+							if (itr2 == itr1)
+							{
+								if (doubleCount < 2)
+								{
+									doubleCount++;
+								}
+								else
+								{
+									goto out1;
+								}
+							}
+						}
+						inPlanUnivElecCred += itrCourse->getCredits();
+						goto out1;
+					}
+				}
+			}
+		}
+	out1:;
+	}
+
+	if (inPlanUnivElecCred < RulesM2->ElectiveUnivCredits) return false;
+	else return true;
 }
 
 bool StudyPlan::checkUnivElectiveCrd(Rules* R) const

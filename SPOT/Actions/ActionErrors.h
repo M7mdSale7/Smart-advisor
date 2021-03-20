@@ -8,8 +8,6 @@ class ActionErrors : public Action
 {
 public:
 	ActionErrors(Registrar*);
-	bool checkM2UnivElecCrd(Registrar*);
-	bool checkM2MajElecCrd(Registrar*);
 	bool virtual Execute();
 	virtual ~ActionErrors();
 };

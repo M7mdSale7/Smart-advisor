@@ -326,7 +326,7 @@ void Registrar::Run()
 	UpdateInterface();
 	while (true)
 	{
-		
+
 		UpdateInterface();
 		
 		
@@ -339,6 +339,7 @@ void Registrar::Run()
 			}
 		}
 	}
+
 	
 }
 
