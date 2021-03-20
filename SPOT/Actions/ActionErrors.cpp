@@ -26,6 +26,7 @@ bool ActionErrors::Execute()
 	//0- Petitions
 	GUI* pGUI = pReg->getGUI(); //getting GUI
 	vector<AcademicYear*>* Plan = pS->getSPvector(); //getting study plan
+	file << "Petitions: " << endl;
 	for (int i = 0; i < Plan->size(); i++)
 	{
 		list<Course*>* Courses = Plan->at(i)->getyearslist();
@@ -35,7 +36,6 @@ bool ActionErrors::Execute()
 			{
 				if (itr->hasPetition())
 				{
-					file << "Petitions: " << endl;
 					file << "Course: " << itr->getCode() << " Has a petition to be taken without it's prerequisite" << endl;
 				}
 			}
@@ -50,16 +50,16 @@ bool ActionErrors::Execute()
 			{
 				if (j == 0)
 				{
-					file << "Year " << i+1 << "Semester Fall Has an overload petition" << endl;
+					file << "Year " << i+1 << " Semester Fall Has an overload petition" << endl;
 				}
 				else if (j == 1) {
 					{
-						file << "Year " << i+1 << "Semester Fall Has an overload petition" << endl;
+						file << "Year " << i+1 << " Semester Fall Has an overload petition" << endl;
 					}
 				}
 				else if (j == 2) {
 					{
-						file << "Year " << i+1 << "Semester Fall Has an overload petition" << endl;
+						file << "Year " << i+1 << " Semester Fall Has an overload petition" << endl;
 					}
 				}
 			}

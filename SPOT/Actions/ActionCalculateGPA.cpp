@@ -1,6 +1,7 @@
 #include "ActionCalculateGPA.h"
 #include "ActionDeleteCourse.h"
 #include <algorithm>
+#include "../DEFs.h"
 
 ActionCalculateGPA::ActionCalculateGPA(Registrar* p ) : Action(p)
 {
@@ -89,37 +90,41 @@ bool ActionCalculateGPA::Execute()
 	}
 	else if (choice0 == "2")
 	{
-		pGUI->PrintMsg("Enter Number Of Courses You Want to set their Grades to:");
-		string NumS = pGUI->GetSrting();
-		int Num = stoi(NumS);
-		pGUI->PrintMsg("Enter Grade: ");
-		string grade = pGUI->GetSrting();
-		transform(grade.begin(), grade.end(), grade.begin(), toupper);
-		while (grade != "A" && grade != "A-" && grade != "B+" && grade != "B" && grade != "B-" &&
-			grade != "C+" && grade != "C" && grade != "C-" && grade != "F" && grade != "P" &&
-			grade != "I" && grade != "W" && grade != "WP" && grade != "WF" && grade != "IP")
+		string grade = "NA";
+		vector<Course*> pVc;
+		while (grade == "NA")
 		{
-			pGUI->PrintMsg("Enter Valid Grade OR (E to Exit): ");
-			string grade = pGUI->GetSrting();
-			transform(grade.begin(), grade.end(), grade.begin(), toupper);
-			if (grade == "E")
-			{
-				return false;
-				break;
-			}
-			if (grade == "A" || grade == "A-" || grade == "B+" || grade == "B" || grade == "B-" ||
-				grade == "C+" || grade == "C" || grade == "C-" || grade == "F" || grade == "P" ||
-				grade == "I" || grade == "W" || grade == "WP" || grade == "WF" || grade == "IP")
-			{
-				break;
-			}
-		}
-		int n = 1;
-		while (Num)
-		{
-			ActionData actData = pGUI->GetUserAction("Please press on the course Number "+ to_string(n)) ;
+			ActionData actData = pGUI->GetUserActionOrEnterKey("Please press on the course or Enter to enter Grade");
 			int x, y;
-			if (actData.actType == DRAW_AREA)
+			char cKeyData;
+			window* pWind = pGUI->getPwind();
+			keytype ktInput = pWind->GetKeyPress(cKeyData);
+			if (actData.actType == ENTERKEY)
+			{
+				pGUI->PrintMsg("Enter Grade for the Courses");
+				grade = pGUI->GetSrting();
+				transform(grade.begin(), grade.end(), grade.begin(), toupper);
+				while (grade != "A" && grade != "A-" && grade != "B+" && grade != "B" && grade != "B-" &&
+					grade != "C+" && grade != "C" && grade != "C-" && grade != "F" && grade != "P" &&
+					grade != "I" && grade != "W" && grade != "WP" && grade != "WF" && grade != "IP")
+				{
+					pGUI->PrintMsg("Enter Valid Grade OR (E to Exit): ");
+					grade = pGUI->GetSrting();
+					transform(grade.begin(), grade.end(), grade.begin(), toupper);
+					if (grade == "E")
+					{
+						return false;
+						break;
+					}
+					if (grade == "A" || grade == "A-" || grade == "B+" || grade == "B" || grade == "B-" ||
+						grade == "C+" || grade == "C" || grade == "C-" || grade == "F" || grade == "P" ||
+						grade == "I" || grade == "W" || grade == "WP" || grade == "WF" || grade == "IP")
+					{
+						break;
+					}
+				}
+			}
+			else if (actData.actType == DRAW_AREA)
 			{
 				x = actData.x;
 				y = actData.y;
@@ -130,14 +135,16 @@ bool ActionCalculateGPA::Execute()
 				}
 				else
 				{
+					pVc.push_back(pC);
 					pC->setSelected(true);
-					pC->setGrade(grade);
 					pReg->UpdateInterface();
-					pC->setSelected(false);
-					Num--;
-					n++;
 				}
 			}
+		}
+		for (int i = 0; i < pVc.size(); i++)
+		{
+			pVc.at(i)->setGrade(grade);
+			pVc.at(i)->setSelected(false);
 		}
 	}
 	else
