@@ -45,11 +45,20 @@ Rules* Registrar::getRules2()
 void Registrar::setMajor(string m)
 {
 	major = m;
+	pSPlan->setMajor(m);
 }
 
 string Registrar::getMajor() const
 {
 	return major;
+}
+
+void Registrar::setMinor(string m) {
+	minor = m;
+	pSPlan->setMinor(m);
+}
+string Registrar::getMinor() const {
+	return minor;
 }
 
 void Registrar::setSecondMajor(string m)
@@ -62,15 +71,6 @@ string Registrar::getSecondMajor() const
 	return secondMajor;
 }
 
-void Registrar::setMinor(string m)
-{
-	minor = m;
-}
-
-string Registrar::getMinor() const
-{
-	return minor;
-}
 
 //returns the study plan
 StudyPlan* Registrar::getStudyPlay() const
@@ -322,6 +322,16 @@ void Registrar::Initialization() {
 	pGUI->PrintMsg("Enter your Major Number: 1)CIE  2)SPC  3)ENV  4)REE  5)NANENG ");
 	/*pGUI->getRangeInput(1, 5, "Enter your Major Number: 1)CIE  2)SPC  3)ENV  4)REE  5)NANENG ");*/
 	string Major = pGUI->GetSrting();
+	if (Major == "1")
+		major = "Comm and Information Engineering";
+	else if (Major == "2")
+		major = "AeroSpace Engineering";
+	else if (Major == "3")
+		major = "Environmental Engineering";
+	else if (Major == "4")
+		major = "Renewable Engineering";
+	else if (Major == "5")
+		major = "NanoTechnology Engineering";
 	bool flag = true;
 	ifstream infile;
 	ifstream fin;
@@ -456,16 +466,16 @@ void Registrar::DrawNotes()
 
 void Registrar::freePlanRules(Rules* rules) {
 	
-	rules->SemMinCredit = 12;
-	rules->SemMaxCredit = 18;
-	rules->SummerMaxCredit = 6;
-	rules->ReqUnivCredits = 0;//
-	rules->ElectiveUnivCredits = 0;//
-	rules->ReqTrackCredits = 0;//
-	rules->ReqMajorCredits = 0;//
-	rules->ElectiveMajorCredits = 0;//
-	rules->TotalMajorCredits = 0;//
-	rules->NofConcentrations = 0;//
+	RegRules.SemMinCredit = 12;
+	RegRules.SemMaxCredit = 18;
+	RegRules.SummerMaxCredit = 6;
+	RegRules.ReqUnivCredits = 0;
+	RegRules.ElectiveUnivCredits = 0;
+	RegRules.ReqTrackCredits = 0;
+	RegRules.ReqMajorCredits = 0;
+	RegRules.ElectiveMajorCredits = 0;
+	RegRules.TotalMajorCredits = 0;
+	RegRules.NofConcentrations = 0;
 	
 
 	rules->UnivCompulsory.clear();	//Univ Compulsory courses//

@@ -29,12 +29,11 @@ public:
 
 	void setMajor(string m);
 	string getMajor() const;
+	void setMinor(string m);
+	string getMinor() const;
 
 	void setSecondMajor(string m);
 	string getSecondMajor() const;
-
-	void setMinor(string m);
-	string getMinor() const;
 
 	Action* CreateRequiredAction(); //creates the action the user wants
 	CourseInfo* CatalogSearch(string code, bool& coursefound); //searches if a certain course in the catalog has the input course code

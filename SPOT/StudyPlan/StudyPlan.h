@@ -17,6 +17,8 @@ class StudyPlan:public Drawable
 
 	int concentration=0;
 	int DoubleConcentration=0;
+	string major;
+	string minor;
 
 
 	vector<AcademicYear*> plan;	//plan is a list of academic years
@@ -24,12 +26,17 @@ class StudyPlan:public Drawable
 public:
 	StudyPlan();
 
+	void setMajor(string);
+	string getMajor() const;
+	void setMinor(string);
+	string getMinor() const;
+
 	//getters
 	vector<AcademicYear*>* getSPvector();
 	vector<Notes*>* getNvector();
 	int getConcentration() const;
 	int getConcentration2() const;
-	string getMajor() const;
+	//string getMajor() const;
 	vector<Course*> getPetitionCourses() const;
 
 	//setters
@@ -55,6 +62,7 @@ public:
 	int getTotalPHrs() const;
 
 	int creditsOfDoneCourses() const;
+	double calculateGPA() const;
 	string StudentLevel() const;
 	Course* searchStudyPlan(Course_Code) const;
 	Course* searchYear(Course_Code, int) const;

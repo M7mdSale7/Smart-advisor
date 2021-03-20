@@ -45,8 +45,8 @@ bool ActionCourseStatus::Execute() {
 			//}
 		}
 		else if (choice == "2") {
-			/*course->setStatus("In Progress");
-			course->setGrade("I");*/
+			course->setStatus("In Progress");
+			course->setGrade("IP");
 			course->setDone(false);
 		}
 		else if (choice == "3") {

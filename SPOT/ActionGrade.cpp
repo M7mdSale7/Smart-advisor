@@ -1,11 +1,12 @@
 #include "ActionGrade.h"
 #include "Actions/ActionShowCourseInfo.h"
 
-ActionGrade::ActionGrade(Registrar* P) : Action(P) {
-
+ActionGrade::ActionGrade(Registrar* P, Course* course) : Action(P) {
+	this->course = course;
 }
 
-bool ActionGrade::Execute(Course* course) {
+bool ActionGrade::Execute() {
+	//windptr->DrawRectangle(905, 286, 960, 308);
 	GUI* pGUI = pReg->getGUI();
 	pGUI->PrintMsg("Enter the Grade.");
 	string grade = pGUI->GetSrting();
@@ -26,7 +27,7 @@ bool ActionGrade::Execute(Course* course) {
 	window* windptr = pGUI->getPwind();
 	//pReg->ExecuteAction(new ActionShowCourseInfo(pReg, x, y));
 	ActionShowCourseInfo(pReg, x, y).showInfo(windptr, course);
-	pGUI->GetUserAction("");
+	//pGUI->GetUserAction("");
 	return true;
 }
 

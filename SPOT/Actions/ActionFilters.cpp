@@ -121,7 +121,17 @@ bool ActionFilters::Execute()
 				pCR->setSelected(true);
 				window* pW = pGUI->getPwind();
 				pReg->UpdateInterface();
+
+				//ActionShowCourseInfo(pReg, 0, 0).showInfo(pW, pCR);
 				ActionShowCourseInfo::showInfo(pW, pCR);
+
+				graphicsInfo gInfo = pCR->getGfxInfo();
+				int x = gInfo.x;
+				int y = gInfo.y;
+				//ActionShowCourseInfo(pReg, x, y)::Execute();
+				
+				//pReg->ExecuteAction(new ActionShowCourseInfo(pReg, x, y));
+				//pReg->UpdateInterface();
 				pGUI->GetUserAction("press any where to dismiss");
 				pCR->setSelected(false);
 

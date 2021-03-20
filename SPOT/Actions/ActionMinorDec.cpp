@@ -51,6 +51,8 @@ bool ActionMinorDec::Execute()
 				pGUI->GetUserAction("You cannot make a minor of your major!");
 				return false;
 			}
+			else
+				pReg->setMinor(MinorType);
 
 		}
 		//Getting Requirment courses to check and compulsory courses to fill

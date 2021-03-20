@@ -75,6 +75,7 @@ public:
 	void DrawNotes(const Notes* pNotes); //Member function to Draw Notes on Screen
 	void DrawStudentLevel(const StudyPlan* pSPlan);
 	void printError(string error, bool issue, int& Ylocation);
+	void DrawStudentInfo(const StudyPlan* pS);
 	
 	//getters
 	const int getWindWidth();

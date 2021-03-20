@@ -120,7 +120,6 @@ bool ActionAddCourse::Execute()
 			}
 			bool flagci = false;
 
-			
 			vector<AcademicYear*>* plan = pS->getSPvector();
 			for (size_t i = 0; i < plan->size(); i++) {//Instead of the 15 if statements
 				AcademicYear* year = plan->at(i);
@@ -136,6 +135,8 @@ bool ActionAddCourse::Execute()
 							window* pW = pGUI->getPwind();
 							pCR->setSelected(true);
 							pReg->UpdateInterface();
+
+							//ActionShowCourseInfo(pReg, 0, 0).showInfo(pW, pC);
 							ActionShowCourseInfo::showInfo(pW, pC);
 							pGUI->GetUserAction("Course already added in this semester. press anywhere to dismiss");
 
@@ -155,8 +156,10 @@ bool ActionAddCourse::Execute()
 				window* pW = pGUI->getPwind();
 				pC->setSelected(true);
 				pReg->UpdateInterface();
-				ActionShowCourseInfo::showInfo(pW, pC);
 
+				//ActionShowCourseInfo(pReg, 0, 0).showInfo(pW, pC);
+				ActionShowCourseInfo::showInfo(pW, pC);
+				
 				pGUI->GetUserAction("press any where to dismiss");
 				pC->setSelected(false);
 			}

@@ -4,9 +4,10 @@
 class ActionGrade :
     public Action
 {
+    Course* course;
 public:
-    ActionGrade(Registrar*);
-    bool virtual Execute(Course*);
+    ActionGrade(Registrar*, Course*);
+    bool virtual Execute();
     virtual ~ActionGrade();
 };
 

@@ -78,6 +78,10 @@ bool ActionAddPetition::Execute() {
 			course->setSelected(false);
 		}
 	}
+	else {
+		pGUI->GetUserAction("Invalid input");
+		return false;
+	}
 
 	return true;
 }
