@@ -818,3 +818,15 @@ void StudyPlan::setMinor(string m) {
 string StudyPlan::getMinor() const {
 	return minor;
 }
+
+void StudyPlan::clearDataFields()
+{
+	TotalCredits = 0;
+	ElecUnivCredits = 0;
+	ReqUnivCredits = 0;
+	ReqMajorCredits = 0;
+	ElecMajorCredits = 0;
+	TotalTrackCredits = 0;
+	TotalConcentrationCredits = 0;
+	TotalMinorCredits = 0;
+}

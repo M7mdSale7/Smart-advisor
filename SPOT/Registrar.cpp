@@ -71,6 +71,7 @@ string Registrar::getSecondMajor() const
 	return secondMajor;
 }
 
+
 //returns the study plan
 StudyPlan* Registrar::getStudyPlay() const
 {

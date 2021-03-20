@@ -20,7 +20,7 @@ class StudyPlan:public Drawable
 	string major;
 	string minor;
 
-	int yearsIncrement = 0;
+
 	vector<AcademicYear*> plan;	//plan is a list of academic years
 	vector<Notes*> PlanNotees;
 public:
@@ -86,6 +86,7 @@ public:
 	void checkPlan(Registrar* R) const; //exploits checks to show live messages of issues
 
 	void selectOverloadedSemesters(GUI*) const;
+	void clearDataFields();
 	
 	virtual ~StudyPlan();
 };
