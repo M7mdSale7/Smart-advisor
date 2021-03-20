@@ -16,7 +16,8 @@ bool ActionDouble::Execute()
 	ifstream fin; //to read file
 	GUI* pGUI = pReg->getGUI();
 	Rules* RegRules = pReg->getRules2();
-	pGUI->PrintMsg("Doubling: do you want to double 1)major 2)concentration ?");
+	pGUI->PrintMsg("Doubling: do you want to double 1)major 2)concentration ");
+
 	string choose = pGUI->GetSrting();
 	transform(choose.begin(), choose.end(), choose.begin(), toupper);
 	if (choose == "1")

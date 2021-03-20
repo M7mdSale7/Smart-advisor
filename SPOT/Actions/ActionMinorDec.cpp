@@ -23,24 +23,36 @@ bool ActionMinorDec::Execute()
 {
 	GUI* pGUI = pReg->getGUI(); //Pointer to GUI
 	//Taking Input
-	pGUI->PrintMsg("1) Declare or Add courses to Minor. 2)Change Course From Minor.");
-	string choice0 = pGUI->GetSrting();
-	if (choice0 == "1")
+	/*pGUI->PrintMsg("1) Declare or Add courses to Minor. 2)Change Course From Minor.");
+	string choice0 = pGUI->GetSrting();*/
+	int choice0;
+	choice0 = pGUI->getRangeInput(1, 2, "1) Declare or Add courses to Minor. 2)Change Course From Minor.");
+	if (choice0 == 0)
+	{
+		return false;
+	}
+	if (choice0 == 1)
 	{
 		if (Num == 0) //First course to be added correctly so we are taking the program of minor
 		{
-			pGUI->PrintMsg("Enter Your Minor Name ( 1)CIE or 2)SPC 3)REE 4)NANENG 5)ENV 6)BMS 7)PEU 8)MATSCI 9)NANSCI )"); //Program of minor
-			MinorType = pGUI->GetSrting();
-			if (MinorType == "1") MinorType = "CIE";
-			else if (MinorType == "2") MinorType = "SPC";
-			else if (MinorType == "3") MinorType = "REE";
-			else if (MinorType == "4") MinorType = "NANENG";
-			else if (MinorType == "5") MinorType = "ENV";
-			else if (MinorType == "6") MinorType = "BMS";
-			else if (MinorType == "7") MinorType = "PEU";
-			else if (MinorType == "8") MinorType = "MATSCI";
-			else if (MinorType == "9") MinorType = "NANSCI";
-			else pGUI->GetUserAction("Invalid Syntax");
+			//pGUI->PrintMsg("Enter Your Minor Name ( 1)CIE or 2)SPC 3)REE 4)NANENG 5)ENV 6)BMS 7)PEU 8)MATSCI 9)NANSCI )"); //Program of minor
+			//MinorType = pGUI->GetSrting();
+			int MinorType0;
+			MinorType0 = pGUI->getRangeInput(1, 9, "Enter Your Minor Name(1)CIE or 2)SPC 3)REE 4)NANENG 5)ENV 6)BMS 7)PEU 8)MATSCI 9)NANSCI ");
+			if (MinorType0 == 0)
+			{
+				return false;
+			}
+			if (MinorType0 == 1) MinorType = "CIE";
+			else if (MinorType0 == 2) MinorType = "SPC";
+			else if (MinorType0 == 3) MinorType = "REE";
+			else if (MinorType0 == 4) MinorType = "NANENG";
+			else if (MinorType0 == 5) MinorType = "ENV";
+			else if (MinorType0 == 6) MinorType = "BMS";
+			else if (MinorType0 == 7) MinorType = "PEU";
+			else if (MinorType0 == 8) MinorType = "MATSCI";
+			else if (MinorType0 == 9) MinorType = "NANSCI";
+			//else pGUI->GetUserAction("Invalid Syntax");
 			if (pReg->getMajor() == MinorType)
 			{
 				pGUI->GetUserAction("You cannot make a minor of your major!");
@@ -183,7 +195,7 @@ bool ActionMinorDec::Execute()
 		//if he hadn't do so, issues will be formed at the complete check report
 
 	}
-	else if (choice0 == "2")
+	else if (choice0 == 2)
 	{
 		StudyPlan* pS = pReg->getStudyPlay();
 		Rules* R = pReg->getRules();
@@ -313,10 +325,10 @@ bool ActionMinorDec::Execute()
 	//	}
 
 	//}
-	else
+	/*else
 		{
 		pGUI->PrintMsg("Invalid Input");
-		}
+		}*/
 	return true;
 }
 
