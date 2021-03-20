@@ -44,7 +44,7 @@ bool ActionCalculateGPA::Execute()
 						pGUI->PrintMsg("Enter Grade for the course " + itr->getCode() + " (A - A- - B+ - ...)" + "Type EXIT to stop");
 						string Grade = pGUI->GetSrting();
 						transform(Grade.begin(), Grade.end(), Grade.begin(), toupper);
-						if (Grade == "Exit")
+						if (Grade == "EXIT")
 							return false; //Grade not added for that course
 						itr->setGrade(Grade);
 						while (itr->getGrad() == "NA") //Invalid input of grade (setGrad wont work)
@@ -77,7 +77,7 @@ bool ActionCalculateGPA::Execute()
 							pGUI->PrintMsg("Enter Grade for the course " + itr->getCode() + " (A - A- - B+ - ...)" + "Type EXIT to stop");
 							string Grade = pGUI->GetSrting();
 							transform(Grade.begin(), Grade.end(), Grade.begin(), toupper);
-							if (Grade == "Exit")
+							if (Grade == "EXIT")
 								return false; //Grade not added for that course
 							itr->setGrade(Grade);
 							while (itr->getGrad() == "NA") //Invalid input of grade (setGrad wont work)
