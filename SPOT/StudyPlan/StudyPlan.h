@@ -62,7 +62,7 @@ public:
 	Course* searchSelectedCourse() const;
 	
 	//checks on the study plan
-	vector<string> checkMinor(Rules*);
+	vector<string> checkMinor(Rules*) const;
 	vector<yearSemPair> CreditsCheck(Rules*) const;
 	vector<codeTypePair> ProgReqCheck(Rules*) const;
 	bool checkUnivElectiveCrd(Rules*) const;

@@ -304,7 +304,7 @@ vector<codeTypePair> StudyPlan::ProgReqCheck(Rules* R) const
 	return pairs;
 }
 
-vector<string> StudyPlan::checkMinor(Rules* R)
+vector<string> StudyPlan::checkMinor(Rules* R) const
 {
 	vector<Course_Code>* MinorComp = &R->MinorCompulsory;
 	vector<string> VectorOfErrors;
@@ -358,10 +358,20 @@ void StudyPlan::checkPlan(Registrar* R) const
 	{
 		R->getGUI()->printError("Concentration dependencies violated!", 1, Ylocation);
 	}
+	if (!(checkDoubleConReq(R->getRules())[0].empty()) || !(checkDoubleConReq(R->getRules())[1].empty()))
+	{
+		R->getGUI()->printError("Second concentration dependencies violated!", 1, Ylocation);
+	}
 	if (!(checkOfferings(R->getRules()).empty()))
 	{
 		R->getGUI()->printError("Courses offerings violated!", 0, Ylocation);
 	}
+	if (!checkMinor(R->getRules()).empty())
+	{
+		R->getGUI()->printError("Minor Requirements violated!", 1, Ylocation);
+	}
+
+	
 }
 
 Course* StudyPlan::searchStudyPlan(Course_Code code) const {

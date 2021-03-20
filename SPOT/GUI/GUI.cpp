@@ -160,7 +160,7 @@ int GUI::getRangeInput(int low, int high, string msg)
 		else
 		{
 			PrintMsg("Invalid input! Try again or press ESC to cancel.");
-			Sleep(1750);
+			Sleep(2000);
 			PrintMsg(msg);
 		}
 	} while (true);

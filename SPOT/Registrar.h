@@ -8,11 +8,13 @@
 //The maestro class for the application
 class Registrar
 {
-	GUI *pGUI;			//pointer to GUI 
+	GUI *pGUI;			//pointer to GUI
 	Rules RegRules;		 //Registration rules
 	Rules RegRules2;	//Registration rules for second major
 	StudyPlan *pSPlan;
-	string major; //stores the major of the student
+	string major; //stores the major name
+	string minor; //stores the minor name
+	string secondMajor; //stores second major name
 
 public:
 	Registrar();
