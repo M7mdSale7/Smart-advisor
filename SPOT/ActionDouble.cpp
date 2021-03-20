@@ -33,7 +33,7 @@ bool ActionDouble::Execute()
 			}
 			else
 			{
-				ImportRequiements().ImportReqs(fin, pGUI, to_string(maj), RegRules);
+				pReg->setSecondMajor(ImportRequiements().ImportReqs(fin, pGUI, to_string(maj), RegRules));
 				pGUI->GetUserAction("You have added the second major (Double Major) as CIE, Press anywhere to dismiss");
 			}
 			
@@ -47,7 +47,7 @@ bool ActionDouble::Execute()
 			}
 			else
 			{
-				ImportRequiements().ImportReqs(fin, pGUI, to_string(maj), RegRules);
+				pReg->setSecondMajor(ImportRequiements().ImportReqs(fin, pGUI, to_string(maj), RegRules));
 				pGUI->GetUserAction("You have added the second major (Double Major) as SPC, Press anywhere to dismiss");
 			}
 		}
@@ -60,7 +60,7 @@ bool ActionDouble::Execute()
 			}
 			else
 			{
-				ImportRequiements().ImportReqs(fin, pGUI, to_string(maj), RegRules);
+				pReg->setSecondMajor(ImportRequiements().ImportReqs(fin, pGUI, to_string(maj), RegRules));
 				pGUI->GetUserAction("You have added the second major (Double Major) as ENV, Press anywhere to dismiss");
 			}
 		}
@@ -73,7 +73,7 @@ bool ActionDouble::Execute()
 			}
 			else
 			{
-				ImportRequiements().ImportReqs(fin, pGUI, to_string(maj), RegRules);
+				pReg->setSecondMajor(ImportRequiements().ImportReqs(fin, pGUI, to_string(maj), RegRules));
 				pGUI->GetUserAction("You have added the second major (Double Major) as REE, Press anywhere to dismiss");
 			}
 		}
@@ -86,7 +86,7 @@ bool ActionDouble::Execute()
 			}
 			else
 			{
-				ImportRequiements().ImportReqs(fin, pGUI, to_string(maj), RegRules);
+				pReg->setSecondMajor(ImportRequiements().ImportReqs(fin, pGUI, to_string(maj), RegRules));
 				pGUI->GetUserAction("You have added the second major (Double Major) as NANENG, Press anywhere to dismiss");
 			}
 		}
