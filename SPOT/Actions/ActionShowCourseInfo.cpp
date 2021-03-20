@@ -9,6 +9,7 @@ ActionShowCourseInfo::ActionShowCourseInfo(Registrar* p , int x , int y) : Actio
 {
 	nx = x;
 	ny = y;
+
 }
 
 bool ActionShowCourseInfo::Execute()
@@ -344,6 +345,12 @@ void ActionShowCourseInfo::showInfo(window* windptr, Course* pC)
 	windptr->DrawString(910, 289, "Grade: ");
 	windptr->SetPen(BLACK, 2);
 	windptr->DrawString(965, 289, pC->getGrade());
+}
+
+bool ActionShowCourseInfo::courseAlreadyExists(Course* pC, int year, SEMESTER sem)
+{
+	
+	return false;
 }
 
 ActionShowCourseInfo::~ActionShowCourseInfo()

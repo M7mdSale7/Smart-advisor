@@ -133,6 +133,9 @@ void StudyPlan::DrawMe(GUI* pGUI) const
 	//Draw the student level according to the Study Plan
 	if (!plan.empty())
 		pGUI->DrawStudentLevel(this);
+
+	pGUI->showTotalCredits(this);
+	
 }
 
 StudyPlan::~StudyPlan()
@@ -488,6 +491,37 @@ int StudyPlan::getSemesterPHrs(int year, SEMESTER sem) const
 	{
 		return plan.at(year - 1)->getSemesterPHrs(sem);
 	}
+}
+
+int StudyPlan::getTotalPlanCredits() const
+{
+	return TotalCredits;
+}
+
+int StudyPlan::getTotalLHrs() const
+{
+	int totalLHrs = 0;
+	for (auto itrYear : plan)
+	{
+		for (int i = 0; i < SEM_CNT; i++)
+		{
+			totalLHrs += itrYear->getSemesterLHrs((SEMESTER)i);
+		}
+	}
+	return totalLHrs;
+}
+
+int StudyPlan::getTotalPHrs() const
+{
+	int totalPHrs = 0;
+	for (auto itrYear : plan)
+	{
+		for (int i = 0; i < SEM_CNT; i++)
+		{
+			totalPHrs += itrYear->getSemesterPHrs((SEMESTER)i);
+		}
+	}
+	return totalPHrs;
 }
 
 int StudyPlan::creditsOfDoneCourses() const {

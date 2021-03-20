@@ -3,9 +3,6 @@
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Registrar.cpp" />
-    <ClCompile Include="StudyPlan\AcademicYear.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
     <ClCompile Include="Actions\ActionAddCourse.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
@@ -198,14 +195,14 @@
     <ClCompile Include="GUI\Drawable.cpp">
       <Filter>GUI</Filter>
     </ClCompile>
+    <ClCompile Include="StudyPlan\AcademicYear.cpp">
+      <Filter>study plan</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DEFs.h" />
     <ClInclude Include="Registrar.h" />
     <ClInclude Include="Rules.h" />
-    <ClInclude Include="StudyPlan\AcademicYear.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
     <ClInclude Include="Actions\Action.h">
       <Filter>Actions</Filter>
     </ClInclude>
@@ -349,6 +346,9 @@
     </ClInclude>
     <ClInclude Include="GUI\Drawable.h">
       <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="StudyPlan\AcademicYear.h">
+      <Filter>study plan</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
