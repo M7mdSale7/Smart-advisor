@@ -11,8 +11,8 @@ Course::Course(Course_Code c_code, string c_title, int c_crd, vector<Course_Code
 	CoReq = c_CoReq;
 	PreReq = c_PreReq;
 	filter = true;
-	Status = "Done";
-	Done = true;
+	Status = "NA";
+	Done = false;
 	petition = false;
 }
 Course::Course(Course_Code r_code, string r_title, int crd):code(r_code),Title(r_title)
@@ -20,8 +20,8 @@ Course::Course(Course_Code r_code, string r_title, int crd):code(r_code),Title(r
 	credits = crd;
 	Grade = "NA";
 	filter = true;
-	Status = "Done";
-	Done = true;
+	Status = "NA";
+	Done = false;
 	petition = false;
 }
 
@@ -171,6 +171,15 @@ bool Course::setGrade(string grade)
 		grade == "I" || grade == "W" || grade == "WP" || grade == "WF" || grade == "IP")
 	{
 		this->Grade = grade;
+		if (grade == "I")
+			setStatus("In Progress");
+		else if (grade == "W" || grade == "WP" || grade == "WF" || grade == "IP")
+			setStatus("Attemeped but Not Done");
+		else
+		{
+			setStatus("Done");
+			setDone(true);
+		}
 		return true;
 	}
 	else
