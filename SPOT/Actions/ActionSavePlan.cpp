@@ -70,7 +70,7 @@ bool ActionSavePlan::Execute()
 	if (plan->getConcentration() != 0)
 	{
 		fout << endl;
-		fout << "*CONCENTRATION*\n";
+		fout << "*CONCENTRATIONS*\n";
 		fout << plan->getConcentration();
 		if (plan->getConcentration2() != 0) //printing number of second concentration if it exists
 		{

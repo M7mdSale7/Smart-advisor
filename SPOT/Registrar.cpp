@@ -323,15 +323,15 @@ void Registrar::Initialization() {
 	/*pGUI->getRangeInput(1, 5, "Enter your Major Number: 1)CIE  2)SPC  3)ENV  4)REE  5)NANENG ");*/
 	string Major = pGUI->GetSrting();
 	if (Major == "1")
-		major = "Comm and Information Engineering";
+		major = "CIE";
 	else if (Major == "2")
-		major = "AeroSpace Engineering";
+		major = "SPC";
 	else if (Major == "3")
-		major = "Environmental Engineering";
+		major = "ENV";
 	else if (Major == "4")
-		major = "Renewable Engineering";
+		major = "REE";
 	else if (Major == "5")
-		major = "NanoTechnology Engineering";
+		major = "NANENG";
 	bool flag = true;
 	ifstream infile;
 	ifstream fin;
