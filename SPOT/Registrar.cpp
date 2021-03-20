@@ -438,36 +438,36 @@ void Registrar::DrawNotes()
 {
 }
 
-void Registrar::freePlanRules() {
+void Registrar::freePlanRules(Rules* rules) {
 	
-	RegRules.SemMinCredit = 12;
-	RegRules.SemMaxCredit = 18;
-	RegRules.SummerMaxCredit = 6;
-	RegRules.ReqUnivCredits = 0;//
-	RegRules.ElectiveUnivCredits = 0;//
-	RegRules.ReqTrackCredits = 0;//
-	RegRules.ReqMajorCredits = 0;//
-	RegRules.ElectiveMajorCredits = 0;//
-	RegRules.TotalMajorCredits = 0;//
-	RegRules.NofConcentrations = 0;//
+	rules->SemMinCredit = 12;
+	rules->SemMaxCredit = 18;
+	rules->SummerMaxCredit = 6;
+	rules->ReqUnivCredits = 0;//
+	rules->ElectiveUnivCredits = 0;//
+	rules->ReqTrackCredits = 0;//
+	rules->ReqMajorCredits = 0;//
+	rules->ElectiveMajorCredits = 0;//
+	rules->TotalMajorCredits = 0;//
+	rules->NofConcentrations = 0;//
 	
 
-	RegRules.UnivCompulsory.clear();	//Univ Compulsory courses//
-	RegRules.UnivElective.clear();	//Univ Elective courses//
+	rules->UnivCompulsory.clear();	//Univ Compulsory courses//
+	rules->UnivElective.clear();	//Univ Elective courses//
 
-	RegRules.MinorCompulsory.clear(); //And this should add a list of compulsory courses
+	rules->MinorCompulsory.clear(); //And this should add a list of compulsory courses
 
-	RegRules.TrackCompulsory.clear();//Track Compulsory courses//
-	RegRules.TrackElective.clear();	//Track Elective courses (added for future)
+	rules->TrackCompulsory.clear();//Track Compulsory courses//
+	rules->TrackElective.clear();	//Track Elective courses (added for future)
 
-	RegRules.MajorCompulsory.clear();//Major Compulsory courses//
-	RegRules.MajorElective.clear();	//Major Elective courses//
+	rules->MajorCompulsory.clear();//Major Compulsory courses//
+	rules->MajorElective.clear();	//Major Elective courses//
 
-	RegRules.ConCompulsoryCr.clear();	//Concentration Compulsory credits//
-	RegRules.ConElectiveCr.clear();		//Concentration Elective credits//
+	rules->ConCompulsoryCr.clear();	//Concentration Compulsory credits//
+	rules->ConElectiveCr.clear();		//Concentration Elective credits//
 
-	RegRules.ConCompulsory.clear();		//concentrations compulsory courses//
-	RegRules.ConElective.clear();		//concentrations Elective courses//
+	rules->ConCompulsory.clear();		//concentrations compulsory courses//
+	rules->ConElective.clear();		//concentrations Elective courses//
 }
 
 void Registrar::UpdateInterface()

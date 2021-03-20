@@ -12,15 +12,13 @@ ActionChangePlan::ActionChangePlan(Registrar* p) : Action(p)
 bool ActionChangePlan::Execute()
 {
 	Rules* pRules = pReg->getRules();
-	pReg->freePlanRules();
+	pReg->freePlanRules(pReg->getRules());
 	GUI* pGUI = pReg->getGUI();
 	StudyPlan* pSPlan = pReg->getStudyPlay();
-	//ImportCatalog().readCatalog(&pRules->CourseCatalog);
 
 	pGUI->PrintMsg("Enter your Major Number: 1)CIE  2)SPC  3)ENV  4)REE  5)NANENG ");
 	string Major = pGUI->GetSrting();
 	string line;
-	//bool flag = true;
 	ifstream infile;
 	ifstream fin;
 	ImportRequiements().ImportReqs(fin, pGUI, Major, pRules);

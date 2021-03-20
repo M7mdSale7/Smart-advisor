@@ -618,7 +618,6 @@ bool StudyPlan::checkM2MajElecCrd(Registrar* R) const
 	Rules* RulesM1 = R->getRules();
 	Rules* RulesM2 = R->getRules2();
 	StudyPlan* plan = R->getStudyPlay();
-	int doubleCount = 0;
 
 	for (auto& itr2 : RulesM2->MajorElective)
 	{
@@ -634,14 +633,7 @@ bool StudyPlan::checkM2MajElecCrd(Registrar* R) const
 						{
 							if (itr2 == itr1)
 							{
-								if (doubleCount < 2)
-								{
-									doubleCount++;
-								}
-								else
-								{
-									goto out2;
-								}
+								goto out2;
 							}
 						}
 						inPlanMajElecCred += itrCourse->getCredits();
@@ -662,7 +654,6 @@ bool StudyPlan::checkM2UnivElecCrd(Registrar* R) const
 	Rules* RulesM1 = R->getRules();
 	Rules* RulesM2 = R->getRules2();
 	StudyPlan* plan = R->getStudyPlay();
-	int doubleCount = 0;
 
 	for (auto& itr2 : RulesM2->UnivElective)
 	{
@@ -678,14 +669,7 @@ bool StudyPlan::checkM2UnivElecCrd(Registrar* R) const
 						{
 							if (itr2 == itr1)
 							{
-								if (doubleCount < 2)
-								{
-									doubleCount++;
-								}
-								else
-								{
-									goto out1;
-								}
+								goto out1;
 							}
 						}
 						inPlanUnivElecCred += itrCourse->getCredits();
