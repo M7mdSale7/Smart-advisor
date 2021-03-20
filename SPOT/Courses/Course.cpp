@@ -167,7 +167,7 @@ void Course::DrawMe(GUI* pG) const
 bool Course::setGrade(string grade)
 {
 	if (grade == "A" || grade == "A-" || grade == "B+" || grade == "B" || grade == "B-" ||
-		grade == "C+" || grade == "C" || grade == "C-" || grade == "F" || grade == "P" ||
+		grade == "C+" || grade == "C" || grade == "C-" || grade == "D+" || grade == "D" || grade == "F" || grade == "P" ||
 		grade == "I" || grade == "W" || grade == "WP" || grade == "WF" || grade == "IP")
 	{
 		this->Grade = grade;
@@ -221,6 +221,10 @@ double Course::getQpoints()
 		return 2.0 * (double)credits;
 	else if (Grade == "C-")
 		return 1.7 * (double)credits;
+	else if (Grade == "D+")
+		return 1.3 * (double)credits;
+	else if (Grade == "D")
+		return 1.0 * (double)credits;
 	else if (Grade == "F")
 		return 0.0 * (double)credits;
 }

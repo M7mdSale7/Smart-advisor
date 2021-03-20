@@ -9,6 +9,7 @@ ActionShowCourseInfo::ActionShowCourseInfo(Registrar* p , int x , int y) : Actio
 {
 	nx = x;
 	ny = y;
+
 }
 
 bool ActionShowCourseInfo::Execute()
@@ -74,6 +75,12 @@ bool ActionShowCourseInfo::Execute()
 				{
 					if (pC->getyear() != 1 || pC->getsemester() != FALL)
 					{
+						if (courseAlreadyExists(pC, 1, FALL))
+						{
+							pC->setSelected(false);
+							return false;
+						}
+
 						pS->DeleteCourse(pC);
 						pS->AddCourse(pC, 1, FALL);
 						pC->setyear(1);
@@ -85,6 +92,12 @@ bool ActionShowCourseInfo::Execute()
 				{
 					if (pC->getyear() != 1 || pC->getsemester() != SPRING)
 					{
+						if (courseAlreadyExists(pC, 1, SPRING))
+						{
+							pC->setSelected(false);
+							return false;
+						}
+
 						pS->DeleteCourse(pC);
 						pS->AddCourse(pC, 1, SPRING);
 						pC->setyear(1);
@@ -97,6 +110,12 @@ bool ActionShowCourseInfo::Execute()
 				{
 					if (pC->getyear() != 1 || pC->getsemester() != SUMMER)
 					{
+						if (courseAlreadyExists(pC, 1, SUMMER))
+						{
+							pC->setSelected(false);
+							return false;
+						}
+
 						pS->DeleteCourse(pC);
 						pC->setyear(1);
 						pC->setsemester(SUMMER);
@@ -109,6 +128,12 @@ bool ActionShowCourseInfo::Execute()
 				{
 					if (pC->getyear() != 2 || pC->getsemester() != FALL)
 					{
+						if (courseAlreadyExists(pC, 2, FALL))
+						{
+							pC->setSelected(false);
+							return false;
+						}
+
 						pS->DeleteCourse(pC);
 						pS->AddCourse(pC, 2, FALL);
 						pC->setyear(2);
@@ -120,6 +145,12 @@ bool ActionShowCourseInfo::Execute()
 				{
 					if (pC->getyear() != 2 || pC->getsemester() != SPRING)
 					{
+						if (courseAlreadyExists(pC, 2, SPRING))
+						{
+							pC->setSelected(false);
+							return false;
+						}
+
 						pS->DeleteCourse(pC);
 						pS->AddCourse(pC, 2, SPRING);
 						pC->setyear(2);
@@ -131,6 +162,12 @@ bool ActionShowCourseInfo::Execute()
 				{
 					if (pC->getyear() != 2 || pC->getsemester() != SUMMER)
 					{
+						if (courseAlreadyExists(pC, 2, SUMMER))
+						{
+							pC->setSelected(false);
+							return false;
+						}
+
 						pS->DeleteCourse(pC);
 						pS->AddCourse(pC, 2, SUMMER);
 						pC->setyear(2);
@@ -142,6 +179,12 @@ bool ActionShowCourseInfo::Execute()
 				{
 					if (pC->getyear() != 3 || pC->getsemester() != FALL)
 					{
+						if (courseAlreadyExists(pC, 3, FALL))
+						{
+							pC->setSelected(false);
+							return false;
+						}
+
 						pS->DeleteCourse(pC);
 						pS->AddCourse(pC, 3, FALL);
 						pC->setyear(3);
@@ -153,6 +196,12 @@ bool ActionShowCourseInfo::Execute()
 				{
 					if (pC->getyear() != 3 || pC->getsemester() != SPRING)
 					{
+						if (courseAlreadyExists(pC, 3, SPRING))
+						{
+							pC->setSelected(false);
+							return false;
+						}
+
 						pS->DeleteCourse(pC);
 						pS->AddCourse(pC, 3, SPRING);
 						pC->setyear(3);
@@ -164,6 +213,12 @@ bool ActionShowCourseInfo::Execute()
 				{
 					if (pC->getyear() != 3 || pC->getsemester() != SUMMER)
 					{
+						if (courseAlreadyExists(pC, 3, SUMMER))
+						{
+							pC->setSelected(false);
+							return false;
+						}
+
 						pS->DeleteCourse(pC);
 						pS->AddCourse(pC, 3, SUMMER);
 						pC->setyear(3);
@@ -175,6 +230,12 @@ bool ActionShowCourseInfo::Execute()
 				{
 					if (pC->getyear() != 4 || pC->getsemester() != FALL)
 					{
+						if (courseAlreadyExists(pC, 4, FALL))
+						{
+							pC->setSelected(false);
+							return false;
+						}
+
 						pS->DeleteCourse(pC);
 						pS->AddCourse(pC, 4, FALL);
 						pC->setyear(4);
@@ -186,6 +247,12 @@ bool ActionShowCourseInfo::Execute()
 				{
 					if (pC->getyear() != 4 || pC->getsemester() != SPRING)
 					{
+						if (courseAlreadyExists(pC, 4, SPRING))
+						{
+							pC->setSelected(false);
+							return false;
+						}
+
 						pS->DeleteCourse(pC);
 						pS->AddCourse(pC, 4, SPRING);
 						pC->setyear(4);
@@ -197,6 +264,12 @@ bool ActionShowCourseInfo::Execute()
 				{
 					if (pC->getyear() != 4 || pC->getsemester() != SUMMER)
 					{
+						if (courseAlreadyExists(pC, 4, SUMMER))
+						{
+							pC->setSelected(false);
+							return false;
+						}
+
 						pS->DeleteCourse(pC);
 						pS->AddCourse(pC, 4, SUMMER);
 						pC->setyear(4);
@@ -208,6 +281,12 @@ bool ActionShowCourseInfo::Execute()
 				{
 					if (pC->getyear() != 5 || pC->getsemester() != FALL)
 					{
+						if (courseAlreadyExists(pC, 5, FALL))
+						{
+							pC->setSelected(false);
+							return false;
+						}
+
 						pS->DeleteCourse(pC);
 						pS->AddCourse(pC, 5, FALL);
 						pC->setyear(5);
@@ -219,6 +298,12 @@ bool ActionShowCourseInfo::Execute()
 				{
 					if (pC->getyear() != 5 || pC->getsemester() != SPRING)
 					{
+						if (courseAlreadyExists(pC, 5, SPRING))
+						{
+							pC->setSelected(false);
+							return false;
+						}
+
 						pS->DeleteCourse(pC);
 						pS->AddCourse(pC, 5, SPRING);
 						pC->setyear(5);
@@ -230,6 +315,12 @@ bool ActionShowCourseInfo::Execute()
 				{
 					if (pC->getyear() != 5 || pC->getsemester() != SUMMER)
 					{
+						if (courseAlreadyExists(pC, 5, SUMMER))
+						{
+							pC->setSelected(false);
+							return false;
+						}
+
 						pS->DeleteCourse(pC);
 						pS->AddCourse(pC, 5, SUMMER);
 						pC->setyear(5);
@@ -265,8 +356,10 @@ bool ActionShowCourseInfo::Execute()
 						string grade = pGUI->GetSrting();
 
 						if (grade == "A" || grade == "A-" || grade == "B+" || grade == "B" || grade == "B-" ||
-							grade == "C+" || grade == "C" || grade == "C-" || grade == "F" || grade == "P" ||
-							grade == "I" || grade == "W" || grade == "WP" || grade == "WF" || grade == "IP")
+							grade == "C+" || grade == "C" || grade == "C-" || grade == "D+" || grade == "D" || 
+							grade == "F" || grade == "P" || grade == "I" || grade == "W" || grade == "WP" || 
+							grade == "WF" || grade == "IP")
+
 							pC->setGrade(grade);
 						else
 							pGUI->PrintMsg("Invalid Grade Input:");
@@ -366,6 +459,28 @@ void ActionShowCourseInfo::showInfo(window* windptr, Course* pC)
 	windptr->DrawString(910, 289, "Grade: ");
 	windptr->SetPen(BLACK, 2);
 	windptr->DrawString(965, 289, pC->getGrade());
+}
+
+bool ActionShowCourseInfo::courseAlreadyExists(Course* pC, int year, SEMESTER sem)
+{
+	//returns true if the course is already there and false if the course is not there
+	string code = pC->getCode();
+	if (code.find("XXX") != string::npos)
+		return false;
+
+	Course* pCR = pReg->getStudyPlay()->searchSemester(code, year, sem);
+	if (pCR) {
+		window* pW = pReg->getGUI()->getPwind();
+		pCR->setSelected(true);
+		pReg->UpdateInterface();
+		ActionShowCourseInfo::showInfo(pW, pC);
+		pReg->getGUI()->GetUserAction("Course already added in this semester. press anywhere to dismiss");
+
+		pCR->setSelected(false);
+		return true;
+	}
+	else
+		return false;
 }
 
 ActionShowCourseInfo::~ActionShowCourseInfo()

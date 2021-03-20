@@ -17,6 +17,8 @@ class StudyPlan:public Drawable
 
 	int concentration=0;
 	int DoubleConcentration=0;
+
+	int yearsIncrement = 0;
 	vector<AcademicYear*> plan;	//plan is a list of academic years
 	vector<Notes*> PlanNotees;
 public:
@@ -47,6 +49,10 @@ public:
 	int getSemesterCredits(int year, SEMESTER sem) const;
 	int getSemesterLHrs(int year, SEMESTER sem) const;
 	int getSemesterPHrs(int year, SEMESTER sem) const;
+
+	int getTotalPlanCredits() const;
+	int getTotalLHrs() const;
+	int getTotalPHrs() const;
 
 	int creditsOfDoneCourses() const;
 	string StudentLevel() const;

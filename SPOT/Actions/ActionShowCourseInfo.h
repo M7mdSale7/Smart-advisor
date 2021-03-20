@@ -11,5 +11,6 @@ public:
 	ActionShowCourseInfo(Registrar* , int x , int y);
 	bool virtual Execute();
 	static void showInfo(window* windptr, Course* pC);
+	bool courseAlreadyExists(Course* pC, int year, SEMESTER sem);
 	virtual ~ActionShowCourseInfo();
 };

@@ -98,6 +98,7 @@ string GUI::GetSrting() const
 
 	string userInput;
 	char Key;
+
 	while (1)
 	{
 		pWind->WaitKeyPress(Key);
@@ -129,6 +130,16 @@ string GUI::GetSrting() const
 window* GUI::getPwind()
 {
 	return pWind;
+}
+
+void GUI::showTotalCredits(const StudyPlan* pS) const
+{
+	//Showing total plan credits
+	pWind->SetPen(BLACK, 2);
+	pWind->DrawRectangle(1050, 590, 1190, 620, FRAME);
+	pWind->DrawString(1060, 596,
+		"Cr " + to_string(pS->getTotalPlanCredits()) + "(" + to_string(pS->getTotalLHrs()) + "+"
+		+ to_string(pS->getTotalPHrs()) + ")");
 }
 
 int GUI::getRangeInput(int low, int high, string msg)
@@ -478,7 +489,6 @@ void GUI::DrawAcademicYear(const AcademicYear* pY)
 	pWind->DrawString(930, 596, "PreReqError");
 	pWind->DrawString(1120, 524, "CoReq");
 	pWind->DrawString(1120, 542, "PreReq");
-	//pWind->SetBrush(YELLOW);
 	pWind->SetPen(RED, 2.5);
 	pWind->DrawRectangle(995, 506, 1015, 521, FRAME);
 	pWind->SetPen(BLUE, 2.5);
@@ -503,6 +513,9 @@ void GUI::DrawAcademicYear(const AcademicYear* pY)
 	pWind->DrawLine(1090, 530, 1110, 530);
 	pWind->SetPen(ORANGE, 2);
 	pWind->DrawLine(1090, 548, 1110, 548);
+
+	
+
 }
 
 
