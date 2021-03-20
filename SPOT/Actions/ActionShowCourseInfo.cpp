@@ -248,7 +248,7 @@ bool ActionShowCourseInfo::Execute()
 			
 			bool loop = true;
 			while (loop) {//loops while the user clicks on the course info box
-				ActionData actData = pGUI->GetUserAction("Press anywhere else to deselect");
+				ActionData actData = pGUI->GetUserAction("Press anywhere else to deselect or press on other course to show its info");
 				x = actData.x;
 				y = actData.y;
 				if ((x > 900 && x < 1250) && (y > 88 && y < 310)) {//checks if the click is on the course info box
@@ -281,6 +281,28 @@ bool ActionShowCourseInfo::Execute()
 				}
 				else//if the click is not inside the course info box the loop will terminate
 					loop = false;
+				graphicsInfo tempGI;
+				tempGI.x = actData.x;
+				tempGI.y = actData.y;
+				try
+				{
+					Course* crsClicked = ActionDeleteCourse(pReg).coursesloop(x, y, pReg);
+					if (crsClicked == pC) //if its the same course just stop
+					{
+						pC->setSelected(false);
+						return true;
+					}
+					//if its not the same course then dis select the course and make a new action for the new one
+					pC->setSelected(false);
+					Action* RequiredAction = new ActionShowCourseInfo(pReg, x,y);
+					RequiredAction->Execute();
+					delete RequiredAction;
+				}
+				catch (const char* msg)
+				{
+					return true;;
+				}
+				
 			}
 			pC->setSelected(false);
 			return true;
