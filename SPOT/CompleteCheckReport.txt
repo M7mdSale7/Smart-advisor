@@ -1,8 +1,11 @@
 Petitions: 
-Course: CIE 202 Has a petition to be taken without it's prerequisite
-Year 2Semester Fall Has an overload petition
+Course: ENGR 210 Has a petition to be taken without it's prerequisite
+Course: PHYS 201 Has a petition to be taken without it's prerequisite
+Year 2 Semester Fall Has an overload petition
 
 2- Overload or underload petitions: 
+Moderate Issue: In year 1,Semester 1 Number of credits is: 11 And Underload Petition needed
+Moderate Issue: In year 2,Semester 3 Number of credits is: 7 And Overload Petition needed
 Moderate Issue: In year 4,Semester 2 Number of credits is: 9 And Underload Petition needed
 Moderate Issue: In year 5,Semester 1 Number of credits is: 3 And Underload Petition needed
 Moderate Issue: In year 5,Semester 2 Number of credits is: 3 And Underload Petition needed
@@ -13,13 +16,17 @@ Moderate Issue: In year 5,Semester 2 Number of credits is: 3 And Underload Petit
 
 8- Course Offersings Check
 Course MATH 101 Is registered in a non offering time
-Course CSCI 101 Is registered in a non offering time
+Course PHYS 101 Is registered in a non offering time
+Course PHYS 111 Is registered in a non offering time
+Course SCH 264 Is registered in a non offering time
+Course ENG 151 Is registered in a non offering time
+Course SCH 260 Is registered in a non offering time
+Course MATH 308 Is registered in a non offering time
 Course MATH 302 Is registered in a non offering time
 Course SCH 261 Is registered in a non offering time
 Course SCH 262 Is registered in a non offering time
 Course CIE 439 Is registered in a non offering time
 Course SCH 263 Is registered in a non offering time
 Course CIE 408 Is registered in a non offering time
-Course SCH XXX Is registered in a non offering time
 Course SCH XXX Is registered in a non offering time
 Course SCH XXX Is registered in a non offering time
