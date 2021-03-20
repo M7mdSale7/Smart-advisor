@@ -133,6 +133,8 @@ void StudyPlan::DrawMe(GUI* pGUI) const
 	//Draw the student level according to the Study Plan
 	if (!plan.empty())
 		pGUI->DrawStudentLevel(this);
+	
+	pGUI->DrawStudentInfo(this);
 }
 
 StudyPlan::~StudyPlan()
@@ -654,4 +656,28 @@ void StudyPlan::selectOverloadedSemesters(GUI* pGUI) const {
 			}
 		}
 	}
+}
+
+double StudyPlan::calculateGPA() const {
+	double GPA = 0.0;
+	double totalQ = 0.0;
+	for (size_t i = 0; i < plan.size(); i++) {
+		AcademicYear* year = plan[i];
+		list<Course*>* YearCourses = year->getyearslist();
+		for (size_t i = 0; i < SEM_CNT; i++) {
+			for (auto course : YearCourses[i]) {
+				string grade = course->getGrade();
+				if (grade == "A" || grade == "A-" || grade == "B+" || grade == "B" || grade == "B-" ||
+					grade == "C+" || grade == "C" || grade == "C-" || grade == "D+" || grade == "D" || grade == "P")
+
+					totalQ += course->getQpoints();
+			}
+		}
+	}
+	int DoneCredits = creditsOfDoneCourses();
+	if (DoneCredits) {
+		GPA = totalQ / DoneCredits;
+		return GPA;
+	}
+	return 0.0;
 }

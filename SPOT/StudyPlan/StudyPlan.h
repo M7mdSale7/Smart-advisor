@@ -49,6 +49,7 @@ public:
 	int getSemesterPHrs(int year, SEMESTER sem) const;
 
 	int creditsOfDoneCourses() const;
+	double calculateGPA() const;
 	string StudentLevel() const;
 	Course* searchStudyPlan(Course_Code) const;
 	Course* searchYear(Course_Code, int) const;

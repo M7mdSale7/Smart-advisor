@@ -36,7 +36,7 @@ void ADDSpace(Course_Code& code) {
 bool ActionChangeCode::Execute()
 {
 	GUI* pGUI = pReg->getGUI();
-	ActionData actData = pGUI->GetUserAction("Change course code: press on the course you want to change its code.");
+	ActionData actData = pGUI->GetUserAction("Change Course Code/Note: press on the one you want to change.");
 	int x, y;
 	if (actData.actType == DRAW_AREA)	
 	{
@@ -96,7 +96,10 @@ bool ActionChangeCode::Execute()
 						Course* pCR = pS->searchStudyPlan(pC1->getCode());
 						pCR->setSelected(true);
 						pReg->UpdateInterface();
+
+						//ActionShowCourseInfo(pReg, 0, 0).showInfo(pW, pC1);
 						ActionShowCourseInfo::showInfo(pW, pC1);
+						
 						pGUI->GetUserAction("Course already in this semester. press anywhere to dismiss");
 
 						pCR->setSelected(false);
@@ -116,6 +119,7 @@ bool ActionChangeCode::Execute()
 						Course* pCR = pS->searchStudyPlan(pC1->getCode());
 						pCR->setSelected(true);
 						pReg->UpdateInterface();
+						//ActionShowCourseInfo(pReg, 0, 0).showInfo(pW, pC1);
 						ActionShowCourseInfo::showInfo(pW, pC1);
 						pGUI->GetUserAction("Course already in this semester. press anywhere to dismiss");
 
@@ -135,6 +139,7 @@ bool ActionChangeCode::Execute()
 						Course* pCR = pS->searchStudyPlan(pC1->getCode());
 						pCR->setSelected(true);
 						pReg->UpdateInterface();
+						//ActionShowCourseInfo(pReg, 0, 0).showInfo(pW, pC1);
 						ActionShowCourseInfo::showInfo(pW, pC1);
 						pGUI->GetUserAction("Course already in this semester. press anywhere to dismiss");
 
@@ -155,6 +160,7 @@ bool ActionChangeCode::Execute()
 						Course* pCR = pS->searchStudyPlan(pC1->getCode());
 						pCR->setSelected(true);
 						pReg->UpdateInterface();
+						//ActionShowCourseInfo(pReg, 0, 0).showInfo(pW, pC1);
 						ActionShowCourseInfo::showInfo(pW, pC1);
 						pGUI->GetUserAction("Course already in this semester. press anywhere to dismiss");
 
@@ -174,6 +180,7 @@ bool ActionChangeCode::Execute()
 						Course* pCR = pS->searchStudyPlan(pC1->getCode());
 						pCR->setSelected(true);
 						pReg->UpdateInterface();
+						//ActionShowCourseInfo(pReg, 0, 0).showInfo(pW, pC1);
 						ActionShowCourseInfo::showInfo(pW, pC1);
 						pGUI->GetUserAction("Course already in this semester. press anywhere to dismiss");
 
@@ -193,6 +200,7 @@ bool ActionChangeCode::Execute()
 						Course* pCR = pS->searchStudyPlan(pC1->getCode());
 						pCR->setSelected(true);
 						pReg->UpdateInterface();
+						//ActionShowCourseInfo(pReg, 0, 0).showInfo(pW, pC1);
 						ActionShowCourseInfo::showInfo(pW, pC1);
 						pGUI->GetUserAction("Course already added in this semester. press anywhere to dismiss");
 
@@ -212,6 +220,7 @@ bool ActionChangeCode::Execute()
 						Course* pCR = pS->searchStudyPlan(pC1->getCode());
 						pCR->setSelected(true);
 						pReg->UpdateInterface();
+						//ActionShowCourseInfo(pReg, 0, 0).showInfo(pW, pC1);
 						ActionShowCourseInfo::showInfo(pW, pC1);
 						pGUI->GetUserAction("Course already in this semester. press anywhere to dismiss");
 
@@ -231,6 +240,7 @@ bool ActionChangeCode::Execute()
 						Course* pCR = pS->searchStudyPlan(pC1->getCode());
 						pCR->setSelected(true);
 						pReg->UpdateInterface();
+						//ActionShowCourseInfo(pReg, 0, 0).showInfo(pW, pC1);
 						ActionShowCourseInfo::showInfo(pW, pC1);
 						pGUI->GetUserAction("Course already in this semester. press anywhere to dismiss");
 
@@ -250,6 +260,7 @@ bool ActionChangeCode::Execute()
 						Course* pCR = pS->searchStudyPlan(pC1->getCode());
 						pCR->setSelected(true);
 						pReg->UpdateInterface();
+						//ActionShowCourseInfo(pReg, 0, 0).showInfo(pW, pC1);
 						ActionShowCourseInfo::showInfo(pW, pC1);
 						pGUI->GetUserAction("Course already in this semester. press anywhere to dismiss");
 
@@ -269,6 +280,7 @@ bool ActionChangeCode::Execute()
 						Course* pCR = pS->searchStudyPlan(pC1->getCode());
 						pCR->setSelected(true);
 						pReg->UpdateInterface();
+						//ActionShowCourseInfo(pReg, 0, 0).showInfo(pW, pC1);
 						ActionShowCourseInfo::showInfo(pW, pC1);
 						pGUI->GetUserAction("Course already in this semester. press anywhere to dismiss");
 
@@ -288,6 +300,7 @@ bool ActionChangeCode::Execute()
 						Course* pCR = pS->searchStudyPlan(pC1->getCode());
 						pCR->setSelected(true);
 						pReg->UpdateInterface();
+						//ActionShowCourseInfo(pReg, 0, 0).showInfo(pW, pC1);
 						ActionShowCourseInfo::showInfo(pW, pC1);
 						pGUI->GetUserAction("Course already in this semester. press anywhere to dismiss");
 
@@ -307,6 +320,7 @@ bool ActionChangeCode::Execute()
 						Course* pCR = pS->searchStudyPlan(pC1->getCode());
 						pCR->setSelected(true);
 						pReg->UpdateInterface();
+						//ActionShowCourseInfo(pReg, 0, 0).showInfo(pW, pC1);
 						ActionShowCourseInfo::showInfo(pW, pC1);
 						pGUI->GetUserAction("Course already in this semester. press anywhere to dismiss");
 
@@ -326,6 +340,7 @@ bool ActionChangeCode::Execute()
 						Course* pCR = pS->searchStudyPlan(pC1->getCode());
 						pCR->setSelected(true);
 						pReg->UpdateInterface();
+						//ActionShowCourseInfo(pReg, 0, 0).showInfo(pW, pC1);
 						ActionShowCourseInfo::showInfo(pW, pC1);
 						pGUI->GetUserAction("Course already in this semester. press anywhere to dismiss");
 
@@ -345,6 +360,7 @@ bool ActionChangeCode::Execute()
 						Course* pCR = pS->searchStudyPlan(pC1->getCode());
 						pCR->setSelected(true);
 						pReg->UpdateInterface();
+						//ActionShowCourseInfo(pReg, 0, 0).showInfo(pW, pC1);
 						ActionShowCourseInfo::showInfo(pW, pC1);
 						pGUI->GetUserAction("Course already in this semester. press anywhere to dismiss");
 
@@ -364,6 +380,7 @@ bool ActionChangeCode::Execute()
 						Course* pCR = pS->searchStudyPlan(pC1->getCode());
 						pCR->setSelected(true);
 						pReg->UpdateInterface();
+						//ActionShowCourseInfo(pReg, 0, 0).showInfo(pW, pC1);
 						ActionShowCourseInfo::showInfo(pW, pC1);
 						pGUI->GetUserAction("Course already in this semester. press anywhere to dismiss");
 
@@ -387,6 +404,7 @@ bool ActionChangeCode::Execute()
 					window* pW = pGUI->getPwind();
 					pC->setSelected(true);
 					pReg->UpdateInterface();
+					//ActionShowCourseInfo(pReg, 0, 0).showInfo(pW, pC1);
 					ActionShowCourseInfo::showInfo(pW, pC1);
 
 					pGUI->GetUserAction("press any where to dismiss");

@@ -380,12 +380,28 @@ int AcademicYear::CrOfDoneCourses() const {
 		for (auto course : YearCourses[i]) {
 			string grade = course->getGrade();
 			if (grade == "A" || grade == "A-" || grade == "B+" || grade == "B" || grade == "B-" ||
-				grade == "C+" || grade == "C" || grade == "C-" || grade == "D+" || grade == "D")
+				grade == "C+" || grade == "C" || grade == "C-" || grade == "D+" || grade == "D" || grade == "P")
 
 				credits += course->getCredits();
 		}
 	}
 	return credits;
+}
+
+double AcademicYear::CalculateGPA() const {
+	double totalQ = 0.0;
+	for (size_t i = 0; i < SEM_CNT; i++) {
+		for (auto course : YearCourses[i]) {
+			string grade = course->getGrade();
+			if (grade == "A" || grade == "A-" || grade == "B+" || grade == "B" || grade == "B-" ||
+				grade == "C+" || grade == "C" || grade == "C-" || grade == "D+" || grade == "D" || grade == "P")
+
+				totalQ += course->getQpoints();
+		}
+	}
+
+	double GPA = (totalQ / CrOfDoneCourses());
+	return GPA;
 }
 
 vector <bool>* AcademicYear::getOverloadSemesters() const {

@@ -13,8 +13,6 @@
 #include "../SPOT/Actions/ActionFilters.h"
 #include "../SPOT/Actions/ActionErrors.h"
 #include "ActionAddPetition.h"
-#include "ActionCourseStatus.h"
-//#include "ActionGrade.h"
 #include "ActionChangePlan.h"
 #include "ImportStudyPlan.h"
 #include "Actions/exit.h"
@@ -135,10 +133,6 @@ Action* Registrar::CreateRequiredAction()
 				RequiredAction = new ActionAddPetition(this);
 				return RequiredAction;
 				break;
-			/*case ADD_GRADE:
-				RequiredAction = new ActionGrade(this);
-				return RequiredAction;
-				break;*/
 			}
 		}
 		else
@@ -444,13 +438,13 @@ void Registrar::freePlanRules() {
 	RegRules.SemMinCredit = 12;
 	RegRules.SemMaxCredit = 18;
 	RegRules.SummerMaxCredit = 6;
-	RegRules.ReqUnivCredits = 0;//
-	RegRules.ElectiveUnivCredits = 0;//
-	RegRules.ReqTrackCredits = 0;//
-	RegRules.ReqMajorCredits = 0;//
-	RegRules.ElectiveMajorCredits = 0;//
-	RegRules.TotalMajorCredits = 0;//
-	RegRules.NofConcentrations = 0;//
+	RegRules.ReqUnivCredits = 0;
+	RegRules.ElectiveUnivCredits = 0;
+	RegRules.ReqTrackCredits = 0;
+	RegRules.ReqMajorCredits = 0;
+	RegRules.ElectiveMajorCredits = 0;
+	RegRules.TotalMajorCredits = 0;
+	RegRules.NofConcentrations = 0;
 	
 
 	RegRules.UnivCompulsory.clear();	//Univ Compulsory courses//

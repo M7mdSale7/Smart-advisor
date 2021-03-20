@@ -445,7 +445,7 @@ void GUI::DrawAcademicYear(const AcademicYear* pY)
 
 
 	//Drawing notes area
-	pWind->SetPen(BLACK, 2);
+	/*pWind->SetPen(BLACK, 2);
 	pWind->DrawLine(900,  88, 1250,  88, FRAME);
 	pWind->DrawLine(900,  88,  900, 310, FRAME);
 	pWind->DrawLine(1250, 88, 1250, 310, FRAME);
@@ -453,7 +453,61 @@ void GUI::DrawAcademicYear(const AcademicYear* pY)
 	pWind->DrawLine(900, 120, 1250, 120, FRAME);
 	pWind->SetFont(20, BOLD, BY_NAME, "Gramound");
 	pWind->SetPen(DODGERBLUE, 2);
-	pWind->DrawString(980, 95, "ADD YOUR NOTES HERE");
+	pWind->DrawString(980, 95, "ADD YOUR NOTES HERE");*/
+
+	//Drawing General Info area
+	/*pWind->SetPen(BLACK, 2);
+	pWind->DrawLine(900, 88, 1250, 88, FRAME);
+	pWind->DrawLine(900, 88, 900, 310, FRAME);
+	pWind->DrawLine(1250, 88, 1250, 310, FRAME);
+	pWind->DrawLine(900, 310, 1250, 310, FRAME);
+	pWind->DrawLine(900, 120, 1250, 120, FRAME);
+	pWind->SetFont(20, BOLD, SWISS, "Gramound");
+	pWind->SetPen(DODGERBLUE, 2);
+	pWind->DrawString(990, 95, "Student General Info");
+
+	pWind->SetFont(19, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(DODGERBLUE, 2);
+	pWind->DrawString(910, 135, "Major: ");
+	pWind->SetFont(17, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(BLACK, 2);
+	pWind->DrawString(960, 135, "Comm and Information Engineering");
+
+	pWind->SetFont(19, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(DODGERBLUE, 2);
+	pWind->DrawString(910, 162, "Minor: ");
+	pWind->SetFont(17, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(BLACK, 2);
+	pWind->DrawString(960, 162, "None");
+
+	pWind->SetFont(19, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(DODGERBLUE, 2);
+	pWind->DrawString(910, 189, "Concentration: ");
+	pWind->SetFont(17, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(BLACK, 2);
+	pWind->DrawString(1030, 189, "None");
+
+	pWind->SetFont(19, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(DODGERBLUE, 2);
+	pWind->DrawString(910, 216, "GPA: ");
+	pWind->SetFont(17, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(BLACK, 2);
+	string = 
+	pWind->DrawString(955, 216, "4.0");
+
+	pWind->SetFont(19, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(DODGERBLUE, 2);
+	pWind->DrawString(910, 243, "Student Level: ");
+	pWind->SetFont(17, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(BLACK, 2);
+	pWind->DrawString(1027, 243, "Freshman");
+
+	pWind->SetFont(19, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(DODGERBLUE, 2);
+	pWind->DrawString(910, 270, "# of taken Credits: ");
+	pWind->SetFont(17, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(BLACK, 2);
+	pWind->DrawString(1055, 270, "18");*/
 
 	//Drawing errors area
 	pWind->SetPen(BLACK, 2);
@@ -507,7 +561,62 @@ void GUI::DrawAcademicYear(const AcademicYear* pY)
 	pWind->DrawLine(1090, 548, 1110, 548);
 }
 
+void GUI::DrawStudentInfo(const StudyPlan* pS) {
+	pWind->SetPen(BLACK, 2);
+	pWind->DrawLine(900, 88, 1250, 88, FRAME);
+	pWind->DrawLine(900, 88, 900, 310, FRAME);
+	pWind->DrawLine(1250, 88, 1250, 310, FRAME);
+	pWind->DrawLine(900, 310, 1250, 310, FRAME);
+	pWind->DrawLine(900, 120, 1250, 120, FRAME);
+	pWind->SetFont(20, BOLD, SWISS, "Gramound");
+	pWind->SetPen(DODGERBLUE, 2);
+	pWind->DrawString(990, 95, "Student General Info");
 
+	pWind->SetFont(19, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(DODGERBLUE, 2);
+	pWind->DrawString(910, 135, "Major: ");
+	pWind->SetFont(17, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(BLACK, 2);
+	pWind->DrawString(960, 135, "Comm and Information Engineering");
+
+	pWind->SetFont(19, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(DODGERBLUE, 2);
+	pWind->DrawString(910, 162, "Minor: ");
+	pWind->SetFont(17, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(BLACK, 2);
+	pWind->DrawString(960, 162, "None");
+
+	pWind->SetFont(19, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(DODGERBLUE, 2);
+	pWind->DrawString(910, 189, "Concentration: ");
+	pWind->SetFont(17, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(BLACK, 2);
+	pWind->DrawString(1030, 189, "None");
+
+	pWind->SetFont(19, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(DODGERBLUE, 2);
+	pWind->DrawString(910, 216, "GPA: ");
+	pWind->SetFont(17, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(BLACK, 2);
+	double GPA = pS->calculateGPA();
+	pWind->DrawString(955, 216, to_string(GPA));
+
+	pWind->SetFont(19, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(DODGERBLUE, 2);
+	pWind->DrawString(910, 243, "Student Level: ");
+	pWind->SetFont(17, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(BLACK, 2);
+	string level = pS->StudentLevel();
+	pWind->DrawString(1027, 243, level);
+
+	pWind->SetFont(19, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(DODGERBLUE, 2);
+	pWind->DrawString(910, 270, "# of taken Credits: ");
+	pWind->SetFont(17, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(BLACK, 2);
+	int credits = pS->creditsOfDoneCourses();
+	pWind->DrawString(1055, 270, to_string(credits));
+}
 
 
 ////////////////////////    Input functions    ///////////////////
