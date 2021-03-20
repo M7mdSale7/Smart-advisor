@@ -133,7 +133,7 @@ void StudyPlan::DrawMe(GUI* pGUI) const
 	//Draw the student level according to the Study Plan
 	if (!plan.empty())
 		pGUI->DrawStudentLevel(this);
-
+	
 	pGUI->showTotalCredits(this);
 	
 }

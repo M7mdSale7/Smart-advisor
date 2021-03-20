@@ -84,6 +84,7 @@ bool ActionSavePlan::Execute()
 	{
 		fout << endl;
 		fout << "*MINOR*\n";
+		fout << pReg->getMinor() << endl;;
 		fout << pReg->getRules()->MinorCompulsory.at(0);
 		for (int i = 1; i < pReg->getRules()->MinorCompulsory.size(); i++)
 		{
@@ -104,7 +105,7 @@ bool ActionSavePlan::Execute()
 					fout << "\n*SEM_PETITIONS*\n";
 					petitionFlag = true;
 				}
-				fout << i + 1, j + 1;
+				fout << i + 1 << "," << j + 1 << endl;
 			}
 		}
 	}

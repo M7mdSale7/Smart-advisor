@@ -62,6 +62,16 @@ string Registrar::getSecondMajor() const
 	return secondMajor;
 }
 
+void Registrar::setMinor(string m)
+{
+	minor = m;
+}
+
+string Registrar::getMinor() const
+{
+	return minor;
+}
+
 //returns the study plan
 StudyPlan* Registrar::getStudyPlay() const
 {
