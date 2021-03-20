@@ -442,7 +442,11 @@ void ActionShowCourseInfo::showInfo(window* windptr, Course* pC)
 bool ActionShowCourseInfo::courseAlreadyExists(Course* pC, int year, SEMESTER sem)
 {
 	//returns true if the course is already there and false if the course is not there
-	Course* pCR = pReg->getStudyPlay()->searchSemester(pC->getCode(), year, sem);
+	string code = pC->getCode();
+	if (code.find("XXX") != string::npos)
+		return false;
+
+	Course* pCR = pReg->getStudyPlay()->searchSemester(code, year, sem);
 	if (pCR) {
 		window* pW = pReg->getGUI()->getPwind();
 		pCR->setSelected(true);
