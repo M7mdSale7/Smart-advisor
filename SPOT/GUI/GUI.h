@@ -42,8 +42,8 @@ class GUI
 	static const int	WindWidth = 1300, WindHeight = 700,	//Window width and height
 		wx = 15, wy = 15,		//Window starting coordinates
 		StatusBarHeight = 60,	//Status Bar Height
-		MenuBarHeight = 80,		//Menu Bar Height (distance from top of window to bottom line of menu bar)
-		MenuItemWidth = 70;		//Width of each item in the menu
+		MenuBarHeight = 75,		//Menu Bar Height (distance from top of window to bottom line of menu bar)
+		MenuItemWidth = 65;		//Width of each item in the menu
 
 
 
@@ -86,10 +86,12 @@ public:
 
 	//input functions
 	ActionData GUI::GetUserAction(string msg = "") const;
+	ActionData GUI::GetUserActionOrEnterKey(string msg = "") const;
 	ActionData mapMenuLocation(int x) const;
 	ActionData GUI::GetUserActionNoFlush(string msg = "") const;
 	string GetSrting() const;
 	window* getPwind();
+	void showTotalCredits(const StudyPlan* pS) const;
 	int getRangeInput(int low, int high, string msg);
 
 	~GUI();

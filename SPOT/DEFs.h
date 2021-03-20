@@ -56,7 +56,6 @@ enum ActionType
 	REDO,		//Redo the last Action canceled
 	CHANGE_PLAN,//change the plan inside the application
 	ADD_PETITION,
-	//ADD_GRADE,
 	CALC_GPA,	//calculate student GPA
 	MINOR_DEC,	//declare a minor
 	SEARCH,		//search for courses by applying filer
@@ -66,9 +65,9 @@ enum ActionType
 	STATUS_BAR,	//A click on the status bar
 	MENU_BAR,	//A click on an empty place in the menu bar
 	DRAW_AREA,	//A click in the drawing area
+	ENTERKEY,	//indication that the enter key is pressed
 
 	CANCEL,		//ESC key is pressed
-
 
 };
 

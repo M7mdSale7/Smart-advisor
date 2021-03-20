@@ -131,8 +131,10 @@ void StudyPlan::DrawMe(GUI* pGUI) const
 	for (int i = 0; i < PlanNotees.size(); i++)
 		PlanNotees[i]->DrawMe(pGUI);
 	//Draw the student level according to the Study Plan
-	if (!plan.empty())
-		pGUI->DrawStudentLevel(this);
+	/*if (!plan.empty())
+		pGUI->DrawStudentLevel(this);*/
+
+	pGUI->showTotalCredits(this);
 	
 	pGUI->DrawStudentInfo(this);
 }
@@ -303,7 +305,7 @@ vector<codeTypePair> StudyPlan::ProgReqCheck(Rules* R) const
 	return pairs;
 }
 
-vector<string> StudyPlan::checkMinor(Rules* R)
+vector<string> StudyPlan::checkMinor(Rules* R) const
 {
 	vector<Course_Code>* MinorComp = &R->MinorCompulsory;
 	vector<string> VectorOfErrors;
@@ -357,10 +359,24 @@ void StudyPlan::checkPlan(Registrar* R) const
 	{
 		R->getGUI()->printError("Concentration dependencies violated!", 1, Ylocation);
 	}
+	if (!(checkDoubleConReq(R->getRules())[0].empty()) || !(checkDoubleConReq(R->getRules())[1].empty()))
+	{
+		R->getGUI()->printError("Second concentration dependencies violated!", 1, Ylocation);
+	}
 	if (!(checkOfferings(R->getRules()).empty()))
 	{
 		R->getGUI()->printError("Courses offerings violated!", 0, Ylocation);
 	}
+	if (!checkMinor(R->getRules()).empty())
+	{
+		R->getGUI()->printError("Minor Requirements violated!", 1, Ylocation);
+	}
+	if (!(ProgReqCheck(R->getRules2()).empty()) || !(checkM2MajElecCrd(R)) || !(checkM2UnivElecCrd(R)) )
+	{
+		R->getGUI()->printError("Program requirements violated!", 1, Ylocation);
+	}
+
+	
 }
 
 Course* StudyPlan::searchStudyPlan(Course_Code code) const {
@@ -423,7 +439,7 @@ vector <vector <Course_Code>> StudyPlan::checkConReq(Rules* R) const {
 vector<vector<Course_Code>> StudyPlan::checkDoubleConReq(Rules* R) const
 {
 	vector <vector <Course_Code>> Error(2);
-	if (R->NofConcentrations == 1 || R->NofConcentrations == 0)
+	if (R->NofConcentrations == 1 || R->NofConcentrations == 0 || DoubleConcentration == 0)
 		return Error;
 
 	for (auto& code : R->ConCompulsory[DoubleConcentration - 1]) {
@@ -490,6 +506,37 @@ int StudyPlan::getSemesterPHrs(int year, SEMESTER sem) const
 	{
 		return plan.at(year - 1)->getSemesterPHrs(sem);
 	}
+}
+
+int StudyPlan::getTotalPlanCredits() const
+{
+	return TotalCredits;
+}
+
+int StudyPlan::getTotalLHrs() const
+{
+	int totalLHrs = 0;
+	for (auto itrYear : plan)
+	{
+		for (int i = 0; i < SEM_CNT; i++)
+		{
+			totalLHrs += itrYear->getSemesterLHrs((SEMESTER)i);
+		}
+	}
+	return totalLHrs;
+}
+
+int StudyPlan::getTotalPHrs() const
+{
+	int totalPHrs = 0;
+	for (auto itrYear : plan)
+	{
+		for (int i = 0; i < SEM_CNT; i++)
+		{
+			totalPHrs += itrYear->getSemesterPHrs((SEMESTER)i);
+		}
+	}
+	return totalPHrs;
 }
 
 int StudyPlan::creditsOfDoneCourses() const {
@@ -564,6 +611,79 @@ vector <Course_Code> StudyPlan::checkOfferings(Rules* R) const {
 		}
 	}
 	return Error;
+}
+
+bool StudyPlan::checkM2MajElecCrd(Registrar* R) const
+{
+	int inPlanMajElecCred = 0;
+	Rules* RulesM1 = R->getRules();
+	Rules* RulesM2 = R->getRules2();
+	StudyPlan* plan = R->getStudyPlay();
+
+	for (auto& itr2 : RulesM2->MajorElective)
+	{
+		for (auto& itrYear : *plan->getSPvector())
+		{
+			for (int i = 0; i < SEM_CNT; i++)
+			{
+				for (auto itrCourse : itrYear->getyearslist()[i])
+				{
+					if (itr2 == itrCourse->getCode())
+					{
+						for (auto& itr1 : RulesM1->MajorElective)
+						{
+							if (itr2 == itr1)
+							{
+								goto out2;
+							}
+						}
+						inPlanMajElecCred += itrCourse->getCredits();
+						goto out2;
+					}
+				}
+			}
+		}
+	out2:;
+	}
+	if (inPlanMajElecCred < RulesM2->ElectiveUnivCredits) return false;
+	else return true;
+}
+
+bool StudyPlan::checkM2UnivElecCrd(Registrar* R) const
+{
+	int inPlanUnivElecCred = 0;
+	Rules* RulesM1 = R->getRules();
+	Rules* RulesM2 = R->getRules2();
+	StudyPlan* plan = R->getStudyPlay();
+
+	for (auto& itr2 : RulesM2->UnivElective)
+	{
+		for (auto& itrYear : *plan->getSPvector())
+		{
+			for (int i = 0; i < SEM_CNT; i++)
+			{
+				for (auto itrCourse : itrYear->getyearslist()[i])
+				{
+					if (itr2 == itrCourse->getCode())
+					{
+						for (auto& itr1 : RulesM1->UnivElective)
+						{
+							if (itr2 == itr1)
+							{
+								goto out1;
+							}
+						}
+						inPlanUnivElecCred += itrCourse->getCredits();
+						goto out1;
+					}
+				}
+			}
+		}
+	out1:;
+	}
+
+	if (inPlanUnivElecCred < RulesM2->ElectiveUnivCredits) return false;
+	else return true;
 }
 
 bool StudyPlan::checkUnivElectiveCrd(Rules* R) const
@@ -680,4 +800,21 @@ double StudyPlan::calculateGPA() const {
 		return GPA;
 	}
 	return 0.0;
+}
+
+void StudyPlan::setMajor(string m)
+{
+	major = m;
+}
+
+string StudyPlan::getMajor() const
+{
+	return major;
+}
+
+void StudyPlan::setMinor(string m) {
+	minor = m;
+}
+string StudyPlan::getMinor() const {
+	return minor;
 }

@@ -33,9 +33,6 @@
     <ClCompile Include="Actions\ActionMinorDec.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-    <ClCompile Include="Actions\ActionReorder.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
     <ClCompile Include="Actions\ActionSavePlan.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
@@ -237,9 +234,6 @@
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="Actions\ActionMinorDec.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="Actions\ActionReorder.h">
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="Actions\ActionSavePlan.h">

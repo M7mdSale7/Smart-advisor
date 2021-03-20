@@ -171,6 +171,15 @@ bool Course::setGrade(string grade)
 		grade == "I" || grade == "W" || grade == "WP" || grade == "WF" || grade == "IP")
 	{
 		this->Grade = grade;
+		/*if (grade == "I")
+			setStatus("In Progress");
+		else if (grade == "W" || grade == "WP" || grade == "WF" || grade == "IP")
+			setStatus("Attemeped but Not Done");
+		else
+		{
+			setStatus("Done");
+			setDone(true);
+		}*/
 		return true;
 	}
 	else
@@ -216,7 +225,7 @@ double Course::getQpoints()
 		return 1.3 * (double)credits;
 	else if (Grade == "D")
 		return 1.0 * (double)credits;
-	else if (Grade == "F")
+	else if (Grade == "F" || Grade == "NA")
 		return 0.0 * (double)credits;
 }
 

@@ -26,9 +26,27 @@ bool ActionCourseStatus::Execute() {
 		if (choice == "1") {
 			course->setStatus("Done");
 			course->setDone(true);
+			//pGUI->PrintMsg("Enter Grade for the course " + course->getCode() + " (A - A- - B+ - ...)" + "Type Exit to stop");
+			//string Grade = pGUI->GetSrting();
+			//if (Grade == "Exit")
+			//	return false; //Grade not added for that course
+			//course->setGrade(Grade);
+			//while (course->getGrad() == "NA") //Invalid input of grade (setGrad wont work)
+			//{
+			//	pGUI->PrintMsg("Enter valid grade for the course " + course->getCode() + "Type E to Exit");
+			//	string Grade = pGUI->GetSrting();
+			//	if (Grade == "E");
+			//	{
+			//		course->setStatus("NA");
+			//		course->setDone(false);
+			//		break;
+			//	}
+			//	course->setGrade(Grade);
+			//}
 		}
 		else if (choice == "2") {
 			course->setStatus("In Progress");
+			course->setGrade("IP");
 			course->setDone(false);
 		}
 		else if (choice == "3") {

@@ -4,7 +4,7 @@
 class ActionGrade :
     public Action
 {
-    Course* pC;
+    Course* course;
 public:
     ActionGrade(Registrar*, Course*);
     bool virtual Execute();

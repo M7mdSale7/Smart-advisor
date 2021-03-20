@@ -11,8 +11,9 @@ ActionSavePlan::ActionSavePlan(Registrar* p):Action(p)
 
 bool ActionSavePlan::Execute()
 {
-	string filename = getFilePath("save"); //getting the file path through dialogue
+	string filename = getFilePath("save") + ".txt"; //getting the file path through dialogue
 	ofstream fout(filename); 
+	bool petitionFlag = false;
 	StudyPlan* plan = pReg->getStudyPlay(); //getting a pointer to the study plan
 	vector<AcademicYear*>* years = plan->getSPvector(); //getting the vector of years
 	vector<Notes*>* notes = plan->getNvector(); //getting vector of notes
@@ -24,7 +25,7 @@ bool ActionSavePlan::Execute()
 	}
 
 	//printing *COURSES_INFO* in the form:
-	//code,status,grade
+	//code,status,grade,petition
 	if (years->size() != 0)
 	{
 		fout << endl;
@@ -36,7 +37,8 @@ bool ActionSavePlan::Execute()
 				for (auto course : years->at(i)->getyearslist()[j])
 				{
 					if (!(course->getStatus().empty()) || !(course->getGrad().empty()))
-						fout << course->getCode() << "," << course->getStatus() << "," << course->getGrad() << endl;
+						fout << course->getCode() << "," << course->getStatus() << "," << course->getGrad()
+						<< "," << course->hasPetition() <<endl;
 				}
 			}
 		}
@@ -60,7 +62,7 @@ bool ActionSavePlan::Execute()
 	{
 		fout << endl;
 		fout << "*MAJOR*\n";
-		fout << pReg->getMajor();
+		fout << pReg->getMajor() << endl;
 	}
 	
 
@@ -74,6 +76,7 @@ bool ActionSavePlan::Execute()
 		{
 			fout << "," << plan->getConcentration2();
 		}
+		fout << endl;
 	}
 
 	//printing *MINOR* info
@@ -89,9 +92,33 @@ bool ActionSavePlan::Execute()
 		fout << endl;
 	}
 
-	//printing *PETITIONS*
-	//printing *DOUBLE_MAJOR* info
-	//printing *REPLACEMENTS* info
+	//printing *SEM_PETITIONS*
+	for(int i = 0; i < pReg->getStudyPlay()->getSPvector()->size(); i++)
+	{
+		AcademicYear* year = pReg->getStudyPlay()->getSPvector()->at(i);
+		vector <bool>* overloadedSem = year->getOverloadSemesters();
+		for (size_t j = 0; j < SEM_CNT; j++) {
+			if (overloadedSem->at(j)) {
+				if (!petitionFlag)
+				{
+					fout << "\n*SEM_PETITIONS*\n";
+					petitionFlag = true;
+				}
+				fout << i + 1, j + 1;
+			}
+		}
+	}
+	if (petitionFlag) fout << endl;
+	
+
+
+	//printing *DOUBLE_MAJOR* name
+	if (!(pReg->getSecondMajor().empty()))
+	{
+		fout << "\n*DOUBLE_MAJOR*\n";
+		fout << pReg->getSecondMajor();
+	}
+
 	
 	
 

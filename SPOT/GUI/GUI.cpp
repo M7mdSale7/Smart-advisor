@@ -98,6 +98,7 @@ string GUI::GetSrting() const
 
 	string userInput;
 	char Key;
+
 	while (1)
 	{
 		pWind->WaitKeyPress(Key);
@@ -131,6 +132,17 @@ window* GUI::getPwind()
 	return pWind;
 }
 
+void GUI::showTotalCredits(const StudyPlan* pS) const
+{
+	//Showing total plan credits
+	pWind->SetFont(20, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(BLACK, 2.5);
+	pWind->DrawRectangle(1050, 590, 1190, 620, FRAME);
+	pWind->DrawString(1060, 596,
+		"Cr " + to_string(pS->getTotalPlanCredits()) + "(" + to_string(pS->getTotalLHrs()) + "+"
+		+ to_string(pS->getTotalPHrs()) + ")");
+}
+
 int GUI::getRangeInput(int low, int high, string msg)
 {
 	do
@@ -149,7 +161,7 @@ int GUI::getRangeInput(int low, int high, string msg)
 		else
 		{
 			PrintMsg("Invalid input! Try again or press ESC to cancel.");
-			Sleep(1750);
+			Sleep(2000);
 			PrintMsg(msg);
 		}
 	} while (true);
@@ -455,59 +467,6 @@ void GUI::DrawAcademicYear(const AcademicYear* pY)
 	pWind->SetPen(DODGERBLUE, 2);
 	pWind->DrawString(980, 95, "ADD YOUR NOTES HERE");*/
 
-	//Drawing General Info area
-	/*pWind->SetPen(BLACK, 2);
-	pWind->DrawLine(900, 88, 1250, 88, FRAME);
-	pWind->DrawLine(900, 88, 900, 310, FRAME);
-	pWind->DrawLine(1250, 88, 1250, 310, FRAME);
-	pWind->DrawLine(900, 310, 1250, 310, FRAME);
-	pWind->DrawLine(900, 120, 1250, 120, FRAME);
-	pWind->SetFont(20, BOLD, SWISS, "Gramound");
-	pWind->SetPen(DODGERBLUE, 2);
-	pWind->DrawString(990, 95, "Student General Info");
-
-	pWind->SetFont(19, BOLD, BY_NAME, "Gramound");
-	pWind->SetPen(DODGERBLUE, 2);
-	pWind->DrawString(910, 135, "Major: ");
-	pWind->SetFont(17, BOLD, BY_NAME, "Gramound");
-	pWind->SetPen(BLACK, 2);
-	pWind->DrawString(960, 135, "Comm and Information Engineering");
-
-	pWind->SetFont(19, BOLD, BY_NAME, "Gramound");
-	pWind->SetPen(DODGERBLUE, 2);
-	pWind->DrawString(910, 162, "Minor: ");
-	pWind->SetFont(17, BOLD, BY_NAME, "Gramound");
-	pWind->SetPen(BLACK, 2);
-	pWind->DrawString(960, 162, "None");
-
-	pWind->SetFont(19, BOLD, BY_NAME, "Gramound");
-	pWind->SetPen(DODGERBLUE, 2);
-	pWind->DrawString(910, 189, "Concentration: ");
-	pWind->SetFont(17, BOLD, BY_NAME, "Gramound");
-	pWind->SetPen(BLACK, 2);
-	pWind->DrawString(1030, 189, "None");
-
-	pWind->SetFont(19, BOLD, BY_NAME, "Gramound");
-	pWind->SetPen(DODGERBLUE, 2);
-	pWind->DrawString(910, 216, "GPA: ");
-	pWind->SetFont(17, BOLD, BY_NAME, "Gramound");
-	pWind->SetPen(BLACK, 2);
-	string = 
-	pWind->DrawString(955, 216, "4.0");
-
-	pWind->SetFont(19, BOLD, BY_NAME, "Gramound");
-	pWind->SetPen(DODGERBLUE, 2);
-	pWind->DrawString(910, 243, "Student Level: ");
-	pWind->SetFont(17, BOLD, BY_NAME, "Gramound");
-	pWind->SetPen(BLACK, 2);
-	pWind->DrawString(1027, 243, "Freshman");
-
-	pWind->SetFont(19, BOLD, BY_NAME, "Gramound");
-	pWind->SetPen(DODGERBLUE, 2);
-	pWind->DrawString(910, 270, "# of taken Credits: ");
-	pWind->SetFont(17, BOLD, BY_NAME, "Gramound");
-	pWind->SetPen(BLACK, 2);
-	pWind->DrawString(1055, 270, "18");*/
 
 	//Drawing errors area
 	pWind->SetPen(BLACK, 2);
@@ -534,7 +493,6 @@ void GUI::DrawAcademicYear(const AcademicYear* pY)
 	pWind->DrawString(930, 596, "PreReqError");
 	pWind->DrawString(1120, 524, "CoReq");
 	pWind->DrawString(1120, 542, "PreReq");
-	//pWind->SetBrush(YELLOW);
 	pWind->SetPen(RED, 2.5);
 	pWind->DrawRectangle(995, 506, 1015, 521, FRAME);
 	pWind->SetPen(BLUE, 2.5);
@@ -559,6 +517,9 @@ void GUI::DrawAcademicYear(const AcademicYear* pY)
 	pWind->DrawLine(1090, 530, 1110, 530);
 	pWind->SetPen(ORANGE, 2);
 	pWind->DrawLine(1090, 548, 1110, 548);
+
+	
+
 }
 
 void GUI::DrawStudentInfo(const StudyPlan* pS) {
@@ -577,21 +538,30 @@ void GUI::DrawStudentInfo(const StudyPlan* pS) {
 	pWind->DrawString(910, 135, "Major: ");
 	pWind->SetFont(17, BOLD, BY_NAME, "Gramound");
 	pWind->SetPen(BLACK, 2);
-	pWind->DrawString(960, 135, "Comm and Information Engineering");
+	string major = pS->getMajor();
+	pWind->DrawString(960, 135, major);
 
 	pWind->SetFont(19, BOLD, BY_NAME, "Gramound");
 	pWind->SetPen(DODGERBLUE, 2);
 	pWind->DrawString(910, 162, "Minor: ");
 	pWind->SetFont(17, BOLD, BY_NAME, "Gramound");
 	pWind->SetPen(BLACK, 2);
-	pWind->DrawString(960, 162, "None");
+	string minor = pS->getMinor();
+	if (minor.empty())
+		pWind->DrawString(960, 162, "None");
+	else
+		pWind->DrawString(960, 162, minor);
 
 	pWind->SetFont(19, BOLD, BY_NAME, "Gramound");
 	pWind->SetPen(DODGERBLUE, 2);
 	pWind->DrawString(910, 189, "Concentration: ");
 	pWind->SetFont(17, BOLD, BY_NAME, "Gramound");
 	pWind->SetPen(BLACK, 2);
-	pWind->DrawString(1030, 189, "None");
+	int concentration = pS->getConcentration();
+	if (concentration == 0)
+		pWind->DrawString(1030, 189, "None");
+	else
+		pWind->DrawString(1030, 189, to_string(concentration));
 
 	pWind->SetFont(19, BOLD, BY_NAME, "Gramound");
 	pWind->SetPen(DODGERBLUE, 2);
@@ -672,6 +642,61 @@ ActionData GUI::GetUserAction(string msg) const
 		}
 	}//end while
 
+}
+
+ActionData GUI::GetUserActionOrEnterKey(string msg) const
+{
+	keytype ktInput;
+	clicktype ctInput;
+	char cKeyData;
+
+
+	// Flush out the input queues before beginning
+	pWind->FlushMouseQueue();
+	pWind->FlushKeyQueue();
+
+	PrintMsg(msg);
+
+	while (true)
+	{
+		int x, y;
+		ctInput = pWind->GetMouseClick(x, y);	//Get the coordinates of the user click
+		ktInput = pWind->GetKeyPress(cKeyData);
+
+		if (ktInput == ESCAPE)	//if ESC is pressed,return CANCEL action
+		{
+			return ActionData{ CANCEL };
+		}
+		else if (ktInput == ASCII && cKeyData == '\r')
+		{
+			return ActionData{ ENTERKEY };
+		}
+
+
+		if (ctInput == LEFT_CLICK)	//mouse left click
+		{
+			//[1] If user clicks on the Menu bar
+			if (y >= 0 && y < MenuBarHeight)
+			{
+
+				//Check whick Menu item was clicked
+				//==> This assumes that menu items are lined up horizontally <==
+				//Divide x coord of the point clicked by the menu item width (int division)
+				//if division result is 0 ==> first item is clicked, if 1 ==> 2nd item and so on
+				return mapMenuLocation(x);
+
+			}
+
+			//[2] User clicks on the drawing area
+			if (y >= MenuBarHeight && y < WindHeight - StatusBarHeight)
+			{
+				return ActionData{ DRAW_AREA,x,y };	//user want clicks inside drawing area
+			}
+
+			//[3] User clicks on the status bar
+			return ActionData{ STATUS_BAR };
+		}
+	}//end while
 }
 
 ActionData GUI::mapMenuLocation(int x) const

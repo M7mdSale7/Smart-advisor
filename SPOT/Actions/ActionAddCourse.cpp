@@ -131,7 +131,7 @@ bool ActionAddCourse::Execute()
 						((y > gInfo.y + (35 * (2 - j))) && (y < gInfo.y + (35 * ((2 - j) + 1))))) {
 						
 						Course* pCR = pS->searchSemester(code, i + 1, (SEMESTER)j);
-						if (pCR) {
+						if (pCR && code.find("XXX") == string::npos) {
 							window* pW = pGUI->getPwind();
 							pCR->setSelected(true);
 							pReg->UpdateInterface();

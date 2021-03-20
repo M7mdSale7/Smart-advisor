@@ -17,17 +17,26 @@ class StudyPlan:public Drawable
 
 	int concentration=0;
 	int DoubleConcentration=0;
+	string major;
+	string minor;
+
+	int yearsIncrement = 0;
 	vector<AcademicYear*> plan;	//plan is a list of academic years
 	vector<Notes*> PlanNotees;
 public:
 	StudyPlan();
+
+	void setMajor(string);
+	string getMajor() const;
+	void setMinor(string);
+	string getMinor() const;
 
 	//getters
 	vector<AcademicYear*>* getSPvector();
 	vector<Notes*>* getNvector();
 	int getConcentration() const;
 	int getConcentration2() const;
-	string getMajor() const;
+	//string getMajor() const;
 	vector<Course*> getPetitionCourses() const;
 
 	//setters
@@ -48,6 +57,10 @@ public:
 	int getSemesterLHrs(int year, SEMESTER sem) const;
 	int getSemesterPHrs(int year, SEMESTER sem) const;
 
+	int getTotalPlanCredits() const;
+	int getTotalLHrs() const;
+	int getTotalPHrs() const;
+
 	int creditsOfDoneCourses() const;
 	double calculateGPA() const;
 	string StudentLevel() const;
@@ -57,7 +70,7 @@ public:
 	Course* searchSelectedCourse() const;
 	
 	//checks on the study plan
-	vector<string> checkMinor(Rules*);
+	vector<string> checkMinor(Rules*) const;
 	vector<yearSemPair> CreditsCheck(Rules*) const;
 	vector<codeTypePair> ProgReqCheck(Rules*) const;
 	bool checkUnivElectiveCrd(Rules*) const;
@@ -67,6 +80,8 @@ public:
 	vector <vector <Course_Code>> checkDoubleConReq(Rules*) const;
 	vector <vector <Course_Code>> checkPreCo() const;
 	vector <Course_Code> checkOfferings(Rules*) const;
+	bool checkM2MajElecCrd(Registrar* R) const;
+	bool checkM2UnivElecCrd(Registrar* R) const;
 
 	void checkPlan(Registrar* R) const; //exploits checks to show live messages of issues
 

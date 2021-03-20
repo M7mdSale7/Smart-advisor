@@ -14,81 +14,6 @@ ActionErrors::ActionErrors(Registrar* p) : Action(p)
 {
 }
 
-bool ActionErrors::checkM2UnivElecCrd(Registrar* R)
-{
-	int inPlanUnivElecCred = 0;
-	Rules* RulesM1 = R->getRules();
-	Rules* RulesM2 = R->getRules2();
-	StudyPlan* plan = R->getStudyPlay();
-
-	for (auto& itr2 : RulesM2->UnivElective)
-	{
-		for (auto& itrYear : *plan->getSPvector())
-		{
-			for (int i = 0; i < SEM_CNT; i++)
-			{
-				for (auto itrCourse : itrYear->getyearslist()[i])
-				{
-					if (itr2 == itrCourse->getCode())
-					{
-						for (auto& itr1 : RulesM1->UnivElective)
-						{
-							if (itr2 == itr1)
-							{
-								goto out1;
-							}
-						}
-						inPlanUnivElecCred += itrCourse->getCredits();
-						goto out1;
-					}
-				}
-			}
-		}
-	out1:;
-	}
-
-	if (inPlanUnivElecCred < RulesM2->ElectiveUnivCredits) return false;
-	else return true;
-}
-
-bool ActionErrors::checkM2MajElecCrd(Registrar* R)
-{
-	int inPlanMajElecCred = 0;
-	Rules* RulesM1 = R->getRules();
-	Rules* RulesM2 = R->getRules2();
-	StudyPlan* plan = R->getStudyPlay();
-
-	for (auto& itr2 : RulesM2->MajorElective)
-	{
-		for (auto& itrYear : *plan->getSPvector())
-		{
-			for (int i = 0; i < SEM_CNT; i++)
-			{
-				for (auto itrCourse : itrYear->getyearslist()[i])
-				{
-					if (itr2 == itrCourse->getCode())
-					{
-						for (auto& itr1 : RulesM1->MajorElective)
-						{
-							if (itr2 == itr1)
-							{
-								goto out2;
-							}
-						}
-						inPlanMajElecCred += itrCourse->getCredits();
-						goto out2;
-					}
-				}
-			}
-		}
-	out2:;
-	}
-	if (inPlanMajElecCred < RulesM2->ElectiveUnivCredits) return false;
-	else return true;
-}
-
-
-
 bool ActionErrors::Execute()
 {
 	StudyPlan* pS = pReg->getStudyPlay();
@@ -98,6 +23,50 @@ bool ActionErrors::Execute()
 	MinorComp = R->MinorCompulsory;
 	ofstream file("CompleteCheckReport.txt");
 	file.clear();
+	//0- Petitions
+	GUI* pGUI = pReg->getGUI(); //getting GUI
+	vector<AcademicYear*>* Plan = pS->getSPvector(); //getting study plan
+	file << "Petitions: " << endl;
+	for (int i = 0; i < Plan->size(); i++)
+	{
+		list<Course*>* Courses = Plan->at(i)->getyearslist();
+		for (int j = 0; j < 3; j++)
+		{
+			for (auto itr : *(Courses + j))
+			{
+				if (itr->hasPetition())
+				{
+					file << "Course: " << itr->getCode() << " Has a petition to be taken without it's prerequisite" << endl;
+				}
+			}
+		}
+	}
+	for (int i = 0; i < Plan->size(); i++)
+	{
+		vector<bool>* b = Plan->at(i)->getOverloadSemesters();
+		for (int j = 0; j < b->size(); j++)
+		{
+			if (b->at(j))
+			{
+				if (j == 0)
+				{
+					file << "Year " << i+1 << " Semester Fall Has an overload petition" << endl;
+				}
+				else if (j == 1) {
+					{
+						file << "Year " << i+1 << " Semester Fall Has an overload petition" << endl;
+					}
+				}
+				else if (j == 2) {
+					{
+						file << "Year " << i+1 << " Semester Fall Has an overload petition" << endl;
+					}
+				}
+			}
+		}
+	}
+	file << endl;
+
 	//1- Minor Courses Were not Taken
 	if (MinorComp.size() != 0 && MinorComp.size() < 5) //if the minor courses are less than 5 (no minor)
 	{
@@ -146,7 +115,7 @@ bool ActionErrors::Execute()
 	}
 	//Elective Courses
 	//a- University
-	bool isOk2 = checkM2UnivElecCrd(pReg);
+	bool isOk2 = pS->checkM2UnivElecCrd(pReg);
 	if (!isOk2)
 	{
 		file << "b-Elective Courses" << endl;
@@ -154,7 +123,7 @@ bool ActionErrors::Execute()
 		file << "You havn't taken all university Univeristy elective credits yet !" << endl << endl;
 	}
 	//b- Major
-	bool isOk3 = checkM2MajElecCrd(pReg);
+	bool isOk3 = pS->checkM2MajElecCrd(pReg);
 	if (!isOk3)
 	{
 		file << "b-Elective Courses" << endl;
@@ -184,7 +153,7 @@ bool ActionErrors::Execute()
 	}
 	//Elective Courses
 		//a- University
-	bool isOk = checkM2UnivElecCrd(pReg);
+	bool isOk = pS->checkM2UnivElecCrd(pReg);
 	if (!isOk)
 	{
 		file << "b-Elective Courses" << endl;
@@ -192,7 +161,7 @@ bool ActionErrors::Execute()
 		file << "You havn't taken all university Univeristy elective credits yet !" << endl << endl;
 	}
 	//b- Major
-	bool isOk4 = checkM2MajElecCrd(pReg);
+	bool isOk4 = pS->checkM2MajElecCrd(pReg);
 	if (!isOk4)
 	{
 		file << "b-Elective Courses" << endl;
@@ -336,7 +305,6 @@ bool ActionErrors::Execute()
 	
 
 	file.close();
-	GUI* pGUI = pReg->getGUI();
 	pGUI->GetUserAction("Report was save in a complete check report txt file");
 	return true;
 }

@@ -5,7 +5,6 @@
 #include "../SPOT/Actions/ActionAddNotes.h"
 #include "../SPOT/Actions/ActionDeleteCourse.h"
 #include "../SPOT/Actions/ActionSavePlan.h"
-#include "../SPOT/Actions/ActionReorder.h"
 #include "../SPOT/Actions/ActionShowCourseInfo.h"
 #include "../SPOT/Actions/ActionImportStudyPlan.h"
 #include "../SPOT/Actions/ActionCalculateGPA.h"
@@ -13,6 +12,7 @@
 #include "../SPOT/Actions/ActionFilters.h"
 #include "../SPOT/Actions/ActionErrors.h"
 #include "ActionAddPetition.h"
+#include "ActionCourseStatus.h"
 #include "ActionChangePlan.h"
 #include "ImportStudyPlan.h"
 #include "Actions/exit.h"
@@ -45,11 +45,30 @@ Rules* Registrar::getRules2()
 void Registrar::setMajor(string m)
 {
 	major = m;
+	pSPlan->setMajor(m);
 }
 
 string Registrar::getMajor() const
 {
 	return major;
+}
+
+void Registrar::setMinor(string m) {
+	minor = m;
+	pSPlan->setMinor(m);
+}
+string Registrar::getMinor() const {
+	return minor;
+}
+
+void Registrar::setSecondMajor(string m)
+{
+	secondMajor = m;
+}
+
+string Registrar::getSecondMajor() const
+{
+	return secondMajor;
 }
 
 //returns the study plan
@@ -302,6 +321,16 @@ void Registrar::Initialization() {
 	pGUI->PrintMsg("Enter your Major Number: 1)CIE  2)SPC  3)ENV  4)REE  5)NANENG ");
 	/*pGUI->getRangeInput(1, 5, "Enter your Major Number: 1)CIE  2)SPC  3)ENV  4)REE  5)NANENG ");*/
 	string Major = pGUI->GetSrting();
+	if (Major == "1")
+		major = "Comm and Information Engineering";
+	else if (Major == "2")
+		major = "AeroSpace Engineering";
+	else if (Major == "3")
+		major = "Environmental Engineering";
+	else if (Major == "4")
+		major = "Renewable Engineering";
+	else if (Major == "5")
+		major = "NanoTechnology Engineering";
 	bool flag = true;
 	ifstream infile;
 	ifstream fin;
@@ -322,7 +351,7 @@ void Registrar::Run()
 	UpdateInterface();
 	while (true)
 	{
-		
+
 		UpdateInterface();
 		
 		
@@ -335,6 +364,7 @@ void Registrar::Run()
 			}
 		}
 	}
+
 	
 }
 
@@ -433,7 +463,7 @@ void Registrar::DrawNotes()
 {
 }
 
-void Registrar::freePlanRules() {
+void Registrar::freePlanRules(Rules* rules) {
 	
 	RegRules.SemMinCredit = 12;
 	RegRules.SemMaxCredit = 18;
@@ -447,22 +477,22 @@ void Registrar::freePlanRules() {
 	RegRules.NofConcentrations = 0;
 	
 
-	RegRules.UnivCompulsory.clear();	//Univ Compulsory courses//
-	RegRules.UnivElective.clear();	//Univ Elective courses//
+	rules->UnivCompulsory.clear();	//Univ Compulsory courses//
+	rules->UnivElective.clear();	//Univ Elective courses//
 
-	RegRules.MinorCompulsory.clear(); //And this should add a list of compulsory courses
+	rules->MinorCompulsory.clear(); //And this should add a list of compulsory courses
 
-	RegRules.TrackCompulsory.clear();//Track Compulsory courses//
-	RegRules.TrackElective.clear();	//Track Elective courses (added for future)
+	rules->TrackCompulsory.clear();//Track Compulsory courses//
+	rules->TrackElective.clear();	//Track Elective courses (added for future)
 
-	RegRules.MajorCompulsory.clear();//Major Compulsory courses//
-	RegRules.MajorElective.clear();	//Major Elective courses//
+	rules->MajorCompulsory.clear();//Major Compulsory courses//
+	rules->MajorElective.clear();	//Major Elective courses//
 
-	RegRules.ConCompulsoryCr.clear();	//Concentration Compulsory credits//
-	RegRules.ConElectiveCr.clear();		//Concentration Elective credits//
+	rules->ConCompulsoryCr.clear();	//Concentration Compulsory credits//
+	rules->ConElectiveCr.clear();		//Concentration Elective credits//
 
-	RegRules.ConCompulsory.clear();		//concentrations compulsory courses//
-	RegRules.ConElective.clear();		//concentrations Elective courses//
+	rules->ConCompulsory.clear();		//concentrations compulsory courses//
+	rules->ConElective.clear();		//concentrations Elective courses//
 }
 
 void Registrar::UpdateInterface()

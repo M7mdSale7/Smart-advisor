@@ -8,11 +8,13 @@
 //The maestro class for the application
 class Registrar
 {
-	GUI *pGUI;			//pointer to GUI 
+	GUI *pGUI;			//pointer to GUI
 	Rules RegRules;		 //Registration rules
 	Rules RegRules2;	//Registration rules for second major
 	StudyPlan *pSPlan;
-	string major; //stores the major of the student
+	string major; //stores the major name
+	string minor; //stores the minor name
+	string secondMajor; //stores second major name
 
 public:
 	Registrar();
@@ -27,6 +29,11 @@ public:
 
 	void setMajor(string m);
 	string getMajor() const;
+	void setMinor(string m);
+	string getMinor() const;
+
+	void setSecondMajor(string m);
+	string getSecondMajor() const;
 
 	Action* CreateRequiredAction(); //creates the action the user wants
 	CourseInfo* CatalogSearch(string code, bool& coursefound); //searches if a certain course in the catalog has the input course code
@@ -35,7 +42,7 @@ public:
 
 	void UpdateInterface(); //updates user interface with the available data whenever called
 	void Initialization(); //Initializes the program by doing all necressary imports
-	void freePlanRules();//resets the rules data fields
+	void freePlanRules(Rules* rules);//resets the rules data fields
 	void Run(); //runs the whole program
 	void fillCoursesType(); //fills courses types in the courseCatalog vector in rules
 	void DrawNotes();

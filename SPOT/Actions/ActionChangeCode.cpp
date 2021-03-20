@@ -90,7 +90,7 @@ bool ActionChangeCode::Execute()
 
 				if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>30 && y < (520 + 105) && y>(520 + 70))
 				{
-					if (pS->searchSemester(newcode, 1, FALL)) {
+					if (pS->searchSemester(newcode, 1, FALL) && newcode.find("XXX") == string::npos) {
 
 						window* pW = pGUI->getPwind();
 						Course* pCR = pS->searchStudyPlan(pC1->getCode());
@@ -114,7 +114,7 @@ bool ActionChangeCode::Execute()
 				}
 				else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>30 && y<(520 + 70) && y>(520 + 35))
 				{
-					if (pS->searchSemester(newcode, 1, SPRING)) {
+					if (pS->searchSemester(newcode, 1, SPRING) && newcode.find("XXX") == string::npos) {
 						window* pW = pGUI->getPwind();
 						Course* pCR = pS->searchStudyPlan(pC1->getCode());
 						pCR->setSelected(true);
@@ -134,7 +134,7 @@ bool ActionChangeCode::Execute()
 				}
 				else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>30 && y<(520 + 35) && y>(520))
 				{
-					if (pS->searchSemester(newcode, 1, SUMMER)) {
+					if (pS->searchSemester(newcode, 1, SUMMER) && newcode.find("XXX") == string::npos) {
 						window* pW = pGUI->getPwind();
 						Course* pCR = pS->searchStudyPlan(pC1->getCode());
 						pCR->setSelected(true);
@@ -155,7 +155,7 @@ bool ActionChangeCode::Execute()
 				}
 				else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>30 && y<(412 + 105) && y>(412 + 70))
 				{
-					if (pS->searchSemester(newcode, 2, FALL)) {
+					if (pS->searchSemester(newcode, 2, FALL) && newcode.find("XXX") == string::npos) {
 						window* pW = pGUI->getPwind();
 						Course* pCR = pS->searchStudyPlan(pC1->getCode());
 						pCR->setSelected(true);
@@ -175,7 +175,7 @@ bool ActionChangeCode::Execute()
 				}
 				else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>30 && y<(412 + 70) && y>(412 + 35))
 				{
-					if (pS->searchSemester(newcode, 2, SPRING)) {
+					if (pS->searchSemester(newcode, 2, SPRING) && newcode.find("XXX") == string::npos) {
 						window* pW = pGUI->getPwind();
 						Course* pCR = pS->searchStudyPlan(pC1->getCode());
 						pCR->setSelected(true);
@@ -195,7 +195,7 @@ bool ActionChangeCode::Execute()
 				}
 				else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>30 && y<(412 + 35) && y>(412))
 				{
-					if (pS->searchSemester(newcode, 2, SUMMER)) {
+					if (pS->searchSemester(newcode, 2, SUMMER) && newcode.find("XXX") == string::npos) {
 						window* pW = pGUI->getPwind();
 						Course* pCR = pS->searchStudyPlan(pC1->getCode());
 						pCR->setSelected(true);
@@ -215,7 +215,7 @@ bool ActionChangeCode::Execute()
 				}
 				else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>30 && y<(304 + 105) && y>(307 + 70))
 				{
-					if (pS->searchSemester(newcode, 3, FALL)) {
+					if (pS->searchSemester(newcode, 3, FALL) && newcode.find("XXX") == string::npos) {
 						window* pW = pGUI->getPwind();
 						Course* pCR = pS->searchStudyPlan(pC1->getCode());
 						pCR->setSelected(true);
@@ -235,7 +235,7 @@ bool ActionChangeCode::Execute()
 				}
 				else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>30 && y<(304 + 70) && y>(304 + 35))
 				{
-					if (pS->searchSemester(newcode, 3, SPRING)) {
+					if (pS->searchSemester(newcode, 3, SPRING) && newcode.find("XXX") == string::npos) {
 						window* pW = pGUI->getPwind();
 						Course* pCR = pS->searchStudyPlan(pC1->getCode());
 						pCR->setSelected(true);
@@ -255,7 +255,7 @@ bool ActionChangeCode::Execute()
 				}
 				else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>30 && y<(304 + 35) && y>(304))
 				{
-					if (pS->searchSemester(newcode, 3, SUMMER)) {
+					if (pS->searchSemester(newcode, 3, SUMMER) && newcode.find("XXX") == string::npos) {
 						window* pW = pGUI->getPwind();
 						Course* pCR = pS->searchStudyPlan(pC1->getCode());
 						pCR->setSelected(true);
@@ -275,7 +275,7 @@ bool ActionChangeCode::Execute()
 				}
 				else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>30 && y<(196 + 105) && y>(196 + 70))
 				{
-					if (pS->searchSemester(newcode, 4, FALL)) {
+					if (pS->searchSemester(newcode, 4, FALL) && newcode.find("XXX") == string::npos) {
 						window* pW = pGUI->getPwind();
 						Course* pCR = pS->searchStudyPlan(pC1->getCode());
 						pCR->setSelected(true);
@@ -295,7 +295,7 @@ bool ActionChangeCode::Execute()
 				}
 				else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>30 && y<(196 + 70) && y>(196 + 35))
 				{
-					if (pS->searchSemester(newcode, 4, SPRING)) {
+					if (pS->searchSemester(newcode, 4, SPRING) && newcode.find("XXX") == string::npos) {
 						window* pW = pGUI->getPwind();
 						Course* pCR = pS->searchStudyPlan(pC1->getCode());
 						pCR->setSelected(true);
@@ -315,7 +315,7 @@ bool ActionChangeCode::Execute()
 				}
 				else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>30 && y<(196 + 35) && y>(196))
 				{
-					if (pS->searchSemester(newcode, 4, SUMMER)) {
+					if (pS->searchSemester(newcode, 4, SUMMER) && newcode.find("XXX") == string::npos) {
 						window* pW = pGUI->getPwind();
 						Course* pCR = pS->searchStudyPlan(pC1->getCode());
 						pCR->setSelected(true);
@@ -335,7 +335,7 @@ bool ActionChangeCode::Execute()
 				}
 				else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>30 && y<(88 + 105) && y>(88 + 70))
 				{
-					if (pS->searchSemester(newcode, 5, FALL)) {
+					if (pS->searchSemester(newcode, 5, FALL) && newcode.find("XXX") == string::npos) {
 						window* pW = pGUI->getPwind();
 						Course* pCR = pS->searchStudyPlan(pC1->getCode());
 						pCR->setSelected(true);
@@ -355,7 +355,7 @@ bool ActionChangeCode::Execute()
 				}
 				else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>30 && y<(88 + 70) && y>(88 + 35))
 				{
-					if (pS->searchSemester(newcode, 5, SPRING)) {
+					if (pS->searchSemester(newcode, 5, SPRING) && newcode.find("XXX") == string::npos) {
 						window* pW = pGUI->getPwind();
 						Course* pCR = pS->searchStudyPlan(pC1->getCode());
 						pCR->setSelected(true);
@@ -375,7 +375,7 @@ bool ActionChangeCode::Execute()
 				}
 				else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>30 && y<(88 + 35) && y>(88))
 				{
-					if (pS->searchSemester(newcode, 5, SUMMER)) {
+					if (pS->searchSemester(newcode, 5, SUMMER) && newcode.find("XXX") == string::npos) {
 						window* pW = pGUI->getPwind();
 						Course* pCR = pS->searchStudyPlan(pC1->getCode());
 						pCR->setSelected(true);

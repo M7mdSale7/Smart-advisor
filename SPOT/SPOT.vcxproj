@@ -134,7 +134,6 @@
     <ClCompile Include="Actions\ActionFilters.cpp" />
     <ClCompile Include="Actions\ActionImportStudyPlan.cpp" />
     <ClCompile Include="Actions\ActionMinorDec.cpp" />
-    <ClCompile Include="Actions\ActionReorder.cpp" />
     <ClCompile Include="Actions\ActionSavePlan.cpp" />
     <ClCompile Include="Actions\ActionShowCourseInfo.cpp" />
     <ClCompile Include="Actions\exit.cpp" />
@@ -204,7 +203,6 @@
     <ClInclude Include="Actions\ActionFilters.h" />
     <ClInclude Include="Actions\ActionImportStudyPlan.h" />
     <ClInclude Include="Actions\ActionMinorDec.h" />
-    <ClInclude Include="Actions\ActionReorder.h" />
     <ClInclude Include="Actions\ActionSavePlan.h" />
     <ClInclude Include="Actions\ActionShowCourseInfo.h" />
     <ClInclude Include="Actions\exit.h" />

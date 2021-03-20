@@ -1,4 +1,7 @@
+Petitions: 
+
 2- Overload or underload petitions: 
+Moderate Issue: In year 4,Semester 2 Number of credits is: 9 And Underload Petition needed
 Moderate Issue: In year 5,Semester 1 Number of credits is: 3 And Underload Petition needed
 Moderate Issue: In year 5,Semester 2 Number of credits is: 3 And Underload Petition needed
 
@@ -11,10 +14,9 @@ Course MATH 101 Is registered in a non offering time
 Course MATH 302 Is registered in a non offering time
 Course SCH 261 Is registered in a non offering time
 Course SCH 262 Is registered in a non offering time
-Course SCH 263 Is registered in a non offering time
 Course CIE 439 Is registered in a non offering time
+Course SCH 263 Is registered in a non offering time
 Course CIE 408 Is registered in a non offering time
-Course CIE 442 Is registered in a non offering time
 Course SCH XXX Is registered in a non offering time
 Course SCH XXX Is registered in a non offering time
 Course SCH XXX Is registered in a non offering time

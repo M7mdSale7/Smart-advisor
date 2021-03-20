@@ -7,7 +7,6 @@ string ImportRequiements::ImportReqs(ifstream& fin, GUI *pGUI, string Major, Rul
 	string line;
 	bool flag = true;
 	string majorName;
-	//pGUI->getRangeInput(1,5,)
 	while (flag) {
 		if (Major == "1") {
 			infile.open("majors requirements/CIE-Requirements.txt");//MajorsData.txt is a trial file for testing because no files for majors' rules has been shared with us
@@ -39,25 +38,25 @@ string ImportRequiements::ImportReqs(ifstream& fin, GUI *pGUI, string Major, Rul
 			majorName = "NANENG";
 			flag = false;
 		}
-		else if (Major == "BMS") {
+		else if (Major == "6") {
 			infile.open("majors requirements/BMS-Requirements.txt");
 			fin.open("BMS.txt");
 			majorName = "BMS";
 			flag = false;
 		}
-		else if (Major == "MATSCI") {
+		else if (Major == "7") {
 			infile.open("MajorsData.txt");
 			fin.open("MATSCI.txt");
 			majorName = "MATSCI";
 			flag = false;
 		}
-		else if (Major == "NANSCI") {
+		else if (Major == "8") {
 			infile.open("MajorsData.txt");
 			fin.open("NANSCI.txt");
 			majorName = "NANSCI";
 			flag = false;
 		}
-		else if (Major == "PEU") {
+		else if (Major == "9") {
 			infile.open("MajorsData.txt");
 			fin.open("PEU.txt");
 			majorName = "PEU";
@@ -160,5 +159,6 @@ string ImportRequiements::ImportReqs(ifstream& fin, GUI *pGUI, string Major, Rul
 			}
 		}
 	}
+	
 	return majorName;
 }
