@@ -8,6 +8,7 @@ using namespace std;
 #include "../GUI/Drawable.h"
 
 //Base class for all types of courses
+
 class Course : public Drawable
 {
 	const Course_Code code;	//course code: e.g. "CIE 202". This is the course ID
@@ -28,12 +29,15 @@ class Course : public Drawable
 	bool filter;
 	bool preReqstatisfied = 1; // 1 for yes, 0 for no
 	bool coReqstatisfied = 1; // 1 for yes, 0 for no
+
+	bool petition;
 public:
 	Course();
 	Course(Course_Code r_code, string r_title, int c_crd, vector<Course_Code> r_CoReq, vector<Course_Code> r_PreReq);
 	Course(Course_Code r_code,string r_title, int crd);
-
+	
 	//getters
+	bool hasPetition() const;
 	string getTitle() const;
 	string getCode() const;
 	int getCredits() const;
@@ -56,6 +60,7 @@ public:
 	vector<Course_Code> getPreReq() const;
 
 	//setters
+	void setPetition(bool petition);
 	void setFiler(bool filter);
 	void setType(string type);
 	void setyear(int y);
@@ -68,22 +73,13 @@ public:
 	void setLHrs(int l);
 	void setPHrs(int p);
 
-
-
-
-
-
 	void saveCourse(ofstream& ) const; //saves the course into a file
 	double getQpoints(); //gets points corresponding to the grade
 
 	void FillData(Rules* R, int index); //fills the data of coReq, preReq, and type
 	void DrawMe(GUI*) const; //draws the course
 
-
-
 	void setDone(bool descision); //sets the course as done
-
-
 
 	virtual ~Course();
 };

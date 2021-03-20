@@ -22,23 +22,27 @@ bool ActionSavePlan::Execute()
 		
 		years->at(i)->saveAcademicYear(i+1, fout); //each iteration prints a year to the file
 	}
-	fout << endl;
 
-	//printing courses characteristics in the form:
+	//printing *COURSES_INFO* in the form:
 	//code,status,grade
-	for (int i = 0; i < years->size(); i++) //iteration for each year
+	if (years->size() != 0)
 	{
-		for (int j = 0; j < SEM_CNT; j++)
+		fout << endl;
+		fout << "*COURSES_INFO*\n";
+		for (int i = 0; i < years->size(); i++) //iteration for each year
 		{
-			for (auto course : years->at(i)->getyearslist()[j])
+			for (int j = 0; j < SEM_CNT; j++)
 			{
-				if(!(course->getStatus().empty()) || !(course->getGrad().empty()))
-				fout << course->getCode() << "," << course->getStatus() << "," << course->getGrad() << endl;
+				for (auto course : years->at(i)->getyearslist()[j])
+				{
+					if (!(course->getStatus().empty()) || !(course->getGrad().empty()))
+						fout << course->getCode() << "," << course->getStatus() << "," << course->getGrad() << endl;
+				}
 			}
 		}
 	}
 	
-	//printing notes
+	//printing *NOTES*
 	if (!(notes->empty()))
 	{
 		fout << endl;
@@ -51,16 +55,16 @@ bool ActionSavePlan::Execute()
 	}
 	
 
-	//printing major
-	if (!(plan->getMajor().empty()))
+	//printing *MAJOR*
+	if (!(pReg->getMajor().empty()))
 	{
 		fout << endl;
 		fout << "*MAJOR*\n";
-		fout << plan->getMajor();
+		fout << pReg->getMajor();
 	}
 	
 
-	//priting concentration numbers
+	//priting *CONCENTRATIONS* numbers
 	if (plan->getConcentration() != 0)
 	{
 		fout << endl;
@@ -72,8 +76,22 @@ bool ActionSavePlan::Execute()
 		}
 	}
 
-	//printing minor info
+	//printing *MINOR* info
+	if (pReg->getRules()->MinorCompulsory.size() != 0)
+	{
+		fout << endl;
+		fout << "*MINOR*\n";
+		fout << pReg->getRules()->MinorCompulsory.at(0);
+		for (int i = 1; i < pReg->getRules()->MinorCompulsory.size(); i++)
+		{
+			fout << "," << pReg->getRules()->MinorCompulsory.at(i);
+		}
+		fout << endl;
+	}
 
+	//printing *PETITIONS*
+	//printing *DOUBLE_MAJOR* info
+	//printing *REPLACEMENTS* info
 	
 	
 

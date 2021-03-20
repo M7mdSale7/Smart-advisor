@@ -10,15 +10,14 @@ class Registrar;
 class StudyPlan:public Drawable
 {
 	int TotalCredits=0;		//total no. of credit hours for courses registred in this year
-	int TotalUnivCredits=0, TotalMajorCredits=0,
+	int ElecUnivCredits = 0, ReqUnivCredits = 0,
+		ReqMajorCredits = 0, ElecMajorCredits = 0,
 		TotalTrackCredits=0, TotalConcentrationCredits=0,
 		TotalMinorCredits=0;
 
 	int concentration=0;
 	int DoubleConcentration=0;
-	string major; //stores the major of the student
 	vector<AcademicYear*> plan;	//plan is a list of academic years
-	string PlanNotes; 
 	vector<Notes*> PlanNotees;
 public:
 	StudyPlan();
@@ -29,6 +28,7 @@ public:
 	int getConcentration() const;
 	int getConcentration2() const;
 	string getMajor() const;
+	vector<Course*> getPetitionCourses() const;
 
 	//setters
 	void setConcentration(int);
@@ -44,11 +44,16 @@ public:
 
 	void virtual DrawMe(GUI*) const;
 
+	int getSemesterCredits(int year, SEMESTER sem) const;
+	int getSemesterLHrs(int year, SEMESTER sem) const;
+	int getSemesterPHrs(int year, SEMESTER sem) const;
+
 	int creditsOfDoneCourses() const;
 	string StudentLevel() const;
 	Course* searchStudyPlan(Course_Code) const;
 	Course* searchYear(Course_Code, int) const;
 	Course* searchSemester(Course_Code, int, SEMESTER) const;
+	Course* searchSelectedCourse() const;
 	
 	//checks on the study plan
 	vector<string> checkMinor(Rules*);
@@ -63,6 +68,8 @@ public:
 	vector <Course_Code> checkOfferings(Rules*) const;
 
 	void checkPlan(Registrar* R) const; //exploits checks to show live messages of issues
+
+	void selectOverloadedSemesters(GUI*) const;
 	
 	virtual ~StudyPlan();
 };

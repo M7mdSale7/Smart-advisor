@@ -12,6 +12,7 @@ class Registrar
 	Rules RegRules;		 //Registration rules
 	Rules RegRules2;	//Registration rules for second major
 	StudyPlan *pSPlan;
+	string major; //stores the major of the student
 
 public:
 	Registrar();
@@ -24,6 +25,8 @@ public:
 	Rules* getRules();
 	Rules* getRules2();
 
+	void setMajor(string m);
+	string getMajor() const;
 
 	Action* CreateRequiredAction(); //creates the action the user wants
 	CourseInfo* CatalogSearch(string code, bool& coursefound); //searches if a certain course in the catalog has the input course code

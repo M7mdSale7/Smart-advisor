@@ -1,3 +1,4 @@
+#include <iostream>
 #include "StudyPlan.h"
 #include "../Notes.h"
 #include "../GUI/GUI.h"
@@ -19,11 +20,11 @@ bool StudyPlan::AddCourse(Course* pC, int year, SEMESTER sem)
 	TotalCredits += pC->getCredits();
 	if (pC->getType() == "Univ Compulsory")
 	{
-		TotalUnivCredits += pC->getCredits();
+		ReqUnivCredits += pC->getCredits();
 	}
 	else if (pC->getType() == "Univ Elective")
 	{
-		TotalUnivCredits += pC->getCredits();
+		ElecUnivCredits += pC->getCredits();
 	}
 	else if (pC->getType() == "Track Compulsory")
 	{
@@ -35,11 +36,11 @@ bool StudyPlan::AddCourse(Course* pC, int year, SEMESTER sem)
 	}
 	else if (pC->getType() == "Major Compulsory")
 	{
-		TotalMajorCredits += pC->getCredits();
+		ReqMajorCredits += pC->getCredits();
 	}
 	else if (pC->getType() == "Major Elective")
 	{
-		TotalMajorCredits += pC->getCredits();
+		ElecMajorCredits += pC->getCredits();
 	}
 	else if (pC->getType() == "Concentration Compulsory")
 	{
@@ -63,11 +64,11 @@ bool StudyPlan::DeleteCourse(Course* pC)
 	TotalCredits -= pC->getCredits();
 	if (pC->getType() == "Univ Compulsory")
 	{
-		TotalUnivCredits -= pC->getCredits();
+		ReqUnivCredits -= pC->getCredits();
 	}
 	else if (pC->getType() == "Univ Elective")
 	{
-		TotalUnivCredits -= pC->getCredits();
+		ElecUnivCredits -= pC->getCredits();
 	}
 	else if (pC->getType() == "Track Compulsory")
 	{
@@ -79,11 +80,11 @@ bool StudyPlan::DeleteCourse(Course* pC)
 	}
 	else if (pC->getType() == "Major Compulsory")
 	{
-		TotalMajorCredits -= pC->getCredits();
+		ReqMajorCredits -= pC->getCredits();
 	}
 	else if (pC->getType() == "Major Elective")
 	{
-		TotalMajorCredits -= pC->getCredits();
+		ElecMajorCredits -= pC->getCredits();
 	}
 	else if (pC->getType() == "Concentration Compulsory")
 	{
@@ -161,9 +162,18 @@ vector<Notes*>* StudyPlan::getNvector()
 void StudyPlan::addeYearCredits(AcademicYear* y)
 {
 	TotalCredits += y->TotalCredits;
-	TotalUnivCredits += y->TotalUnivCredits;
-	TotalMajorCredits += y->TotalMajorCredits;
+
+
+	ReqUnivCredits += y->ReqUnivCredits;
+	ElecUnivCredits += y->ElecUnivCredits;
+
+
+	ReqMajorCredits += y->ReqMajorCredits;
+	ElecMajorCredits += y->ElecMajorCredits;
+
 	TotalTrackCredits += y->TotalTrackCredits;
+	
+
 	TotalConcentrationCredits += y->TotalConcentrationCredits;
 	TotalMinorCredits += y->TotalMinorCredits;
 }
@@ -232,35 +242,6 @@ vector<codeTypePair> StudyPlan::ProgReqCheck(Rules* R) const
 		}
 	}
 
-	for (auto& itr : R->TrackElective)
-	{
-		ExistsFlag = false;
-		for (auto itrYear : plan)
-		{
-			for (int i = 0; i < SEM_CNT; i++)
-			{
-				for (auto itrCourse : itrYear->getyearslist()[i])
-				{
-					if (itr == itrCourse->getCode())
-					{
-						ExistsFlag = true;
-						goto out3;
-					}
-				}
-			}
-		}
-	out3:
-		if (!ExistsFlag)
-		{
-			tempPair = new codeTypePair;
-			tempPair->code = itr;
-			tempPair->type = "Track Elective";
-			pairs.push_back(*tempPair);
-			delete tempPair;
-			tempPair = nullptr;
-		}
-
-	}
 	for (auto& itr : R->TrackCompulsory)
 	{
 		ExistsFlag = false;
@@ -473,6 +454,42 @@ string StudyPlan::StudentLevel() const {
 		return string("Senior");
 }
 
+int StudyPlan::getSemesterCredits(int year, SEMESTER sem) const
+{
+	if (plan.size() < year || year < 1)
+	{
+		return 0;
+	}
+	else
+	{
+		return plan.at(year - 1)->getSemesterCredits(sem);
+	}
+}
+
+int StudyPlan::getSemesterLHrs(int year, SEMESTER sem) const
+{
+	if (plan.size() < year || year < 1)
+	{
+		return 0;
+	}
+	else
+	{
+		return plan.at(year - 1)->getSemesterLHrs(sem);
+	}
+}
+
+int StudyPlan::getSemesterPHrs(int year, SEMESTER sem) const
+{
+	if (plan.size() < year || year < 1)
+	{
+		return 0;
+	}
+	else
+	{
+		return plan.at(year - 1)->getSemesterPHrs(sem);
+	}
+}
+
 int StudyPlan::creditsOfDoneCourses() const {
 	int credits = 0;
 	for (int i = 0; i < plan.size(); i++) {
@@ -499,14 +516,18 @@ vector <vector <Course_Code>> StudyPlan::checkPreCo() const {
 					}
 					else {
 						if (C->getyear() > course->getyear()) {
-							Error[0].push_back(course->getCode());
-							Error[1].push_back(preReq);
-							course->setPreStatus(0);
+							if (!course->hasPetition()) {
+								Error[0].push_back(course->getCode());
+								Error[1].push_back(preReq);
+								course->setPreStatus(0);
+							}
 						}
 						else if (C->getyear() == course->getyear() && C->getsemester() >= course->getsemester()) {
-							Error[0].push_back(course->getCode());
-							Error[1].push_back(preReq);
-							course->setPreStatus(0);
+							if (!course->hasPetition()) {
+								Error[0].push_back(course->getCode());
+								Error[1].push_back(preReq);
+								course->setPreStatus(0);
+							}
 						}
 					}
 				}
@@ -515,9 +536,11 @@ vector <vector <Course_Code>> StudyPlan::checkPreCo() const {
 					Course* C = searchStudyPlan(coReq);
 					if (C == nullptr || C->getyear() > course->getyear() || 
 						(C->getyear() == course->getyear() && C->getsemester() > course->getsemester())) {
-						Error[2].push_back(course->getCode());
-						Error[3].push_back(coReq);
-						course->setCoStatus(0);
+						if (!course->hasPetition()) {
+							Error[2].push_back(course->getCode());
+							Error[3].push_back(coReq);
+							course->setCoStatus(0);
+						}
 					}
 				}
 			}
@@ -544,14 +567,14 @@ vector <Course_Code> StudyPlan::checkOfferings(Rules* R) const {
 bool StudyPlan::checkUnivElectiveCrd(Rules* R) const
 {
 	//returns true if the Total university credits is satisfied in the plan and false otherwise
-	if (TotalUnivCredits < (R->ElectiveUnivCredits + R->ReqUnivCredits)) return false;
+	if (ElecUnivCredits < R->ElectiveUnivCredits) return false;
 	else return true;
 }
 
 bool StudyPlan::checkMajorElectiveCrd(Rules* R) const
 {
 	//returns true if the Total university credits is satisfied in the plan and false otherwise
-	if (TotalMajorCredits < (R->ReqMajorCredits + R->ElectiveMajorCredits)) return false;
+	if ( ElecMajorCredits < R->ElectiveMajorCredits) return false;
 	else return true;
 }
 
@@ -568,12 +591,67 @@ int StudyPlan::getConcentration2() const
 	return DoubleConcentration;
 }
 
-string StudyPlan::getMajor() const
-{
-	return major;
-}
 
 void StudyPlan::setConcentration2(int DoubleConcentration)
 {
 	this->DoubleConcentration = DoubleConcentration;
+}
+
+Course* StudyPlan::searchSelectedCourse() const {
+	for (int i = 0; i < plan.size(); i++) {
+		list<Course*>* year = plan[i]->getyearslist();
+		for (int j = 0; j < SEM_CNT; j++) {
+			for (auto course : year[j]) {
+				if (course->isSelected())
+					return course;
+			}
+		}
+	}
+	return nullptr;
+}
+
+vector<Course*> StudyPlan::getPetitionCourses() const {
+	vector<Course*> PetitionCourses;
+
+	for (int i = 0; i < plan.size(); i++) {
+		list<Course*>* year = plan[i]->getyearslist();
+		for (int j = 0; j < SEM_CNT; j++) {
+			for (auto course : year[j]) {
+				if (course->hasPetition())
+					PetitionCourses.push_back(course);
+			}
+		}
+	}
+	return PetitionCourses;
+}
+
+void StudyPlan::selectOverloadedSemesters(GUI* pGUI) const {
+	for (size_t i = 0; i < plan.size(); i++) {
+		AcademicYear* year = plan[i];
+		graphicsInfo gInfo = year->getGfxInfo();
+		int x = gInfo.x;
+		int y = gInfo.y;
+		vector <bool>* overloadedSem = year->getOverloadSemesters();
+		window* pWind = pGUI->getPwind();
+		for (size_t j = 0; j < SEM_CNT; j++) {
+			if (overloadedSem->at(j)) {
+				pWind->SetBrush(DARKCYAN);
+				pWind->SetPen(BLACK, 2);
+				pWind->DrawRectangle(gInfo.x - 40, gInfo.y + (35 * (2 - j)),
+					gInfo.x + 34, gInfo.y + (35 * ((2 - j) + 1)));
+
+				string Semester;
+				if (j == 0)
+					Semester = "FALL";
+				else if (j == 1)
+					Semester = "SPRING";
+				else if (j == 2)
+					Semester = "SUMMER";
+
+				pWind->SetFont(35 * 0.5, BOLD, BY_NAME, "WHITE");
+				pWind->SetPen(BLACK, 2);
+				pWind->DrawString(gInfo.x - 35, gInfo.y + 10 + (35 * (2 - j)), Semester);
+			}
+		}
+	}
 }

@@ -1,42 +1,17 @@
-
 2- Overload or underload petitions: 
-No any overload of underload petitions needed
-
-3-a Compulsory requirments are fullfilled !
+Moderate Issue: In year 5,Semester 2 Number of credits is: 11 And Underload Petition needed
 
 
 
-
-5- Co requisite and Pre requisite check
-
-a- Prerequisite
-No Issues Found in Prerequisite !
-
-b- Corequisite
-No Issues Found in Corequisite!
-
-6- Concentration Check (Compulsory and Elective)
-
-a- Concentration Compulsory
-No Issues Found in the compulsory courses of concentration!
-
-b- Concentration Elective
-No Issues found in Elevtive Courses
-
-
-7- Concentration Check (For Double Concentration)
 
 
 8- Course Offersings Check
 Course MATH 101 Is registered in a non offering time
-Course MATH 302 Is registered in a non offering time
 Course SCH 261 Is registered in a non offering time
+Course MATH 302 Is registered in a non offering time
 Course SCH 262 Is registered in a non offering time
+Course CIE 338 Is registered in a non offering time
+Course CIE 408 Is registered in a non offering time
 Course CIE 439 Is registered in a non offering time
 Course SCH 263 Is registered in a non offering time
-Course CIE 408 Is registered in a non offering time
-Course CIE 447 Is registered in a non offering time
-Course SCH XXX Is registered in a non offering time
-Course SCH XXX Is registered in a non offering time
-Course SCH XXX Is registered in a non offering time
 Course SCH XXX Is registered in a non offering time

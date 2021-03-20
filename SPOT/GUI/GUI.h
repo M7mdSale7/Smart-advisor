@@ -22,6 +22,7 @@ class GUI
 		ITM_DELETE,     //DELETE A COURSE 
 		ITM_ADD_NOTES,	//add notes to plan
 		ITM_CHANGE_PLAN,//change plan from the application
+		ITM_ADD_PETITION,
 		ITM_EDITCOURSECODE,	//edit an existing course code
 		ITM_SAVE_PLAN,	//save current study plan
 		ITM_Double,		//declare double minor/major
@@ -29,7 +30,6 @@ class GUI
 		ITM_GPA,		//calculate student GPA
 		ITM_MINOR,		//declare a minor
 		ITM_SEARCH,		//search by applying filters
-		ITM_STATUS,		//display course current status
 		ITM_ERROR,		//get report of errors
 		ITM_SHOWDPND,	//show dependencies item
 		ITM_EXIT,		//Exit item
@@ -85,10 +85,11 @@ public:
 
 	//input functions
 	ActionData GUI::GetUserAction(string msg = "") const;
-	ActionData mapMenuLocation(int x);
+	ActionData mapMenuLocation(int x) const;
 	ActionData GUI::GetUserActionNoFlush(string msg = "") const;
 	string GetSrting() const;
 	window* getPwind();
+	int getRangeInput(int low, int high, string msg);
 
 	~GUI();
 };

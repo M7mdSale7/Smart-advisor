@@ -62,8 +62,8 @@ bool ActionAddCourse::Execute()
 		//get coord where user clicked
 		x = actData.x;
 		y = actData.y;
-		
-		
+
+
 		graphicsInfo gInfo{ x, y };
 
 
@@ -73,7 +73,7 @@ bool ActionAddCourse::Execute()
 			int credit = pCRINF->Credits;
 			vector<Course_Code>  CoReq = pCRINF->CoReqList;
 			vector<Course_Code> PreReq = pCRINF->PreReqList;
-            string CourseTitle = pCRINF->Title;
+			string CourseTitle = pCRINF->Title;
 			Course* pC = new Course(code, CourseTitle, credit, CoReq, PreReq);
 			Rules* R = pReg->getRules();
 			Rules* R2 = pReg->getRules2(); //Rules for the double major (if found)
@@ -82,7 +82,7 @@ bool ActionAddCourse::Execute()
 			pC->settype(pCRINF->type);
 			pC->setLHrs(pCRINF->lHrs);
 			pC->setPHrs(pCRINF->pHrs);
-			
+
 			for (int i = 0; i < MinorComp->size(); i++) //Setting type to Minor in case of minor
 			{
 				if (code == MinorComp->at(i))
@@ -118,183 +118,54 @@ bool ActionAddCourse::Execute()
 				if (code == R2->MajorElective.at(i))
 					pC->setType("DoubleMajor");
 			}
+			bool flagci = false;
 
-			if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y < (520 + 105) && y>(520 + 70)) 
-			{
-				if (pS->searchSemester(code, 1, FALL)) {
-					pGUI->GetUserAction("Course already added in this semester.");
-					return false;
-				}
-				pS->AddCourse(pC, 1, FALL);
-				pC->setyear(1);
-				pC->setsemester(FALL);
-			}
-			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(520 + 70) && y>(520 + 35)) 
-			{
-				if (pS->searchSemester(code, 1, SPRING)) {
-					pGUI->GetUserAction("Course already added in this semester.");
-					return false;
-				}
-				pS->AddCourse(pC, 1, SPRING);
-				pC->setyear(1);
-				pC->setsemester(SPRING);
-			}
-			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(520 + 35) && y>(520)) 
-			{
-				if (pS->searchSemester(code, 1, SUMMER)) {
-					pGUI->GetUserAction("Course already added in this semester.");
-					return false;
-				}
-				pC->setyear(1);
-				pC->setsemester(SUMMER);
-				pS->AddCourse(pC, 1, SUMMER);
-
-			}
-			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(412 + 105) && y>(412 + 70)) 
-			{
-				if (pS->searchSemester(code, 2, FALL)) {
-					pGUI->GetUserAction("Course already added in this semester.");
-					return false;
-				}
-				pS->AddCourse(pC, 2, FALL);
-				pC->setyear(2);
-				pC->setsemester(FALL);
-			}
-			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(412 + 70) && y>(412 + 35)) 
-			{
-				if (pS->searchSemester(code, 2, SPRING)) {
-					pGUI->GetUserAction("Course already added in this semester.");
-					return false;
-				}
-				pS->AddCourse(pC, 2, SPRING);
-				pC->setyear(2);
-				pC->setsemester(SPRING);
-			}
-			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(412 + 35) && y>(412)) 
-			{
-				if (pS->searchSemester(code, 2, SUMMER)) {
-					pGUI->GetUserAction("Course already added in this semester.");
-					return false;
-				}
-				pS->AddCourse(pC, 2, SUMMER);
-				pC->setyear(2);
-				pC->setsemester(SUMMER);
-			}
-			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(304 + 105) && y>(307 + 70)) 
-			{
-				if (pS->searchSemester(code, 3, FALL)) {
-					pGUI->GetUserAction("Course already added in this semester.");
-					return false;
-				}
-				pS->AddCourse(pC, 3, FALL);
-				pC->setyear(3);
-				pC->setsemester(FALL);
-			}
-			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(304 + 70) && y>(304 + 35))
-			{
-				if (pS->searchSemester(code, 3, SPRING)) {
-					pGUI->GetUserAction("Course already added in this semester.");
-					return false;
-				}
-				pS->AddCourse(pC, 3, SPRING);
-				pC->setyear(3);
-				pC->setsemester(SPRING);
-			}
-			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(304 + 35) && y>(304)) 
-			{
-				if (pS->searchSemester(code, 3, SUMMER)) {
-					pGUI->GetUserAction("Course already added in this semester.");
-					return false;
-				}
-				pS->AddCourse(pC, 3, SUMMER);
-				pC->setyear(3);
-				pC->setsemester(SUMMER);
-			}
-			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(196 + 105) && y>(196 + 70))
-			{
-				if (pS->searchSemester(code, 4, FALL)) {
-					pGUI->GetUserAction("Course already added in this semester.");
-					return false;
-				}
-				pS->AddCourse(pC, 4, FALL);
-				pC->setyear(4);
-				pC->setsemester(FALL);
-			}
-			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(196 + 70) && y>(196 + 35))
-			{
-				if (pS->searchSemester(code, 4, SPRING)) {
-					pGUI->GetUserAction("Course already added in this semester.");
-					return false;
-				}
-				pS->AddCourse(pC, 4, SPRING);
-				pC->setyear(4);
-				pC->setsemester(SPRING);
-			}
-			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(196 + 35) && y>(196)) 
-			{
-				if (pS->searchSemester(code, 4, SUMMER)) {
-					pGUI->GetUserAction("Course already added in this semester.");
-					return false;
-				}
-				pS->AddCourse(pC, 4, SUMMER);
-				pC->setyear(4);
-				pC->setsemester(SUMMER);
-			}
-			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(88 + 105) && y>(88 + 70))
-			{
-				if (pS->searchSemester(code, 5, FALL)) {
-					//window* pW = pGUI->getPwind();
-					//pGUI->PrintMsg("Blaaa");
-					pGUI->GetUserAction("Course already added in this semester.");
-					/*int x, y;
-					pW->WaitMouseClick(x, y);*/
-					return false;
-				}
-				pS->AddCourse(pC, 5, FALL);
-				pC->setyear(5);
-				pC->setsemester(FALL);
-			}
-			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(88 + 70) && y>(88 + 35)) 
-			{
-				if (pS->searchSemester(code, 5, SPRING)) {
-					pGUI->GetUserAction("Course already added in this semester.");
-					return false;
-				}
-				pS->AddCourse(pC, 5, SPRING);
-				pC->setyear(5);
-				pC->setsemester(SPRING);
-			}
-			else if (x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x>70 && y<(88 + 35) && y>(88)) 
-			{
-				if (pS->searchSemester(code, 5, SUMMER)) {
-					pGUI->GetUserAction("Course already added in this semester.");
-					return false;
-				}
-				pS->AddCourse(pC, 5, SUMMER);
-				pC->setyear(5);
-				pC->setsemester(SUMMER);
-			}
-			else
-			{
-				pGUI->PrintMsg("Error: Please press in semester area.");
-			}
-			//ActionShowCourseInfo(pReg, pC->getGfxInfo().x, pC->getGfxInfo().y).Execute();
-			window* pW = pGUI->getPwind();
-			pC->setSelected(true);
-			pReg->UpdateInterface();
-			ActionShowCourseInfo::showInfo(pW ,pC);
 			
-			pGUI->GetUserAction("press any where to dismiss");
-			pC->setSelected(false);
+			vector<AcademicYear*>* plan = pS->getSPvector();
+			for (size_t i = 0; i < plan->size(); i++) {//Instead of the 15 if statements
+				AcademicYear* year = plan->at(i);
+				graphicsInfo gInfo = year->getGfxInfo();
+				int xInfo = gInfo.x;
+				int yInfo = gInfo.y;
+				for(size_t j = 0; j < SEM_CNT; j++){
+					if ((x < (PLAN_YEAR_WIDTH + CRS_WIDTH) && x > 30) && 
+						((y > gInfo.y + (35 * (2 - j))) && (y < gInfo.y + (35 * ((2 - j) + 1))))) {
+						
+						Course* pCR = pS->searchSemester(code, i + 1, (SEMESTER)j);
+						if (pCR) {
+							window* pW = pGUI->getPwind();
+							pCR->setSelected(true);
+							pReg->UpdateInterface();
+							ActionShowCourseInfo::showInfo(pW, pC);
+							pGUI->GetUserAction("Course already added in this semester. press anywhere to dismiss");
 
+							pCR->setSelected(false);
+							return false;
+						}
+						pS->AddCourse(pC, i + 1, (SEMESTER)j);
+						flagci = true;
+						pC->setyear(i + 1);
+						pC->setsemester((SEMESTER)j);
+					}
+				}
+			}
+
+			if (flagci)
+			{
+				window* pW = pGUI->getPwind();
+				pC->setSelected(true);
+				pReg->UpdateInterface();
+				ActionShowCourseInfo::showInfo(pW, pC);
+
+				pGUI->GetUserAction("press any where to dismiss");
+				pC->setSelected(false);
+			}
+			else {
+				pGUI->GetUserAction("Error: out of area range. press anywhere to dismiss");
+				return false;
+			}
 		}
 	}
-		
-	//ActionShowCourseInfo(pReg, p, y).Execute();
-
-	//pReg->getGUI()->GetUserAction("Now press anywhere please.");
-	
-	
 
 	return true;
 }
