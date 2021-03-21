@@ -10,5 +10,8 @@ public:
 	bool virtual Execute();
 	void importCoursesInfo(ifstream& fin);
 	void importNotes(ifstream& fin);
+	void importMinor(ifstream& fin);
+	void importSemPetitions(ifstream& fin);
+	void importConcentrations(ifstream& fin);
 	virtual ~ActionImportStudyPlan ();
 };

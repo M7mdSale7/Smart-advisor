@@ -75,6 +75,8 @@ bool ActionCalculateGPA::Execute()
 					}
 					Total += itr->getQpoints(); //sum of total Qp
 					TotalC += itr->getCredits(); //sum of total Cr
+					if (itr->getGrade() == "P" || itr->getGrade() == "WP" || itr->getGrade() == "WF" || itr->getGrade() == "W" || itr->getGrade() == "NA" || itr->getGrade() == "IP" || itr->getGrade() == "I")
+						TotalC -= itr->getCredits();
 				}
 			}
 			double GPA = (Total / TotalC); //total GPA

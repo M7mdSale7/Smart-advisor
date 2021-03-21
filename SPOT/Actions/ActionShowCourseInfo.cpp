@@ -352,25 +352,8 @@ bool ActionShowCourseInfo::Execute()
 					}
 					if ((x > 905 && x < 960) && (y > 286 && y < 308)) {//checks if grade button is clicked
 						//windptr->DrawRectangle(905, 286, 960, 308);
-						GUI* pGUI = pReg->getGUI();
-						pGUI->PrintMsg("Enter the Grade.");
-						string grade = pGUI->GetSrting();
-
-						if (grade == "A" || grade == "A-" || grade == "B+" || grade == "B" || grade == "B-" ||
-							grade == "C+" || grade == "C" || grade == "C-" || grade == "D+" || grade == "D" || 
-							grade == "F" || grade == "P" || grade == "I" || grade == "W" || grade == "WP" || 
-							grade == "WF" || grade == "IP")
-
-							pC->setGrade(grade);
-						else
-							pGUI->PrintMsg("Invalid Grade Input:");
-
-						pReg->UpdateInterface();
-						graphicsInfo info = pC->getGfxInfo();
-						int x = info.x;
-						int y = info.y;
-						window* windptr = pGUI->getPwind();
-						ActionShowCourseInfo(pReg, x, y).showInfo(windptr, pC);
+						ActionGrade* action = new ActionGrade(pReg, pC);
+						pReg->ExecuteAction(action);
 					}
 				}
 				else//if the click is not inside the course info box the loop will terminate
@@ -460,6 +443,30 @@ void ActionShowCourseInfo::showInfo(window* windptr, Course* pC)
 	windptr->DrawString(910, 289, "Grade: ");
 	windptr->SetPen(BLACK, 2);
 	windptr->DrawString(965, 289, pC->getGrade());
+
+	//bool loop = true;
+	//GUI* pGUI = pReg->getGUI();
+	//while (loop) {//loops while the user clicks on the course info box
+	//	ActionData actData = pGUI->GetUserAction("Press anywhere else to deselect");
+	//	int x = actData.x;
+	//	int y = actData.y;
+	//	if ((x > 900 && x < 1250) && (y > 88 && y < 310)) {//checks if the click is on the course info box
+	//		//windptr->DrawRectangle(900, 88, 1250, 310);
+	//		if ((x > 905 && x < 963) && (y > 265 && y < 287)) {//checks if status button is clicked
+	//			//windptr->DrawRectangle(905, 265, 963, 287);
+	//			ActionCourseStatus* action = new ActionCourseStatus(pReg);
+	//			pReg->ExecuteAction(action);
+	//		}
+	//		if ((x > 905 && x < 960) && (y > 286 && y < 308)) {//checks if grade button is clicked
+	//			//windptr->DrawRectangle(905, 286, 960, 308);
+	//			ActionGrade* action = new ActionGrade(pReg, pC);
+	//			pReg->ExecuteAction(action);
+	//		}
+	//	}
+	//	else//if the click is not inside the course info box the loop will terminate
+	//		loop = false;
+	//}
+	//pC->setSelected(false);
 }
 
 bool ActionShowCourseInfo::courseAlreadyExists(Course* pC, int year, SEMESTER sem)

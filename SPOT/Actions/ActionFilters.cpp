@@ -127,7 +127,17 @@ bool ActionFilters::Execute()
 				pCR->setSelected(true);
 				window* pW = pGUI->getPwind();
 				pReg->UpdateInterface();
+
+				//ActionShowCourseInfo(pReg, 0, 0).showInfo(pW, pCR);
 				ActionShowCourseInfo::showInfo(pW, pCR);
+
+				graphicsInfo gInfo = pCR->getGfxInfo();
+				int x = gInfo.x;
+				int y = gInfo.y;
+				//ActionShowCourseInfo(pReg, x, y)::Execute();
+				
+				//pReg->ExecuteAction(new ActionShowCourseInfo(pReg, x, y));
+				//pReg->UpdateInterface();
 				pGUI->GetUserAction("press any where to dismiss");
 				pCR->setSelected(false);
 
@@ -395,6 +405,18 @@ bool ActionFilters::Execute()
 																				for (int i = 0; i < pq5.size(); i++)
 																				{
 																					DrawTree(pq5.at(i));
+																					Course* pC6 = GetCourse(pq5.at(i));
+																					if (pC6 != nullptr)
+																					{
+																						if (pC6->getPreReq().size() != 0) {
+																							//L6
+																							vector<Course_Code> pq6 = pC6->getPreReq();
+																							for (int i = 0; i < pq6.size(); i++)
+																							{
+																								DrawTree(pq6.at(i));
+																							}
+																						}
+																					}
 																				}
 																			}
 																		}

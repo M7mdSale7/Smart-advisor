@@ -14,6 +14,7 @@ int ActionMinorDec::Num = 0;
 int ActionMinorDec::Num1 = 0;
 //Minor Type
 string MinorType;
+int minor;
 vector<Course_Code> Minor;
 ActionMinorDec::ActionMinorDec(Registrar* p) : Action(p)
 {
@@ -35,29 +36,32 @@ bool ActionMinorDec::Execute()
 	{
 		if (Num == 0) //First course to be added correctly so we are taking the program of minor
 		{
-			//pGUI->PrintMsg("Enter Your Minor Name ( 1)CIE or 2)SPC 3)REE 4)NANENG 5)ENV 6)BMS 7)PEU 8)MATSCI 9)NANSCI )"); //Program of minor
-			//MinorType = pGUI->GetSrting();
-			int MinorType0;
-			MinorType0 = pGUI->getRangeInput(1, 9, "Enter Your Minor Name(1)CIE or 2)SPC 3)REE 4)NANENG 5)ENV 6)BMS 7)PEU 8)MATSCI 9)NANSCI ");
-			if (MinorType0 == 0)
+			
+			minor = pGUI->getRangeInput(1, 9, "Enter Your Minor Name ( 1)CIE or 2)SPC 3)REE 4)NANENG 5)ENV 6)BMS 7)PEU 8)MATSCI 9)NANSCI )");
+
+			if (minor == 0)
 			{
 				return false;
 			}
-			if (MinorType0 == 1) MinorType = "CIE";
-			else if (MinorType0 == 2) MinorType = "SPC";
-			else if (MinorType0 == 3) MinorType = "REE";
-			else if (MinorType0 == 4) MinorType = "NANENG";
-			else if (MinorType0 == 5) MinorType = "ENV";
-			else if (MinorType0 == 6) MinorType = "BMS";
-			else if (MinorType0 == 7) MinorType = "PEU";
-			else if (MinorType0 == 8) MinorType = "MATSCI";
-			else if (MinorType0 == 9) MinorType = "NANSCI";
-			//else pGUI->GetUserAction("Invalid Syntax");
+			if (minor == 0) return false;
+			if (minor == 1) MinorType = "CIE";
+			else if (minor == 2) MinorType = "SPC";
+			else if (minor == 3) MinorType = "REE";
+			else if (minor == 4) MinorType = "NANENG";
+			else if (minor == 5) MinorType = "ENV";
+			else if (minor == 6) MinorType = "BMS";
+			else if (minor == 7) MinorType = "PEU";
+			else if (minor == 8) MinorType = "MATSCI";
+			else if (minor == 9) MinorType = "NANSCI";
+			
+			pReg->setMinor(MinorType);
 			if (pReg->getMajor() == MinorType)
 			{
 				pGUI->GetUserAction("You cannot make a minor of your major!");
 				return false;
 			}
+			else
+				pReg->setMinor(MinorType);
 
 		}
 		//Getting Requirment courses to check and compulsory courses to fill

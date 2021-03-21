@@ -13,6 +13,7 @@ using namespace std;
 void ImportStudyPlan::StudyPlanImport(ifstream& fin, Registrar* P) {
 	int i = 0;
 	StudyPlan* plan = P->getStudyPlay();
+	plan->clearDataFields();
 	vector <AcademicYear*>* years = plan->getSPvector();
 	years->clear();
 	string line;

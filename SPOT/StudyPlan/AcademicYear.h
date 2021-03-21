@@ -32,6 +32,7 @@ public:
 
 	vector <bool>* getOverloadSemesters() const;
 	void setOverloadedSemesters(SEMESTER);
+	void clearOverloadedSemesters();
 
 	bool AddCourse(Course*, SEMESTER );
 	bool DeleteCourse(Course*, SEMESTER);
@@ -47,6 +48,7 @@ public:
 	Course* searchAcademicYear(Course_Code code) const;
 	Course* searchSemester(Course_Code code, SEMESTER semester) const;
 	int CrOfDoneCourses() const;
+	double CalculateGPA() const;
 
 	void virtual DrawMe(GUI*) const;
 

@@ -29,6 +29,8 @@ public:
 
 	void setMajor(string m);
 	string getMajor() const;
+	void setMinor(string m);
+	string getMinor() const;
 
 	void setSecondMajor(string m);
 	string getSecondMajor() const;
