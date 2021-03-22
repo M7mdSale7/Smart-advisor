@@ -64,6 +64,7 @@ string Registrar::getMinor() const {
 void Registrar::setSecondMajor(string m)
 {
 	secondMajor = m;
+	pSPlan->setSecondMajor(m);
 }
 
 string Registrar::getSecondMajor() const

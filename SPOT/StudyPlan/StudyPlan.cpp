@@ -829,6 +829,14 @@ string StudyPlan::getMinor() const {
 	return minor;
 }
 
+
+void StudyPlan::setSecondMajor(string m) {
+	secondMajor = m;
+}
+string StudyPlan::getSecondMajor() const {
+	return secondMajor;
+}
+
 void StudyPlan::clearDataFields()
 {
 	TotalCredits = 0;

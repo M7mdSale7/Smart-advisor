@@ -37,7 +37,7 @@ bool ActionMinorDec::Execute()
 		if (Num == 0) //First course to be added correctly so we are taking the program of minor
 		{
 			
-			minor = pGUI->getRangeInput(1, 9, "Enter Your Minor Name ( 1)CIE or 2)SPC 3)REE 4)NANENG 5)ENV 6)BMS 7)PEU 8)MATSCI 9)NANSCI )");
+			minor = pGUI->getRangeInput(1, 9, "Enter Your Minor Name. 1) CIE or 2) SPC 3) REE 4) NANENG 5) ENV 6) BMS 7) PEU 8) MATSCI 9) NANSCI");
 
 			if (minor == 0)
 			{
@@ -150,46 +150,62 @@ bool ActionMinorDec::Execute()
 			if (flag2 && (!flag || Num1 == 1 || Num1 == 2) && flag3 && flag4) //if there is no issue with adding the course
 			{
 				R->MinorCompulsory.push_back(code); //Adding the course to the minor comp list in rules
-				pGUI->GetUserAction("Course Added To Minor , Press anywhere th press Enter to continue");
+				//pGUI->GetUserAction("Course Added To Minor , Press any key to continue");
 				Minor.push_back(code); //adding the course in the vector of minor , we need it to reach 5 to return the function
 				Num++; //increment the static variable num that the user can see how many courses he has added
 			}
 
 			//Error Cases Display
-			else if (flag && !flag2)
+			else if (flag && !flag2) {
 				pGUI->PrintMsg("The course " + code + " Cannot be added " + " Becuase its not in " + MinorType + " Program plan " + " and already in your major plan ");
-			else if (flag && !flag3)
+				pGUI->GetSrting(); //waiting for user to see the msg and press enter
+			}
+			else if (flag && !flag3) {
 				pGUI->PrintMsg("The course " + code + " Cannot be added " + " Becuase its not in " + " Your Major Plan " + " and you have also entered this course code once");
-			else if (!flag2 && !flag3)
+				pGUI->GetSrting(); //waiting for user to see the msg and press enter
+			}
+			else if (!flag2 && !flag3) {
 				pGUI->PrintMsg("The course " + code + " Cannot be added " + " Becuase its not in " + "The program minor plan" + " You have also entered this code twice");
-			else if (flag)
+				pGUI->GetSrting(); //waiting for user to see the msg and press enter
+			}
+			else if (flag) {
 				pGUI->PrintMsg("The course " + code + " Cannot be added " + " Becuase its in " + "Your Major Plan");
-			else if (!flag2)
+				pGUI->GetSrting(); //waiting for user to see the msg and press enter
+			}
+			else if (!flag2) {
 				pGUI->PrintMsg("The course " + code + " Cannot be added " + " Becuase its not in " + "Program of minor plan");
-			else if (!flag3)
+				pGUI->GetSrting(); //waiting for user to see the msg and press enter
+			}
+			else if (!flag3) {
 				pGUI->PrintMsg("The course " + code + " Cannot be added " + " Becuase its already entered once");
-			else if (!flag4)
+				pGUI->GetSrting(); //waiting for user to see the msg and press enter
+			}
+			else if (!flag4) {
 				pGUI->PrintMsg("The course " + code + " Cannot be added " + " Becuase its in you elective lsit");
-			else if (flag && !flag2 && !flag3)
+				pGUI->GetSrting(); //waiting for user to see the msg and press enter
+			}
+			else if (flag && !flag2 && !flag3) {
 				pGUI->PrintMsg("The course " + code + " Cannot be added " + " Becuase its not in " + MinorType + " Program plan " + " and already in your major plan " + "And Already entered once");
+				pGUI->GetSrting(); //waiting for user to see the msg and press enter
+			}
 
-
-			pGUI->GetSrting(); //waiting for user to see the msg and press enter
+			//pGUI->GetSrting(); //waiting for user to see the msg and press enter
 
 			//Check if minor is complete
 			if (Minor.size() == 5)
 			{
-				pGUI->GetUserAction("Great, You have now made a minor in " + MinorType);
+				pGUI->PrintMsg("Great, You have now made a minor in " + MinorType);
+				pGUI->GetSrting();
 				break; //exit the while loob (if its not included the "Do you want to continue will display)
 			}
 
 			//asking the user if he wants to continue adding courses regardless he has filled the 5 courses or not
-			pGUI->PrintMsg("Do You Want To continue adding other courses to your minor? (if Yes enter Yes (case sensitave))");
+			pGUI->PrintMsg("Course added. Do You Want To continue adding other courses to your minor? Yes or No.");
 			string will = pGUI->GetSrting(); //waiting for the users input
 			transform(will.begin(), will.end(), will.begin(), toupper);
 			if (will == "YES" && Minor.size() != 5)
 			{
-				continue; //continue in your loob
+				continue; //continue in your loop
 			}
 			else
 				break;
@@ -208,10 +224,13 @@ bool ActionMinorDec::Execute()
 		vector<Course_Code>* Elective = &R->TrackElective; //Track elective to compare if the user added a course in his elective
 		vector <CourseInfo>* Info = &R->CourseCatalog; //Course Catalog to add course info
 		Course_Code code; //code to get from user
+
 		if (MinorComp->size() == 5)
 		{
 			pGUI->PrintMsg("1)" + MinorComp->at(0) + " 2)" + MinorComp->at(1) + " 3)" + MinorComp->at(2) + " 4)" + MinorComp->at(3) + " 5)" + MinorComp->at(4));
 			string courseNo = pGUI->GetSrting();
+			if (courseNo == "ESC")
+				return false;
 			int No = stoi(courseNo);
 			No--;
 			pGUI->PrintMsg("Enter New Course Code");
