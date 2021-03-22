@@ -230,9 +230,9 @@ Action* Registrar::CreateRequiredAction()
 				}
 				break;
 			case Double:
-				if (currentMsg != "Declare double minor/concentration")
+				if (currentMsg != "Declare double Major/Concentration")
 				{
-					currentMsg = "Declare double minor/concentration";
+					currentMsg = "Declare double Major/Concentration";
 					pGUI->PrintMsg(currentMsg);
 				}
 				break;
