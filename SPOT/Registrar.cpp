@@ -231,9 +231,9 @@ Action* Registrar::CreateRequiredAction()
 				}
 				break;
 			case Double:
-				if (currentMsg != "Declare double minor/concentration")
+				if (currentMsg != "Declare double Major/Concentration")
 				{
-					currentMsg = "Declare double minor/concentration";
+					currentMsg = "Declare double Major/Concentration";
 					pGUI->PrintMsg(currentMsg);
 				}
 				break;
@@ -324,20 +324,21 @@ void Registrar::Initialization() {
 	/*pGUI->getRangeInput(1, 5, "Enter your Major Number: 1)CIE  2)SPC  3)ENV  4)REE  5)NANENG ");*/
 	string Major = pGUI->GetSrting();
 	if (Major == "1")
-		major = "Comm and Information Engineering";
+		major = "CIE";
 	else if (Major == "2")
-		major = "AeroSpace Engineering";
+		major = "SPC";
 	else if (Major == "3")
-		major = "Environmental Engineering";
+		major = "ENV";
 	else if (Major == "4")
-		major = "Renewable Engineering";
+		major = "REE";
 	else if (Major == "5")
-		major = "NanoTechnology Engineering";
+		major = "NANENG";
 	bool flag = true;
 	ifstream infile;
 	ifstream fin;
 	setMajor(ImportRequiements().ImportReqs(fin, pGUI, Major, &RegRules));
-	if (RegRules.NofConcentrations != 0) {
+	if (RegRules.NofConcentrations != 0) 
+	{
 		pGUI->PrintMsg("Enter your Concentration number: ");
 		string Concentration = pGUI->GetSrting();
 		pSPlan->setConcentration(stoi(Concentration));

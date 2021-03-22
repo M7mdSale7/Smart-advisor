@@ -32,6 +32,7 @@ public:
 
 	vector <bool>* getOverloadSemesters() const;
 	void setOverloadedSemesters(SEMESTER);
+	void clearOverloadedSemesters();
 
 	bool AddCourse(Course*, SEMESTER );
 	bool DeleteCourse(Course*, SEMESTER);

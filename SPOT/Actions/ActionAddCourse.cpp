@@ -159,8 +159,8 @@ bool ActionAddCourse::Execute()
 
 				//ActionShowCourseInfo(pReg, 0, 0).showInfo(pW, pC);
 				ActionShowCourseInfo::showInfo(pW, pC);
-				
-				pGUI->GetUserAction("press any where to dismiss");
+
+				pGUI->GetUserAction("press anywhere to dismiss");
 				pC->setSelected(false);
 			}
 			else {

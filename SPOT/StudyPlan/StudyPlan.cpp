@@ -795,6 +795,16 @@ double StudyPlan::calculateGPA() const {
 		}
 	}
 	int DoneCredits = creditsOfDoneCourses();
+	for (size_t i = 0; i < plan.size(); i++) {
+		AcademicYear* year = plan[i];
+		list<Course*>* YearCourses = year->getyearslist();
+		for (size_t i = 0; i < SEM_CNT; i++) {
+			for (auto itr : YearCourses[i]) {
+				if (itr->getGrade() == "P" || itr->getGrade() == "WP" || itr->getGrade() == "WF" || itr->getGrade() == "W" || itr->getGrade() == "IP" || itr->getGrade() == "I")
+					DoneCredits -= itr->getCredits();
+			}
+		}
+	}
 	if (DoneCredits) {
 		GPA = totalQ / DoneCredits;
 		return GPA;

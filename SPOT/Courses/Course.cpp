@@ -225,7 +225,7 @@ double Course::getQpoints()
 		return 1.3 * (double)credits;
 	else if (Grade == "D")
 		return 1.0 * (double)credits;
-	else if (Grade == "F" || Grade == "NA")
+	else if (Grade == "F" || Grade == "NA" || Grade == "P" || Grade == "WP" || Grade == "WF" || Grade == "IP" || Grade == "I")
 		return 0.0 * (double)credits;
 }
 

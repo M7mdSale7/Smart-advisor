@@ -217,6 +217,11 @@ vector<OverUnder> AcademicYear::checkYearSemCredits(Rules* R) const
 	return notSatisfying;
 }
 
+void AcademicYear::clearOverloadedSemesters()
+{
+	delete overloadedSem;
+}
+
 
 void AcademicYear::DrawMe(GUI* pGUI) const
 {

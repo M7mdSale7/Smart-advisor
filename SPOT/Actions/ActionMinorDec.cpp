@@ -24,16 +24,25 @@ bool ActionMinorDec::Execute()
 {
 	GUI* pGUI = pReg->getGUI(); //Pointer to GUI
 	//Taking Input
-	
-	pGUI->PrintMsg("1) Declare or Add courses to Minor. 2)Change Course From Minor.");
-	string choice0 = pGUI->GetSrting();
-	if (choice0 == "1")
+	/*pGUI->PrintMsg("1) Declare or Add courses to Minor. 2)Change Course From Minor.");
+	string choice0 = pGUI->GetSrting();*/
+	int choice0;
+	choice0 = pGUI->getRangeInput(1, 2, "1) Declare or Add courses to Minor. 2)Change Course From Minor.");
+	if (choice0 == 0)
+	{
+		return false;
+	}
+	if (choice0 == 1)
 	{
 		if (Num == 0) //First course to be added correctly so we are taking the program of minor
 		{
 			
 			minor = pGUI->getRangeInput(1, 9, "Enter Your Minor Name. 1) CIE or 2) SPC 3) REE 4) NANENG 5) ENV 6) BMS 7) PEU 8) MATSCI 9) NANSCI");
 
+			if (minor == 0)
+			{
+				return false;
+			}
 			if (minor == 0) return false;
 			if (minor == 1) MinorType = "CIE";
 			else if (minor == 2) MinorType = "SPC";
@@ -191,9 +200,10 @@ bool ActionMinorDec::Execute()
 			}
 
 			//asking the user if he wants to continue adding courses regardless he has filled the 5 courses or not
-			pGUI->PrintMsg("Course added. Do You Want To continue adding other courses to your minor? Yes or No (case sensitave)");
+			pGUI->PrintMsg("Course added. Do You Want To continue adding other courses to your minor? Yes or No.");
 			string will = pGUI->GetSrting(); //waiting for the users input
-			if (will == "Yes" && Minor.size() != 5)
+			transform(will.begin(), will.end(), will.begin(), toupper);
+			if (will == "YES" && Minor.size() != 5)
 			{
 				continue; //continue in your loop
 			}
@@ -206,7 +216,7 @@ bool ActionMinorDec::Execute()
 		//if he hadn't do so, issues will be formed at the complete check report
 
 	}
-	else if (choice0 == "2")
+	else if (choice0 == 2)
 	{
 		StudyPlan* pS = pReg->getStudyPlay();
 		Rules* R = pReg->getRules();
@@ -339,10 +349,10 @@ bool ActionMinorDec::Execute()
 	//	}
 
 	//}
-	else
+	/*else
 		{
 		pGUI->PrintMsg("Invalid Input");
-		}
+		}*/
 	return true;
 }
 
