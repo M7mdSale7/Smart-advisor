@@ -11,6 +11,7 @@ public:
 	//Course* loopSP(Registrar* pReg, string code);
 	bool virtual Execute();
 	bool DrawTree(Course_Code);
+	bool DrawUpTree(Course* pC);
 	Course* GetCourse(Course_Code);
 	virtual ~ActionFilters();
 	

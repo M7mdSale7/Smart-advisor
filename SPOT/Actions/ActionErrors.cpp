@@ -54,12 +54,12 @@ bool ActionErrors::Execute()
 				}
 				else if (j == 1) {
 					{
-						file << "Year " << i+1 << " Semester Fall Has an overload petition" << endl;
+						file << "Year " << i+1 << " Semester Spring Has an overload petition" << endl;
 					}
 				}
 				else if (j == 2) {
 					{
-						file << "Year " << i+1 << " Semester Fall Has an overload petition" << endl;
+						file << "Year " << i+1 << " Semester Summer Has an overload petition" << endl;
 					}
 				}
 			}

@@ -63,6 +63,38 @@ bool ActionFilters::DrawTree(Course_Code c)
 	return true;
 }
 
+bool ActionFilters::DrawUpTree(Course* pC)
+{
+	StudyPlan* pS = pReg->getStudyPlay();
+	vector<AcademicYear*>* Plan = pS->getSPvector(); //getting study plan
+	vector<Course*> pCUPv;
+	for (int l = 0; l < Plan->size(); l++)
+	{
+		list<Course*>* Courses = Plan->at(l)->getyearslist();
+		for (int j = 0; j < 3; j++)
+		{
+			for (auto itr : *(Courses + j))
+			{
+				vector<Course_Code> pqUP = itr->getPreReq();
+				for (int k = 0; k < pqUP.size(); k++)
+				{
+					if (pqUP.at(k) == pC->getCode() && !itr->getFilter())
+					{
+						itr->setFiler(true);
+						pCUPv.push_back(itr);
+					}
+				}
+			}
+		}
+	}
+	for (int i = 0; i < pCUPv.size(); i++)
+	{
+		DrawUpTree(pCUPv.at(i));
+	}
+	return false;
+}
+
+
 Course* ActionFilters::GetCourse(Course_Code c)
 {
 	StudyPlan* pS = pReg->getStudyPlay();
@@ -351,7 +383,12 @@ bool ActionFilters::Execute()
 							}
 						}
 					}
+					
 					pC->setFiler(true);
+					DrawUpTree(pC);
+					DrawUpTree(pC);
+					DrawUpTree(pC);
+					DrawUpTree(pC);
 					for (int i = 0; i < pq.size(); i++)
 					{
 						DrawTree(pq.at(i));
@@ -439,6 +476,7 @@ bool ActionFilters::Execute()
 
 				}
 			}
+
 		}
 		else if (Filter == "Status")
 		{
