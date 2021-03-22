@@ -324,9 +324,9 @@ void GUI::DrawStudentLevel(const StudyPlan* pSPlan) {
 	pWind->SetPen(BLACK, 2.5);
 	string StudentLevel = pSPlan->StudentLevel();
 	if (StudentLevel == "Freshman")
-		pWind->DrawString(1120, 30, "Freshman");
+		pWind->DrawString(1115, 30, "Freshman");
 	else if (StudentLevel == "Sophomore")
-		pWind->DrawString(1120, 30, "Sophomore");
+		pWind->DrawString(1115, 30, "Sophomore");
 	else if (StudentLevel == "Junior")
 		pWind->DrawString(1120, 30, "Junior");
 	else

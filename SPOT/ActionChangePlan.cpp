@@ -16,6 +16,7 @@ bool ActionChangePlan::Execute()
 	GUI* pGUI = pReg->getGUI();
 	StudyPlan* pSPlan = pReg->getStudyPlay();
 	pGUI->PrintMsg("Enter your Major Number: 1)CIE  2)SPC  3)ENV  4)REE  5)NANENG ");
+	//pGUI->getRangeInput(0, 10000000, "Enter your Major Number : 1)CIE  2)SPC  3)ENV  4)REE  5)NANENG ");
 	string Major = pGUI->GetSrting();
 	string line;
 	ifstream infile;

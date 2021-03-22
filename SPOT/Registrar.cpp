@@ -336,7 +336,8 @@ void Registrar::Initialization() {
 	ifstream infile;
 	ifstream fin;
 	setMajor(ImportRequiements().ImportReqs(fin, pGUI, Major, &RegRules));
-	if (RegRules.NofConcentrations != 0) {
+	if (RegRules.NofConcentrations != 0) 
+	{
 		pGUI->PrintMsg("Enter your Concentration number: ");
 		string Concentration = pGUI->GetSrting();
 		pSPlan->setConcentration(stoi(Concentration));

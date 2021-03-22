@@ -24,15 +24,33 @@ bool ActionCalculateGPA::Execute()
 
 	//pGUI->printMsg("Choose: 1)Calculate GPA  2)Enter grades");
 	//int year = pGUI->getRangeInput(1, 5, "Enter the Year you want to calculate the GPA for (Example : 1)");
-	pGUI->PrintMsg("Choose: 1) Calculate GPA. 2)Multiple Setting for grades of Courses");
-	string choice0 = pGUI->GetSrting();
-	if (choice0 == "1") {
-		pGUI->PrintMsg("Enter the Year you want to calculate the GPA for (Example: 1) , if you want CGPA , Enter CGPA");
-		string year = pGUI->GetSrting();
-		//Any Year
-		if (year != "CGPA")
+	/*pGUI->PrintMsg("Choose: 1) Calculate GPA. 2)Multiple Setting for grades of Courses");
+	string choice0 = pGUI->GetSrting();*/
+	int choice0;
+	choice0 = pGUI->getRangeInput(1, 2, "Choose: 1) Calculate GPA. 2)Multiple Setting for grades of Courses");
+	if (choice0 == 0)
+	{
+		return false;
+	}
+	if (choice0 == 1) {
+		/*pGUI->PrintMsg("Enter the Year you want to calculate the GPA for (Example: 1) , if you want CGPA , Enter CGPA");
+		string year = pGUI->GetSrting();*/
+		int choice1;
+		choice1 = pGUI->getRangeInput(1, 2, "1)Specific year 2)CGPA");
+		if (choice1 == 0)
 		{
-			int yearNum = stoi(year);
+			return false;
+		}
+		//Any Year
+		if (choice1 == 1)
+		{
+			int yearNum;
+			yearNum = pGUI->getRangeInput(1, 5, "Please enter year number.");
+			if (yearNum == 0)
+			{
+				return false;
+			}
+			//int yearNum = stoi(year);
 			yearNum -= 1; //Arrays and vectors are zero based
 			list<Course*>* Courses = Plan->at(yearNum)->getyearslist(); //get courses of that year
 			for (int j = 0; j < 3; j++) //for the semesters
@@ -62,10 +80,10 @@ bool ActionCalculateGPA::Execute()
 				}
 			}
 			double GPA = (Total / TotalC); //total GPA
-			pGUI->GetUserAction("GPA for year " + year + " Is: " + to_string(GPA));
+			pGUI->GetUserAction("GPA for year " + to_string(yearNum+1) + " Is: " + to_string(GPA));
 		}
 		//CGPA
-		else
+		else if (choice1 == 2)
 		{
 			for (int i = 0; i < Plan->size(); i++)
 			{
@@ -99,7 +117,7 @@ bool ActionCalculateGPA::Execute()
 		}
 		return true;
 	}
-	else if (choice0 == "2")
+	else if (choice0 == 2)
 	{
 		string grade = "NA";
 		vector<Course*> pVc;
@@ -158,10 +176,10 @@ bool ActionCalculateGPA::Execute()
 			pVc.at(i)->setSelected(false);
 		}
 	}
-	else
+	/*else
 	{
 		pGUI->PrintMsg("Invalid Input");
-	}
+	}*/
 }
 
 ActionCalculateGPA::~ActionCalculateGPA()

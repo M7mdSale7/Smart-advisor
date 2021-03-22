@@ -14,10 +14,17 @@ ActionAddPetition::ActionAddPetition(Registrar* P) : Action(P) {
 
 bool ActionAddPetition::Execute() {
 	GUI* pGUI = pReg->getGUI();
-	pGUI->PrintMsg("1) Course Petition. 2) Overload Petition. 3) Show Petitions.");
-	string choice = pGUI->GetSrting();
+	//pGUI->PrintMsg("1) Course Petition. 2) Overload Petition. 3) Show Petitions.");
+	int f;
+	f=pGUI->getRangeInput(1, 3, "1) Course Petition. 2) Overload Petition. 3) Show Petitions.");
+	if (f == 0)
+	{
+		return false;
+	}
 
-	if (choice == "1") {
+	//string choice = pGUI->GetSrting();
+
+	if (f == 1) {
 		int x, y;
 		StudyPlan* pSPlan = pReg->getStudyPlay();
 		ActionData actData = pGUI->GetUserAction("Press on the Course");
@@ -36,7 +43,7 @@ bool ActionAddPetition::Execute() {
 			}
 		}
 	}
-	else if (choice == "2") {
+	else if (f == 2) {
 		int x, y;
 		StudyPlan* pSPlan = pReg->getStudyPlay();
 		vector<AcademicYear*>* years = pSPlan->getSPvector();
@@ -61,7 +68,7 @@ bool ActionAddPetition::Execute() {
 		if (!check)
 			pGUI->GetUserAction("Invalid Click.");
 	}
-	else if (choice == "3") {
+	else if (f == 3) {
 		StudyPlan* pSPlan = pReg->getStudyPlay();
 		vector<AcademicYear*>* plan = pSPlan->getSPvector();
 		vector <Course*> PetitionCourses = pSPlan->getPetitionCourses();

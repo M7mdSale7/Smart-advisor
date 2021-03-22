@@ -402,13 +402,13 @@ bool ActionChangeCode::Execute()
 				if (flagci == true)
 				{
 					window* pW = pGUI->getPwind();
-					pC->setSelected(true);
+					pC1->setSelected(true);
 					pReg->UpdateInterface();
 					//ActionShowCourseInfo(pReg, 0, 0).showInfo(pW, pC1);
 					ActionShowCourseInfo::showInfo(pW, pC1);
 
 					pGUI->GetUserAction("press any where to dismiss");
-					pC->setSelected(false);
+					pC1->setSelected(false);
 				}
 			}
 		}
