@@ -43,7 +43,7 @@ class GUI
 		wx = 15, wy = 15,		//Window starting coordinates
 		StatusBarHeight = 60,	//Status Bar Height
 		MenuBarHeight = 75,		//Menu Bar Height (distance from top of window to bottom line of menu bar)
-		MenuItemWidth = 65;		//Width of each item in the menu
+		MenuItemWidth = 80;		//Width of each item in the menu//65
 
 
 

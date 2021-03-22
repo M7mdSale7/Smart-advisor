@@ -19,7 +19,7 @@ class StudyPlan:public Drawable
 	int DoubleConcentration=0;
 	string major;
 	string minor;
-
+	string secondMajor;
 
 	vector<AcademicYear*> plan;	//plan is a list of academic years
 	vector<Notes*> PlanNotees;
@@ -30,6 +30,8 @@ public:
 	string getMajor() const;
 	void setMinor(string);
 	string getMinor() const;
+	void setSecondMajor(string);
+	string getSecondMajor() const;
 
 	//getters
 	vector<AcademicYear*>* getSPvector();
