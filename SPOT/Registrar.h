@@ -45,7 +45,6 @@ public:
 	void freePlanRules(Rules* rules);//resets the rules data fields
 	void Run(); //runs the whole program
 	void fillCoursesType(); //fills courses types in the courseCatalog vector in rules
-	void DrawNotes();
 	~Registrar();
 };
 

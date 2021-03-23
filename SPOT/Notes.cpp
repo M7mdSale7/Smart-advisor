@@ -29,7 +29,7 @@ string Notes::getNotes() const
 
 void Notes::DrawMe(GUI* pG) const
 {
-	pG->DrawNotes(this);
+	/*pG->DrawNotes(this);*/
 }
 
 Notes::~Notes()

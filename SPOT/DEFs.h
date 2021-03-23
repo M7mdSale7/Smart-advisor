@@ -3,6 +3,10 @@
 //This header file contains some defenitions to be used all over the application
 #include <string>
 #define BKGRNDCLR WHITE 
+#define MENUBARHEIGHT 75
+#define WINDHEGHIT 700
+#define WINDWIDTH 1300
+#define STATUSBARHEIGHT 60
 
 
 using namespace std;

@@ -39,10 +39,10 @@ class GUI
 	};
 
 	//Some constants for GUI
-	static const int	WindWidth = 1300, WindHeight = 700,	//Window width and height
+	static const int	WindWidth = WINDWIDTH, WindHeight = WINDHEGHIT,	//Window width and height
 		wx = 15, wy = 15,		//Window starting coordinates
-		StatusBarHeight = 60,	//Status Bar Height
-		MenuBarHeight = 75,		//Menu Bar Height (distance from top of window to bottom line of menu bar)
+		StatusBarHeight = STATUSBARHEIGHT,	//Status Bar Height
+		MenuBarHeight = MENUBARHEIGHT,		//Menu Bar Height (distance from top of window to bottom line of menu bar)
 		MenuItemWidth = 65;		//Width of each item in the menu
 
 
@@ -72,7 +72,7 @@ public:
 	void Drawco(const Course* pC1, Course* pC2);
 	void DrawAcademicYear(const AcademicYear*);
 	void UpdateInterface() const;
-	void DrawNotes(const Notes* pNotes); //Member function to Draw Notes on Screen
+	void DrawNotes(const vector<Notes*>* PlanNotees); //Member function to Draw Notes on Screen
 	void DrawStudentLevel(const StudyPlan* pSPlan);
 	void printError(string error, bool issue, int& Ylocation);
 	void DrawStudentInfo(const StudyPlan* pS);

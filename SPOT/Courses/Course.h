@@ -25,7 +25,7 @@ class Course : public Drawable
 	vector<Course_Code> CoReq;	//vector of corequisites
 	string Grade = "NA";
 	double qPoints;
-	string Status;	//Done, In Progress, Pending
+	string Status;	//Done, In Progress, Pending, Replaced, Exempted, Transferred
 	bool filter;
 	bool preReqstatisfied = 1; // 1 for yes, 0 for no
 	bool coReqstatisfied = 1; // 1 for yes, 0 for no

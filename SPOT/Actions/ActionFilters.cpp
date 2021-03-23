@@ -445,23 +445,37 @@ bool ActionFilters::Execute()
 			/*pGUI->PrintMsg("Enter Status 1) Done 2) Not Done");
 			string s = pGUI->GetSrting();*/
 			int s;
-			s = pGUI-> getRangeInput(1, 2, "Enter Status 1) Done 2) Not Done");
+			s = pGUI-> getRangeInput(1, 6, "Enter status number 1)Done 2)In Progress 3)Pending 4)Replaced 5)Exempted 6)Transferred");
 			if (s == 0)
 			{
 				return false;
 			}
-			/*if (s != "1" && s != "2")
-			{
-				pGUI->PrintMsg("Invalid Input");
-				return false;
-			}*/
-			//int N = stoi(s);
 			string status;
 			if (s == 1)
 			{
 				status = "Done";
 			}
-			else status = "Not Done";
+			else if (s == 2)
+			{
+				status = "In Progress";
+			}
+			else if (s == 3)
+			{
+				status = "Pending";
+			}
+			else if (s == 4)
+			{
+				status = "Replaced";
+			}
+			else if (s == 5)
+			{
+				status = "Exempted";
+			}
+			else if (s == 6)
+			{
+				status = "Transferred";
+			}
+
 			for (int i = 0; i < Plan->size(); i++)
 			{
 				list<Course*>* Courses = Plan->at(i)->getyearslist();

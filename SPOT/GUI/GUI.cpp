@@ -5,6 +5,7 @@
 #include <sstream>
 #include <string>
 #include <iostream>
+#include <vector>
 using namespace std;
 #include "../Actions/ActionFilters.h"
 #include "..//StudyPlan/StudyPlan.h"
@@ -295,23 +296,36 @@ void GUI::Drawco(const Course* pC1,  Course* pC2)
 	pWind->DrawLine((x1 + CRS_WIDTH), (y1 + (CRS_HEIGHT / 2)), x2 , y2 );
 }
 
-void GUI::DrawNotes(const Notes* pNotes)
+void GUI::DrawNotes(const vector<Notes*>* PlanNotees)
 {
-	if (pNotes->isSelected())
-		pWind->SetPen(HiColor, 2);
-	else
-	{
-		pWind->SetPen(BLACK, 2);
-		pWind->SetBrush(GREY);
-		graphicsInfo gInfo = pNotes->getGfxInfo();
-		/*pWind->DrawRectangle(gInfo.x, gInfo.y, gInfo.x + NOTES_WIDTH, gInfo.y + NOTES_HEIGHT);*/
-		int Notes_x = gInfo.x + NOTES_WIDTH * 0.15;
-		int Notes_y = gInfo.y + NOTES_HEIGHT * 0.05;
-		pWind->SetFont(NOTES_HEIGHT * 0.4, BOLD, BY_NAME, "Gramound");
-		pWind->DrawString(Notes_x, Notes_y, pNotes->getNotes());
+	image im;
+	int itr = 0;
 
-		
+	//Drawing the structure
+	pWind->StoreImage(im, 875, MENUBARHEIGHT, WINDWIDTH - 875, WINDHEGHIT - STATUSBARHEIGHT - MENUBARHEIGHT);
+	pWind->SetBuffering(true);
+	UpdateInterface();
+	pWind->SetBrush(BLACK);
+	pWind->SetPen(BLACK);
+	pWind->DrawRectangle(5, 90, 872, 625, FRAME);
+	pWind->DrawRectangle(5, 90, 872, 125, FRAME);
+	pWind->DrawImage(im, 875, MENUBARHEIGHT, WINDWIDTH - 875, WINDHEGHIT - STATUSBARHEIGHT - MENUBARHEIGHT);
+	pWind->SetPen(DODGERBLUE, 2);
+	pWind->SetFont(20, BOLD, SWISS, "Gramound");
+	pWind->DrawString(350, 95, "Notes Area");
+
+	//Drawing notes
+	pWind->SetFont(17, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(BLACK, 2);
+	for (auto note : *PlanNotees)
+	{
+		//add here drawing a rect
+		pWind->DrawString(12, 135 + (itr * 22), to_string(itr + 1) + ".  " + note->getNotes());
+		itr++;
 	}
+
+	pWind->UpdateBuffer();
+	pWind->SetBuffering(false);
 
 }
 

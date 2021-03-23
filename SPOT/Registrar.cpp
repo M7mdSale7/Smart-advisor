@@ -87,7 +87,7 @@ Action* Registrar::CreateRequiredAction()
 	cout << "X = " << Cx << "Y = " << Cy << endl;
 	while(Cy <= pGUI->getMenuBarHeight())
 	{
-		cout << "In menu\n";
+		
 		if (pGUI->getPwind()->GetButtonState(LEFT_BUTTON, Cx, Cy) == BUTTON_DOWN)
 		{
 			ActionData actData = pGUI->GetUserActionNoFlush();
@@ -269,7 +269,7 @@ Action* Registrar::CreateRequiredAction()
 	}
 	while(Cy > pGUI->getMenuBarHeight())
 	{
-		cout << "In Draw Area\n";
+		
 		pGUI->ClearStatusBar();
 		pGUI->getPwind()->GetMouseCoord(Cx, Cy);
 		if (pGUI->getPwind()->GetButtonState(LEFT_BUTTON, Cx, Cy) == BUTTON_DOWN)
@@ -353,6 +353,7 @@ void Registrar::Run()
 	UpdateInterface();
 	while (true)
 	{
+		
 
 		UpdateInterface();
 		
@@ -461,9 +462,7 @@ void Registrar::fillCoursesType()
 
 }
 
-void Registrar::DrawNotes()
-{
-}
+
 
 void Registrar::freePlanRules(Rules* rules) {
 	
