@@ -127,10 +127,10 @@ bool ActionFilters::Execute()
 	string choose = pGUI->GetSrting();*/
 	int choose;
 	choose = pGUI->getRangeInput(1, 2, "1)Search for course 2)Filter");
-		if (choose == 0)
-		{
-			return false;
-		}
+	if (choose == 0)
+	{
+		return false;
+	}
 	if (choose == 1)
 	{
 		pGUI->PrintMsg("Please Enter The Course Code");
@@ -146,8 +146,21 @@ bool ActionFilters::Execute()
 		}
 		if (pCRINF != nullptr)
 		{
-			Course* pCR = pS->searchStudyPlan(coursecode);
-			if (pCR == nullptr)
+			Course* ptrCrs;
+			vector<Course*> pCR;
+			for (int i = 0; i < pS->getSPvector()->size(); i++) {
+				for (int j = 0; j < SEM_CNT; j++) {
+					ptrCrs = pS->getSPvector()->at(i)->searchSemester(coursecode, (SEMESTER)j);
+					if (ptrCrs)
+					{
+						ptrCrs->setSelected(true);
+						pCR.push_back(ptrCrs);
+					}
+				}
+
+
+			}
+			if (pCR.empty())
 			{
 				pGUI->GetUserAction("This course is not in your plan. press anywhere to dismiss");
 			}
@@ -156,22 +169,26 @@ bool ActionFilters::Execute()
 				/*StudyPlan* pS = pReg->getStudyPlay();
 				pS->DeleteCourse(pC);
 				pGUI->PrintMsg("course is deleted.");*/
-				pCR->setSelected(true);
+				//pCR->setSelected(true);
 				window* pW = pGUI->getPwind();
 				pReg->UpdateInterface();
 
 				//ActionShowCourseInfo(pReg, 0, 0).showInfo(pW, pCR);
-				ActionShowCourseInfo::showInfo(pW, pCR);
+				ActionShowCourseInfo::showInfo(pW, pCR.at(0));
 
-				graphicsInfo gInfo = pCR->getGfxInfo();
-				int x = gInfo.x;
-				int y = gInfo.y;
+				//graphicsInfo gInfo = pCR->getGfxInfo();
+				//int x = gInfo.x;
+				//int y = gInfo.y;
 				//ActionShowCourseInfo(pReg, x, y)::Execute();
-				
+
 				//pReg->ExecuteAction(new ActionShowCourseInfo(pReg, x, y));
 				//pReg->UpdateInterface();
 				pGUI->GetUserAction("press any where to dismiss");
-				pCR->setSelected(false);
+				for (auto crs : pCR)
+				{
+					crs->setSelected(false);
+				}
+				//pCR->setSelected(false);
 
 			}
 		}
@@ -181,7 +198,7 @@ bool ActionFilters::Execute()
 		/*pGUI->PrintMsg("Enter the filer, 1) Year Or 2) Semester Or 3) Courses or 4) Defualt Or 5) Tree Or 6) Course Status)");
 		string FilterNum = pGUI->GetSrting();*/
 		int FilterNum;
-		FilterNum = pGUI-> getRangeInput(1, 6, "Enter the filter, 1) Year Or 2) Semester Or 3) Courses or 4) Defualt Or 5) Tree Or 6) Course Status");
+		FilterNum = pGUI->getRangeInput(1, 6, "Enter the filter, 1) Year Or 2) Semester Or 3) Courses or 4) Defualt Or 5) Tree Or 6) Course Status");
 		if (FilterNum == 0)
 		{
 			return false;
@@ -207,13 +224,13 @@ bool ActionFilters::Execute()
 		{
 			/*pGUI->PrintMsg("Enter year number (1 - 2 - 3 - 4 - 5)");
 			string year = pGUI->GetSrting();*/
-			
+
 			int yearNum;
 			yearNum = pGUI->getRangeInput(1, 5, "Enter the year number.");
-				if (yearNum == 0)
-				{
-					return false;
-				}
+			if (yearNum == 0)
+			{
+				return false;
+			}
 
 			//Now Make all other courses unselected from study plan except your year courses
 			for (int i = 0; i < Plan->size(); i++)
@@ -247,7 +264,7 @@ bool ActionFilters::Execute()
 			/*pGUI->PrintMsg("Enter Semester (Fall(F) - Spring(Sp) - Summer(S))");
 			string semester = pGUI->GetSrting();*/
 			int semester;
-			semester = pGUI->getRangeInput(1, 3,"Enter Semester Number 1)Fall  2)Spring  3)Summer" );
+			semester = pGUI->getRangeInput(1, 3, "Enter Semester Number 1)Fall  2)Spring  3)Summer");
 			if (yearNum == 0)
 			{
 				return false;
@@ -292,18 +309,19 @@ bool ActionFilters::Execute()
 			//you need to check which group of courses
 			/*pGUI->PrintMsg("Enter Courses Type 1) Minor - 2) DoubleMajor -3) Univ Compulsory - 4) Univ Elective - 5) Track Compulsory)");
 			string typeNum = pGUI->GetSrting();*/
-			
+
 			/*if (typeNum != "1" && typeNum != "2" && typeNum != "3" && typeNum != "4" && typeNum != "5")
 			{
 				pGUI->PrintMsg("Invalid Input");
 				return false;
 			}*/
 			int typeNum;
-			typeNum = pGUI->getRangeInput(1, 5, "Enter Courses Type 1) Minor - 2) DoubleMajor -3) Univ Compulsory - 4) Univ Elective - 5) Track Compulsory");
-				if (typeNum == 0)
-				{
-					return false;
-				}
+			typeNum = pGUI->getRangeInput(1, 8,
+				"Enter Type 1)Minor 2)DoubleMajor 3)Univ Compulsory 4)Univ Elective 5)Track Compulsory 6)Track Elective 7)Major Compulsory 8)Major Elective");
+			if (typeNum == 0)
+			{
+				return false;
+			}
 			string type;
 			if (typeNum == 1)
 			{
@@ -311,8 +329,11 @@ bool ActionFilters::Execute()
 			}
 			else if (typeNum == 2) type = "DoubleMajor";
 			else if (typeNum == 3) type = "Univ Compulsory";
-			else if (typeNum ==4) type = "Univ Elective";
-			else if (typeNum ==5) type = "Track Compulsory";
+			else if (typeNum == 4) type = "Univ Elective";
+			else if (typeNum == 5) type = "Track Compulsory";
+			else if (typeNum == 6) type = "Track Elective";
+			else if (typeNum == 7) type = "Major Compulsory";
+			else if (typeNum == 8) type = "Major Elective";
 			/*else
 			{
 				pGUI->PrintMsg("Invalid Input");
@@ -383,7 +404,7 @@ bool ActionFilters::Execute()
 							}
 						}
 					}
-					
+
 					pC->setFiler(true);
 					DrawUpTree(pC);
 					DrawUpTree(pC);
@@ -483,7 +504,7 @@ bool ActionFilters::Execute()
 			/*pGUI->PrintMsg("Enter Status 1) Done 2) Not Done");
 			string s = pGUI->GetSrting();*/
 			int s;
-			s = pGUI-> getRangeInput(1, 6, "Enter status number 1)Done 2)In Progress 3)Pending 4)Replaced 5)Exempted 6)Transferred");
+			s = pGUI->getRangeInput(1, 6, "Enter status number 1)Done 2)In Progress 3)Pending 4)Replaced 5)Exempted 6)Transferred");
 			if (s == 0)
 			{
 				return false;
@@ -531,9 +552,9 @@ bool ActionFilters::Execute()
 		}
 	}
 	else
-    {
-	pGUI->GetUserAction("invalid input: press anywhere to dismiss");
-    }
+	{
+		pGUI->GetUserAction("invalid input: press anywhere to dismiss");
+	}
 	return true;
 }
 
