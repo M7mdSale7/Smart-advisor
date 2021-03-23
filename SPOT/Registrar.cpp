@@ -85,7 +85,7 @@ Action* Registrar::CreateRequiredAction()
 	Action* RequiredAction = nullptr;
 	string currentMsg;
 	pGUI->getPwind()->GetMouseCoord(Cx, Cy);
-	cout << "X = " << Cx << "Y = " << Cy << endl;
+	//cout << "X = " << Cx << "Y = " << Cy << endl;
 	while(Cy <= pGUI->getMenuBarHeight())
 	{
 		

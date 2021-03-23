@@ -69,6 +69,7 @@ bool ActionDeleteCourse::Execute()
 {
 	GUI* pGUI = pReg->getGUI();
 	ActionData actData = pGUI->GetUserAction("press on the course or note you want to delete.");
+	Notes* pN = nullptr;
 
 	int x, y;
 	if (actData.actType == DRAW_AREA)	
@@ -79,7 +80,7 @@ bool ActionDeleteCourse::Execute()
 		if (pC == nullptr)
 		{
 			StudyPlan* pS = pReg->getStudyPlay();
-			Notes* pN = notesloop(x, y, pReg);
+			pN = notesloop(x, y, pReg);
 			if (pN != nullptr)
 			{
 				pS->DeleteNotes(pN);
