@@ -8,7 +8,7 @@
 using namespace std;
 
 ActionAddPetition::ActionAddPetition(Registrar* P) : Action(P) {
-	
+
 }
 
 
@@ -16,7 +16,7 @@ bool ActionAddPetition::Execute() {
 	GUI* pGUI = pReg->getGUI();
 	//pGUI->PrintMsg("1) Course Petition. 2) Overload Petition. 3) Show Petitions.");
 	int f;
-	f=pGUI->getRangeInput(1, 3, "1) Course Petition. 2) Overload Petition. 3) Show Petitions.");
+	f = pGUI->getRangeInput(1, 3, "1) Course Petition. 2) Overload Petition. 3) Show Petitions.");
 	if (f == 0)
 	{
 		return false;
@@ -59,7 +59,7 @@ bool ActionAddPetition::Execute() {
 			for (int j = 0; j < SEM_CNT; j++) {
 				if ((x > gInfo.x - 40 && x < gInfo.x + 34) &&
 					((y > gInfo.y + (35 * (2 - j))) && (y < gInfo.y + (35 * ((2 - j) + 1))))) {
-					
+
 					pY->setOverloadedSemesters((SEMESTER)j);
 					check = true;
 				}

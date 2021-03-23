@@ -59,7 +59,7 @@ bool StudyPlan::AddCourse(Course* pC, int year, SEMESTER sem)
 
 bool StudyPlan::DeleteCourse(Course* pC)
 {
-	int z = pC->getyear()-1;
+	int z = pC->getyear() - 1;
 	plan[z]->DeleteCourse(pC, pC->getsemester());
 	TotalCredits -= pC->getCredits();
 	if (pC->getType() == "Univ Compulsory")
@@ -135,7 +135,7 @@ void StudyPlan::DrawMe(GUI* pGUI) const
 		pGUI->DrawStudentLevel(this);*/
 
 	pGUI->showTotalCredits(this);
-	
+
 	pGUI->DrawStudentInfo(this);
 }
 
@@ -176,7 +176,7 @@ void StudyPlan::addeYearCredits(AcademicYear* y)
 	ElecMajorCredits += y->ElecMajorCredits;
 
 	TotalTrackCredits += y->TotalTrackCredits;
-	
+
 
 	TotalConcentrationCredits += y->TotalConcentrationCredits;
 	TotalMinorCredits += y->TotalMinorCredits;
@@ -188,15 +188,15 @@ vector<yearSemPair> StudyPlan::CreditsCheck(Rules* R) const //If this vector is 
 	vector<yearSemPair> Allpairs;	//container for all the semesters not satisfying the max/min credits requirements
 									//Those semesters are written as a pair of the integer year number and semester number(Y,S)
 	yearSemPair* tempPair;
-	for (int i = 0;i < plan.size(); i++)
+	for (int i = 0; i < plan.size(); i++)
 	{
-		
+
 		if (!(plan[i]->checkYearSemCredits(R).empty()))
 		{
-			for (auto &iter : plan[i]->checkYearSemCredits(R))
+			for (auto& iter : plan[i]->checkYearSemCredits(R))
 			{
 				tempPair = new yearSemPair;
-				tempPair->Y = i+1;
+				tempPair->Y = i + 1;
 				tempPair->X.semester = iter.semester;
 				tempPair->X.Case = iter.Case;
 				tempPair->X.credits = iter.credits;
@@ -347,7 +347,7 @@ void StudyPlan::checkPlan(Registrar* R) const
 	{
 		R->getGUI()->printError("Semester credit limits violated!", 0, Ylocation);
 	}
-	if (!(ProgReqCheck(R->getRules()).empty()) || !(checkUnivElectiveCrd(R->getRules())) || !(checkUnivElectiveCrd(R->getRules())) )
+	if (!(ProgReqCheck(R->getRules()).empty()) || !(checkUnivElectiveCrd(R->getRules())) || !(checkUnivElectiveCrd(R->getRules())))
 	{
 		R->getGUI()->printError("Program requirements violated!", 1, Ylocation);
 	}
@@ -371,12 +371,12 @@ void StudyPlan::checkPlan(Registrar* R) const
 	{
 		R->getGUI()->printError("Minor Requirements violated!", 1, Ylocation);
 	}
-	if (!(ProgReqCheck(R->getRules2()).empty()) || !(checkM2MajElecCrd(R)) || !(checkM2UnivElecCrd(R)) )
+	if (!(ProgReqCheck(R->getRules2()).empty()) || !(checkM2MajElecCrd(R)) || !(checkM2UnivElecCrd(R)))
 	{
 		R->getGUI()->printError("Program requirements violated!", 1, Ylocation);
 	}
 
-	
+
 }
 
 Course* StudyPlan::searchStudyPlan(Course_Code code) const {
@@ -415,10 +415,10 @@ bool StudyPlan::searchOfferings(Rules* R, Course_Code code, int year, SEMESTER s
 
 vector <vector <Course_Code>> StudyPlan::checkConReq(Rules* R) const {
 	vector <vector <Course_Code>> Error(2);
-	if (R->NofConcentrations == 0 )
+	if (R->NofConcentrations == 0)
 		return Error;
 
-	for (auto &code : R->ConCompulsory[concentration - 1]) {
+	for (auto& code : R->ConCompulsory[concentration - 1]) {
 		if (!searchStudyPlan(code))
 			Error[0].push_back(code);
 	}
@@ -553,15 +553,18 @@ vector <vector <Course_Code>> StudyPlan::checkPreCo() const {
 	for (size_t i = 0; i < plan.size(); i++) {
 		list<Course*>* YearCourses = plan[i]->getyearslist();
 		for (size_t j = 0; j < SEM_CNT; j++) {
-			for (auto &course : YearCourses[j]) {
+			for (auto& course : YearCourses[j]) {
 				course->setPreStatus(1);
 				course->setCoStatus(1);
-				for (auto &preReq : course->getPreReq()) {
+				for (auto& preReq : course->getPreReq()) {
 					Course* C = searchStudyPlan(preReq);
 					if (C == nullptr) {
-						Error[0].push_back(course->getCode());
-						Error[1].push_back(preReq);
-						course->setPreStatus(0);
+						if (!course->hasPetition())
+						{
+							Error[0].push_back(course->getCode());
+							Error[1].push_back(preReq);
+							course->setPreStatus(0);
+						}
 					}
 					else {
 						if (C->getyear() > course->getyear()) {
@@ -580,10 +583,10 @@ vector <vector <Course_Code>> StudyPlan::checkPreCo() const {
 						}
 					}
 				}
-				for (auto &coReq : course->getCoReq()) {
+				for (auto& coReq : course->getCoReq()) {
 					//Course* C = searchSemester(coReq, course->getyear(), course->getsemester());
 					Course* C = searchStudyPlan(coReq);
-					if (C == nullptr || C->getyear() > course->getyear() || 
+					if (C == nullptr || C->getyear() > course->getyear() ||
 						(C->getyear() == course->getyear() && C->getsemester() > course->getsemester())) {
 						if (!course->hasPetition()) {
 							Error[2].push_back(course->getCode());
@@ -696,7 +699,7 @@ bool StudyPlan::checkUnivElectiveCrd(Rules* R) const
 bool StudyPlan::checkMajorElectiveCrd(Rules* R) const
 {
 	//returns true if the Total university credits is satisfied in the plan and false otherwise
-	if ( ElecMajorCredits < R->ElectiveMajorCredits) return false;
+	if (ElecMajorCredits < R->ElectiveMajorCredits) return false;
 	else return true;
 }
 

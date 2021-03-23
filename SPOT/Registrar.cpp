@@ -169,16 +169,16 @@ Action* Registrar::CreateRequiredAction()
 				}
 				break;
 			case ADD_NOTES:
-				if (currentMsg != "Add Note")
+				if (currentMsg != "Notes Area")
 				{
-					currentMsg = "Add Note";
+					currentMsg = "Notes Area";
 					pGUI->PrintMsg(currentMsg);
 				}
 				break;
 			case DEL_CRS: 
-				if (currentMsg != "Delete course/Note")
+				if (currentMsg != "Delete course")
 				{
-					currentMsg = "Delete course/Note";
+					currentMsg = "Delete course";
 					pGUI->PrintMsg(currentMsg);
 				}
 				break;
