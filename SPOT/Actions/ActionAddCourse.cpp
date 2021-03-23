@@ -83,41 +83,41 @@ bool ActionAddCourse::Execute()
 			pC->setLHrs(pCRINF->lHrs);
 			pC->setPHrs(pCRINF->pHrs);
 
-			for (int i = 0; i < MinorComp->size(); i++) //Setting type to Minor in case of minor
-			{
-				if (code == MinorComp->at(i))
-					pC->setType("Minor");
-			}
-			for (int i = 0; i < R2->UnivCompulsory.size(); i++) //Setting type to double major in case of double major
-			{
-				if (code == R2->UnivCompulsory.at(i))
-					pC->setType("DoubleMajor");
-			}
-			for (int i = 0; i < R2->UnivElective.size(); i++)
-			{
-				if (code == R2->UnivElective.at(i))
-					pC->setType("DoubleMajor");
-			}
-			for (int i = 0; i < R2->TrackCompulsory.size(); i++)
-			{
-				if (code == R2->TrackCompulsory.at(i))
-					pC->setType("DoubleMajor");
-			}
-			for (int i = 0; i < R2->TrackElective.size(); i++)
-			{
-				if (code == R2->TrackElective.at(i))
-					pC->setType("DoubleMajor");
-			}
-			for (int i = 0; i < R2->MajorCompulsory.size(); i++)
-			{
-				if (code == R2->MajorCompulsory.at(i))
-					pC->setType("DoubleMajor");
-			}
-			for (int i = 0; i < R2->MajorElective.size(); i++)
-			{
-				if (code == R2->MajorElective.at(i))
-					pC->setType("DoubleMajor");
-			}
+			//for (int i = 0; i < MinorComp->size(); i++) //Setting type to Minor in case of minor
+			//{
+			//	if (code == MinorComp->at(i))
+			//		pC->setType("Minor");
+			//}
+			//for (int i = 0; i < R2->UnivCompulsory.size(); i++) //Setting type to double major in case of double major
+			//{
+			//	if (code == R2->UnivCompulsory.at(i))
+			//		pC->setType("DoubleMajor");
+			//}
+			//for (int i = 0; i < R2->UnivElective.size(); i++)
+			//{
+			//	if (code == R2->UnivElective.at(i))
+			//		pC->setType("DoubleMajor");
+			//}
+			//for (int i = 0; i < R2->TrackCompulsory.size(); i++)
+			//{
+			//	if (code == R2->TrackCompulsory.at(i))
+			//		pC->setType("DoubleMajor");
+			//}
+			//for (int i = 0; i < R2->TrackElective.size(); i++)
+			//{
+			//	if (code == R2->TrackElective.at(i))
+			//		pC->setType("DoubleMajor");
+			//}
+			//for (int i = 0; i < R2->MajorCompulsory.size(); i++)
+			//{
+			//	if (code == R2->MajorCompulsory.at(i))
+			//		pC->setType("DoubleMajor");
+			//}
+			//for (int i = 0; i < R2->MajorElective.size(); i++)
+			//{
+			//	if (code == R2->MajorElective.at(i))
+			//		pC->setType("DoubleMajor");
+			//}
 			bool flagci = false;
 
 			vector<AcademicYear*>* plan = pS->getSPvector();
