@@ -557,6 +557,29 @@ void GUI::DrawStudentInfo(const StudyPlan* pS) {
 
 	pWind->SetFont(19, BOLD, BY_NAME, "Gramound");
 	pWind->SetPen(DODGERBLUE, 2);
+	pWind->DrawString(1030, 135, "Major #2: ");
+	pWind->SetFont(17, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(BLACK, 2);
+	string secondMajor = pS->getSecondMajor();
+	if (secondMajor.empty())
+		pWind->DrawString(1105, 135, "None");
+	else
+		pWind->DrawString(1105, 135, secondMajor);
+
+	pWind->SetFont(19, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(DODGERBLUE, 2);
+	pWind->DrawString(1030, 162, "Concentration #2: ");
+	pWind->SetFont(17, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(BLACK, 2);
+	int secondConcentration = pS->getConcentration2();
+	if (secondConcentration == 0)
+		pWind->DrawString(1170, 162, "None");
+	else
+		pWind->DrawString(1170, 162, to_string(secondConcentration));
+
+
+	pWind->SetFont(19, BOLD, BY_NAME, "Gramound");
+	pWind->SetPen(DODGERBLUE, 2);
 	pWind->DrawString(910, 162, "Minor: ");
 	pWind->SetFont(17, BOLD, BY_NAME, "Gramound");
 	pWind->SetPen(BLACK, 2);
