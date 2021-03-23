@@ -467,16 +467,16 @@ void Registrar::fillCoursesType()
 
 void Registrar::freePlanRules(Rules* rules) {
 	
-	RegRules.SemMinCredit = 12;
-	RegRules.SemMaxCredit = 18;
-	RegRules.SummerMaxCredit = 6;
-	RegRules.ReqUnivCredits = 0;
-	RegRules.ElectiveUnivCredits = 0;
-	RegRules.ReqTrackCredits = 0;
-	RegRules.ReqMajorCredits = 0;
-	RegRules.ElectiveMajorCredits = 0;
-	RegRules.TotalMajorCredits = 0;
-	RegRules.NofConcentrations = 0;
+	rules->SemMinCredit = 12;
+	rules->SemMaxCredit = 18;
+	rules->SummerMaxCredit = 6;
+	rules->ReqUnivCredits = 0;
+	rules->ElectiveUnivCredits = 0;
+	rules->ReqTrackCredits = 0;
+	rules->ReqMajorCredits = 0;
+	rules->ElectiveMajorCredits = 0;
+	rules->TotalMajorCredits = 0;
+	rules->NofConcentrations = 0;
 	
 
 	rules->UnivCompulsory.clear();	//Univ Compulsory courses//
